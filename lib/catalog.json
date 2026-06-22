@@ -1,0 +1,716 @@
+{
+  "brand": {
+    "name": "BGA Electric",
+    "tagline": "Soluciones prácticas, seguras y eficientes para canalizaciones eléctricas",
+    "description": "Industria metalúrgica especializada en el diseño, desarrollo y fabricación de soluciones para la canalización de cables eléctricos, gabinetes y tableros eléctricos.",
+    "contact": {
+      "whatsapp": "+595974733100",
+      "phone": "+595 974 733100",
+      "email": "ventas@bga.com.py",
+      "website": "www.bga.com.py",
+      "instagram": "@bgapy",
+      "facebook": "/bga.py",
+      "address": "Ruta PY02 km14, Minga Guazú, Alto Paraná",
+      "country": "PARAGUAY"
+    },
+    "languages": ["es", "pt-BR", "en"],
+    "sectors": ["energía", "telecomunicaciones", "infraestructura", "industria", "construcción", "agroindustria"]
+  },
+  "globalSpecs": {
+    "materials": [
+      { "id": "sae1006", "name": "Acero SAE 1006/1010", "default": true },
+      { "id": "aisi304", "name": "Acero inoxidable AISI 304" },
+      { "id": "alum1100", "name": "Aluminio ASTM 1100" }
+    ],
+    "surfaceTreatments": [
+      { "id": "pz", "name": "Pregalvanizado", "norm": "NBR 7008", "useCase": "interiores, ambientes secos" },
+      { "id": "gf", "name": "Galvanizado por Inmersión en Caliente", "norm": "NBR 6323 / ASTM 123", "useCase": "exteriores, ambientes húmedos" },
+      { "id": "elec", "name": "Pintura Electrostática", "useCase": "interiores y exteriores, estética superior" },
+      { "id": "liq", "name": "Pintura Líquida" }
+    ],
+    "thicknesses": [
+      { "gauge": "#14", "mm": 2.0 },
+      { "gauge": "#16", "mm": 1.5 },
+      { "gauge": "#18", "mm": 1.2 },
+      { "gauge": "#20", "mm": 0.9 },
+      { "gauge": "#22", "mm": 0.7 }
+    ],
+    "thicknessTolerance": "±0,05mm",
+    "joiningProcess": {
+      "name": "CLINCH",
+      "description": "Sistema de unión en frío que preserva la capa de zinc, sin daño al recubrimiento."
+    }
+  },
+  "categories": [
+    {
+      "id": "perfilados",
+      "name": "Perfilados y Accesorios",
+      "description": "Sistema utilizado para la distribución de cables de menor tamaño y soporte de luminarias. Permite instalaciones rápidas, con posibilidad de ampliaciones y modificaciones.",
+      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-perfilados-accesorios-bga.pdf"
+    },
+    {
+      "id": "bandejas",
+      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-bandeja-portacables-bga.pdf",
+      "name": "Bandejas y Accesorios",
+      "description": "Bandejas portacables: sistemas versátiles diseñados para la conducción y distribución segura de cables eléctricos en instalaciones industriales, comerciales y residenciales.",
+      "richDescription": "Las bandejas portacables BGA son sistemas de canalización diseñados para la conducción y soporte de cables eléctricos de potencia, control e instrumentación en instalaciones industriales, comerciales y de infraestructura. Se fabrican en chapa de acero SAE 1006/1010, acero inoxidable AISI 304 o aluminio ASTM 1100, y se unen mediante el proceso CLINCH — unión en frío que preserva la capa de zinc sin daño al recubrimiento.\n\nEstán disponibles en dos perfiles principales: Tipo U (base plana, alas laterales) y Tipo C (con retorno en las alas), en versiones lisas y perforadas. Los anchos van de 50 a 800 mm, con alas de 50 a 200 mm según el volumen y peso de cableado requerido. El catálogo incluye curvas, tes, uniones, reducciones, soportes y tapas que permiten resolver cualquier trayectoria de instalación.\n\nEl tratamiento superficial define el ambiente de uso: pregalvanizado (NBR 7008) para interiores secos, galvanizado por inmersión en caliente (NBR 6323 / ASTM 123) para exteriores o ambientes húmedos y corrosivos, y pintura electrostática para aplicaciones con requisitos estéticos. Las bandejas BGA cumplen con normas IEC 61537 y ABNT NBR 6323.",
+      "intentCards": [
+        {
+          "label": "Instalación en exterior o zona húmeda",
+          "description": "Necesitás protección contra corrosión",
+          "tag": "Galvanizado en caliente",
+          "filter": "gf"
+        },
+        {
+          "label": "Cambios de dirección horizontal",
+          "description": "Curvas 90°, 45°, TEs y cruzetas",
+          "tag": "Accesorios de curva",
+          "filter": "curvas"
+        },
+        {
+          "label": "Reducir la sección de bandeja",
+          "description": "Reducciones centrales y laterales",
+          "tag": "Reducciones",
+          "filter": "reducciones"
+        },
+        {
+          "label": "Fijar y suspender la bandeja",
+          "description": "Soportes, manos francesas y travesaños",
+          "tag": "Soportes",
+          "filter": "soportes"
+        }
+      ],
+      "materialTable": [
+        { "material": "Acero SAE 1006", "tratamiento": "Pregalvanizado", "ambiente": "Interior seco", "norma": "NBR 7008" },
+        { "material": "Acero SAE 1006", "tratamiento": "Galvanizado en caliente", "ambiente": "Exterior / húmedo / corrosivo", "norma": "NBR 6323 / ASTM 123" },
+        { "material": "Acero SAE 1006", "tratamiento": "Pintura electrostática", "ambiente": "Interior con requisito estético", "norma": "—" },
+        { "material": "Acero AISI 304", "tratamiento": "Sin tratamiento", "ambiente": "Ambientes químicos agresivos", "norma": "ASTM A240" },
+        { "material": "Aluminio ASTM 1100", "tratamiento": "Sin tratamiento", "ambiente": "Zonas costeras / peso reducido", "norma": "ASTM B209" }
+      ],
+      "faq": [
+        {
+          "q": "¿Qué diferencia hay entre bandeja perforada y lisa?",
+          "a": "La bandeja perforada permite mayor ventilación del cableado y reduce el peso. La bandeja lisa ofrece mayor rigidez y protección contra polvo. Para instalaciones industriales con cables de potencia se recomienda la perforada; para bandejas de control o instrumentación, la lisa."
+        },
+        {
+          "q": "¿Cuándo usar galvanizado por inmersión en caliente en lugar de pregalvanizado?",
+          "a": "El galvanizado por inmersión en caliente (GF) aplica una capa de zinc de 45–85 µm post-fabricación, ideal para ambientes exteriores, húmedos o con presencia de agentes corrosivos. El pregalvanizado (PZ) tiene una capa de 20 µm y es adecuado para interiores secos. En caso de duda, se recomienda GF."
+        },
+        {
+          "q": "¿Qué es el proceso CLINCH y por qué importa?",
+          "a": "CLINCH es un sistema de unión mecánica en frío que une las piezas sin soldadura ni tornillos. Al no aplicar calor, preserva íntegramente la capa de zinc, evitando puntos de corrosión. Es el estándar BGA en todos los accesorios de unión."
+        },
+        {
+          "q": "¿Cómo se elige el ancho correcto de bandeja?",
+          "a": "Se calcula en base al diámetro exterior de los cables y el factor de llenado recomendado (máximo 40% del área útil según IEC 61537). BGA ofrece anchos de 50 a 800 mm. Consultá con tu vendedor para el cálculo exacto según tu proyecto."
+        }
+      ]
+    },
+    {
+      "id": "escaleras",
+      "name": "Escaleras y Accesorios",
+      "description": "Escaleras portacables tipo Leve, con o sin perforación, para canalización de cables en grandes recorridos.",
+      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-escalera-portacables-bga.pdf"
+    },
+    {
+      "id": "tableros",
+      "name": "Cajas Metálicas",
+      "description": "Cajas metálicas en chapa galvanizada con pintura electrostática, bisagras y cerraduras reforzadas para protección de instalaciones eléctricas.",
+      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-cajas-metalicas-bga.pdf"
+    },
+    {
+      "id": "aramados",
+      "name": "Aramados",
+      "description": "Bandejas y accesorios en malla de alambre soldado. Mayor ventilación y visibilidad del cableado para instalaciones industriales y de telecomunicaciones."
+    },
+    {
+      "id": "gabinetes",
+      "name": "Gabinetes Modulares",
+      "description": "Estructura desmontable en chapa de acero de 2mm con paneles galvanizados, ojal de elevación, manija oscilante y perfil EPDM antipolvo IP.",
+      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-gabinetes-modulares-bga.pdf"
+    }
+  ],
+  "products": [
+    {
+      "id": "ST2011",
+      "categoryId": "perfilados",
+      "name": "Perfilado 38x38 Liso",
+      "dimensions": [{ "label": "perfil", "value": "38x38", "unit": "mm" }, { "label": "longitud", "value": 3000, "unit": "mm" }],
+      "page": 3
+    },
+    {
+      "id": "ST2111",
+      "categoryId": "perfilados",
+      "name": "Perfilado 38x38 Perforado",
+      "dimensions": [{ "label": "perfil", "value": "38x38", "unit": "mm" }, { "label": "longitud", "value": 3000, "unit": "mm" }],
+      "page": 3
+    },
+    {
+      "id": "ST2112",
+      "categoryId": "perfilados",
+      "name": "Perfilado 38x19 Perforado",
+      "dimensions": [{ "label": "perfil", "value": "38x19", "unit": "mm" }, { "label": "longitud", "value": 3000, "unit": "mm" }],
+      "page": 3
+    },
+    {
+      "id": "CT3211",
+      "categoryId": "perfilados",
+      "name": "Tapa Lisa",
+      "dimensions": [{ "label": "perfil", "value": "38x10", "unit": "mm" }, { "label": "longitud", "value": 3000, "unit": "mm" }],
+      "page": 3
+    },
+    {
+      "id": "ST2214",
+      "categoryId": "perfilados",
+      "name": "Curva Horizontal 90°",
+      "page": 3
+    },
+    {
+      "id": "ST2218",
+      "categoryId": "perfilados",
+      "name": "Curva Vertical Interna 90°",
+      "page": 3
+    },
+    {
+      "id": "ST2217",
+      "categoryId": "perfilados",
+      "name": "Curva Vertical Externa 90°",
+      "page": 3
+    },
+    {
+      "id": "ST2266",
+      "categoryId": "perfilados",
+      "name": "Curva de Inversión 90°",
+      "page": 3
+    },
+    {
+      "id": "ST2216",
+      "categoryId": "perfilados",
+      "name": "Curva Horizontal 45°",
+      "page": 3
+    },
+    {
+      "id": "ST2220",
+      "categoryId": "perfilados",
+      "name": "Curva Vertical Interna 45°",
+      "page": 3
+    },
+    {
+      "id": "ST2219",
+      "categoryId": "perfilados",
+      "name": "Curva Vertical Externa 45°",
+      "page": 3
+    },
+    {
+      "id": "ST2237",
+      "categoryId": "perfilados",
+      "name": "Caja de Toma",
+      "page": 3
+    },
+    {
+      "id": "ST2226",
+      "categoryId": "perfilados",
+      "name": "Unión Externa 38x38",
+      "page": 4
+    },
+    {
+      "id": "ST2227",
+      "categoryId": "perfilados",
+      "name": "Unión Interna 38x38",
+      "page": 4
+    },
+    {
+      "id": "ST2228",
+      "categoryId": "perfilados",
+      "name": "Unión Interna L 90°",
+      "page": 4
+    },
+    {
+      "id": "ST2229",
+      "categoryId": "perfilados",
+      "name": "Unión Interna T",
+      "page": 4
+    },
+    {
+      "id": "ST2230",
+      "categoryId": "perfilados",
+      "name": "Unión Interna X",
+      "page": 4
+    },
+    {
+      "id": "ST2242",
+      "categoryId": "perfilados",
+      "name": "Soporte de Suspensión Corto",
+      "page": 4
+    },
+    {
+      "id": "ST2243",
+      "categoryId": "perfilados",
+      "name": "Soporte de Suspensión Largo",
+      "page": 4
+    },
+    {
+      "id": "ST2260",
+      "categoryId": "perfilados",
+      "name": "Soporte Colgante para Cable Corto / Largo",
+      "page": 4
+    },
+    {
+      "id": "ST2246",
+      "categoryId": "perfilados",
+      "name": "Base Suspensión Omega (ZZ)",
+      "page": 4
+    },
+    {
+      "id": "ST2249",
+      "categoryId": "perfilados",
+      "name": "Salida Lateral Simple para Electroducto",
+      "page": 4
+    },
+    {
+      "id": "ST2251",
+      "categoryId": "perfilados",
+      "name": "Salida Lateral Doble para Electroducto",
+      "page": 4
+    },
+    {
+      "id": "ST2267",
+      "categoryId": "perfilados",
+      "name": "Salida Vertical para Electroducto",
+      "page": 4
+    },
+    {
+      "id": "ST2244",
+      "categoryId": "perfilados",
+      "name": "Soporte para Luminaria Corto / Largo",
+      "page": 4
+    },
+    {
+      "id": "KIT2227",
+      "categoryId": "perfilados",
+      "name": "Kit unión para perfil",
+      "page": 4
+    },
+    {
+      "id": "ST2241",
+      "categoryId": "perfilados",
+      "name": "Base para conexión en tablero",
+      "page": 4
+    },
+    {
+      "id": "ST2250",
+      "categoryId": "perfilados",
+      "name": "Salida Final para Electroducto",
+      "page": 4
+    },
+    {
+      "id": "ST2239",
+      "categoryId": "perfilados",
+      "name": "Platibanda con 4 agujeros (Interna)",
+      "variants": [
+        { "code": "ST2239", "attributes": { "tipo": "Interna" } },
+        { "code": "ST22604", "attributes": { "tipo": "Externa" } }
+      ],
+      "page": 4
+    },
+    {
+      "id": "ST2254",
+      "categoryId": "perfilados",
+      "name": "Grampa C",
+      "page": 4
+    },
+    {
+      "id": "CT3011",
+      "categoryId": "bandejas",
+      "name": "Bandeja Lisa Tipo U",
+      "dimensionAxes": [
+        { "id": "ancho", "label": "Ancho [A]", "values": [50, 75, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800], "unit": "mm" },
+        { "id": "ala", "label": "Ala [B]", "values": [50, 75, 100, 150, 200], "unit": "mm" }
+      ],
+      "page": 5
+    },
+    {
+      "id": "CT3012",
+      "categoryId": "bandejas",
+      "name": "Bandeja Lisa Tipo C",
+      "page": 5
+    },
+    {
+      "id": "CT3111",
+      "categoryId": "bandejas",
+      "name": "Bandeja Perforada Tipo U",
+      "page": 5
+    },
+    {
+      "id": "CT3112",
+      "categoryId": "bandejas",
+      "name": "Bandeja Perforada Tipo C",
+      "page": 5
+    },
+    {
+      "id": "CT3114",
+      "categoryId": "bandejas",
+      "name": "Curva Horizontal 90° — Tipo U Perforado",
+      "variants": [
+        { "code": "CT3114", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3115", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3014", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3015", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3214", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 5
+    },
+    {
+      "id": "CT3130",
+      "categoryId": "bandejas",
+      "name": "TE Horizontal",
+      "variants": [
+        { "code": "CT3130", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3131", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3030", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3031", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3230", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 5
+    },
+    {
+      "id": "CT3118",
+      "categoryId": "bandejas",
+      "name": "Curva Vertical Externa",
+      "variants": [
+        { "code": "CT3118", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3119", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3018", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3019", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3218", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 5
+    },
+    {
+      "id": "CT3120",
+      "categoryId": "bandejas",
+      "name": "Curva Vertical Interna",
+      "variants": [
+        { "code": "CT3120", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3121", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3020", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3021", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3220", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 5
+    },
+    {
+      "id": "CT3211",
+      "categoryId": "bandejas",
+      "name": "Tapa Lisa para Bandeja",
+      "dimensionAxes": [{ "id": "ancho", "label": "Ancho [A]", "values": [50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800], "unit": "mm" }],
+      "page": 6
+    },
+    {
+      "id": "CT3128",
+      "categoryId": "bandejas",
+      "name": "Curva de Descarga / Inversión",
+      "variants": [
+        { "code": "CT3128", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3129", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3028", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3029", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3228", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 6
+    },
+    {
+      "id": "CT3140",
+      "categoryId": "bandejas",
+      "name": "Unión Cruzeta",
+      "variants": [
+        { "code": "CT3140", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3141", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3040", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3041", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3240", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 6
+    },
+    {
+      "id": "CT3154",
+      "categoryId": "bandejas",
+      "name": "Reducción Central",
+      "variants": [
+        { "code": "CT3154", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3155", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3054", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3055", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3254", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 6
+    },
+    {
+      "id": "CT3136",
+      "categoryId": "bandejas",
+      "name": "TE Vertical Descarga",
+      "variants": [
+        { "code": "CT3136", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3137", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3036", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3037", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3236", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 6
+    },
+    {
+      "id": "CT3138",
+      "categoryId": "bandejas",
+      "name": "TE Vertical Descarga Lateral",
+      "variants": [
+        { "code": "CT3138", "attributes": { "tipo": "U Perforado" } },
+        { "code": "CT3139", "attributes": { "tipo": "C Perforado" } },
+        { "code": "CT3038", "attributes": { "tipo": "U Lisa" } },
+        { "code": "CT3039", "attributes": { "tipo": "C Lisa" } },
+        { "code": "CT3238", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 6
+    },
+    {
+      "id": "CL5270",
+      "categoryId": "bandejas",
+      "name": "Salida Horizontal para Electroducto",
+      "variants": [
+        { "code": "CL5268-1", "attributes": { "diametro": "1/2\"" } },
+        { "code": "CL5268-2", "attributes": { "diametro": "3/4\"" } },
+        { "code": "CL5268-3", "attributes": { "diametro": "1\"" } },
+        { "code": "CL5268-4", "attributes": { "diametro": "1.1/4\"" } },
+        { "code": "CL5268-5", "attributes": { "diametro": "1.1/2\"" } },
+        { "code": "CL5268-6", "attributes": { "diametro": "2\"" } },
+        { "code": "CL5268-7", "attributes": { "diametro": "2.1/2\"" } },
+        { "code": "CL5268-8", "attributes": { "diametro": "3\"" } },
+        { "code": "CL5268-9", "attributes": { "diametro": "4\"" } }
+      ],
+      "page": 6
+    },
+    {
+      "id": "CT3150",
+      "categoryId": "bandejas",
+      "name": "Reducción Lateral",
+      "variants": [
+        { "code": "CT3150", "attributes": { "tipo": "U Perforado", "lado": "Derecha" } },
+        { "code": "CT3152", "attributes": { "tipo": "U Perforado", "lado": "Izquierda" } },
+        { "code": "CT3151", "attributes": { "tipo": "C Perforado", "lado": "Derecha" } },
+        { "code": "CT3153", "attributes": { "tipo": "C Perforado", "lado": "Izquierda" } },
+        { "code": "CT3050", "attributes": { "tipo": "U Lisa", "lado": "Derecha" } },
+        { "code": "CT3052", "attributes": { "tipo": "U Lisa", "lado": "Izquierda" } },
+        { "code": "CT3051", "attributes": { "tipo": "C Lisa", "lado": "Derecha" } },
+        { "code": "CT3053", "attributes": { "tipo": "C Lisa", "lado": "Izquierda" } },
+        { "code": "CT3252", "attributes": { "tipo": "Tapa Lisa" } }
+      ],
+      "page": 6
+    },
+    {
+      "id": "CT3063",
+      "categoryId": "bandejas",
+      "name": "Unión Interna",
+      "page": 6
+    },
+    {
+      "id": "CT3062",
+      "categoryId": "bandejas",
+      "name": "Unión Simple",
+      "page": 6
+    },
+    {
+      "id": "CT3071",
+      "categoryId": "bandejas",
+      "name": "Mano Francesa Triangular",
+      "note": "Para bandeja: ancho + 50mm. Para escalera: ancho + 100mm.",
+      "page": 7
+    },
+    {
+      "id": "CT3066",
+      "categoryId": "bandejas",
+      "name": "Soporte Suspensión Tipo A",
+      "page": 7
+    },
+    {
+      "id": "CT3070",
+      "categoryId": "bandejas",
+      "name": "Soporte Travesaño",
+      "note": "Para bandeja: ancho + 100mm. Para escalera: ancho + 100mm.",
+      "page": 7
+    },
+    {
+      "id": "CT3067",
+      "categoryId": "bandejas",
+      "name": "Soporte Suspensión Tipo B",
+      "page": 7
+    },
+    {
+      "id": "CT3065",
+      "categoryId": "bandejas",
+      "name": "Soporte Suspensión Tipo Omega",
+      "page": 7
+    },
+    {
+      "id": "CT3069",
+      "categoryId": "bandejas",
+      "name": "Mano Francesa Simple",
+      "note": "Para bandeja: ancho + 50mm. Para escalera: ancho + 100mm.",
+      "page": 7
+    },
+    {
+      "id": "KIT3062",
+      "categoryId": "bandejas",
+      "name": "Kit de Uniones",
+      "page": 7
+    },
+    {
+      "id": "CT3064",
+      "categoryId": "bandejas",
+      "name": "Tramo Divisor",
+      "page": 7
+    },
+    {
+      "id": "CL5011",
+      "categoryId": "escaleras",
+      "name": "Escalera CL con perforación",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        { "id": "ancho", "label": "Ancho [A]", "values": [100, 150, 200, 250, 300, 400, 450, 500, 600, 800], "unit": "mm" },
+        { "id": "ala", "label": "Ala [B]", "values": [60, 75, 100], "unit": "mm" }
+      ],
+      "page": 8
+    },
+    {
+      "id": "CLY5011",
+      "categoryId": "escaleras",
+      "name": "Escalera CLY sin perforación",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        { "id": "ancho", "label": "Ancho [A]", "values": [100, 150, 200, 250, 300, 400, 450, 500, 600, 800], "unit": "mm" },
+        { "id": "ala", "label": "Ala [B]", "values": [65, 95], "unit": "mm" }
+      ],
+      "page": 8
+    },
+    {
+      "id": "CL5016",
+      "categoryId": "escaleras",
+      "name": "Curva Horizontal 90° — Escalera CL",
+      "page": 8
+    },
+    {
+      "id": "CL5030",
+      "categoryId": "escaleras",
+      "name": "TE Horizontal — Escalera",
+      "page": 8
+    },
+    {
+      "id": "CL5024",
+      "categoryId": "escaleras",
+      "name": "Curva Vertical Interna 90° — Escalera",
+      "page": 8
+    },
+    {
+      "id": "CL5022",
+      "categoryId": "escaleras",
+      "name": "Curva Vertical Externa 90° — Escalera",
+      "page": 8
+    },
+    {
+      "id": "CL5038",
+      "categoryId": "escaleras",
+      "name": "Unión Cruzeta — Escalera",
+      "page": 9
+    },
+    {
+      "id": "CL5042",
+      "categoryId": "escaleras",
+      "name": "Reducción Central — Escalera",
+      "page": 9
+    },
+    {
+      "id": "CL5046",
+      "categoryId": "escaleras",
+      "name": "Reducción Izquierda — Escalera",
+      "page": 9
+    },
+    {
+      "id": "CL5044",
+      "categoryId": "escaleras",
+      "name": "Reducción Derecha — Escalera",
+      "page": 9
+    },
+    {
+      "id": "CL5036",
+      "categoryId": "escaleras",
+      "name": "TE Vertical de Descarga",
+      "page": 9
+    },
+    {
+      "id": "CL5034",
+      "categoryId": "escaleras",
+      "name": "TE Vertical Ascendente",
+      "page": 9
+    },
+    {
+      "id": "CL5074",
+      "categoryId": "escaleras",
+      "name": "Curva Vertical de Inversión",
+      "page": 9
+    },
+    {
+      "id": "KIT5262",
+      "categoryId": "escaleras",
+      "name": "Kit de Uniones — Escalera",
+      "variants": [
+        { "code": "KIT5262-60", "attributes": { "ala": 60 } },
+        { "code": "KIT5262-65", "attributes": { "ala": 65 } },
+        { "code": "KIT5262-75", "attributes": { "ala": 75 } },
+        { "code": "KIT5262-95", "attributes": { "ala": 95 } },
+        { "code": "KIT5262-100", "attributes": { "ala": 100 } }
+      ],
+      "page": 9
+    },
+    {
+      "id": "TAB-STD",
+      "categoryId": "tableros",
+      "name": "Tablero Estándar",
+      "shortDescription": "Estructura, tapas, puertas y zócalo en chapa galvanizada de origen.",
+      "features": [
+        "Bisagra zinc ZAMAK reforzada con apertura de 180°",
+        "Cerradura Zinc ZAMAK reforzada IP65",
+        "Pintura electrostática en polvo",
+        "Acabado Naranja RAL 2009 o Gris texturizado RAL 7035",
+        "Capa interior Beige texturizado RAL 7032"
+      ],
+      "page": 10
+    },
+    {
+      "id": "GAB-MOD",
+      "categoryId": "gabinetes",
+      "name": "Gabinete Modular",
+      "shortDescription": "Estructura desmontable en chapa de acero de 2mm con paneles galvanizados.",
+      "features": [
+        "Ojal de elevación zincado",
+        "Bisagra reforzada con apertura de 120°",
+        "Perfil de goma EPDM antipolvo y agua con función de compresión",
+        "Manija oscilante con identificación visual de bloqueo y portacandado",
+        "Pintura electrostática Naranja RAL 2009 / Beige RAL 7032 / Gris RAL 7035",
+        "Columnas perforadas paso 25mm Ø10mm",
+        "Puertas en chapa de acero 1.5mm con refuerzos",
+        "Placa de montaje en chapa de acero 2mm",
+        "Base zócalo perfil U reforzado RAL 9005",
+        "Modelos 1000–1200mm con puerta doble"
+      ],
+      "standardSizes": [
+        { "altura": 1900, "ancho": 800, "profundidad": 600 },
+        { "altura": 1900, "ancho": 800, "profundidad": 800 },
+        { "altura": 1900, "ancho": 600, "profundidad": 600 },
+        { "altura": 1900, "ancho": 800, "profundidad": 400 },
+        { "altura": 1900, "ancho": 1200, "profundidad": 800 },
+        { "altura": 1900, "ancho": 1200, "profundidad": 600 },
+        { "altura": 1900, "ancho": 1200, "profundidad": 400 }
+      ],
+      "sizeNote": "Altura libre. Sumar 100mm del zócalo. Para medidas especiales consultar vendedor.",
+      "page": 11
+    }
+  ]
+}
