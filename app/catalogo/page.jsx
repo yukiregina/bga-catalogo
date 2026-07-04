@@ -1,10 +1,17 @@
 // Página do catálogo — cards estilo LP com imagem, nome, descrição
+// Também atende buscas vindas do Product Finder da home (/catalogo?q=...).
 import Link from 'next/link'
-import { getCategories, getProductsByCategory } from '@/lib/products'
+import { getCategories, getProductsByCategory, getAllProducts, getCategoryById } from '@/lib/products'
 import config from '@/client.config.js'
+import AddToCartButton from '@/components/AddToCartButton'
 
-export default function CatalogoPage() {
+export default function CatalogoPage({ searchParams }) {
   const categories = getCategories()
+  const query = searchParams?.q?.trim() ?? ''
+
+  const results = query
+    ? getAllProducts().filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
+    : []
 
   return (
     <div className="min-h-screen">
@@ -30,7 +37,68 @@ export default function CatalogoPage() {
           Línea completa para canalización eléctrica industrial y tableros.
         </p>
 
+        {query && (
+          <section className="mb-10">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="font-brand text-base font-bold text-brand-primary">
+                Resultados para "{query}"
+                <span className="font-primary font-normal text-sm text-text-muted ml-2">
+                  ({results.length} producto{results.length !== 1 ? 's' : ''})
+                </span>
+              </h2>
+              <Link href="/catalogo" className="text-xs font-semibold text-brand-primary hover:underline">
+                Limpiar búsqueda ✕
+              </Link>
+            </div>
+
+            {results.length === 0 ? (
+              <p className="text-text-muted text-sm">
+                No encontramos productos con ese término. Probá con otra palabra o navegá por familia abajo.
+              </p>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
+                {results.map(product => {
+                  const category = getCategoryById(product.categoryId)
+                  return (
+                    <div key={product.id} className="bg-white border border-black/8 rounded-card p-3 flex flex-col">
+                      <Link href={`/catalogo/${product.categoryId}/${product.id}`} className="block mb-3">
+                        {product.image ? (
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full aspect-square object-contain rounded bg-surface-elevated"
+                          />
+                        ) : (
+                          <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center">
+                            <span className="text-[10px] text-text-muted">sin imagen</span>
+                          </div>
+                        )}
+                      </Link>
+                      <div className="font-mono text-[10px] text-text-sku mb-0.5">{product.id}</div>
+                      <Link
+                        href={`/catalogo/${product.categoryId}/${product.id}`}
+                        className="text-sm font-semibold text-brand-primary leading-tight mb-1 hover:underline decoration-brand-accent underline-offset-2 transition flex-1"
+                      >
+                        {product.name}
+                      </Link>
+                      {category && (
+                        <div className="text-[10px] text-text-muted mb-3">{category.name}</div>
+                      )}
+                      <AddToCartButton product={product} />
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </section>
+        )}
+
         {/* Grid de famílias — estilo LP */}
+        {query && (
+          <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
+            Explorá por familia
+          </h2>
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {categories.map(cat => {
             const productCount = getProductsByCategory(cat.id).length

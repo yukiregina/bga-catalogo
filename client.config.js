@@ -21,11 +21,13 @@ module.exports = {
       primary: '#131E29',
       accent:  '#FFC600',
     },
+    address: 'Minga Guazú, Ruta PY02 km14, Alto Paraná – Paraguay',
   },
 
   // ─── Contato ──────────────────────────────────────────────────────────────
   contact: {
     whatsapp: '+595974733100',
+    phone:    '+595 974 733 100',
     email:    'ventas@bga.com.py',
     // Mensagem padrão enviada no WhatsApp ao cotar
     whatsappMessage: 'Hola, me interesa hacer una cotización de los siguientes productos:',
@@ -41,6 +43,12 @@ module.exports = {
   data: {
     // ID da planilha Google Sheets — null = usa catalog.json local (placeholder)
     googleSheetId: null,
+    // Webhook (Google Apps Script) que recebe os leads do formulário de cotação.
+    // O site estático original (reference-lp) tinha uma URL + secret ativos aqui —
+    // não foram portados automaticamente (decisão de segurança). Para reativar,
+    // preencha os dois abaixo com os valores do Apps Script do cliente.
+    leadWebhookUrl: null,
+    leadWebhookSecret: null,
   },
 
   // ─── Meta ─────────────────────────────────────────────────────────────────
