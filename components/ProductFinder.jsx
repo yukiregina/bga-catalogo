@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { getCategories } from '@/lib/products'
+import { getCategories, getProductsByCategory } from '@/lib/products'
 import styles from '@/app/landing.module.css'
 
 // TODO: once product entries carry a normalized `material` / `thickness` /
@@ -46,12 +46,32 @@ export default function ProductFinder() {
         </button>
       </form>
 
-      <div className={styles.finderChips}>
-        {categories.map(cat => (
-          <Link key={cat.id} href={`/catalogo/${cat.id}`} className={styles.finderChip}>
-            {cat.name}
-          </Link>
-        ))}
+      <div className={styles.productsGrid}>
+        {categories.map(cat => {
+          const productCount = getProductsByCategory(cat.id).length
+          return (
+            <Link key={cat.id} href={`/catalogo/${cat.id}`} className={styles.productCard}>
+              <div className={styles.productImage}>
+                {cat.image ? (
+                  <>
+                    <span className={styles.productImgOverlay}>{cat.name}</span>
+                    <img src={cat.image} alt={cat.name} loading="lazy" />
+                  </>
+                ) : (
+                  <div className={styles.productImagePlaceholder}>
+                    <span className={styles.productImgOverlay} style={{ position: 'static', background: 'transparent' }}>{cat.name}</span>
+                  </div>
+                )}
+              </div>
+              <div className={styles.productCardBody}>
+                <p>{cat.cardDescription ?? cat.description}</p>
+                <span className={styles.productLink}>
+                  {productCount > 0 ? `${productCount} producto${productCount !== 1 ? 's' : ''}` : 'Ver familia'} →
+                </span>
+              </div>
+            </Link>
+          )
+        })}
       </div>
 
       <div className={styles.finderGuided}>
@@ -76,13 +96,9 @@ export default function ProductFinder() {
 
       <p style={{ fontSize: 13, color: 'var(--gray-500)', marginTop: 8 }}>
         ¿Preferís mirar todo junto?{' '}
-        <Link href="/catalogo" className={styles.finderPdfLink} style={{ borderBottom: 'none', fontWeight: 600, color: 'var(--ocean)' }}>
+        <Link href="/catalogo" className={styles.finderSecondaryLink} style={{ borderBottom: 'none', fontWeight: 600, color: 'var(--ocean)' }}>
           Ver catálogo completo →
         </Link>
-        {' · '}
-        <a href="/docs/catalogo-bga-bandejas-portacables-paraguay-2025-2026.pdf" download className={styles.finderPdfLink}>
-          descargar PDF
-        </a>
       </p>
     </div>
   )

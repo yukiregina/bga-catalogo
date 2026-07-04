@@ -46,12 +46,14 @@
       "id": "perfilados",
       "name": "Perfilados y Accesorios",
       "description": "Sistema utilizado para la distribución de cables de menor tamaño y soporte de luminarias. Permite instalaciones rápidas, con posibilidad de ampliaciones y modificaciones.",
+      "image": "/images/perfilados-accesorios-bga-soporte-electrico-paraguay.webp",
       "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-perfilados-accesorios-bga.pdf"
     },
     {
       "id": "bandejas",
       "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-bandeja-portacables-bga.pdf",
       "name": "Bandejas y Accesorios",
+      "image": "/images/bandeja-portacables-bga-acero-galvanizado-paraguay.webp",
       "description": "Bandejas portacables: sistemas versátiles diseñados para la conducción y distribución segura de cables eléctricos en instalaciones industriales, comerciales y residenciales.",
       "richDescription": "Las bandejas portacables BGA son sistemas de canalización diseñados para la conducción y soporte de cables eléctricos de potencia, control e instrumentación en instalaciones industriales, comerciales y de infraestructura. Se fabrican en chapa de acero SAE 1006/1010, acero inoxidable AISI 304 o aluminio ASTM 1100, y se unen mediante el proceso CLINCH — unión en frío que preserva la capa de zinc sin daño al recubrimiento.\n\nEstán disponibles en dos perfiles principales: Tipo U (base plana, alas laterales) y Tipo C (con retorno en las alas), en versiones lisas y perforadas. Los anchos van de 50 a 800 mm, con alas de 50 a 200 mm según el volumen y peso de cableado requerido. El catálogo incluye curvas, tes, uniones, reducciones, soportes y tapas que permiten resolver cualquier trayectoria de instalación.\n\nEl tratamiento superficial define el ambiente de uso: pregalvanizado (NBR 7008) para interiores secos, galvanizado por inmersión en caliente (NBR 6323 / ASTM 123) para exteriores o ambientes húmedos y corrosivos, y pintura electrostática para aplicaciones con requisitos estéticos. Las bandejas BGA cumplen con normas IEC 61537 y ABNT NBR 6323.",
       "intentCards": [
@@ -110,12 +112,14 @@
       "id": "escaleras",
       "name": "Escaleras y Accesorios",
       "description": "Escaleras portacables tipo Leve, con o sin perforación, para canalización de cables en grandes recorridos.",
+      "image": "/images/escalera-portacables-bga-industria-paraguay.webp",
       "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-escalera-portacables-bga.pdf"
     },
     {
       "id": "tableros",
       "name": "Cajas Metálicas",
       "description": "Cajas metálicas en chapa galvanizada con pintura electrostática, bisagras y cerraduras reforzadas para protección de instalaciones eléctricas.",
+      "image": "/images/caja-metalica-comando-bga-acero-galvanizado-paraguay.webp",
       "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-cajas-metalicas-bga.pdf"
     },
     {
@@ -127,6 +131,7 @@
       "id": "gabinetes",
       "name": "Gabinetes Modulares",
       "description": "Estructura desmontable en chapa de acero de 2mm con paneles galvanizados, ojal de elevación, manija oscilante y perfil EPDM antipolvo IP.",
+      "image": "/images/gabinete-modular-metalico-bga-tablero-electrico-paraguay.webp",
       "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-gabinetes-modulares-bga.pdf"
     }
   ],
