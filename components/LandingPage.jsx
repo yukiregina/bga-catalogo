@@ -24,6 +24,7 @@ export default function LandingPage() {
   const [navOpen, setNavOpen] = useState(false)
   const [waFloatHidden, setWaFloatHidden] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [attachedFileName, setAttachedFileName] = useState('')
   const formWrapperRef = useRef(null)
 
   useEffect(() => {
@@ -49,6 +50,10 @@ export default function LandingPage() {
     setNavOpen(false)
   }
 
+  function handleFileChange(e) {
+    setAttachedFileName(e.target.files?.[0]?.name ?? '')
+  }
+
   function handleContactSubmit(e) {
     e.preventDefault()
     const form = e.target
@@ -64,7 +69,11 @@ export default function LandingPage() {
       fetch(`${config.data.leadWebhookUrl}?${search}`, { method: 'GET', mode: 'no-cors' }).catch(() => {})
     }
 
-    const texto = `Hola, soy ${nombre} de ${empresa}.\nSector: ${sector}.\n\n${mensaje}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
+    // WhatsApp's wa.me links only support pre-filled text — there's no way to push
+    // a file into the chat automatically, so we just flag it in the message and
+    // rely on the on-screen reminder telling the user to attach it themselves.
+    const adjunto = attachedFileName ? `\n\n📎 Adjunto: ${attachedFileName} (lo adjunto acá mismo en el chat)` : ''
+    const texto = `Hola, soy ${nombre} de ${empresa}.\nSector: ${sector}.\n\n${mensaje}${adjunto}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
 
     setSubmitting(true)
     window.open(waLink(texto), '_blank', 'noopener,noreferrer')
@@ -374,6 +383,24 @@ export default function LandingPage() {
                   <div className={styles.formField}>
                     <label htmlFor="mensaje">¿Qué necesitás cotizar?</label>
                     <textarea id="mensaje" name="mensaje" required placeholder="Ej. Bandejas portacables tipo escalera, ~200 m, para obra industrial en Asunción. Plazo de entrega previsto: 30 días."></textarea>
+                  </div>
+                  <div className={styles.formField}>
+                    <label htmlFor="archivo">Adjuntar plano o foto (opcional)</label>
+                    <input
+                      id="archivo"
+                      name="archivo"
+                      type="file"
+                      accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf"
+                      onChange={handleFileChange}
+                      className={styles.fileInput}
+                    />
+                    <label htmlFor="archivo" className={styles.fileDrop}>
+                      <svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M208,88H152V32a8,8,0,0,0-13.66-5.66l-88,88A8,8,0,0,0,56,128h56v56a8,8,0,0,0,13.66,5.66l88-88A8,8,0,0,0,208,88ZM136,164.69V120a8,8,0,0,0-8-8H75.31L136,51.31V96a8,8,0,0,0,8,8h44.69Z"/></svg>
+                      <span>{attachedFileName || 'Elegir archivo · PNG, JPEG o PDF'}</span>
+                    </label>
+                    <p className={styles.fileHint}>
+                      WhatsApp no permite adjuntar archivos automáticamente desde la web: al enviar, vas a ver el chat abierto con tu mensaje — adjuntá el archivo ahí mismo.
+                    </p>
                   </div>
                   <button type="submit" className={styles.formSubmit} disabled={submitting}>
                     <svg viewBox="0 0 256 256" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/></svg>
