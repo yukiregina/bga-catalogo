@@ -240,8 +240,8 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* TESTIMONIALS — hidden until client provides real quotes */}
-        <section className={styles.testimonials} aria-labelledby="testimonials-title" style={{ display: 'none' }}>
+        {/* TESTIMONIALS */}
+        <section className={styles.testimonials} aria-labelledby="testimonials-title">
           <div className={styles.container}>
             <div className={styles.sectionEyebrow}>
               <svg viewBox="0 0 256 256" width="16" height="16" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" aria-hidden="true"><circle cx="128" cy="96" r="64"/><path d="M32,216c19.37-33.47,54.55-56,96-56s76.63,22.53,96,56"/></svg>
@@ -267,16 +267,6 @@ export default function LandingPage() {
                   <div>
                     <div className={styles.testimonialName}>María González</div>
                     <div className={styles.testimonialCompany}>EPESA</div>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.testimonial}>
-                <p className={styles.testimonialQuote}>"La unión CLINCH y la consistencia del acabado nos dan confianza para especificar BGA en proyectos grandes. La atención es directa y profesional."</p>
-                <div className={styles.testimonialAuthor}>
-                  <div className={styles.testimonialAvatar} aria-hidden="true">RS</div>
-                  <div>
-                    <div className={styles.testimonialName}>Roberto Silva</div>
-                    <div className={styles.testimonialCompany}>Electro System</div>
                   </div>
                 </div>
               </div>

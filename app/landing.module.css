@@ -183,7 +183,7 @@
 
 /* TESTIMONIALS */
 .testimonials { background: var(--gray-100); }
-.testimonialsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.testimonialsGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 800px; }
 .testimonial {
   background: var(--white); padding: 32px; border-radius: 10px;
   border-left: 4px solid var(--bolt); transition: all 0.3s;
