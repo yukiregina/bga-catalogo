@@ -261,12 +261,12 @@ export default function LandingPage() {
                 </div>
               </div>
               <div className={styles.testimonial}>
-                <p className={styles.testimonialQuote}>"Trabajamos con BGA hace 6 años. Saben de canalización industrial, responden rápido y entienden las necesidades de obras grandes."</p>
+                <p className={styles.testimonialQuote}>"Excelente variedad de productos y un equipo que siempre responde a los detalles y exigencias de cada proyecto, incluso los caprichos de los arquitectos."</p>
                 <div className={styles.testimonialAuthor}>
-                  <div className={styles.testimonialAvatar} aria-hidden="true">MG</div>
+                  <div className={styles.testimonialAvatar} aria-hidden="true">GR</div>
                   <div>
-                    <div className={styles.testimonialName}>María González</div>
-                    <div className={styles.testimonialCompany}>EPESA</div>
+                    <div className={styles.testimonialName}>Gustavo Ruiz</div>
+                    <div className={styles.testimonialCompany}>ABS Montajes</div>
                   </div>
                 </div>
               </div>
