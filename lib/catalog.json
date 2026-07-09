@@ -130,7 +130,8 @@
       "id": "aramados",
       "name": "Aramados",
       "displayMode": "contact",
-      "description": "Bandejas y accesorios en malla de alambre soldado. Mayor ventilación y visibilidad del cableado para instalaciones industriales y de telecomunicaciones."
+      "description": "Bandejas y accesorios en malla de alambre soldado. Mayor ventilación y visibilidad del cableado para instalaciones industriales y de telecomunicaciones.",
+      "image": "/images/aramados-portacables-bga-industria-paraguay.webp"
     },
     {
       "id": "gabinetes",
