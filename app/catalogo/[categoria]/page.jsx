@@ -58,9 +58,9 @@ export default function CategoriaPage({ params, searchParams }) {
       )}
 
       {/* Nav */}
-      <nav className="bg-brand-primary px-8 py-3 grid grid-cols-3 items-center sticky top-0 z-10">
+      <nav className="bg-brand-primary px-8 py-3 grid grid-cols-[auto_1fr_auto] gap-4 items-center sticky top-0 z-10">
         <NavLogo />
-        <div className="flex items-center justify-center gap-5">
+        <div className="flex items-center justify-center gap-5 flex-wrap min-w-0">
           {catalogData.categories.map(cat => (
             <Link key={cat.id} href={`/catalogo/${cat.id}`}
               className={`text-xs transition hidden md:block ${
