@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { getCategories, getProductsByCategory } from '@/lib/products'
+import { getCategories, getProductsByCategory, getCategoryDisplayMode } from '@/lib/products'
 import styles from '@/app/landing.module.css'
 
 // TODO: once product entries carry a normalized `material` / `thickness` /
@@ -48,7 +48,8 @@ export default function ProductFinder() {
 
       <div className={styles.productsGrid}>
         {categories.map(cat => {
-          const productCount = getProductsByCategory(cat.id).length
+          const isCatalog    = getCategoryDisplayMode(cat) === 'catalog'
+          const productCount = isCatalog ? getProductsByCategory(cat.id).length : 0
           return (
             <Link key={cat.id} href={`/catalogo/${cat.id}`} className={styles.productCard}>
               <div className={styles.productImage}>

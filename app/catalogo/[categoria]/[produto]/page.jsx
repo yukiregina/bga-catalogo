@@ -6,19 +6,36 @@ export const dynamic = 'force-dynamic'
 
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getProductById, getCategoryById } from '@/lib/products'
+import {
+  getProductById,
+  getCategoryById,
+  getCategoryDisplayMode,
+  isCatalogCategory,
+  resolveRecommendedProducts,
+  parseMinThicknessRule,
+} from '@/lib/products'
 import catalogData from '@/lib/catalog.json'
 import config from '@/client.config.js'
 import CartBadge from '@/components/CartBadge'
 import NavLogo from '@/components/NavLogo'
 import ProductSheet from './ProductSheet'
+import RecommendedProducts from '@/components/RecommendedProducts'
 
 export default function ProdutoPage({ params }) {
   const { categoria, produto } = params
   const product  = getProductById(produto)
   const category = getCategoryById(categoria)
 
+  // Fichas só existem para famílias em modo "catalog" — famílias "pdf"/"contact"
+  // não expõem rotas de produto.
   if (!product) notFound()
+  if (getCategoryDisplayMode(category) !== 'catalog') notFound()
+  if (!isCatalogCategory(product.categoryId)) notFound()
+
+  // Camada de recomendação (campos opcionais vindos do Sheet)
+  const recommendedProducts = resolveRecommendedProducts(product.recommended)
+    .filter(p => isCatalogCategory(p.categoryId))
+  const thicknessRules = parseMinThicknessRule(product.minThicknessRule)
 
   return (
     <div className="min-h-screen bg-page">
@@ -61,7 +78,11 @@ export default function ProdutoPage({ params }) {
           product={product}
           category={category}
           globalSpecs={catalogData.globalSpecs}
+          thicknessRules={thicknessRules}
         />
+
+        {/* Produtos recomendados (opcional, vem do Sheet) */}
+        <RecommendedProducts products={recommendedProducts} />
 
         {/* Voltar */}
         <div className="mt-4">

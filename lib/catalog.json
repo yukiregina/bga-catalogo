@@ -45,13 +45,15 @@
     {
       "id": "perfilados",
       "name": "Perfilados y Accesorios",
+      "displayMode": "pdf",
       "description": "Sistema utilizado para la distribución de cables de menor tamaño y soporte de luminarias. Permite instalaciones rápidas, con posibilidad de ampliaciones y modificaciones.",
       "image": "/images/perfilados-accesorios-bga-soporte-electrico-paraguay.webp",
-      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-perfilados-accesorios-bga.pdf"
+      "pdfUrl": "/docs/ficha-tecnica-perfilados-accesorios-bga.pdf"
     },
     {
       "id": "bandejas",
-      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-bandeja-portacables-bga.pdf",
+      "displayMode": "catalog",
+      "pdfUrl": "/docs/ficha-tecnica-bandeja-portacables-bga.pdf",
       "name": "Bandejas y Accesorios",
       "image": "/images/bandeja-portacables-bga-acero-galvanizado-paraguay.webp",
       "description": "Bandejas portacables: sistemas versátiles diseñados para la conducción y distribución segura de cables eléctricos en instalaciones industriales, comerciales y residenciales.",
@@ -111,28 +113,32 @@
     {
       "id": "escaleras",
       "name": "Escaleras y Accesorios",
+      "displayMode": "pdf",
       "description": "Escaleras portacables tipo Leve, con o sin perforación, para canalización de cables en grandes recorridos.",
       "image": "/images/escalera-portacables-bga-industria-paraguay.webp",
-      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-escalera-portacables-bga.pdf"
+      "pdfUrl": "/docs/ficha-tecnica-escalera-portacables-bga.pdf"
     },
     {
       "id": "tableros",
       "name": "Cajas Metálicas",
+      "displayMode": "pdf",
       "description": "Cajas metálicas en chapa galvanizada con pintura electrostática, bisagras y cerraduras reforzadas para protección de instalaciones eléctricas.",
       "image": "/images/caja-metalica-comando-bga-acero-galvanizado-paraguay.webp",
-      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-cajas-metalicas-bga.pdf"
+      "pdfUrl": "/docs/ficha-tecnica-cajas-metalicas-bga.pdf"
     },
     {
       "id": "aramados",
       "name": "Aramados",
+      "displayMode": "contact",
       "description": "Bandejas y accesorios en malla de alambre soldado. Mayor ventilación y visibilidad del cableado para instalaciones industriales y de telecomunicaciones."
     },
     {
       "id": "gabinetes",
       "name": "Gabinetes Modulares",
+      "displayMode": "pdf",
       "description": "Estructura desmontable en chapa de acero de 2mm con paneles galvanizados, ojal de elevación, manija oscilante y perfil EPDM antipolvo IP.",
       "image": "/images/gabinete-modular-metalico-bga-tablero-electrico-paraguay.webp",
-      "pdfUrl": "https://www.bga.com.py/docs/ficha-tecnica-gabinetes-modulares-bga.pdf"
+      "pdfUrl": "/docs/ficha-tecnica-gabinetes-modulares-bga.pdf"
     }
   ],
   "products": [
@@ -332,6 +338,9 @@
         { "id": "ancho", "label": "Ancho [A]", "values": [50, 75, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800], "unit": "mm" },
         { "id": "ala", "label": "Ala [B]", "values": [50, 75, 100, 150, 200], "unit": "mm" }
       ],
+      "recommended": ["CT3062", "CT3066", "CT3071"],
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "recommendationNote": "Para instalaciones en exterior o ambientes húmedos, especificá galvanizado por inmersión en caliente (GF) y agregá la tapa para proteger el cableado.",
       "page": 5
     },
     {
@@ -344,6 +353,8 @@
       "id": "CT3111",
       "categoryId": "bandejas",
       "name": "Bandeja Perforada Tipo U",
+      "recommended": ["CT3114", "CT3130", "CT3154"],
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "page": 5
     },
     {

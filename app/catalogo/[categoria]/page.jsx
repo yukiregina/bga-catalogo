@@ -1,10 +1,12 @@
-// Página de família — estrutura SEO/GEO
-// 1. H1 + texto rico  2. Cards de intenção  3. Grid produtos  4. Tabela material  5. FAQ + Schema
+// Página de família — o layout depende de category.displayMode:
+//   "catalog" → 1. H1 + texto rico  2. Cards de intenção  3. Grid produtos  4. Tabela material  5. FAQ + Schema
+//   "pdf"     → intro curta + botão "Descargar PDF" (category.pdfUrl)
+//   "contact" → intro curta + bloco de contato (WhatsApp + email)
 
 export const dynamic = 'force-dynamic'
 
 import Link from 'next/link'
-import { getProductsByCategory, getCategoryById } from '@/lib/products'
+import { getProductsByCategory, getCategoryById, getCategoryDisplayMode } from '@/lib/products'
 import catalogData from '@/lib/catalog.json'
 import config from '@/client.config.js'
 import { notFound } from 'next/navigation'
@@ -21,12 +23,20 @@ export default function CategoriaPage({ params, searchParams }) {
   const category = getCategoryById(categoria)
   if (!category) notFound()
 
-  const allProducts = getProductsByCategory(categoria)
+  const displayMode = getCategoryDisplayMode(category)
+  const isCatalog   = displayMode === 'catalog'
+
+  const allProducts = isCatalog ? getProductsByCategory(categoria) : []
   const totalPages  = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE)
   const products    = allProducts.slice((page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE)
 
+  const waNumber = config.contact.whatsapp.replace(/\D/g, '')
+  const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(
+    `Hola, quisiera más información sobre la línea ${category.name}.`
+  )}`
+
   // Schema FAQ para rich snippets
-  const faqSchema = category.faq ? {
+  const faqSchema = isCatalog && category.faq ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: category.faq.map(({ q, a }) => ({
@@ -80,7 +90,7 @@ export default function CategoriaPage({ params, searchParams }) {
           {category.name}
         </h1>
 
-        {category.richDescription ? (
+        {category.richDescription && isCatalog ? (
           <div className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-10 space-y-3">
             {category.richDescription.split('\n\n').map((para, i) => (
               <p key={i}>{para}</p>
@@ -92,8 +102,77 @@ export default function CategoriaPage({ params, searchParams }) {
           </p>
         )}
 
+        {/* ── Modo "pdf": intro + ficha técnica, sem grid de produtos ─────── */}
+        {displayMode === 'pdf' && (
+          <section className="max-w-3xl">
+            {category.image && (
+              <img
+                src={category.image}
+                alt={category.name}
+                className="w-full aspect-[2/1] object-cover rounded-card mb-6"
+              />
+            )}
+            {category.pdfUrl && (
+              <a
+                href={category.pdfUrl}
+                download
+                className="inline-flex items-center gap-2 bg-brand-accent text-brand-primary text-sm font-semibold px-6 py-3 rounded-lg hover:brightness-105 transition"
+              >
+                <svg viewBox="0 0 256 256" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V40a8,8,0,0,0-16,0v84.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>
+                Descargar ficha técnica PDF
+              </a>
+            )}
+            <p className="text-xs text-text-muted mt-4">
+              ¿Necesitás cotizar esta línea?{' '}
+              <a href={waLink} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand-primary hover:underline">
+                Escribinos por WhatsApp →
+              </a>
+            </p>
+          </section>
+        )}
+
+        {/* ── Modo "contact": intro + bloco de contato ────────────────────── */}
+        {displayMode === 'contact' && (
+          <section className="max-w-3xl">
+            {category.image && (
+              <img
+                src={category.image}
+                alt={category.name}
+                className="w-full aspect-[2/1] object-cover rounded-card mb-6"
+              />
+            )}
+            <div className="bg-white border border-border-subtle rounded-card p-6">
+              <p className="text-sm font-semibold text-brand-primary mb-1">
+                Consúltanos para más información sobre esta línea.
+              </p>
+              <p className="text-xs text-text-secondary mb-4">
+                Te asesoramos sobre disponibilidad, medidas y especificación según tu proyecto.
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-wa text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:brightness-105 transition"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                    <path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+                  </svg>
+                  Consultar por WhatsApp
+                </a>
+                <a
+                  href={`mailto:${config.contact.email}`}
+                  className="text-sm font-semibold text-brand-primary hover:underline"
+                >
+                  {config.contact.email}
+                </a>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ── 2. Cards de intenção ────────────────────────────────────────── */}
-        {category.intentCards?.length > 0 && (
+        {isCatalog && category.intentCards?.length > 0 && (
           <section className="mb-10">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
               ¿Qué necesitás hacer?
@@ -120,6 +199,7 @@ export default function CategoriaPage({ params, searchParams }) {
         )}
 
         {/* ── 3. Grid de produtos ─────────────────────────────────────────── */}
+        {isCatalog && (
         <section className="mb-10">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-brand text-base font-bold text-brand-primary">
@@ -220,9 +300,10 @@ export default function CategoriaPage({ params, searchParams }) {
             </div>
           )}
         </section>
+        )}
 
         {/* ── 4. Tabela material × ambiente ───────────────────────────────── */}
-        {category.materialTable?.length > 0 && (
+        {isCatalog && category.materialTable?.length > 0 && (
           <section className="mb-10">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
               Material y tratamiento según ambiente
@@ -252,7 +333,7 @@ export default function CategoriaPage({ params, searchParams }) {
         )}
 
         {/* ── 5. FAQ ──────────────────────────────────────────────────────── */}
-        {category.faq?.length > 0 && (
+        {isCatalog && category.faq?.length > 0 && (
           <section className="mb-8">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
               Preguntas frecuentes

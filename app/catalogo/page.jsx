@@ -1,7 +1,7 @@
 // Página do catálogo — cards estilo LP com imagem, nome, descrição
 // Também atende buscas vindas do Product Finder da home (/catalogo?q=...).
 import Link from 'next/link'
-import { getCategories, getProductsByCategory, getAllProducts, getCategoryById } from '@/lib/products'
+import { getCategories, getProductsByCategory, getAllProducts, getCategoryById, getCategoryDisplayMode, isCatalogCategory } from '@/lib/products'
 import config from '@/client.config.js'
 import AddToCartButton from '@/components/AddToCartButton'
 
@@ -9,8 +9,12 @@ export default function CatalogoPage({ searchParams }) {
   const categories = getCategories()
   const query = searchParams?.q?.trim() ?? ''
 
+  // Busca só devolve produtos de famílias em modo "catalog" —
+  // as demais não têm ficha para onde apontar.
   const results = query
-    ? getAllProducts().filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
+    ? getAllProducts().filter(p =>
+        p.name.toLowerCase().includes(query.toLowerCase()) && isCatalogCategory(p.categoryId)
+      )
     : []
 
   return (
@@ -101,7 +105,8 @@ export default function CatalogoPage({ searchParams }) {
         )}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {categories.map(cat => {
-            const productCount = getProductsByCategory(cat.id).length
+            const isCatalog    = getCategoryDisplayMode(cat) === 'catalog'
+            const productCount = isCatalog ? getProductsByCategory(cat.id).length : 0
 
             return (
               <div

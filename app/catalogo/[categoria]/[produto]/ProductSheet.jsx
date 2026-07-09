@@ -26,7 +26,10 @@ function buildComposedSKU(productId, axes, materialId, gauge, treatmentId) {
 
 // ─── Componente interativo ───────────────────────────────────────────────────
 
-export default function ProductSheet({ product, category, globalSpecs }) {
+// Comparadores de minThicknessRule → símbolo exibido
+const OP_SYMBOLS = { '>=': '≥', '<=': '≤', '>': '>', '<': '<', '=': '=' }
+
+export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [] }) {
   const gs = globalSpecs ?? {}
   const hasAxes      = product.dimensionAxes?.length > 0
   const hasMaterials = gs.materials?.length > 0
@@ -175,6 +178,34 @@ export default function ProductSheet({ product, category, globalSpecs }) {
                     </div>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {/* Advertencia de espesor mínimo (minThicknessRule do Sheet) */}
+            {thicknessRules.length > 0 && (
+              <div className="bg-brand-accent/10 border border-brand-accent/50 rounded-lg px-3 py-2.5 mb-4">
+                <div className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-primary mb-1">
+                  <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M236.8,188.09,149.35,36.22a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"/></svg>
+                  Espesor mínimo recomendado
+                </div>
+                <ul className="text-[11px] text-text-secondary space-y-0.5">
+                  {thicknessRules.map((r, i) => (
+                    <li key={i}>
+                      Para anchos {OP_SYMBOLS[r.op] ?? r.op}{r.width} mm, espesor mínimo recomendado:{' '}
+                      <span className="font-mono font-semibold text-text-primary">{r.gauge}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Tip de recomendación (recommendationNote do Sheet) */}
+            {product.recommendationNote && (
+              <div className="bg-surface-elevated border-l-4 border-brand-accent rounded-r-lg px-3 py-2.5 mb-4">
+                <div className="text-[11px] font-semibold text-brand-primary mb-0.5">💡 Recomendación</div>
+                <p className="text-[11px] text-text-secondary leading-relaxed">
+                  {product.recommendationNote}
+                </p>
               </div>
             )}
 
