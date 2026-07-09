@@ -43,14 +43,6 @@
   },
   "categories": [
     {
-      "id": "perfilados",
-      "name": "Perfilados y Accesorios",
-      "displayMode": "pdf",
-      "description": "Sistema utilizado para la distribución de cables de menor tamaño y soporte de luminarias. Permite instalaciones rápidas, con posibilidad de ampliaciones y modificaciones.",
-      "image": "/images/perfilados-accesorios-bga-soporte-electrico-paraguay.webp",
-      "pdfUrl": "/docs/ficha-tecnica-perfilados-accesorios-bga.pdf"
-    },
-    {
       "id": "bandejas",
       "displayMode": "catalog",
       "pdfUrl": "/docs/ficha-tecnica-bandeja-portacables-bga.pdf",
@@ -109,6 +101,14 @@
           "a": "Se calcula en base al diámetro exterior de los cables y el factor de llenado recomendado (máximo 40% del área útil según IEC 61537). BGA ofrece anchos de 50 a 800 mm. Consultá con tu vendedor para el cálculo exacto según tu proyecto."
         }
       ]
+    },
+    {
+      "id": "perfilados",
+      "name": "Perfilados y Accesorios",
+      "displayMode": "pdf",
+      "description": "Sistema utilizado para la distribución de cables de menor tamaño y soporte de luminarias. Permite instalaciones rápidas, con posibilidad de ampliaciones y modificaciones.",
+      "image": "/images/perfilados-accesorios-bga-soporte-electrico-paraguay.webp",
+      "pdfUrl": "/docs/ficha-tecnica-perfilados-accesorios-bga.pdf"
     },
     {
       "id": "escaleras",
