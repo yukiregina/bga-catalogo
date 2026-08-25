@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic'
-
 // Ficha técnica do produto — server component
 // Busca dados e passa para ProductSheet (client component interativo)
 // Ex: /catalogo/bandejas/CT3011
@@ -7,6 +5,8 @@ export const dynamic = 'force-dynamic'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import {
+  getCategories,
+  getProductsByCategory,
   getProductById,
   getCategoryById,
   getCategoryDisplayMode,
@@ -20,6 +20,33 @@ import CartBadge from '@/components/CartBadge'
 import NavLogo from '@/components/NavLogo'
 import ProductSheet from './ProductSheet'
 import RecommendedProducts from '@/components/RecommendedProducts'
+
+export function generateStaticParams() {
+  return getCategories()
+    .filter(cat => getCategoryDisplayMode(cat) === 'catalog')
+    .flatMap(cat =>
+      getProductsByCategory(cat.id).map(product => ({
+        categoria: cat.id,
+        produto: product.id,
+      }))
+    )
+}
+
+export function generateMetadata({ params }) {
+  const product  = getProductById(params.produto)
+  const category = getCategoryById(params.categoria)
+  if (!product || !category) return {}
+
+  const title = `${product.name} (${product.id})`
+  const description = `${product.name} — ${category.name}. Cotizá por WhatsApp o agregá al carrito de cotización. Fabricado en Paraguay por ${config.brand.name}.`
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `/catalogo/${category.id}/${product.id}/` },
+    openGraph: { title, description, url: `/catalogo/${category.id}/${product.id}/` },
+  }
+}
 
 export default function ProdutoPage({ params }) {
   const { categoria, produto } = params

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bga.com.py/sitemap.xml
