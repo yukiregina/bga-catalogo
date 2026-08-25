@@ -13,7 +13,7 @@ export const metadata = {
 export default function CatalogoPage() {
   return (
     <div className="min-h-screen">
-      <div className="p-8 max-w-6xl">
+      <div className="max-w-[1180px] mx-auto px-6 py-8">
         <h1 className="font-brand text-2xl font-bold text-brand-primary mb-2">
           {config.catalog.title}
         </h1>

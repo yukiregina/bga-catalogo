@@ -73,7 +73,7 @@ export default function CategoriaPage({ params }) {
         />
       )}
 
-      <div className="p-8 max-w-6xl">
+      <div className="max-w-[1180px] mx-auto px-6 py-8">
 
         {/* ── 1. Breadcrumb + H1 + texto rico ────────────────────────────── */}
         <div className="text-xs text-text-muted mb-4">

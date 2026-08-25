@@ -83,7 +83,7 @@ export default function CotacaoPage() {
   return (
     <div className="min-h-screen">
 
-      <div className="p-8">
+      <div className="max-w-[1180px] mx-auto px-6 py-8">
         <div className="text-xs text-text-muted mb-4">
           <Link href="/catalogo" className="hover:underline">← Catálogo</Link>
         </div>
