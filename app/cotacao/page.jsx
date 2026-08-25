@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
-import NavLogo from '@/components/NavLogo'
 import { registrarCotizacion } from '@/lib/leads'
 import { track } from '@/lib/analytics'
 
@@ -83,14 +82,6 @@ export default function CotacaoPage() {
 
   return (
     <div className="min-h-screen">
-
-      {/* Nav */}
-      <nav className="bg-brand-primary px-8 py-3 flex items-center justify-between sticky top-0 z-10">
-        <NavLogo />
-        <span className="bg-brand-accent text-brand-primary text-xs font-semibold px-3 py-1.5 rounded-full">
-          {items.length > 0 ? `${config.catalog.ctaText} · ${items.length}` : config.catalog.ctaText}
-        </span>
-      </nav>
 
       <div className="p-8">
         <div className="text-xs text-text-muted mb-4">

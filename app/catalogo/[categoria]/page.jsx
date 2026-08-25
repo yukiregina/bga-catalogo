@@ -7,12 +7,9 @@ export const dynamic = 'force-dynamic'
 
 import Link from 'next/link'
 import { getProductsByCategory, getCategoryById, getCategoryDisplayMode } from '@/lib/products'
-import catalogData from '@/lib/catalog.json'
 import config from '@/client.config.js'
 import { notFound } from 'next/navigation'
 import AddToCartButton from '@/components/AddToCartButton'
-import CartBadge from '@/components/CartBadge'
-import NavLogo from '@/components/NavLogo'
 
 const PRODUCTS_PER_PAGE = 18
 
@@ -56,26 +53,6 @@ export default function CategoriaPage({ params, searchParams }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
-
-      {/* Nav */}
-      <nav className="bg-brand-primary px-8 py-3 grid grid-cols-[auto_1fr_auto] gap-4 items-center sticky top-0 z-10">
-        <NavLogo />
-        <div className="flex items-center justify-center gap-5 flex-wrap min-w-0">
-          {catalogData.categories.map(cat => (
-            <Link key={cat.id} href={`/catalogo/${cat.id}`}
-              className={`text-xs transition hidden md:block ${
-                cat.id === categoria
-                  ? 'text-white font-semibold'
-                  : 'text-white/60 hover:text-white'
-              }`}>
-              {cat.name.split(' ')[0]}
-            </Link>
-          ))}
-        </div>
-        <div className="flex justify-end">
-          <CartBadge label={config.catalog.ctaText} />
-        </div>
-      </nav>
 
       <div className="p-8 max-w-6xl">
 

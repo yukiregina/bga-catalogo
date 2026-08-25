@@ -62,16 +62,9 @@
   width: 0; height: 2px; background: var(--bolt); transition: width 0.2s;
 }
 .navLinks a:hover::after { width: 100%; }
-.btnPrimary {
-  background: var(--bolt); color: var(--ocean); padding: 11px 22px;
-  border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px;
-  border: none; cursor: pointer; display: inline-flex; align-items: center;
-  gap: 8px; transition: all 0.2s;
-}
-.btnPrimary:hover {
-  background: var(--bolt-600); transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255,198,0,0.3);
-}
+.headerActions { display: flex; align-items: center; gap: 12px; }
+.navLinkActive { color: var(--ocean) !important; font-weight: 700; }
+.navLinkActive::after { width: 100% !important; }
 
 /* HERO */
 .hero {
@@ -436,7 +429,6 @@
   .landing {
     scroll-behavior: auto;
   }
-  .btnPrimary:hover,
   .btnWaLarge:hover,
   .formSubmit:hover,
   .sectorTile:hover,

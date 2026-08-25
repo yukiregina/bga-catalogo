@@ -3,9 +3,8 @@
 // Landing page ported from reference-lp/index.html, keeping its design and copy.
 // The only structural change: the old "Catálogo" section (PDF download cards)
 // is replaced by <ProductFinder /> — see that component for the new behavior.
-// TODO: Google Analytics (gtag) and the Organization/LocalBusiness/FAQPage
-// JSON-LD schema from the original <head> were not ported — this app has no
-// GA snippet loaded yet and full SEO metadata migration was out of scope here.
+// Header (logo, nav, cart) lives in components/Header.jsx, mounted once in
+// app/layout.jsx — shared shell across home and catalog routes.
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
@@ -20,20 +19,10 @@ function waLink(text) {
 }
 
 export default function LandingPage() {
-  const [scrolled, setScrolled] = useState(false)
-  const [navOpen, setNavOpen] = useState(false)
   const [waFloatHidden, setWaFloatHidden] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [attachedFileName, setAttachedFileName] = useState('')
   const formWrapperRef = useRef(null)
-
-  useEffect(() => {
-    function onScroll() {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     const el = formWrapperRef.current
@@ -45,10 +34,6 @@ export default function LandingPage() {
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
-
-  function closeNav() {
-    setNavOpen(false)
-  }
 
   function handleFileChange(e) {
     setAttachedFileName(e.target.files?.[0]?.name ?? '')
@@ -82,31 +67,6 @@ export default function LandingPage() {
 
   return (
     <div className={styles.landing}>
-
-      <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
-        <div className={styles.container}>
-          <nav className={styles.nav} aria-label="Navegación principal">
-            <button
-              className={styles.navToggle}
-              aria-label="Abrir menú"
-              aria-expanded={navOpen}
-              onClick={() => setNavOpen(o => !o)}
-            >
-              <svg viewBox="0 0 256 256" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg>
-            </button>
-            <a href="#" className={styles.logo} aria-label={`${config.brand.name} – inicio`}>
-              <img src="/logo-bga-bandejas-portacables-paraguay.png" alt={`${config.brand.name} – Bandejas portacables y tableros eléctricos, Paraguay`} height="48" />
-            </a>
-            <div className={`${styles.navLinks} ${navOpen ? styles.navLinksOpen : ''}`}>
-              <a href="#productos" onClick={closeNav}>Productos</a>
-              <a href="#sectores" onClick={closeNav}>Sectores</a>
-              <a href="#nosotros" onClick={closeNav}>Nosotros</a>
-              <a href="#contacto" onClick={closeNav}>Contacto</a>
-            </div>
-            <a href="#contacto" className={styles.btnPrimary}>Solicitar cotización</a>
-          </nav>
-        </div>
-      </header>
 
       <main>
 
