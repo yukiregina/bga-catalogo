@@ -44,11 +44,17 @@ module.exports = {
     // ID da planilha Google Sheets — null = usa catalog.json local (placeholder)
     googleSheetId: null,
     // Webhook (Google Apps Script) que recebe os leads do formulário de cotação.
-    // O site estático original (reference-lp) tinha uma URL + secret ativos aqui —
-    // não foram portados automaticamente (decisão de segurança). Para reativar,
-    // preencha os dois abaixo com os valores do Apps Script do cliente.
-    leadWebhookUrl: null,
-    leadWebhookSecret: null,
+    // Mesma implantação usada pela landing page estática: doGet grava o
+    // formulário da home na primeira aba, doPost grava as cotações do catálogo
+    // na aba "Cotizaciones".
+    leadWebhookUrl: 'https://script.google.com/macros/s/AKfycbxy68QuMRE9JbJ--B9QucS2VScqwu8Ex4mCFyxd5dBUvURDkgpRV9FXXGrXaQ1tB5CDng/exec',
+    // Não é segredo de verdade: qualquer visitante lê isto no bundle. Serve só
+    // para impedir que um robô encontre a URL do Apps Script e encha a planilha.
+    // Se começar a entrar lixo, troque aqui e na propriedade LEAD_FORM_SECRET
+    // do script.
+    leadWebhookSecret: 'c1e7ac2ebfb800939f8224d87f275ec9727b33fb3551f85b',
+    // GA4 do cliente. Null = catálogo sobe sem medição.
+    gaMeasurementId: 'G-3PF2RG7WNG',
   },
 
   // ─── Meta ─────────────────────────────────────────────────────────────────

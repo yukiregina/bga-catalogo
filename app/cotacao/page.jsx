@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import NavLogo from '@/components/NavLogo'
+import { registrarCotizacion } from '@/lib/leads'
+import { track } from '@/lib/analytics'
 
 const RUBROS = [
   'Seleccioná un rubro',
@@ -45,6 +47,33 @@ export default function CotacaoPage() {
   }
 
   function handleSend() {
+    // ── 1. Grava primeiro ───────────────────────────────────────────────────
+    // Sem await de propósito: `keepalive` garante o envio da requisição, e
+    // esperar aqui faria o navegador tratar o window.open abaixo como popup
+    // não solicitado e bloquear.
+    registrarCotizacion({
+      origen: 'catalogo',
+      nombre: form.nombre,
+      empresa: form.empresa,
+      rubro: form.rubro && form.rubro !== RUBROS[0] ? form.rubro : '',
+      proyecto: form.proyecto,
+      plazo: form.plazo,
+      items: items.map(({ product, quantity, observation }) => ({
+        sku: product.id,
+        nombre: product.name,
+        familia: product.categoryId || '',
+        cantidad: quantity,
+        observacion: observation || '',
+      })),
+    })
+
+    track('cotizacion_enviada', {
+      items: items.length,
+      unidades: items.reduce((s, i) => s + (Number(i.quantity) || 0), 0),
+      rubro: form.rubro || '(sin rubro)',
+    })
+
+    // ── 2. Só depois abre a conversa ────────────────────────────────────────
     const msg = encodeURIComponent(buildMessage())
     const number = config.contact.whatsapp.replace(/\D/g, '')
     window.open(`https://wa.me/${number}?text=${msg}`, '_blank')
