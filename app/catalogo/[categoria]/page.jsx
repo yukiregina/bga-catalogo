@@ -3,19 +3,35 @@
 //   "pdf"     → intro curta + botão "Descargar PDF" (category.pdfUrl)
 //   "contact" → intro curta + bloco de contato (WhatsApp + email)
 
-export const dynamic = 'force-dynamic'
-
 import Link from 'next/link'
-import { getProductsByCategory, getCategoryById, getCategoryDisplayMode } from '@/lib/products'
+import { getCategories, getProductsByCategory, getCategoryById, getCategoryDisplayMode } from '@/lib/products'
 import config from '@/client.config.js'
 import { notFound } from 'next/navigation'
 import AddToCartButton from '@/components/AddToCartButton'
+import TrackView from '@/components/TrackView'
 
-const PRODUCTS_PER_PAGE = 18
+export function generateStaticParams() {
+  return getCategories().map(cat => ({ categoria: cat.id }))
+}
 
-export default function CategoriaPage({ params, searchParams }) {
+export function generateMetadata({ params }) {
+  const category = getCategoryById(params.categoria)
+  if (!category) return {}
+
+  return {
+    title: category.name,
+    description: category.cardDescription ?? category.description,
+    alternates: { canonical: `/catalogo/${category.id}/` },
+    openGraph: {
+      title: category.name,
+      description: category.cardDescription ?? category.description,
+      url: `/catalogo/${category.id}/`,
+    },
+  }
+}
+
+export default function CategoriaPage({ params }) {
   const { categoria } = params
-  const page = Number(searchParams?.page ?? 1)
 
   const category = getCategoryById(categoria)
   if (!category) notFound()
@@ -23,9 +39,7 @@ export default function CategoriaPage({ params, searchParams }) {
   const displayMode = getCategoryDisplayMode(category)
   const isCatalog   = displayMode === 'catalog'
 
-  const allProducts = isCatalog ? getProductsByCategory(categoria) : []
-  const totalPages  = Math.ceil(allProducts.length / PRODUCTS_PER_PAGE)
-  const products    = allProducts.slice((page - 1) * PRODUCTS_PER_PAGE, page * PRODUCTS_PER_PAGE)
+  const products = isCatalog ? getProductsByCategory(categoria) : []
 
   const waNumber = config.contact.whatsapp.replace(/\D/g, '')
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(
@@ -45,6 +59,11 @@ export default function CategoriaPage({ params, searchParams }) {
 
   return (
     <div className="min-h-screen">
+
+      <TrackView
+        event="ver_familia"
+        params={{ familia: category.id, nombre: category.name, modo: displayMode }}
+      />
 
       {/* Schema FAQ */}
       {faqSchema && (
@@ -182,7 +201,7 @@ export default function CategoriaPage({ params, searchParams }) {
             <h2 className="font-brand text-base font-bold text-brand-primary">
               Productos
               <span className="font-primary font-normal text-sm text-text-muted ml-2">
-                ({allProducts.length} en total)
+                ({products.length} en total)
               </span>
             </h2>
           </div>
@@ -239,41 +258,6 @@ export default function CategoriaPage({ params, searchParams }) {
                   </div>
                 )
               })}
-            </div>
-          )}
-
-          {/* Paginação */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-1.5 mt-8">
-              {page > 1 && (
-                <Link
-                  href={`/catalogo/${categoria}?page=${page - 1}`}
-                  className="w-7 h-7 flex items-center justify-center border border-border-subtle rounded bg-white text-sm hover:bg-surface-sunken transition"
-                >
-                  ‹
-                </Link>
-              )}
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-                <Link
-                  key={p}
-                  href={`/catalogo/${categoria}?page=${p}`}
-                  className={`w-7 h-7 flex items-center justify-center rounded text-sm transition ${
-                    p === page
-                      ? 'bg-brand-primary text-white font-semibold'
-                      : 'border border-border-subtle bg-white hover:bg-surface-sunken'
-                  }`}
-                >
-                  {p}
-                </Link>
-              ))}
-              {page < totalPages && (
-                <Link
-                  href={`/catalogo/${categoria}?page=${page + 1}`}
-                  className="w-7 h-7 flex items-center justify-center border border-border-subtle rounded bg-white text-sm hover:bg-surface-sunken transition"
-                >
-                  ›
-                </Link>
-              )}
             </div>
           )}
         </section>
