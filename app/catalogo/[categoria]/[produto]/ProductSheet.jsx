@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
+import { track } from '@/lib/analytics'
 
 // ─── SKU composto ────────────────────────────────────────────────────────────
 
@@ -51,15 +52,41 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const composedSKU = buildComposedSKU(product.id, selectedAxes, selectedMaterial, selectedGauge, null)
 
   const waText = encodeURIComponent(
-    `${config.contact.whatsappMessage}\n\n• ${product.name} (${composedSKU}) — ${qty} un.`
+    `Hola, tengo una consulta técnica sobre ${product.name} (${composedSKU}).`
   )
   const waLink = `https://wa.me/${config.contact.whatsapp.replace(/\D/g, '')}?text=${waText}`
+
+  useEffect(() => {
+    track('ver_producto', {
+      sku: product.id,
+      producto: product.name,
+      familia: product.categoryId || '',
+    })
+  }, [product.id, product.name, product.categoryId])
 
   function handleAddToCart() {
     addItem({ ...product, composedSKU })
     if (qty > 1) updateQuantity(product.id, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 2200)
+
+    track('agregar_cotizacion', {
+      sku: product.id,
+      sku_compuesto: composedSKU,
+      producto: product.name,
+      familia: product.categoryId || '',
+      cantidad: qty,
+      origen: 'ficha',
+    })
+  }
+
+  function handleWhatsappDirecto() {
+    track('click_whatsapp', {
+      sku: product.id,
+      producto: product.name,
+      familia: product.categoryId || '',
+      origen: 'ficha',
+    })
   }
 
   const tabs = [
@@ -271,38 +298,39 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
             </div>
 
             {/* CTAs */}
-            <div className="flex items-center gap-2">
-              <div className="flex items-center border border-border-subtle rounded-lg overflow-hidden shrink-0">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+              <div className="flex items-center border border-border-subtle rounded-lg overflow-hidden shrink-0 w-full sm:w-auto">
                 <button
                   onClick={() => setQty(q => Math.max(1, q - 1))}
-                  className="w-8 h-9 flex items-center justify-center text-text-muted hover:bg-surface-elevated transition text-lg leading-none"
+                  className="w-8 h-11 sm:h-9 flex items-center justify-center text-text-muted hover:bg-surface-elevated transition text-lg leading-none"
                 >−</button>
-                <span className="w-8 text-center font-mono text-sm select-none">{qty}</span>
+                <span className="flex-1 sm:w-8 text-center font-mono text-sm select-none">{qty}</span>
                 <button
                   onClick={() => setQty(q => q + 1)}
-                  className="w-8 h-9 flex items-center justify-center text-text-muted hover:bg-surface-elevated transition text-lg leading-none"
+                  className="w-8 h-11 sm:h-9 flex items-center justify-center text-text-muted hover:bg-surface-elevated transition text-lg leading-none"
                 >+</button>
               </div>
 
               <button
                 onClick={handleAddToCart}
-                className="flex-1 h-9 border border-border-subtle bg-white rounded-lg text-xs font-medium hover:border-text-primary/30 transition"
+                className="w-full sm:flex-1 h-11 bg-brand-primary text-white rounded-lg text-sm font-semibold hover:brightness-110 transition"
               >
                 {added ? '✓ Agregado' : 'Agregar a cotización'}
               </button>
-
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 h-9 bg-wa text-white rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 hover:brightness-105 transition"
-              >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                  <path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.4.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
-                </svg>
-                WhatsApp
-              </a>
             </div>
+
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleWhatsappDirecto}
+              className="flex items-center justify-center sm:justify-start gap-1.5 mt-2 text-xs text-text-secondary hover:text-text-primary hover:underline transition"
+            >
+              <svg width="14" height="14" viewBox="0 0 256 256" fill="#25D366" aria-hidden="true">
+                <path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/>
+              </svg>
+              ¿Dudas técnicas? Consultá con un especialista
+            </a>
 
           </div>
         </div>
