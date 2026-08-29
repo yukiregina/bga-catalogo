@@ -3,6 +3,7 @@
 // com lista vazia não renderiza nada.
 import Link from 'next/link'
 import AddToCartButton from './AddToCartButton'
+import { getProductImageAlt } from '@/lib/products'
 
 export default function RecommendedProducts({ products }) {
   if (!products?.length) return null
@@ -19,10 +20,13 @@ export default function RecommendedProducts({ products }) {
             className="bg-white border border-black/8 rounded-card p-3 flex flex-col w-40 shrink-0"
           >
             <Link href={`/catalogo/${product.categoryId}/${product.id}`} className="block mb-2">
-              {product.image ? (
+              {product.images?.primary ? (
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={product.images.primary}
+                  alt={getProductImageAlt(product)}
+                  width={160}
+                  height={160}
+                  loading="lazy"
                   className="w-full aspect-square object-contain rounded bg-surface-elevated"
                 />
               ) : (

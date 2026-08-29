@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { getCategories, getProductsByCategory, getAllProducts, getCategoryById, getCategoryDisplayMode, isCatalogCategory } from '@/lib/products'
+import { getCategories, getProductsByCategory, getAllProducts, getCategoryById, getCategoryDisplayMode, isCatalogCategory, getProductImageAlt } from '@/lib/products'
 import AddToCartButton from '@/components/AddToCartButton'
 
 export default function CatalogPageClient() {
@@ -45,10 +45,13 @@ export default function CatalogPageClient() {
                 return (
                   <div key={product.id} className="bg-white border border-black/8 rounded-card p-3 flex flex-col">
                     <Link href={`/catalogo/${product.categoryId}/${product.id}`} className="block mb-3">
-                      {product.image ? (
+                      {product.images?.primary ? (
                         <img
-                          src={product.image}
-                          alt={product.name}
+                          src={product.images.primary}
+                          alt={getProductImageAlt(product)}
+                          width={200}
+                          height={200}
+                          loading="lazy"
                           className="w-full aspect-square object-contain rounded bg-surface-elevated"
                         />
                       ) : (

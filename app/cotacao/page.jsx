@@ -6,6 +6,7 @@ import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import { registrarCotizacion } from '@/lib/leads'
 import { track } from '@/lib/analytics'
+import { getProductImageAlt } from '@/lib/products'
 
 const RUBROS = [
   'Seleccioná un rubro',
@@ -34,7 +35,7 @@ export default function CotacaoPage() {
     const lines = ['Hola, quisiera cotizar:']
     items.forEach(({ product, quantity, observation }) => {
       const obs = observation ? ` (${observation})` : ''
-      lines.push(`• ${product.id} — ${product.name} · ${quantity} un${obs}`)
+      lines.push(`• ${product.composedSKU ?? product.id} — ${product.name} · ${quantity} un${obs}`)
     })
     lines.push('')
     if (form.nombre)  lines.push(`Cliente: ${form.nombre}${form.empresa ? ` — ${form.empresa}` : ''}`)
@@ -58,7 +59,7 @@ export default function CotacaoPage() {
       proyecto: form.proyecto,
       plazo: form.plazo,
       items: items.map(({ product, quantity, observation }) => ({
-        sku: product.id,
+        sku: product.composedSKU ?? product.id,
         nombre: product.name,
         familia: product.categoryId || '',
         cantidad: quantity,
@@ -118,15 +119,15 @@ export default function CotacaoPage() {
                   <div className="flex gap-3 items-center">
                     {/* Thumb */}
                     <div className="w-14 h-14 bg-surface-elevated rounded flex-shrink-0 flex items-center justify-center">
-                      {product.image
-                        ? <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+                      {product.images?.primary
+                        ? <img src={product.images.primary} alt={getProductImageAlt(product)} width={56} height={56} className="w-full h-full object-contain" />
                         : <span className="text-[9px] text-text-muted text-center leading-tight px-1">sin imagen</span>
                       }
                     </div>
 
                     {/* Info */}
                     <div className="flex-1 min-w-0">
-                      <div className="font-mono text-[10px] text-text-sku">{product.id}</div>
+                      <div className="font-mono text-[10px] text-text-sku">{product.composedSKU ?? product.id}</div>
                       <div className="text-sm font-semibold text-brand-primary leading-tight mt-0.5">
                         {product.name}
                       </div>

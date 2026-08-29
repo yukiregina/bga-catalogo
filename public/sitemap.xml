@@ -2,205 +2,301 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bga.com.py/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://bga.com.py/catalogo/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://bga.com.py/catalogo/bandejas/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bga.com.py/catalogo/perfilados/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bga.com.py/catalogo/escaleras/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bga.com.py/catalogo/tableros/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bga.com.py/catalogo/aramados/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bga.com.py/catalogo/gabinetes/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3011/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/materiales-y-tratamientos/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/accesorios-de-curva/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/reducciones-y-desvios/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/soportes-y-fijacion/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/uniones-y-empalmes/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/salidas-y-terminaciones/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/bandeja-portacables/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3012/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/curva-horizontal-90/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3111/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/curva-horizontal-recta-90/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3112/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/curva-vertical-externa-90/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3114/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/curva-vertical-interna-90/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3130/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/curva-vertical-externa-45/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3118/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/curva-vertical-interna-45/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3120/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/curva-horizontal-45/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3211/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/curva-de-descarga/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3128/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/te-horizontal/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3140/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/te-horizontal-recto/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3154/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/te-vertical-ascendente/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3136/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/te-vertical-descarga/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3138/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/te-vertical-descarga-lateral/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CL5270/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/union-cruzeta/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3150/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/union-cruzeta-recta/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3063/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/desnivel-simple/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3062/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/desvio-horizontal-derecho/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3071/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/desvio-horizontal-izquierdo/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3066/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/reduccion-lateral-derecha/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3070/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/reduccion-lateral-izquierda/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3067/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/reduccion-central/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3065/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/final-de-tramo/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3069/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/final-de-tramo-descarga/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/KIT3062/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/union-simple/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bga.com.py/catalogo/bandejas/CT3064/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://bga.com.py/catalogo/bandejas/union-interna/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/kit-de-uniones/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/tramo-divisor/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/soporte-suspension-omega/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/soporte-suspension-tipo-a/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/soporte-suspension-tipo-b/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/mano-francesa-simple/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/mano-francesa-triangular/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/soporte-travesano/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/salida-horizontal-electroducto/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bga.com.py/catalogo/bandejas/salida-lateral-perfilado/</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

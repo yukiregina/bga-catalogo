@@ -4,7 +4,7 @@
 //   "contact" → intro curta + bloco de contato (WhatsApp + email)
 
 import Link from 'next/link'
-import { getCategories, getProductsByCategory, getCategoryById, getCategoryDisplayMode } from '@/lib/products'
+import { getCategories, getProductsByCategory, getCategoryById, getCategoryDisplayMode, getProductImageAlt } from '@/lib/products'
 import config from '@/client.config.js'
 import { notFound } from 'next/navigation'
 import AddToCartButton from '@/components/AddToCartButton'
@@ -173,11 +173,12 @@ export default function CategoriaPage({ params }) {
             <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
               ¿Qué necesitás hacer?
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {category.intentCards.map((card, i) => (
-                <div
+                <Link
                   key={i}
-                  className="bg-white border border-border-subtle rounded-card p-4"
+                  href={card.href}
+                  className="block bg-white border border-border-subtle rounded-card p-4 hover:border-brand-primary/30 hover:shadow-sm transition"
                 >
                   <span className="inline-block text-[10px] font-semibold bg-brand-accent text-brand-primary uppercase tracking-wider px-1.5 py-0.5 rounded mb-1.5">
                     {card.tag}
@@ -188,7 +189,7 @@ export default function CategoriaPage({ params }) {
                   <div className="text-xs text-text-muted leading-relaxed">
                     {card.description}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </section>
@@ -223,10 +224,13 @@ export default function CategoriaPage({ params }) {
 
                     {/* Imagem */}
                     <Link href={`/catalogo/${categoria}/${product.id}`} className="block mb-3">
-                      {product.image ? (
+                      {product.images?.primary ? (
                         <img
-                          src={product.image}
-                          alt={product.name}
+                          src={product.images.primary}
+                          alt={getProductImageAlt(product)}
+                          width={300}
+                          height={300}
+                          loading="lazy"
                           className="w-full aspect-square object-contain rounded bg-surface-elevated"
                         />
                       ) : (
@@ -290,6 +294,12 @@ export default function CategoriaPage({ params }) {
                 </tbody>
               </table>
             </div>
+            <Link
+              href="/materiales-y-tratamientos/"
+              className="inline-block mt-3 text-xs font-semibold text-brand-primary hover:underline"
+            >
+              Ver materiales y tratamientos en detalle →
+            </Link>
           </section>
         )}
 

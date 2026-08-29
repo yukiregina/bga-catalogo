@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation'
 import {
   getCategories,
   getProductsByCategory,
+  getSubfamiliesByCategory,
   getProductById,
   getCategoryById,
   getCategoryDisplayMode,
@@ -17,53 +18,92 @@ import {
 import catalogData from '@/lib/catalog.json'
 import config from '@/client.config.js'
 import ProductSheet from './ProductSheet'
+import SubfamilyView from './SubfamilyView'
 import RecommendedProducts from '@/components/RecommendedProducts'
 
 export function generateStaticParams() {
   return getCategories()
     .filter(cat => getCategoryDisplayMode(cat) === 'catalog')
-    .flatMap(cat =>
-      getProductsByCategory(cat.id).map(product => ({
-        categoria: cat.id,
-        produto: product.id,
-      }))
-    )
+    .flatMap(cat => [
+      ...getProductsByCategory(cat.id),
+      ...getSubfamiliesByCategory(cat.id),
+    ].map(item => ({
+      categoria: cat.id,
+      produto: item.id,
+    })))
 }
 
 export function generateMetadata({ params }) {
-  const product  = getProductById(params.produto)
+  const item     = getProductById(params.produto)
   const category = getCategoryById(params.categoria)
-  if (!product || !category) return {}
+  if (!item || !category) return {}
 
-  const title = `${product.name} (${product.id})`
-  const description = `${product.name} — ${category.name}. Cotizá por WhatsApp o agregá al carrito de cotización. Fabricado en Paraguay por ${config.brand.name}.`
+  const title = item.meta?.title ?? `${item.name} (${item.id})`
+  const description = item.meta?.description
+    ?? `${item.name} — ${category.name}. Cotizá por WhatsApp o agregá al carrito de cotización. Fabricado en Paraguay por ${config.brand.name}.`
 
   return {
     title,
     description,
-    alternates: { canonical: `/catalogo/${category.id}/${product.id}/` },
-    openGraph: { title, description, url: `/catalogo/${category.id}/${product.id}/` },
+    alternates: { canonical: `/catalogo/${category.id}/${item.id}/` },
+    openGraph: {
+      title,
+      description,
+      url: `/catalogo/${category.id}/${item.id}/`,
+      ...(item.images?.primary ? { images: [item.images.primary] } : {}),
+    },
   }
 }
 
 export default function ProdutoPage({ params }) {
   const { categoria, produto } = params
-  const product  = getProductById(produto)
+  const item     = getProductById(produto)
   const category = getCategoryById(categoria)
 
   // Fichas só existem para famílias em modo "catalog" — famílias "pdf"/"contact"
   // não expõem rotas de produto.
-  if (!product) notFound()
+  if (!item) notFound()
   if (getCategoryDisplayMode(category) !== 'catalog') notFound()
-  if (!isCatalogCategory(product.categoryId)) notFound()
+  if (!isCatalogCategory(item.categoryId)) notFound()
+
+  if (item.type === 'subfamilia') {
+    return <SubfamilyView subfamilia={item} category={category} categoria={categoria} />
+  }
+
+  const product = item
 
   // Camada de recomendação (campos opcionais vindos do Sheet)
   const recommendedProducts = resolveRecommendedProducts(product.recommended)
     .filter(p => isCatalogCategory(p.categoryId))
   const thicknessRules = parseMinThicknessRule(product.minThicknessRule)
 
+  const faqSchema = product.faq?.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: product.faq.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  } : null
+
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.shortDescription ?? product.meta?.description ?? '',
+    ...(product.images?.primary ? { image: `https://bga.com.py${product.images.primary}` } : {}),
+    brand: { '@type': 'Brand', name: config.brand.name },
+    manufacturer: { '@type': 'Organization', name: config.brand.name },
+  }
+
   return (
     <div className="min-h-screen bg-page">
+
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
 
       <div className="max-w-4xl mx-auto px-4 py-6">
 
@@ -86,8 +126,34 @@ export default function ProdutoPage({ params }) {
           thicknessRules={thicknessRules}
         />
 
+        {/* Descrição longa */}
+        {product.longDescription && (
+          <div className="mt-6 text-sm text-text-secondary leading-relaxed space-y-3 max-w-3xl">
+            {product.longDescription.split('\n\n').map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
+        )}
+
         {/* Produtos recomendados (opcional, vem do Sheet) */}
         <RecommendedProducts products={recommendedProducts} />
+
+        {/* FAQ */}
+        {product.faq?.length > 0 && (
+          <section className="mt-8">
+            <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
+              Preguntas frecuentes
+            </h2>
+            <div className="space-y-3">
+              {product.faq.map(({ q, a }, i) => (
+                <div key={i} className="bg-white border border-border-subtle rounded-card px-5 py-4">
+                  <div className="text-sm font-semibold text-brand-primary mb-1.5">{q}</div>
+                  <div className="text-sm text-text-secondary leading-relaxed">{a}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Voltar */}
         <div className="mt-4">

@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import { track } from '@/lib/analytics'
+import { getProductImageAlt } from '@/lib/products'
 
 // ─── SKU composto ────────────────────────────────────────────────────────────
 
-function buildComposedSKU(productId, axes, materialId, gauge, treatmentId) {
-  let sku = productId
+function buildComposedSKU(baseSku, axes, materialId, gauge, treatmentId) {
+  let sku = baseSku
 
   const axisVals = Object.values(axes)
   if (axisVals.length > 0) sku += '-' + axisVals.join('x')
@@ -32,7 +33,13 @@ const OP_SYMBOLS = { '>=': '≥', '<=': '≤', '>': '>', '<': '<', '=': '=' }
 
 export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [] }) {
   const gs = globalSpecs ?? {}
-  const hasAxes      = product.dimensionAxes?.length > 0
+  const hasVariants  = product.variants?.length > 0
+  const [selectedVariant, setSelectedVariant] = useState(null)
+  const isTapa = selectedVariant?.role === 'tapa'
+
+  // A tapa não tem "ala" própria — segue só o ancho da bandeja que cobre.
+  const axesToShow   = product.dimensionAxes?.filter(ax => !(isTapa && ax.id === 'ala')) ?? []
+  const hasAxes      = axesToShow.length > 0
   const hasMaterials = gs.materials?.length > 0
   const hasGauges    = gs.thicknesses?.length > 0
 
@@ -46,10 +53,29 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const [qty,      setQty]      = useState(1)
   const [activeTab, setActiveTab] = useState('specs')
   const [added,    setAdded]    = useState(false)
+  const [galleryTab, setGalleryTab] = useState('primary') // 'primary' | 'tapa'
+
+  // kit-de-uniones: a imagem carrega a tornillería do ala escolhido — troca
+  // sozinha, sem clique. As demais páginas seguem a galeria peça/tapa normal.
+  const kitAla = product.images?.byAla ? String(selectedAxes.ala ?? '') : null
+  const mainImageSrc = kitAla
+    ? (product.images.byAla[kitAla] ?? product.images.primary)
+    : (galleryTab === 'tapa' && product.images?.tapa ? product.images.tapa : product.images?.primary)
+  const mainImageAlt = kitAla
+    ? getProductImageAlt(product, { ala: kitAla })
+    : getProductImageAlt(product, galleryTab === 'tapa' && product.images?.tapa ? 'tapa' : 'primary')
 
   const { addItem, updateQuantity } = useCart()
 
-  const composedSKU = buildComposedSKU(product.id, selectedAxes, selectedMaterial, selectedGauge, null)
+  // Base do SKU: variante escolhida > SKU único da página > id da página.
+  // Com variantes disponíveis e nenhuma escolhida, o pedido sai sem punir
+  // quem não sabe — o vendedor confirma o modelo/tipo depois.
+  const baseSku = selectedVariant?.sku ?? product.sku ?? product.id
+  const axesForSku = Object.fromEntries(
+    axesToShow.map(ax => [ax.id, selectedAxes[ax.id]])
+  )
+  const composedSKU = buildComposedSKU(baseSku, axesForSku, selectedMaterial, selectedGauge, null)
+    + (hasVariants && !selectedVariant ? ' (variante a confirmar)' : '')
 
   const waText = encodeURIComponent(
     `Hola, tengo una consulta técnica sobre ${product.name} (${composedSKU}).`
@@ -106,10 +132,12 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
           {/* Coluna esquerda: imagem */}
           <div className="p-5 border-b md:border-b-0 md:border-r border-border-subtle">
             <div className="bg-surface-elevated rounded-lg aspect-square flex items-center justify-center mb-3">
-              {product.image ? (
+              {mainImageSrc ? (
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={mainImageSrc}
+                  alt={mainImageAlt}
+                  width={420}
+                  height={420}
                   className="w-full h-full object-contain rounded-lg p-4"
                 />
               ) : (
@@ -121,15 +149,36 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                 </div>
               )}
             </div>
-            <div className="flex gap-2">
-              {[0, 1, 2, 3].map(i => (
-                <div key={i}
-                  className={`w-11 h-11 rounded-lg bg-surface-elevated border ${
-                    i === 0 ? 'border-text-primary/40' : 'border-border-subtle'
-                  }`}
-                />
-              ))}
-            </div>
+
+            {/* Galería peza/tapa — a tapa se cotiza aparte, dos piezas distintas */}
+            {product.images?.tapa && (
+              <div className="flex gap-2">
+                {[
+                  { id: 'primary', label: 'Pieza', src: product.images.primary },
+                  { id: 'tapa',    label: 'Tapa',  src: product.images.tapa },
+                ].map(thumb => (
+                  <button
+                    key={thumb.id}
+                    onClick={() => setGalleryTab(thumb.id)}
+                    className={`flex-1 rounded-lg border overflow-hidden ${
+                      galleryTab === thumb.id ? 'border-text-primary/40' : 'border-border-subtle'
+                    }`}
+                  >
+                    <div className="bg-surface-elevated aspect-square flex items-center justify-center">
+                      <img
+                        src={thumb.src}
+                        alt={getProductImageAlt(product, thumb.id)}
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                        className="w-full h-full object-contain p-1"
+                      />
+                    </div>
+                    <div className="text-[10px] text-text-muted py-0.5">{thumb.label}</div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Coluna direita: configurador */}
@@ -170,10 +219,54 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               </div>
             )}
 
+            {/* Variante (modelo/tipo ou diámetro) — seleção dentro da ficha, não rota */}
+            {hasVariants && (
+              <div className="mb-4">
+                <label className="flex items-center justify-between mb-1.5">
+                  <span className="text-xs text-text-muted">Modelo / variante</span>
+                </label>
+                <select
+                  value={selectedVariant?.sku ?? ''}
+                  onChange={e => {
+                    const v = product.variants.find(v => v.sku === e.target.value)
+                    setSelectedVariant(v ?? null)
+                  }}
+                  className="w-full text-sm border border-border-subtle rounded-lg px-3 py-2 bg-white text-text-primary"
+                >
+                  <option value="">Seleccioná modelo y tipo…</option>
+                  {product.variants.map(v => (
+                    <option key={v.sku} value={v.sku}>{v.label}</option>
+                  ))}
+                </select>
+
+                {/* Diagrama de apoio: corte transversal tipo U / tipo C (só bandeja-portacables) */}
+                {product.secciones && (
+                  <div className="grid grid-cols-2 gap-2 mt-2">
+                    {[
+                      { tipo: 'U', src: product.secciones.U },
+                      { tipo: 'C', src: product.secciones.C },
+                    ].filter(s => s.src).map(s => (
+                      <div key={s.tipo} className="bg-surface-elevated border border-border-subtle rounded-lg p-2 text-center">
+                        <img
+                          src={s.src}
+                          alt={`Corte transversal Tipo ${s.tipo} — ${product.name} BGA`}
+                          width={100}
+                          height={60}
+                          loading="lazy"
+                          className="w-full h-14 object-contain mb-1"
+                        />
+                        <span className="text-[10px] text-text-muted">Tipo {s.tipo}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Seletores de eixos */}
             {hasAxes && (
               <div className="space-y-3 mb-4">
-                {product.dimensionAxes.map(ax => (
+                {axesToShow.map(ax => (
                   <div key={ax.id}>
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-xs text-text-muted">
@@ -297,6 +390,14 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               </div>
             </div>
 
+            {/* Pieza a medida — la ficha lo dice explícitamente (ver Sheet §Peças configuráveis) */}
+            {product.configurable && (
+              <div className="bg-brand-accent/10 border border-brand-accent/50 rounded-lg px-3 py-2.5 mb-3 text-[11px] text-text-secondary">
+                <span className="font-semibold text-brand-primary">Pieza a medida — </span>
+                confirmá el detalle con el vendedor antes de cotizar (ver preguntas frecuentes abajo).
+              </div>
+            )}
+
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
               <div className="flex items-center border border-border-subtle rounded-lg overflow-hidden shrink-0 w-full sm:w-auto">
@@ -317,20 +418,37 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               >
                 {added ? '✓ Agregado' : 'Agregar a cotización'}
               </button>
+
+              {product.configurable && (
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleWhatsappDirecto}
+                  className="w-full sm:w-auto h-11 px-4 flex items-center justify-center gap-1.5 border border-wa text-wa rounded-lg text-sm font-semibold hover:bg-wa/5 transition shrink-0"
+                >
+                  <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true">
+                    <path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/>
+                  </svg>
+                  Consultar con un especialista
+                </a>
+              )}
             </div>
 
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleWhatsappDirecto}
-              className="flex items-center justify-center sm:justify-start gap-1.5 mt-2 text-xs text-text-secondary hover:text-text-primary hover:underline transition"
-            >
-              <svg width="14" height="14" viewBox="0 0 256 256" fill="#25D366" aria-hidden="true">
-                <path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/>
-              </svg>
-              ¿Dudas técnicas? Consultá con un especialista
-            </a>
+            {!product.configurable && (
+              <a
+                href={waLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleWhatsappDirecto}
+                className="flex items-center justify-center sm:justify-start gap-1.5 mt-2 text-xs text-text-secondary hover:text-text-primary hover:underline transition"
+              >
+                <svg width="14" height="14" viewBox="0 0 256 256" fill="#25D366" aria-hidden="true">
+                  <path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/>
+                </svg>
+                ¿Dudas técnicas? Consultá con un especialista
+              </a>
+            )}
 
           </div>
         </div>
@@ -396,10 +514,10 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                     <td className="py-2 text-text-secondary">{product.note}</td>
                   </tr>
                 )}
-                {product.page && (
+                {product.unidadVenta && (
                   <tr>
-                    <td className="py-2 pr-4 text-text-muted">Catálogo impreso</td>
-                    <td className="py-2 font-mono text-text-primary">pág. {product.page}</td>
+                    <td className="py-2 pr-4 text-text-muted">Unidad de venta</td>
+                    <td className="py-2 text-text-primary">{product.unidadVenta}</td>
                   </tr>
                 )}
               </tbody>
