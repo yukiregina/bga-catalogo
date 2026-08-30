@@ -1103,3 +1103,133 @@ sem rolar. No mobile, os chips rolam na horizontal sem empurrar o grid para
 baixo.
 
 **Commit:** `feat: producto en la primera dobra de la página de familia`
+
+---
+
+## 14. O botão de cotización some quando o carrinho está vazio (30/08)
+
+**Como está:** `CartBadge.jsx` renderiza o link com `invisible
+pointer-events-none` quando `items.length === 0` — o espaço fica reservado, mas
+não há nada para ver nem para clicar. O comentário do arquivo diz o porquê:
+"carrinho é estado, não CTA".
+
+**Por que muda:** desde o item 2, `Agregar a cotización` só existe na ficha. Quem
+entra pela home ou por uma família não vê nada que diga que este site tem lista
+de cotização — o mecanismo inteiro fica invisível até a pessoa descobrir sozinha
+uma ficha e clicar. Vazio escondido faz sentido num e-commerce, onde todo mundo
+já sabe o que é um carrinho; aqui o fluxo é o produto.
+
+**A regra continua valendo, com um ajuste:** o carrinho vazio não é CTA — não
+compete com o `Agregar a cotización` da ficha. Mas precisa estar visível. Vazio =
+tinta leve, sem número. Com item = a pílula amarela sólida, com a contagem.
+
+**Cor decidida na tela, não no prompt (30/08):** a primeira versão saiu com
+contorno cinza. A Yuki apontou que esperava amarelo, e renderizado ela tem razão
+— a diferença de intensidade (15% de fundo contra 100%) já separa os dois papéis
+sem precisar trocar de matiz, e o amarelo diz que aquilo é da marca e é clicável.
+Vazio: `bg-brand-accent/15 border border-brand-accent/40`, hover adensa
+(`/25` e `/70`) em vez de virar cinza — hover não troca de cor, adensa a mesma.
+**O que se perde:** com os dois estados amarelos, a diferença entre vazio e cheio
+é só o número. Se aparecer "não sei se tem coisa na minha lista", a causa é esta.
+
+O destino já está pronto: `/cotacao` tem estado vazio ("Tu cotización está
+vacía" + "Explorar catálogo →"), então clicar vazio não cai em página quebrada.
+
+### Prompt pro Claude Code
+
+```
+Em components/CartBadge.jsx: o botão de cotización não pode mais sumir quando o
+carrinho está vazio.
+
+Hoje o vazio usa `invisible pointer-events-none` e aria-hidden/tabIndex=-1.
+Passa a ter dois estados visíveis, os dois clicáveis:
+
+- Vazio (count === 0): só o label, sem número. Amarelo em tinta leve —
+  bg-brand-accent/15 border border-brand-accent/40 text-brand-primary,
+  hover:bg-brand-accent/25 hover:border-brand-accent/70. Sem aria-hidden e sem
+  tabIndex=-1.
+- Com item: exatamente o que já existe — bg-brand-accent text-brand-primary,
+  label + " · " + contagem.
+
+Manter em ambos: px-3 py-1.5 rounded-full text-xs font-semibold transition.
+Remover o span de largura fixa (w-4) — ele existia para o número não empurrar o
+menu, e agora o vazio não tem número. A mudança de largura ao adicionar o
+primeiro item é feedback da ação da pessoa, não ruído.
+
+Acessibilidade: aria-label no link — "Cotización, vacía" quando vazio,
+"Cotización, {count} producto(s)" quando tem item.
+
+Atualizar o comentário do topo do arquivo: o carrinho vazio é visível mas
+discreto — não compete com o "Agregar a cotización" da ficha, e existe para que
+o fluxo de cotización seja descobrível por quem nunca abriu uma ficha.
+
+Não mexer no Header nem no /cotacao. Rode `npm run build` no final.
+```
+
+**Como conferir:** carrinho vazio, o botão aparece com contorno e leva ao estado
+vazio da `/cotacao`. Com um item, volta a ser a pílula amarela com o número. Nas
+duas telas o menu não pula de posição.
+
+**Commit:** `fix: botón de cotización visible también con el carrito vacío`
+
+---
+
+## 15. "Ya tengo mi lista" no estado vazio da cotización (30/08)
+
+**De onde veio:** o Akira diz que muita gente chega com a lista pronta — foto de
+um orçamento, planilha, PDF do projetista. Hoje o site só oferece o caminho de
+montar item por item.
+
+**Decidido (30/08): a versão simples primeiro.** Upload de arquivo é possível sem
+serviço novo — o Apps Script que já recebe as cotizaciones (`doPost` → aba
+"Cotizaciones") gravaria no Drive —, mas vem com resposta opaca (`no-cors`, o
+site não consegue confirmar que chegou), limite prático de poucos MB por causa
+do base64, redeploy do script, e um endpoint aberto cujo segredo está no bundle:
+hoje o pior caso é lixo na planilha, com upload passa a ser lixo no Drive do
+Akira.
+
+O caminho simples é o WhatsApp, que o fluxo já usa: a pessoa anexa a foto ou o
+Excel na própria conversa. **E o botão é o instrumento de medição** — em duas
+semanas o `click_whatsapp` com `origen: cotizacion_vacia` diz quantas pessoas
+realmente chegam com lista pronta. Se o número justificar, aí o upload de verdade
+vira item, com dado em vez de intuição.
+
+### Prompt pro Claude Code
+
+```
+No estado vazio da cotización (app/cotacao/page.jsx, o bloco de
+items.length === 0), acrescentar um segundo caminho: quem já tem a lista pronta
+manda por WhatsApp, anexando foto ou Excel na conversa.
+
+Hierarquia: "Explorar catálogo →" continua sendo o botão primário amarelo. O
+novo é secundário — link com ícone do WhatsApp, sem fundo, para não competir.
+
+Abaixo do botão que já existe:
+  - Texto: "¿Ya tenés tu lista? Mandanos la foto o el Excel por WhatsApp y te
+    cotizamos." em text-xs text-text-muted.
+  - Link: "Enviar mi lista por WhatsApp" — text-sm font-semibold text-brand-primary
+    hover:underline, com o mesmo SVG de WhatsApp já usado em
+    app/catalogo/[categoria]/page.jsx, 14x14, em text-wa.
+  - Destino: https://wa.me/{config.contact.whatsapp sem não-dígitos} com
+    text = "Hola, tengo mi lista de materiales — se la envío por acá."
+    (encodeURIComponent), target="_blank" rel="noopener noreferrer".
+
+Medição, no mesmo commit: no clique, antes de abrir, chamar
+  track('click_whatsapp', { origen: 'cotizacion_vacia' })
+usando o track de lib/analytics.js. Reaproveitar o evento que já existe — não
+criar nome novo; a ficha já manda origen: 'ficha'.
+
+Não mexer no formulário de baixo nem no fluxo com itens no carrinho.
+Rode `npm run build` no final.
+```
+
+**Como conferir:** carrinho vazio → o link aparece abaixo do botão amarelo e abre
+o WhatsApp com a mensagem pronta. No DebugView do GA4, o `click_whatsapp` chega
+com `origen: cotizacion_vacia`.
+
+**Depois, no GA4:** `origen` é parâmetro personalizado — para aparecer nos
+relatórios normais precisa estar registrado como dimensão personalizada com
+escopo de evento. Sem isso, só se vê em Tempo real e DebugView. Vale conferir
+antes de esperar o número, porque não é retroativo.
+
+**Commit:** `feat: enviar lista propia por WhatsApp desde la cotización vacía`
