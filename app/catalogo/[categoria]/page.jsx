@@ -1,7 +1,12 @@
 // Página de família — o layout depende de category.displayMode:
-//   "catalog" → 1. H1 + texto rico  2. Cards de intenção  3. Grid produtos  4. Tabela material  5. FAQ + Schema
+//   "catalog" → 1. H1  2. Chips de intenção  3. Grid produtos (busca + grid)
+//               4. Texto rico ("Sobre la línea")  5. Tabela material  6. FAQ + Schema
 //   "pdf"     → intro curta + botão "Descargar PDF" (category.pdfUrl)
 //   "contact" → intro curta + bloco de contato (WhatsApp + email)
+//
+// Produto na primeira dobra: o texto rico desce pra depois do grid — só os
+// chips (não os cards inteiros) ficam acima, pra não empurrar o grid pra
+// baixo dos ~810px de antes.
 
 import Link from 'next/link'
 import { getCategories, getProductsByCategory, getCategoryById, getCategoryDisplayMode } from '@/lib/products'
@@ -41,6 +46,13 @@ export default function CategoriaPage({ params }) {
 
   const products = isCatalog ? getProductsByCategory(categoria) : []
 
+  // Chips "Ir directo a:" — só os intentCards que apontam pra dentro do
+  // catálogo (subfamílias). O de galvanizado aponta pra /materiales-y-tratamientos/
+  // e fica de fora: não é uma seção desta grid.
+  const intentChips = isCatalog
+    ? (category.intentCards ?? []).filter(card => card.href.startsWith('/catalogo/'))
+    : []
+
   const waNumber = config.contact.whatsapp.replace(/\D/g, '')
   const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(
     `Hola, quisiera más información sobre la línea ${category.name}.`
@@ -75,7 +87,7 @@ export default function CategoriaPage({ params }) {
 
       <div className="max-w-[1180px] mx-auto px-6 py-8">
 
-        {/* ── 1. Breadcrumb + H1 + texto rico ────────────────────────────── */}
+        {/* ── 1. Breadcrumb + H1 ──────────────────────────────────────────── */}
         <div className="text-xs text-text-muted mb-4">
           <Link href="/catalogo" className="hover:underline">Catálogo</Link>
           <span className="mx-1">›</span>
@@ -92,13 +104,7 @@ export default function CategoriaPage({ params }) {
           </p>
         )}
 
-        {category.richDescription && isCatalog ? (
-          <div className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-10 space-y-3">
-            {category.richDescription.split('\n\n').map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-          </div>
-        ) : (
+        {!isCatalog && (
           <p className="text-sm text-text-secondary mb-10 max-w-3xl leading-relaxed">
             {category.description}
           </p>
@@ -173,32 +179,20 @@ export default function CategoriaPage({ params }) {
           </section>
         )}
 
-        {/* ── 2. Cards de intenção ────────────────────────────────────────── */}
-        {isCatalog && category.intentCards?.length > 0 && (
-          <section className="mb-10">
-            <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
-              ¿Qué necesitás hacer?
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {category.intentCards.map((card, i) => (
-                <Link
-                  key={i}
-                  href={card.href}
-                  className="block bg-white border border-border-subtle rounded-card p-4 hover:border-brand-primary/30 hover:shadow-sm transition"
-                >
-                  <span className="inline-block text-[10px] font-semibold bg-brand-accent text-brand-primary uppercase tracking-wider px-1.5 py-0.5 rounded mb-1.5">
-                    {card.tag}
-                  </span>
-                  <div className="text-sm font-semibold text-brand-primary leading-tight mb-1">
-                    {card.label}
-                  </div>
-                  <div className="text-xs text-text-muted leading-relaxed">
-                    {card.description}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
+        {/* ── 2. Chips de intenção ─────────────────────────────────────────── */}
+        {isCatalog && intentChips.length > 0 && (
+          <div className="flex items-center gap-2 mb-6 overflow-x-auto flex-nowrap md:flex-wrap [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <span className="text-xs text-text-muted shrink-0">Ir directo a:</span>
+            {intentChips.map((card, i) => (
+              <Link
+                key={i}
+                href={card.href}
+                className="border border-border-subtle rounded-full px-3 py-1.5 text-xs font-semibold text-brand-primary bg-white hover:border-brand-primary/30 transition whitespace-nowrap"
+              >
+                {card.tag}
+              </Link>
+            ))}
+          </div>
         )}
 
         {/* ── 3. Grid de produtos ─────────────────────────────────────────── */}
@@ -210,7 +204,21 @@ export default function CategoriaPage({ params }) {
           />
         )}
 
-        {/* ── 4. Tabela material × ambiente ───────────────────────────────── */}
+        {/* ── 4. Texto rico — "Sobre la línea" ────────────────────────────── */}
+        {isCatalog && category.richDescription && (
+          <section className="mb-10">
+            <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
+              Sobre la línea {category.name}
+            </h2>
+            <div className="text-sm text-text-secondary leading-relaxed max-w-3xl space-y-3">
+              {category.richDescription.split('\n\n').map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* ── 5. Tabela material × ambiente ───────────────────────────────── */}
         {isCatalog && category.materialTable?.length > 0 && (
           <section className="mb-10">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
@@ -246,7 +254,7 @@ export default function CategoriaPage({ params }) {
           </section>
         )}
 
-        {/* ── 5. FAQ ──────────────────────────────────────────────────────── */}
+        {/* ── 6. FAQ ──────────────────────────────────────────────────────── */}
         {isCatalog && category.faq?.length > 0 && (
           <section className="mb-8">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
