@@ -2,11 +2,14 @@ import Script from 'next/script'
 import config from '@/client.config.js'
 
 /**
- * Injeta o GA4. Sem gaMeasurementId no client.config.js, não renderiza nada —
- * um catálogo de outro cliente sobe sem medição até alguém configurar.
+ * Injeta o GA4. Não renderiza nada fora de produção (NODE_ENV !== 'production')
+ * — senão localhost reporta pra propriedade de produção do cliente — nem sem
+ * gaMeasurementId no client.config.js — um catálogo de outro cliente sobe sem
+ * medição até alguém configurar.
  */
 export default function Analytics() {
   const id = config.data.gaMeasurementId
+  if (process.env.NODE_ENV !== 'production') return null
   if (!id) return null
 
   return (
