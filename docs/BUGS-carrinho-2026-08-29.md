@@ -23,11 +23,19 @@ por ser o único que não muda comportamento nem dado.
 | --- | --- | --- | --- |
 | 1 | Variantes colapsam numa linha só | **dado** — o lead sai errado | ✅ feito 29/08 |
 | 5 | Imagem e nome não seguem a variante | **dado** — o lead sai errado | ✅ feito 29/08 |
-| 2 | Botão "Agregar" volta ao estado original | feedback | ⬜ próximo |
+| 2 | Agregar só existe onde há configuração | feedback + qualidade do lead | ✅ feito 30/08 |
 | 3 | Carrinho sem volta pro produto | navegação | ⬜ |
 | 4 | `<select>` de variante fora do DS | estilo | ⬜ |
+| 7 | Busca não acha SKU, nem sem acento | **produto** — ensina que o site não tem | ⬜ |
+| 8 | Recomendados fora de hora + diagramas U/C com peso de botão | layout | ✅ feito 30/08 |
+| 8c | Complemento colado no CTA | layout | ⬜ próximo |
+| 9 | Abas da ficha são conteúdo global repetido 36× | conteúdo | ⬜ em aberto (design) |
+| 10 | 404 sem identificação no GA4 + beco sem saída | medição | ⬜ baixa, útil na troca de domínio |
+| 11 | Política de privacidade não existe neste projeto | **lançamento** | 🔴 antes de trocar o domínio |
+| 12 | GA4 dispara em dev — localhost polui os dados do cliente | medição | ⬜ rápido |
 
-**Ordem de execução: 1 → 5 → 2 → 3 → 4.** Os dois primeiros são bugs de dado: o
+**Ordem de execução: 1 → 5 → 2 → 3 → 4.** Os itens 7 e 8 nasceram do brainstorm
+de 30/08 e são independentes da fila — o 7 é o de maior valor do que sobrou. Os dois primeiros são bugs de dado: o
 pedido que chega na Aida sai errado. O resto é interface.
 
 **1 e 5 saíram em 29/08**, num commit só (`fix: carrinho identifica a
@@ -118,44 +126,104 @@ Não mexa em mais nada. Rode `npm run build` no final.
 
 ---
 
-## 2. O "✓ Agregado" que volta ao normal 🟡 depois do 1
+## 2. Agregar só existe onde a configuração existe 🟡 depois do 1
 
-**Sintoma:** agrego e o botão volta pro estado original.
+Cresceu no brainstorm de 30/08 e virou uma regra, não um conserto de botão:
+**a ação de agregar só deve existir onde dá para configurar a peça.**
 
-**Causa:** `ProductSheet.jsx:96-97` — `setAdded(true)` + `setTimeout(…, 2200)`.
-É um flash de confirmação com timer, não estado. Passados 2,2 s a ficha não
-lembra mais de nada.
+**Sintoma original:** agrego na ficha e o botão volta pro estado original.
+`ProductSheet.jsx:96-97` — `setAdded(true)` + `setTimeout(…, 2200)`. É flash com
+timer, não estado. Passados 2,2 s a ficha não lembra mais de nada.
 
-**Por que isso só se resolve depois do 1:** hoje o botão não *tem* como saber se
-o item está no carrinho — a única identidade disponível é `product.id`, e por
-`product.id` a resposta seria "sim" mesmo depois de você trocar o ancho. Com
-`lineId`, a pergunta certa passa a ter resposta: *esta configuração* está no
-carrinho?
+**O que o brainstorm acrescentou.** O botão da grade (`AddToCartButton`) agrega
+sem configuração nenhuma. Fui contar: das **36 fichas ativas, 34 exigem ancho e
+ala**, e nenhuma delas tem `dimensions` fixas; as outras 2
+(`salida-horizontal-electroducto`, `salida-lateral-perfilado`) também não — e a
+primeira tem 9 variantes de diâmetro. Ou seja: **em 36 de 36, agregar pela grade
+produz uma linha sem spec nenhuma.** Não existe um caso em que o botão do card
+gere pedido completo. Agora que a linha do carrinho mostra a configuração em
+palavras (item 5), essas linhas aparecem visivelmente vazias — e é a Aida que
+paga, ligando pra perguntar tudo.
 
-Isso muda o que a interface diz: quando você troca a variante, o botão **deve**
-voltar a "Agregar a cotización" — porque agora é outra peça. Não é o bug; é o
-comportamento correto que hoje acontece pelo motivo errado.
+O botão da grade não é atalho, é vazamento. Sai dos três lugares e o
+`AddToCartButton.jsx` vira código morto.
+
+**Cor — decidido.** A grade já fazia amarelo → azul escuro; quem estava fora do
+padrão era a ficha, que nasce azul e só pisca. Unifica no que já existia:
+`brand-accent` → `brand-primary` ao agregar. Com a grade sem amarelo nenhum, o
+CTA da ficha vira a coisa mais alta da página, que é onde ele deve estar.
+
+**O que não pode cair no chão.** Os 36 botões eram a principal superfície que
+*ensinava* que existe carrinho de cotação. Some com eles e a descoberta some
+junto — e hover não ensina nada no celular. A resposta não é manter 36 botões
+repetindo mal a mesma coisa: é **dizer uma vez, bem**, numa frase abaixo do H1.
+Ela entra no mesmo commit que tira os botões — não se abre um buraco prometendo
+tapar depois.
+
+**Ainda aberto, e é decisão sua:** o `CartBadge` também é `brand-accent`. Com o
+CTA da ficha amarelo, ficam dois amarelos disputando a mesma tela. Um acento por
+tela. Isso encosta na thread 1 do `ESTADO` (estado vazio do badge), que já está
+desbloqueada — vale resolver as duas juntas, num commit à parte deste.
 
 ### Prompt pro Claude Code
 
 ```
-Ficha de produto: o botão de cotização passa a refletir estado, não um timer.
+Duas mudanças ligadas: o botão de cotização da ficha passa a refletir estado, e
+a ação de agregar sai dos cards de produto.
 
-Em app/catalogo/[categoria]/[produto]/ProductSheet.jsx:
+Contexto: agregar pela grade produz uma linha de carrinho sem configuração
+nenhuma — em 36 de 36 fichas do catálogo ativo, porque 34 exigem ancho e ala e
+as outras 2 têm variantes. A ficha é o único lugar onde a peça pode ser
+configurada, então é o único lugar onde "agregar" deve existir.
 
-- Remover o setTimeout de 2200ms e o state `added`.
-- Ler do carrinho a linha cujo lineId bate com o composedSKU atual.
-- Se NÃO estiver no carrinho: "Agregar a cotización" (como hoje).
-- Se estiver: rótulo "✓ En tu cotización (N)" com N = quantidade da linha, e
-  logo abaixo um link discreto "Ver cotización →" pra /cotacao.
-- O botão continua clicável nesse estado: clicar de novo soma a quantidade atual
-  do seletor à linha existente.
-- Trocar variante, ancho, material ou espesor muda o composedSKU e portanto o
-  lineId — o botão volta sozinho pra "Agregar a cotización". É o comportamento
-  desejado, não regressão.
+1. app/catalogo/[categoria]/[produto]/ProductSheet.jsx — botão como estado
+   - Remover o state `added` e o setTimeout de 2200ms.
+   - Ler do carrinho a linha cujo lineId bate com o composedSKU atual.
+   - Fora do carrinho: "Agregar a cotización", bg-brand-accent /
+     text-brand-primary (hoje é bg-brand-primary — é essa troca).
+   - No carrinho: "✓ En tu cotización (N)", N = quantidade da linha,
+     bg-brand-primary / text-white. Abaixo, link discreto "Ver cotización →"
+     para /cotacao.
+   - O botão segue clicável nesse estado: clicar de novo soma a quantidade atual
+     do seletor à linha existente.
+   - Trocar variante, ancho, material ou espesor muda o composedSKU e o lineId,
+     então o botão volta sozinho para "Agregar a cotización". É o comportamento
+     desejado, não regressão.
 
-Copy em espanhol. Rode `npm run build` no final.
+2. Tirar o AddToCartButton dos cards de produto, nos três lugares:
+   app/catalogo/[categoria]/page.jsx, components/CatalogPageClient.jsx,
+   components/RecommendedProducts.jsx e
+   app/catalogo/[categoria]/[produto]/SubfamilyView.jsx.
+   Depois disso components/AddToCartButton.jsx fica sem uso — deletar o arquivo.
+
+3. O card inteiro vira um único link para a ficha
+   (/catalogo/{categoryId}/{id}/), envolvendo imagem, SKU, nome e subtexto.
+   - Um <a> só: nada de <Link> aninhado. Os <Link> separados de imagem e de
+     título somem, absorvidos pelo link do card.
+   - Hover: borda brand-accent + leve elevação (shadow-sm). O mesmo tratamento
+     em :focus-visible — hover sozinho não existe no teclado nem no toque.
+   - O título mantém peso e cor; perde o hover:underline próprio, que agora é
+     do card.
+   - Os cards ficam mais baixos sem o botão. Não compensar com padding: a grade
+     mais densa é o ganho.
+
+4. Uma frase abaixo do H1, em espanhol, explicando o mecanismo — nas duas
+   páginas que tinham botão de agregar na grade (/catalogo e a página de
+   família). Algo como: "Armá tu lista de productos y pedí cotización — te
+   respondemos por WhatsApp." Uma linha, não um parágrafo. Ela substitui a
+   descoberta que os botões faziam.
+
+5. GA4: o evento agregar_cotizacion com origen: 'grilla' deixa de existir, e
+   isso é esperado — toda adição passa a vir da ficha, com spec. Não criar
+   evento substituto.
+
+Não mexer no CartBadge (fica para outro commit). Copy em espanhol.
+Rode `npm run build` no final.
 ```
+
+**Como conferir:** na grade, o card inteiro clica e não há mais botão; na ficha,
+agregar deixa o botão azul escuro com a contagem e ele **fica** assim; trocar o
+ancho devolve o amarelo. E a frase abaixo do H1 aparece nas duas páginas.
 
 ---
 
@@ -476,3 +544,402 @@ briefs saíram — estão livres**, e mexem nos mesmos arquivos dos bugs 1–3:
   mecanismo
 
 Entram nesta rodada ou na seguinte — em commit separado, de qualquer forma.
+
+---
+
+## 7. A busca não encontra quase nada 🔴 alto valor
+
+**Causa:** o filtro compara a query com `p.name` e mais nada
+(`CatalogPageClient.jsx:16`). Rodei consultas reais contra o catálogo:
+
+| busca | resultados |
+| --- | --- |
+| `bandeja perforada 200mm` — **o exemplo do próprio placeholder** | **0** |
+| `CT3011` | **0** |
+| `CT3211` | **0** |
+| `reduccion` (sem acento) | **0** |
+| `reducción` (com acento) | 3 |
+| `curva 90` | **0** |
+| `tapa` | **0** |
+| `bandeja` | 1 |
+
+O `ProductFinder` da home promete "bandeja perforada 200mm" no placeholder e essa
+busca devolve zero. Os códigos não aparecem porque vivem em `variants[].sku`, e
+os ids das páginas viraram slugs na reconstrução. E ninguém digita acento numa
+caixa de busca.
+
+Num distribuidor elétrico, onde o cliente do Akira pede por código, uma busca que
+não acha `CT3011` é **pior que não ter busca** — ela ensina "esse site não tem".
+
+**Duas metades, e a ordem importa:** primeiro *o que* a busca casa, depois *onde*
+existe caixa. A caixa na página de família (que o repeat user precisa, porque
+`/catalogo/bandejas` hoje é grid puro sem busca) só vale se o match funcionar.
+
+### O índice enxuto — decidido em 30/08, e é o ponto que não pode ser adiado
+
+O `catalog.json` (150KB, 87 entradas) **vai inteiro pro bundle do cliente**: está
+no chunk `476-*.js`. Bandejas populada custa ~2,3KB por página. Com as outras
+famílias entrando, a conta cresce linear — ~460KB a 200 páginas, perto de 1MB a
+400. Baixado por quem abriu o site pra ver **uma** peça.
+
+Escrever a busca em cima de `getAllProducts()` prende o catálogo inteiro no
+bundle **para sempre** — a busca vira a razão pela qual tudo precisa estar lá.
+Escrever contra um índice enxuto custa o mesmo hoje e é o que impede isso.
+~150-250 bytes por página em vez de 2.300; 400 páginas ≈ 80KB.
+
+### Prompt pro Claude Code
+
+```
+A busca do catálogo só compara a query com product.name, e por isso não acha
+código de SKU, não acha sem acento e não acha frase com mais de uma palavra.
+Hoje "CT3011", "reduccion", "curva 90", "tapa" e o próprio exemplo do
+placeholder ("bandeja perforada 200mm") devolvem zero resultados.
+
+1. Índice enxuto, gerado no build — não usar o catalog.json no cliente
+   - scripts/build-search-index.mjs: lê lib/catalog.json e escreve
+     lib/search-index.json com uma entrada por ficha (type 'producto', só
+     famílias em displayMode 'catalog'):
+     { id, name, categoryId, categoryName, haystack }
+     onde haystack é uma string única, já normalizada, juntando: nome,
+     subtitle, id com hífens virando espaço, sku da página, e de cada variante
+     o sku/code e o label, mais os valores de cada dimensionAxis.
+   - package.json: "prebuild": "node scripts/build-search-index.mjs".
+     (Roda sozinho antes do build; evita índice velho por esquecimento.)
+   - Sem dependência nova. É leitura de JSON e escrita de JSON.
+
+2. lib/search.js — função pura, sem importar catalog.json
+   - normalize(s): minúsculas + remover acentos (NFD + ̀-ͯ),
+     e tokens numéricos perdem o sufixo "mm" ("200mm" → "200").
+   - searchProducts(query, { categoryId } = {}): quebra a query em tokens por
+     espaço; casa quem tiver TODOS os tokens no haystack; filtra por
+     categoryId quando passado. Importa lib/search-index.json, nunca
+     lib/catalog.json.
+
+3. components/CatalogPageClient.jsx passa a usar searchProducts. Para renderizar
+   o card do resultado, usar os campos do índice — não puxar o produto inteiro
+   do catálogo, senão o bundle volta a carregar tudo. Se o card precisar da
+   imagem, acrescentar images.primary ao índice no passo 1.
+
+4. Caixa de busca na página de família (/catalogo/[categoria])
+   - Extrair o grid para um client component, como já foi feito em
+     CatalogPageClient.
+   - Input acima do grid, escopado na família:
+     searchProducts(q, { categoryId: categoria }).
+   - Placeholder honesto: "Buscar en {família} — nombre o código".
+   - Sem resultado: "No encontramos nada en {família}" + link
+     "Buscar en todo el catálogo" para /catalogo?q={q}.
+   - Estado vazio da query = grid completo, como hoje.
+
+Casos de teste que precisam passar (todos devolvem 0 hoje):
+  CT3011 → bandeja-portacables
+  CT3211 → bandeja-portacables (é o SKU da variante Tapa)
+  reduccion → as 3 páginas de redução, sem acento
+  curva 90 → as curvas de 90°
+  tapa → as páginas que têm variante de tapa
+  bandeja perforada 200mm → bandeja-portacables
+  200 → páginas cujo eixo ancho inclui 200
+
+Rode `npm run build` no final e confirme que o chunk que hoje carrega o
+catálogo não cresceu.
+```
+
+---
+
+## 8. Dois ajustes na ficha (achados em 30/08)
+
+### 8a. Recomendados estão no lugar errado da página
+
+Hoje a ordem é: card → `longDescription` → `RecommendedProducts` → FAQ. O
+complemento aparece depois da descrição longa de SEO.
+
+Olhando o dado: em `bandeja-portacables`, `recommended` é `['kit-de-uniones']`.
+Isso **não é "você também pode gostar"** — é *"você precisa disso pra instalar"*.
+Complemento, não alternativa. E complemento tem hora: logo depois de agregar.
+
+**Não vai para a coluna esquerda** (a Yuki perguntou e desconfiou sozinha, com
+razão): a coluna tem 260px, o card viraria miniatura ilegível; e aquela coluna é
+*esta peça* — outro produto ali mistura identidade. No mobile as colunas
+empilham, então cairia logo abaixo da imagem principal, cortando a configuração
+antes de a pessoa ter configurado nada.
+
+O movimento é vertical: subir `RecommendedProducts` para logo abaixo do card,
+antes da `longDescription`, e trocar o título "Productos recomendados" por algo
+que diga a relação — "Para instalar esta pieza". `recommended` existe em 35 das
+fichas, então é sistêmico.
+
+### 8b. Os diagramas Tipo U / Tipo C parecem clicáveis e não são
+
+Eles não são fotos do produto — são a **legenda do select acima deles**. Quem não
+sabe o que é Tipo U precisa deles para escolher no dropdown. Por isso ficam onde
+estão: mover para a coluna da imagem os desconecta da escolha que explicam e os
+faz competir com o render da peça.
+
+O que incomoda é o peso: dois cards grandes, com borda e fundo, parecendo o lugar
+onde se clica — logo abaixo de um select que ainda diz "Seleccioná modelo y
+tipo…". Parecem controle e são legenda.
+
+Clicáveis seria pior: com 4 variantes de peça (Lisa U, Lisa C, Perforada U,
+Perforada C), clicar em "Tipo U" é ambíguo.
+
+`secciones` existe em **1 das 36 páginas** (`bandeja-portacables`). É caso
+especial na página principal, não componente de sistema — não vale redesenhar o
+controle de variante por causa dela.
+
+**Correção do diagnóstico (30/08): não encolher os diagramas.** A primeira ideia
+era reduzir para ~48px. Errada. Medindo os arquivos: são 1400×990 e **o desenho
+ocupa 56% da largura e 27% da altura** — o resto é branco. No contêiner de 56px
+com `object-contain`, o traço renderiza com **~15px**. Não é o contêiner que está
+pequeno, é a moldura vazia que encolhe o traço. Recortando no traço (proporção
+~3:1), o mesmo espaço rende ~50px de desenho — 3,3× maior, sem mexer no layout,
+e o arquivo até diminui (4,2KB → 2,8KB). Nada de lupa: seria maquinário para um
+desenho de linha de 4KB.
+
+**E os dois diagramas hoje são indistinguíveis.** A diferença entre U e C é o
+**retorno na ala** — a dobra para dentro no topo — e são 3,2% dos pixels,
+concentrados na borda superior fina, a primeira coisa que some a 15px. A Yuki
+confirmou que não via diferença. Por isso o rótulo passa a dizer também em
+palavra: **"Tipo U — alas rectas"** e **"Tipo C — alas con retorno"**, que é o
+que a `richDescription` da família já afirma. Desenho pequeno + palavra resolve;
+desenho pequeno sozinho, não.
+
+### Prompt pro Claude Code
+
+```
+Dois ajustes de layout na ficha de produto.
+
+1. app/catalogo/[categoria]/[produto]/page.jsx
+   - Mover <RecommendedProducts> para logo depois de <ProductSheet>, antes do
+     bloco de longDescription.
+2. components/RecommendedProducts.jsx
+   - Título passa de "Productos recomendados" para "Para instalar esta pieza".
+     O campo `recommended` do Sheet é complemento de instalação, não alternativa.
+3. app/catalogo/[categoria]/[produto]/ProductSheet.jsx — bloco product.secciones
+   - Mantém a posição (logo abaixo do select de variante): é legenda do select.
+   - Tira o peso de card: sem borda, sem fundo. NÃO encolher o diagrama — os
+     arquivos foram recortados na margem branca e agora têm proporção ~3:1;
+     deixe-os ocupar a largura disponível de cada metade, com altura livre.
+   - Rótulo em duas partes, porque o desenho sozinho não distingue os perfis:
+     "Tipo U — alas rectas" e "Tipo C — alas con retorno", em text-text-muted.
+   - Não tornar clicável.
+
+Copy em espanhol. Rode `npm run build` no final.
+```
+
+---
+
+## 8c. O complemento sobe para debaixo do botão (30/08, depois do 8)
+
+O 8a subiu o `RecommendedProducts` para logo depois do card. Ainda é longe: as
+abas ficam entre o botão e ele. A Yuki pediu o complemento **colado no CTA** — e
+os dados dizem que ele nem devia ser uma seção.
+
+**Contagem nas 36 fichas ativas:** 33 têm **exatamente 1** recomendado, 2 têm 2, e
+1 não tem nenhum (`kit-de-uniones`, que é ele próprio o complemento dos outros).
+Hoje isso ocupa seção de largura total, com `<h2>` e scroller horizontal —
+mobília para um card só.
+
+**Vira uma tira compacta dentro da coluna direita**, logo abaixo do CTA. É onde a
+pergunta "e as uniões?" nasce: no segundo seguinte ao "agregar".
+
+**Continua link para a ficha, nunca botão de agregar** — o `kit-de-uniones` tem
+eixo de `ala` e imagem por ala, ou seja, também precisa de configuração. Mesma
+regra do item 2: agregar só existe onde dá para configurar.
+
+### Prompt pro Claude Code
+
+```
+O produto recomendado vira uma tira compacta logo abaixo do CTA da ficha, dentro
+da coluna direita. Hoje é uma seção de largura total com h2 e scroller, e 33 das
+36 fichas têm um único recomendado — mobília demais para um item.
+
+1. app/catalogo/[categoria]/[produto]/page.jsx
+   - Remover o <RecommendedProducts> que está entre <ProductSheet> e o bloco de
+     longDescription.
+   - Passar a lista para a ficha: <ProductSheet ... recommended={recommendedProducts} />
+
+2. components/RecommendedProducts.jsx — vira tira compacta
+   - Sem <section>, sem <h2>, sem scroller horizontal.
+   - Rótulo pequeno "Para instalar esta pieza" (text-[11px], text-text-muted).
+   - Uma linha por item, ocupando a largura disponível: thumb ~36px, nome do
+     produto, seta → à direita. Dimensionar para 1 ou 2 itens, não para lista.
+   - Cada linha é um <Link> para /catalogo/{categoryId}/{id}/, com hover de borda
+     brand-accent e o mesmo tratamento em :focus-visible, igual aos cards.
+   - Lista vazia continua não renderizando nada.
+
+3. app/catalogo/[categoria]/[produto]/ProductSheet.jsx
+   - Aceitar a prop `recommended` e renderizar a tira logo depois do bloco dos
+     CTAs (quantidade + Agregar) e ANTES do link "¿Dudas técnicas?".
+   - Não transformar em botão de agregar: a peça recomendada também precisa de
+     configuração própria. Só link para a ficha dela.
+
+Copy em espanhol. Rode `npm run build` no final.
+```
+
+---
+
+## 9. As abas da ficha são conteúdo global repetido 36 vezes — em aberto
+
+Levantamento de 30/08, ainda **sem decisão**:
+
+- **Especificaciones:** 33 de 36 fichas têm **zero** linhas próprias
+  (`dimensions`, `features`, `note`, `unidadVenta` vazios — as medidas dessas
+  peças vivem nos eixos ancho/ala, no configurador). Sobram Familia, Proceso de
+  unión e Tolerancia de espesor, e os dois últimos são globais.
+- **Materiales y Tratamientos:** é `globalSpecs.surfaceTreatments` — idêntico nas 36.
+- **Normas:** array escrito à mão dentro do JSX — idêntico nas 36.
+- `gs.joiningProcess` aparece **duas vezes**, na aba Especificaciones e de novo
+  na Materiales.
+
+Três abas prometendo profundidade técnica e entregando texto que se repete em 36
+páginas. Fechar por padrão (a ideia inicial da Yuki) esconderia o problema em vez
+de resolvê-lo.
+
+**Caminho proposto:** manter na ficha só o que é daquela peça — nas 3 páginas que
+têm algo — e linkar para `/materiales-y-tratamientos`, que já existe e diz tudo
+isso uma vez. Nas outras 33 a tira de abas não aparece, e o `joiningProcess`
+duplicado some junto.
+
+**Por que está parado:** as abas foram povoadas nos briefs pensando em conteúdo
+indexável. Tirá-las remove texto do HTML de 36 páginas. A leitura do Claude é que
+bloco repetido em 36 páginas quase não soma para SEO e que uma página forte
+linkada por 36 é o padrão — mas isso **não foi verificado em fonte atual**. Se
+SEO for a aposta principal do catálogo, olhar o Search Console antes.
+
+---
+
+## 11. Política de privacidade — some na troca de domínio (30/08)
+
+**Contexto, corrigido:** `bga.com.py` serve o projeto **`bga-site`** (a landing
+antiga). O `bga-catalogo` **nunca foi publicado** — não é deploy quebrado, é
+decisão da Yuki de não colocar o catálogo no ar ainda. O GA4 dispara porque o
+`bga-site` usa a mesma propriedade (`G-3PF2RG7WNG`), então os 404 que aparecem no
+relatório vêm de lá, não daqui.
+
+**O que isso revela:** `https://bga.com.py/politica-privacidad.html` existe e está
+no ar — cobre coleta de dados pelo formulário de cotização, Google Analytics e
+cookies. O `bga-catalogo` **não tem essa página**: nenhuma rota, nenhum link,
+nenhuma menção a "privacidad" no projeto inteiro (verificado por grep).
+
+Como este repo contém a LP (`app/page.jsx` → `LandingPage`), publicar o catálogo
+significa apontar o domínio para cá e aposentar o `bga-site`. Nesse dia:
+
+- `/politica-privacidad.html` vira **404** — é a primeira URL concreta do item 4
+  dos briefs (redirects 301), que até agora era genérico
+- o site novo fica **sem política de privacidade** coletando *mais* dados que o
+  antigo: carrinho, formulário de lead, webhook para o Apps Script, GA4
+- os anúncios planejados (Google, Instagram) costumam exigir política acessível
+  no destino — **não verificado nas regras atuais de cada plataforma**, conferir
+  na fonte antes de subir campanha
+
+**O que fazer:** portar a página para uma rota do projeto
+(`app/politica-privacidad/page.jsx`, texto vindo do que já está no ar), linkar no
+rodapé, e registrar o 301 de `/politica-privacidad.html` para a rota nova no
+console do Amplify — com `trailingSlash: true`, a URL nova é
+`/politica-privacidad/`, então a antiga quebra mesmo com o mesmo nome.
+
+**Antes de portar:** a política atual descreve o site antigo. O catálogo coleta
+mais coisa (itens da cotação, observações, dados do projeto gravados na planilha
+do cliente via Apps Script). O texto precisa de uma revisão de conteúdo, não só
+de um copiar e colar. Isso é decisão da Yuki e possivelmente do cliente.
+
+---
+
+## 10. Instrumentar o 404 antes da troca de domínio (30/08)
+
+**Correção do registro:** este item nasceu de um 404 que a Yuki tinha visto no
+GA4 — e ela conferiu depois: **não era deste site**, era do site da Faro ou do
+portfólio. Não há 404 observado aqui. O item continua valendo, mas por outro
+motivo: é instrumentação para o dia da troca de domínio, não conserto de problema
+observado. Prioridade baixa até lá.
+
+**O que está frouxo:** `app/not-found.jsx` não exporta `metadata`, então herda o título padrão
+do site (`config.meta.title`). No GA4 o 404 chega com o **mesmo `page_title` da
+home** — dá para ver que houve 404, não em qual caminho.
+
+**Segundo problema, na mesma tela:** o CTA do 404 é "Volver al catálogo" apontando
+para `/catalogo`. Enquanto o deploy estiver parado no build antigo, `/catalogo`
+também é 404 — o beco sem saída manda para outro beco sem saída.
+
+**Por que ainda vale:** no dia em que o domínio apontar para cá, é esse evento que
+responde com dado quais URLs do `bga-site` continuam sendo acessadas e merecem
+redirect 301 (item 4 dos briefs). Antes disso, não há o que medir.
+
+### Prompt pro Claude Code
+
+```
+O 404 precisa ser identificável no GA4 e não pode terminar em beco sem saída.
+
+Em app/not-found.jsx:
+
+1. Disparar evento próprio usando o componente que já existe, components/TrackView:
+   <TrackView event="pagina_no_encontrada" params={{ ruta: <caminho atual> }} />
+   O caminho vem de window.location.pathname — TrackView já é client component,
+   então ler no efeito, nunca na render (o build é export estático).
+2. Segundo CTA além de "Volver al catálogo": um link para a home. Se o catálogo
+   estiver indisponível, o usuário ainda tem para onde ir.
+
+Não mexer em mais nada. Rode `npm run build` no final.
+```
+
+**Depois do deploy:** olhar `pagina_no_encontrada` no GA4 por `ruta`. Caminhos
+antigos com volume real = candidatos a redirect 301 no console do Amplify. Sem
+volume = o item 4 dos briefs pode ser fechado sem trabalho.
+
+---
+
+## 12. O GA4 dispara em desenvolvimento (30/08)
+
+**Como apareceu:** no relatório de Página de destino do GA4 havia
+`/catalogo/bandejas/` — uma rota que **não está publicada**. É tráfego do
+`localhost` da Yuki.
+
+**Causa:** `components/Analytics.jsx` injeta o GA4 sempre que existe
+`gaMeasurementId`, sem olhar o ambiente. `npm run dev` reporta para a propriedade
+de produção do cliente (`G-3PF2RG7WNG`), a mesma que o `bga-site` usa.
+
+**Consequência:** toda a sessão de testes de hoje entrou nos dados do cliente. E
+como a medição do catálogo é o que deve virar case, o baseline precisa estar
+limpo antes do lançamento.
+
+### Prompt pro Claude Code
+
+```
+O GA4 está sendo carregado também em desenvolvimento, e o localhost reporta para
+a propriedade de produção do cliente.
+
+Em components/Analytics.jsx: não renderizar nada quando
+process.env.NODE_ENV !== 'production'.
+
+Manter a guarda que já existe do gaMeasurementId ausente, e o comentário do topo
+do arquivo atualizado para dizer as duas condições.
+
+Não mexer em mais nada.
+```
+
+**Ressalva:** `next build` roda com `NODE_ENV=production`, então servir o `out/`
+localmente ainda reportaria. Se isso virar hábito, acrescentar também uma checagem
+de `window.location.hostname` (pular `localhost` e `127.0.0.1`). Para o fluxo de
+hoje, que é `npm run dev`, a guarda de ambiente resolve.
+
+**Decidido (30/08):** a Yuki vai configurar **filtro de tráfego interno** no GA4 e
+pedir o IP do Akira. Vale pegar também o da funcionária dele (mexe na planilha e
+abre o site) e o da Aida, quando ela começar a receber cotações.
+
+Três armadilhas conhecidas desse caminho:
+
+- **São duas etapas.** Definir o tráfego interno no stream só marca as sessões
+  com `traffic_type=internal`; o filtro de dados correspondente nasce em modo de
+  teste e, enquanto estiver assim, marca mas não exclui. Os nomes dos menus do
+  GA4 mudam com frequência — a lógica de dois passos, não.
+- **Não é retroativo.** Vale só para dados novos; o GA4 não guarda IP para
+  reprocessar. O histórico com os testes de hoje continua lá, então o baseline do
+  case ainda precisa de recorte por data.
+- **IP de escritório costuma ser dinâmico.** Se mudar, o filtro para de funcionar
+  em silêncio. Se o provedor der faixa, filtrar por CIDR. E para a máquina da
+  Yuki a guarda de ambiente no código é mais confiável que IP, porque não depende
+  de onde ela está trabalhando.
+
+**Fora do alcance:** o `/?` visto no mesmo relatório não vem deste repo — o form
+da LP daqui chama `preventDefault()` na primeira linha. O que está no ar é o
+`bga-site`, outro repositório. Um `<form>` sem `preventDefault` submetendo por GET
+produz exatamente `/?`; é por aí que se procura, se alguém for investigar lá.
