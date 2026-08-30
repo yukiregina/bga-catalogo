@@ -35,6 +35,10 @@
   --gray-700: var(--onix-600);
   --white: var(--onix-0);
   --wa: #25D366;
+
+  /* Tentativa de levar o realce da lista aberta dos <select> pro azul do DS —
+     depende do SO/navegador; não tem efeito no popup nativo do macOS. */
+  accent-color: #131E29;
 }
 
 body {

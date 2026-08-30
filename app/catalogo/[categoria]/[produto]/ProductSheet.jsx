@@ -318,23 +318,31 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
             {/* Variante (modelo/tipo ou diámetro) — seleção dentro da ficha, não rota */}
             {hasVariants && (
               <div className="mb-4">
-                <label className="flex items-center justify-between mb-1.5">
+                <label htmlFor="variante" className="flex items-center justify-between mb-1.5">
                   <span className="text-xs text-text-muted">Modelo / variante</span>
                 </label>
-                <select
-                  value={selectedVariant?.sku ?? ''}
-                  onChange={e => {
-                    const v = variants.find(v => v.sku === e.target.value)
-                    setSelectedVariant(v ?? null)
-                    setGalleryTab(v?.role === 'tapa' ? 'tapa' : 'primary')
-                  }}
-                  className="w-full text-sm border border-border-subtle rounded-lg px-3 py-2 bg-white text-text-primary"
-                >
-                  <option value="">Seleccioná modelo y tipo…</option>
-                  {variants.map(v => (
-                    <option key={v.sku} value={v.sku}>{v.label}</option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    id="variante"
+                    value={selectedVariant?.sku ?? ''}
+                    onChange={e => {
+                      const v = variants.find(v => v.sku === e.target.value)
+                      setSelectedVariant(v ?? null)
+                      setGalleryTab(v?.role === 'tapa' ? 'tapa' : 'primary')
+                    }}
+                    className="w-full text-sm border border-border-subtle rounded-lg px-3 py-2 bg-white text-text-primary appearance-none pr-9 focus:outline-none focus:border-brand-primary transition-colors cursor-pointer"
+                  >
+                    <option value="">Seleccioná modelo y tipo…</option>
+                    {variants.map(v => (
+                      <option key={v.sku} value={v.sku}>{v.label}</option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-2.5 flex items-center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </div>
+                </div>
 
                 {/* Diagrama de apoio: corte transversal tipo U / tipo C (só bandeja-portacables) —
                     legenda do select acima, não um card à parte. */}
