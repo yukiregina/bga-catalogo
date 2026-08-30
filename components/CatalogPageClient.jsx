@@ -2,20 +2,17 @@
 
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { getCategories, getProductsByCategory, getAllProducts, getCategoryById, getCategoryDisplayMode, isCatalogCategory, getProductImageAlt } from '@/lib/products'
+import { getCategories, getProductsByCategory, getCategoryDisplayMode } from '@/lib/products'
+import { searchProducts } from '@/lib/search'
 
 export default function CatalogPageClient() {
   const searchParams = useSearchParams()
   const query = searchParams.get('q')?.trim() ?? ''
   const categories = getCategories()
 
-  // Busca só devolve produtos de famílias em modo "catalog" —
-  // as demais não têm ficha para onde apontar.
-  const results = query
-    ? getAllProducts().filter(p =>
-        p.name.toLowerCase().includes(query.toLowerCase()) && isCatalogCategory(p.categoryId)
-      )
-    : []
+  // searchProducts já só cobre famílias em modo "catalog" — o índice
+  // (lib/search-index.json) nem inclui as outras.
+  const results = query ? searchProducts(query) : []
 
   return (
     <>
@@ -39,38 +36,35 @@ export default function CatalogPageClient() {
             </p>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
-              {results.map(product => {
-                const category = getCategoryById(product.categoryId)
-                return (
-                  <Link
-                    key={product.id}
-                    href={`/catalogo/${product.categoryId}/${product.id}`}
-                    className="bg-white border border-black/8 rounded-card p-3 flex flex-col transition hover:border-brand-accent hover:shadow-sm focus-visible:border-brand-accent focus-visible:shadow-sm"
-                  >
-                    {product.images?.primary ? (
-                      <img
-                        src={product.images.primary}
-                        alt={getProductImageAlt(product)}
-                        width={200}
-                        height={200}
-                        loading="lazy"
-                        className="w-full aspect-square object-contain rounded bg-surface-elevated mb-3"
-                      />
-                    ) : (
-                      <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center mb-3">
-                        <span className="text-[10px] text-text-muted">sin imagen</span>
-                      </div>
-                    )}
-                    <div className="font-mono text-[10px] text-text-sku mb-0.5">{product.id}</div>
-                    <div className="text-sm font-semibold text-brand-primary leading-tight mb-1 flex-1">
-                      {product.name}
+              {results.map(product => (
+                <Link
+                  key={product.id}
+                  href={`/catalogo/${product.categoryId}/${product.id}`}
+                  className="bg-white border border-black/8 rounded-card p-3 flex flex-col transition hover:border-brand-accent hover:shadow-sm focus-visible:border-brand-accent focus-visible:shadow-sm"
+                >
+                  {product.image ? (
+                    <img
+                      src={product.image}
+                      alt={`${product.name} — BGA Electric`}
+                      width={200}
+                      height={200}
+                      loading="lazy"
+                      className="w-full aspect-square object-contain rounded bg-surface-elevated mb-3"
+                    />
+                  ) : (
+                    <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center mb-3">
+                      <span className="text-[10px] text-text-muted">sin imagen</span>
                     </div>
-                    {category && (
-                      <div className="text-[10px] text-text-muted">{category.name}</div>
-                    )}
-                  </Link>
-                )
-              })}
+                  )}
+                  <div className="font-mono text-[10px] text-text-sku mb-0.5">{product.id}</div>
+                  <div className="text-sm font-semibold text-brand-primary leading-tight mb-1 flex-1">
+                    {product.name}
+                  </div>
+                  {product.categoryName && (
+                    <div className="text-[10px] text-text-muted">{product.categoryName}</div>
+                  )}
+                </Link>
+              ))}
             </div>
           )}
         </section>

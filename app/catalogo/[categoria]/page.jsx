@@ -4,10 +4,11 @@
 //   "contact" → intro curta + bloco de contato (WhatsApp + email)
 
 import Link from 'next/link'
-import { getCategories, getProductsByCategory, getCategoryById, getCategoryDisplayMode, getProductImageAlt } from '@/lib/products'
+import { getCategories, getProductsByCategory, getCategoryById, getCategoryDisplayMode } from '@/lib/products'
 import config from '@/client.config.js'
 import { notFound } from 'next/navigation'
 import TrackView from '@/components/TrackView'
+import CategoryProductsGrid from '@/components/CategoryProductsGrid'
 
 export function generateStaticParams() {
   return getCategories().map(cat => ({ categoria: cat.id }))
@@ -202,68 +203,11 @@ export default function CategoriaPage({ params }) {
 
         {/* ── 3. Grid de produtos ─────────────────────────────────────────── */}
         {isCatalog && (
-        <section className="mb-10">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-brand text-base font-bold text-brand-primary">
-              Productos
-              <span className="font-primary font-normal text-sm text-text-muted ml-2">
-                ({products.length} en total)
-              </span>
-            </h2>
-          </div>
-
-          {products.length === 0 ? (
-            <p className="text-text-muted text-sm">
-              Productos disponibles en breve. Contactanos para más información.
-            </p>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
-              {products.map(product => {
-                const variantCount = product.variants?.length ?? 0
-                const subtext = variantCount > 0
-                  ? `${variantCount} variante${variantCount > 1 ? 's' : ''}`
-                  : product.dimensions?.map(d => `${d.value}${d.unit}`).join(' · ') ?? ''
-
-                return (
-                  <Link
-                    key={product.id}
-                    href={`/catalogo/${categoria}/${product.id}`}
-                    className="bg-white border border-black/8 rounded-card p-3 flex flex-col transition hover:border-brand-accent hover:shadow-sm focus-visible:border-brand-accent focus-visible:shadow-sm"
-                  >
-                    {/* Imagem */}
-                    {product.images?.primary ? (
-                      <img
-                        src={product.images.primary}
-                        alt={getProductImageAlt(product)}
-                        width={300}
-                        height={300}
-                        loading="lazy"
-                        className="w-full aspect-square object-contain rounded bg-surface-elevated mb-3"
-                      />
-                    ) : (
-                      <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center mb-3">
-                        <span className="text-[10px] text-text-muted">sin imagen</span>
-                      </div>
-                    )}
-
-                    {/* SKU */}
-                    <div className="font-mono text-[10px] text-text-sku mb-0.5">{product.id}</div>
-
-                    {/* Nome */}
-                    <div className="text-sm font-semibold text-brand-primary leading-tight mb-1 flex-1">
-                      {product.name}
-                    </div>
-
-                    {/* Subtexto */}
-                    {subtext && (
-                      <div className="text-[10px] text-text-muted">{subtext}</div>
-                    )}
-                  </Link>
-                )
-              })}
-            </div>
-          )}
-        </section>
+          <CategoryProductsGrid
+            products={products}
+            categoryId={categoria}
+            categoryName={category.name}
+          />
         )}
 
         {/* ── 4. Tabela material × ambiente ───────────────────────────────── */}

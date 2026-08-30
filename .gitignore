@@ -5,3 +5,4 @@ out/
 .env*
 reference-lp:/
 .claude/
+lib/search-index.json
