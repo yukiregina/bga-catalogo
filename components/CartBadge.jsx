@@ -8,19 +8,21 @@ export default function CartBadge({ label }) {
   const count = items.length // nº de produtos distintos
   const isEmpty = count === 0
 
-  // Carrinho é estado, não CTA: vazio não chama atenção nem é clicável — mas
-  // continua ocupando o mesmo espaço, pra não empurrar o resto do menu
-  // toda vez que o carrinho enche/esvazia (visibility, não display/unmount).
+  // Carrinho vazio é visível, mas discreto — amarelo em tinta leve, sem
+  // número (a contagem é o que distingue vazio de cheio) — pra não competir
+  // com o "Agregar a cotización" da ficha. Existe pra que o fluxo de
+  // cotización seja descobrível por quem nunca abriu uma ficha.
   return (
     <Link
       href="/cotacao"
-      aria-hidden={isEmpty}
-      tabIndex={isEmpty ? -1 : undefined}
-      className={`bg-brand-accent text-brand-primary text-xs font-semibold px-3 py-1.5 rounded-full hover:brightness-105 transition ${
-        isEmpty ? 'invisible pointer-events-none' : ''
+      aria-label={isEmpty ? 'Cotización, vacía' : `Cotización, ${count} producto${count !== 1 ? 's' : ''}`}
+      className={`px-3 py-1.5 rounded-full text-xs font-semibold transition ${
+        isEmpty
+          ? 'bg-brand-accent/15 border border-brand-accent/40 text-brand-primary hover:bg-brand-accent/25 hover:border-brand-accent/70'
+          : 'bg-brand-accent text-brand-primary hover:brightness-105'
       }`}
     >
-      {label} · <span className="inline-block w-4 text-center">{count}</span>
+      {isEmpty ? label : `${label} · ${count}`}
     </Link>
   )
 }
