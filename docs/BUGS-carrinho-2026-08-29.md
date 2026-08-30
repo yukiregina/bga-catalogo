@@ -24,7 +24,7 @@ por ser o único que não muda comportamento nem dado.
 | 1 | Variantes colapsam numa linha só | **dado** — o lead sai errado | ✅ feito 29/08 |
 | 5 | Imagem e nome não seguem a variante | **dado** — o lead sai errado | ✅ feito 29/08 |
 | 2 | Agregar só existe onde há configuração | feedback + qualidade do lead | ✅ feito 30/08 |
-| 3 | Carrinho sem volta pro produto | navegação | ⬜ |
+| 3 | Carrinho sem volta pro produto + configuração na URL | navegação + link compartilhável | ⬜ |
 | 4 | `<select>` de variante fora do DS | estilo | ⬜ |
 | 7 | Busca não acha SKU, nem sem acento | **produto** — ensina que o site não tem | ⬜ |
 | 8 | Recomendados fora de hora + diagramas U/C com peso de botão | layout | ✅ feito 30/08 |
@@ -227,44 +227,108 @@ ancho devolve o amarelo. E a frase abaixo do H1 aparece nas duas páginas.
 
 ---
 
-## 3. Voltar do carrinho pro produto 🟡
+## 3. Voltar do carrinho pro produto — com a configuração junto 🟡
 
-**Sintoma:** no carrinho não consigo voltar pro último produto que eu estava,
-nem abrir o produto da lista.
+**Sintoma:** no carrinho não dá pra voltar pro último produto que eu estava, nem
+abrir o produto da lista.
 
-**Causa:** `app/cotacao/page.jsx` — o breadcrumb da linha 89 vai pra
-`/catalogo` (a grade inteira, não de onde você veio) e os itens da lista
-(linha 115 em diante) são `<div>`, sem link. O objeto do carrinho tem
-`product.categoryId` e `product.id`, ou seja, a rota
-`/catalogo/{categoryId}/{id}/` já está inteira ali dentro — só não é usada.
+**Causa:** o breadcrumb da `/cotacao` vai pra `/catalogo` (a grade inteira, não de
+onde você veio) e os itens da lista são `<div>`, sem link. O objeto da linha tem
+`product.categoryId` e `product.id` — a rota já está ali dentro, só não é usada.
 
 São duas voltas diferentes e as duas faltam: **voltar de onde vim** (corrigir o
 que acabei de agregar) e **abrir um item da lista** (revisar spec de qualquer
 linha). A segunda é a que mais importa: revisar antes de mandar é a função da
 página.
 
+### A armadilha que o próprio item 1 criou (vista em 30/08)
+
+Linkar a linha para a ficha "crua" não basta. A pessoa clica em "Tapa para Curva
+Horizontal 45° · Ancho 500" e cai numa ficha com a configuração **padrão** —
+nenhuma variante escolhida, ancho 50. E como o botão passou a refletir estado
+**por configuração** (item 2), ele vai dizer "Agregar a cotización", como se
+aquilo não estivesse no carrinho. A pessoa agrega de novo e ganha uma linha
+duplicada.
+
+É a mesma classe de bug da sessão inteira — estado que mente — e foi o nosso
+`lineId` que a criou.
+
+**Solução escolhida: a configuração viaja na URL.** O link do carrinho carrega
+`?variante=…&ancho=…&ala=…&material=…&espesor=…`; a ficha lê no mount e se monta
+igual. A volta fica sem perda, o botão diz a verdade sozinho.
+
+**O ganho maior não é o carrinho.** Com a ficha também *escrevendo* a
+configuração na URL enquanto a pessoa configura, qualquer configuração vira
+**link compartilhável**: a Aida manda pro cliente a peça exata já montada, e o
+cliente abre e agrega. Isso vale mais para a vendedora do que a volta do carrinho
+vale para o comprador. É `history.replaceState`, não navegação — não polui o
+histórico nem re-renderiza a rota.
+
+**Nota de implementação:** ler `window.location.search` dentro de `useEffect`, não
+`useSearchParams()`. Com `output: 'export'`, `useSearchParams` exige fronteira de
+Suspense e quebra o build sem ela — e como a página é estática, o parâmetro só é
+conhecido no cliente de qualquer forma.
+
 ### Prompt pro Claude Code
 
 ```
-Página de cotização: dar caminho de volta pro produto.
+A configuração escolhida passa a viajar na URL da ficha, e o carrinho ganha
+caminho de volta.
 
-Em app/cotacao/page.jsx:
+Contexto: hoje a linha do carrinho não é clicável, e se fosse levaria para uma
+ficha com a configuração padrão — onde o botão diria "Agregar a cotización"
+mesmo com aquela peça já no carrinho, porque o estado do botão é por
+configuração (lineId). Resultado seria linha duplicada.
 
-1. Cada item da lista vira link pra ficha: envolver o thumb + nome + SKU num
-   <Link href={`/catalogo/${product.categoryId}/${product.id}/`}>. Os controles
-   de quantidade, o input de observação e o botão de remover ficam FORA do link.
-   Estado de hover discreto no card.
+1. app/catalogo/[categoria]/[produto]/ProductSheet.jsx — ler configuração da URL
+   - Num useEffect de mount, ler window.location.search (NÃO usar
+     useSearchParams: com output 'export' ele exige fronteira de Suspense e
+     quebra o build).
+   - Parâmetros, em espanhol, batendo com os rótulos da interface:
+     variante (sku da variante), material (id), espesor (gauge), e um por eixo
+     usando o próprio id do eixo: ancho, ala.
+   - Validar tudo contra os dados do produto: variante precisa existir em
+     product.variants; valor de eixo precisa existir em ax.values; material em
+     globalSpecs.materials; espesor em globalSpecs.thicknesses. Valor inválido
+     ou ausente = mantém o default atual. Nunca confiar na URL.
 
-2. Voltar pro último produto visitado: em ProductSheet.jsx, gravar em
-   sessionStorage ('bga-last-product') { href, name } no mount da ficha. Na
-   página de cotização, se existir, o breadcrumb do topo vira
-   "← Volver a {name}"; se não existir, mantém "← Catálogo".
-   Ler no useEffect, nunca na render — o build é export estático.
+2. Mesma ficha — escrever a configuração na URL
+   - Sempre que variante, eixo, material ou espesor mudarem, atualizar a query
+     com history.replaceState (não router.push: não queremos navegação nem
+     entrada nova no histórico).
+   - Só os parâmetros que têm valor. Sem variante escolhida, sem variante= na
+     URL.
+   - Isso faz de qualquer configuração um link compartilhável — é intencional.
 
-3. Manter o "+ Agregar más productos" no fim da lista como está.
+3. components/CartProvider.jsx — a linha guarda a configuração estruturada
+   - No meta do addItem, além de image/imageAlt/title/configLabel, guardar
+     config: { variante, axes, material, espesor } com os valores crus.
+   - ProductSheet.handleAddToCart passa esse config.
+
+4. app/cotacao/page.jsx — linha clicável
+   - O bloco de thumb + SKU + título + configLabel vira um <Link> para
+     /catalogo/{product.categoryId}/{product.id}/ com a query montada a partir
+     de item.config (quando existir; linha sem config linka sem query).
+   - Os controles de quantidade, o input de observação e o botão de remover
+     ficam FORA do link.
+   - Estado de hover discreto no card e o mesmo tratamento em :focus-visible.
+
+5. Voltar pro último produto visitado
+   - Em ProductSheet, gravar em sessionStorage ('bga-last-product')
+     { href, name } no mount da ficha — href já com a query da configuração.
+   - Na /cotacao, se existir, o breadcrumb do topo vira "← Volver a {name}";
+     se não existir, mantém "← Catálogo". Ler no useEffect, nunca na render.
+
+6. Manter o "+ Agregar más productos" no fim da lista como está.
 
 Copy em espanhol. Rode `npm run build` no final.
 ```
+
+**Como conferir:** agregar uma tapa com ancho 500, ir ao carrinho, clicar na
+linha. A ficha tem que abrir com a variante Tapa e o ancho 500 já selecionados, e
+o botão tem que dizer "✓ En tu cotización (1)" — não "Agregar". Depois copiar a
+URL da barra de endereço, abrir em aba anônima e confirmar que a mesma
+configuração aparece.
 
 ---
 
