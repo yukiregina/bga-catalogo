@@ -651,63 +651,100 @@ bundle **para sempre** — a busca vira a razão pela qual tudo precisa estar l�
 Escrever contra um índice enxuto custa o mesmo hoje e é o que impede isso.
 ~150-250 bytes por página em vez de 2.300; 400 páginas ≈ 80KB.
 
+### Verificado contra o `catalog.json` (30/08, antes de escrever o prompt)
+
+Protótipo rodado sobre os dados reais: os 7 casos de teste passam, e o índice dá
+**13KB / 365 bytes por ficha** (contra 2,3KB por página do `catalog.json`). Três
+coisas que o prompt da versão anterior errava:
+
+- **`keywords` é string**, não array — `"bandeja portacables, eletrocalha, …"`.
+- **Não existe `sku` no topo do produto** na maioria: só 13 das 87 entradas têm.
+  Os códigos vivem em `variants[]`, nos dois formatos (`{sku,label,role}` e
+  `{code,attributes}` em `ST2239`/`KIT5262`).
+- **`type: 'producto'` é o filtro certo**: em bandejas são 36 produtos + 5
+  `subfamilia`, que não são ficha.
+
+**Ranking é necessário, e o protótipo mostrou por quê:** com match por E de todos
+os tokens, `bandeja perforada 200mm` devolve **8** resultados, não 1 — todas as
+peças que têm ancho 200 e variante perforada. A ficha certa está entre elas, mas
+não em primeiro. Ordenar por nome resolve sem biblioteca.
+
 ### Prompt pro Claude Code
 
 ```
-A busca do catálogo só compara a query com product.name, e por isso não acha
-código de SKU, não acha sem acento e não acha frase com mais de uma palavra.
-Hoje "CT3011", "reduccion", "curva 90", "tapa" e o próprio exemplo do
-placeholder ("bandeja perforada 200mm") devolvem zero resultados.
+A busca do catálogo só compara a query com product.name. Hoje "CT3011",
+"reduccion", "curva 90", "tapa" e o próprio exemplo do placeholder
+("bandeja perforada 200mm") devolvem zero resultados.
 
-1. Índice enxuto, gerado no build — não usar o catalog.json no cliente
-   - scripts/build-search-index.mjs: lê lib/catalog.json e escreve
-     lib/search-index.json com uma entrada por ficha (type 'producto', só
-     famílias em displayMode 'catalog'):
-     { id, name, categoryId, categoryName, haystack }
-     onde haystack é uma string única, já normalizada, juntando: nome,
-     subtitle, id com hífens virando espaço, sku da página, e de cada variante
-     o sku/code e o label, mais os valores de cada dimensionAxis.
-   - package.json: "prebuild": "node scripts/build-search-index.mjs".
-     (Roda sozinho antes do build; evita índice velho por esquecimento.)
-   - Sem dependência nova. É leitura de JSON e escrita de JSON.
+Sem dependência nova em nenhum passo — é leitura de JSON, escrita de JSON e
+comparação de string.
 
-2. lib/search.js — função pura, sem importar catalog.json
-   - normalize(s): minúsculas + remover acentos (NFD + ̀-ͯ),
-     e tokens numéricos perdem o sufixo "mm" ("200mm" → "200").
-   - searchProducts(query, { categoryId } = {}): quebra a query em tokens por
-     espaço; casa quem tiver TODOS os tokens no haystack; filtra por
-     categoryId quando passado. Importa lib/search-index.json, nunca
-     lib/catalog.json.
+1. scripts/build-search-index.mjs — índice enxuto gerado no build
+   Lê lib/catalog.json e escreve lib/search-index.json. Uma entrada por ficha:
+   só type === 'producto' e só famílias com displayMode 'catalog' (hoje,
+   bandejas: 36 entradas; os 5 type 'subfamilia' ficam de fora).
 
-3. components/CatalogPageClient.jsx passa a usar searchProducts. Para renderizar
-   o card do resultado, usar os campos do índice — não puxar o produto inteiro
-   do catálogo, senão o bundle volta a carregar tudo. Se o card precisar da
-   imagem, acrescentar images.primary ao índice no passo 1.
+   Entrada: { id, name, categoryId, categoryName, image, haystack }
+   - image = images.primary (o card do resultado precisa, e sem isso o
+     CatalogPageClient volta a puxar o catálogo inteiro).
+   - haystack = string única já normalizada, juntando:
+     name, subtitle, id com hífen virando espaço, keywords (é STRING, não
+     array), sku do topo quando existir, e de cada variante: v.sku ou v.code,
+     v.label, e os valores de v.attributes; mais os values de cada
+     dimensionAxes.
+     Depois: remover pontuação, colapsar espaço, e deduplicar tokens
+     preservando a ordem (corta ~20% do peso).
+
+   package.json: "prebuild": "node scripts/build-search-index.mjs"
+   .gitignore: lib/search-index.json — é gerado, não versionado.
+
+2. lib/search.js — função pura, NÃO importa catalog.json
+   - normalize(s): minúsculas, remover acentos (NFD + /[̀-ͯ]/g),
+     e "200mm" → "200" (\d seguido de mm vira só o número).
+   - searchProducts(query, { categoryId } = {}):
+     quebra a query em tokens por espaço, casa quem tem TODOS os tokens no
+     haystack, filtra por categoryId quando passado.
+     Ordenar o resultado: primeiro quem casa todos os tokens no name
+     normalizado, depois o resto; empate resolve por name A-Z.
+     Importa lib/search-index.json.
+
+3. components/CatalogPageClient.jsx passa a usar searchProducts.
+   O card do resultado usa os campos do índice (id, name, categoryId,
+   categoryName, image) — não chamar getAllProducts nem getCategoryById aqui,
+   senão o catalog.json volta pro bundle e o item perde o sentido.
+   O alt da imagem vira `${name} — BGA Electric`.
 
 4. Caixa de busca na página de família (/catalogo/[categoria])
-   - Extrair o grid para um client component, como já foi feito em
-     CatalogPageClient.
-   - Input acima do grid, escopado na família:
-     searchProducts(q, { categoryId: categoria }).
-   - Placeholder honesto: "Buscar en {família} — nombre o código".
+   Extrair o grid para um client component, como já foi feito em
+   CatalogPageClient. Estado local com useState — NÃO usar useSearchParams
+   aqui (quebra o build com output: 'export' fora de fronteira de Suspense).
+   - Input acima do grid: searchProducts(q, { categoryId: categoria }).
+   - Placeholder: "Buscar en {família} — nombre o código".
    - Sem resultado: "No encontramos nada en {família}" + link
      "Buscar en todo el catálogo" para /catalogo?q={q}.
-   - Estado vazio da query = grid completo, como hoje.
+   - Query vazia = grid completo, como hoje.
 
-Casos de teste que precisam passar (todos devolvem 0 hoje):
-  CT3011 → bandeja-portacables
-  CT3211 → bandeja-portacables (é o SKU da variante Tapa)
-  reduccion → as 3 páginas de redução, sem acento
-  curva 90 → as curvas de 90°
-  tapa → as páginas que têm variante de tapa
-  bandeja perforada 200mm → bandeja-portacables
-  200 → páginas cujo eixo ancho inclui 200
+Casos de teste (todos devolvem 0 hoje; os números vêm do protótipo):
+  CT3011                   → 1  bandeja-portacables
+  CT3211                   → 1  bandeja-portacables (SKU da variante Tapa)
+  reduccion                → 3  as reduções, sem acento
+  curva 90                 → 4  as curvas de 90°
+  tapa                     → 22 as páginas com variante de tapa
+  bandeja perforada 200mm  → 8, com bandeja-portacables em PRIMEIRO
+  200                      → 32 páginas cujo eixo ancho inclui 200
 
 Rode `npm run build` no final e confirme que o chunk que hoje carrega o
-catálogo não cresceu.
+catálogo (476-*.js) não cresceu.
 ```
 
+**Como conferir:** os 7 casos acima. O que prova que o índice funcionou não é a
+busca achar — é o chunk `476-*.js` não crescer. Se cresceu, alguma coisa no
+`CatalogPageClient` ainda importa o `catalog.json`.
+
+**Commit:** `feat: busca por código, sem acento e por frase — índice enxuto no build`
+
 ---
+
 
 ## 8. Dois ajustes na ficha (achados em 30/08)
 
@@ -1007,3 +1044,62 @@ Três armadilhas conhecidas desse caminho:
 da LP daqui chama `preventDefault()` na primeira linha. O que está no ar é o
 `bga-site`, outro repositório. Um `<form>` sem `preventDefault` submetendo por GET
 produz exatamente `/?`; é por aí que se procura, se alguém for investigar lá.
+
+---
+
+## 13. O produto não chega na primeira dobra da página de família (30/08)
+
+**Medido em `/catalogo/bandejas`:** ~810px de conteúdo antes do grid. Os dois
+blocos que ocupam isso são o `richDescription` (1167 caracteres, 3 parágrafos,
+~360px) e os 6 cards de intenção, que em desktop viram 2 linhas de cards de
+~108px (~308px). O card do produto não é o problema.
+
+**Decidido (30/08):** o texto desce; os cards viram uma linha de chips. E o card
+"Galvanizado en caliente" **sai** — é o único dos 6 que não aponta para dentro do
+catálogo, e esse destino já tem link próprio embaixo da tabela de materiais
+(`Ver materiales y tratamientos en detalle →`). Repetir ali em cima seria o mesmo
+link duas vezes na mesma página. A regra que fica: **chip é atalho de navegação
+dentro da família; conteúdo é conteúdo, e mora embaixo.**
+
+### Prompt pro Claude Code
+
+```
+Na página de família (app/catalogo/[categoria]/page.jsx) o grid de produtos só
+começa depois de ~810px de conteúdo. Reordenar para o produto entrar na primeira
+dobra. Sem componente novo e sem dependência.
+
+1. richDescription desce
+   Mover o bloco do category.richDescription (a div com os parágrafos) para
+   depois do <CategoryProductsGrid>, imediatamente antes da seção "Material y
+   tratamiento según ambiente". Dar a ele um h2 no padrão das outras seções:
+   "Sobre la línea {category.name}". Mantém max-w-3xl e mb-10.
+   Modos pdf e contact não mudam — lá o texto é category.description e fica
+   onde está.
+
+2. Cards de intenção viram uma linha de chips, acima do grid
+   Filtrar por card.href.startsWith('/catalogo/') — hoje sobram 5 (curvas,
+   reducciones, soportes, uniones, salidas) e sai o de galvanizado.
+   - Substituir a seção "¿Qué necesitás hacer?" por uma linha de <Link>.
+     Texto do chip = card.tag. Sem label e sem description.
+   - Chip: border border-border-subtle rounded-full px-3 py-1.5 text-xs
+     font-semibold text-brand-primary bg-white hover:border-brand-primary/30
+     transition whitespace-nowrap.
+   - Container: flex items-center gap-2 mb-6, overflow-x-auto flex-nowrap no
+     mobile e flex-wrap a partir de md; scrollbar escondida.
+   - Rótulo antes, na mesma linha: "Ir directo a:" em text-xs text-text-muted
+     shrink-0.
+
+3. A linha "Armá tu lista de productos y pedí cotización" fica onde está.
+
+Ordem final em modo catalog:
+  breadcrumb → H1 → linha de cotización → chips → Productos (busca + grid)
+  → Sobre la línea → tabla de materiales → FAQ
+
+Rode `npm run build` no final.
+```
+
+**Como conferir:** em 1440×900, o primeiro card de produto tem que estar visível
+sem rolar. No mobile, os chips rolam na horizontal sem empurrar o grid para
+baixo.
+
+**Commit:** `feat: producto en la primera dobra de la página de familia`
