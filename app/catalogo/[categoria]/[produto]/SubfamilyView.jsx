@@ -5,7 +5,6 @@
 import Link from 'next/link'
 import { getProductById, getProductImageAlt } from '@/lib/products'
 import config from '@/client.config.js'
-import AddToCartButton from '@/components/AddToCartButton'
 
 export default function SubfamilyView({ subfamilia, category, categoria }) {
   const items = (subfamilia.includedPages ?? [])
@@ -75,37 +74,34 @@ export default function SubfamilyView({ subfamilia, category, categoria }) {
                 : product.dimensionAxes?.map(a => a.label).join(' · ') ?? ''
 
               return (
-                <div key={product.id} className="bg-white border border-black/8 rounded-card p-3 flex flex-col">
-                  <Link href={`/catalogo/${categoria}/${product.id}`} className="block mb-3">
-                    {product.images?.primary ? (
-                      <img
-                        src={product.images.primary}
-                        alt={getProductImageAlt(product)}
-                        width={200}
-                        height={200}
-                        loading="lazy"
-                        className="w-full aspect-square object-contain rounded bg-surface-elevated"
-                      />
-                    ) : (
-                      <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center">
-                        <span className="text-[10px] text-text-muted">sin imagen</span>
-                      </div>
-                    )}
-                  </Link>
-
-                  <Link
-                    href={`/catalogo/${categoria}/${product.id}`}
-                    className="text-sm font-semibold text-brand-primary leading-tight mb-1 hover:underline decoration-brand-accent underline-offset-2 transition flex-1"
-                  >
-                    {product.name}
-                  </Link>
-
-                  {subtext && (
-                    <div className="text-[10px] text-text-muted mb-3">{subtext}</div>
+                <Link
+                  key={product.id}
+                  href={`/catalogo/${categoria}/${product.id}`}
+                  className="bg-white border border-black/8 rounded-card p-3 flex flex-col transition hover:border-brand-accent hover:shadow-sm focus-visible:border-brand-accent focus-visible:shadow-sm"
+                >
+                  {product.images?.primary ? (
+                    <img
+                      src={product.images.primary}
+                      alt={getProductImageAlt(product)}
+                      width={200}
+                      height={200}
+                      loading="lazy"
+                      className="w-full aspect-square object-contain rounded bg-surface-elevated mb-3"
+                    />
+                  ) : (
+                    <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center mb-3">
+                      <span className="text-[10px] text-text-muted">sin imagen</span>
+                    </div>
                   )}
 
-                  <AddToCartButton product={product} />
-                </div>
+                  <div className="text-sm font-semibold text-brand-primary leading-tight mb-1 flex-1">
+                    {product.name}
+                  </div>
+
+                  {subtext && (
+                    <div className="text-[10px] text-text-muted">{subtext}</div>
+                  )}
+                </Link>
               )
             })}
           </div>

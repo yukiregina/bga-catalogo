@@ -19,7 +19,6 @@ import catalogData from '@/lib/catalog.json'
 import config from '@/client.config.js'
 import ProductSheet from './ProductSheet'
 import SubfamilyView from './SubfamilyView'
-import RecommendedProducts from '@/components/RecommendedProducts'
 
 export function generateStaticParams() {
   return getCategories()
@@ -124,6 +123,7 @@ export default function ProdutoPage({ params }) {
           category={category}
           globalSpecs={catalogData.globalSpecs}
           thicknessRules={thicknessRules}
+          recommended={recommendedProducts}
         />
 
         {/* Descrição longa */}
@@ -134,9 +134,6 @@ export default function ProdutoPage({ params }) {
             ))}
           </div>
         )}
-
-        {/* Produtos recomendados (opcional, vem do Sheet) */}
-        <RecommendedProducts products={recommendedProducts} />
 
         {/* FAQ */}
         {product.faq?.length > 0 && (

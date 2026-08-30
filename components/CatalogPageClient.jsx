@@ -3,7 +3,6 @@
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { getCategories, getProductsByCategory, getAllProducts, getCategoryById, getCategoryDisplayMode, isCatalogCategory, getProductImageAlt } from '@/lib/products'
-import AddToCartButton from '@/components/AddToCartButton'
 
 export default function CatalogPageClient() {
   const searchParams = useSearchParams()
@@ -43,35 +42,33 @@ export default function CatalogPageClient() {
               {results.map(product => {
                 const category = getCategoryById(product.categoryId)
                 return (
-                  <div key={product.id} className="bg-white border border-black/8 rounded-card p-3 flex flex-col">
-                    <Link href={`/catalogo/${product.categoryId}/${product.id}`} className="block mb-3">
-                      {product.images?.primary ? (
-                        <img
-                          src={product.images.primary}
-                          alt={getProductImageAlt(product)}
-                          width={200}
-                          height={200}
-                          loading="lazy"
-                          className="w-full aspect-square object-contain rounded bg-surface-elevated"
-                        />
-                      ) : (
-                        <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center">
-                          <span className="text-[10px] text-text-muted">sin imagen</span>
-                        </div>
-                      )}
-                    </Link>
-                    <div className="font-mono text-[10px] text-text-sku mb-0.5">{product.id}</div>
-                    <Link
-                      href={`/catalogo/${product.categoryId}/${product.id}`}
-                      className="text-sm font-semibold text-brand-primary leading-tight mb-1 hover:underline decoration-brand-accent underline-offset-2 transition flex-1"
-                    >
-                      {product.name}
-                    </Link>
-                    {category && (
-                      <div className="text-[10px] text-text-muted mb-3">{category.name}</div>
+                  <Link
+                    key={product.id}
+                    href={`/catalogo/${product.categoryId}/${product.id}`}
+                    className="bg-white border border-black/8 rounded-card p-3 flex flex-col transition hover:border-brand-accent hover:shadow-sm focus-visible:border-brand-accent focus-visible:shadow-sm"
+                  >
+                    {product.images?.primary ? (
+                      <img
+                        src={product.images.primary}
+                        alt={getProductImageAlt(product)}
+                        width={200}
+                        height={200}
+                        loading="lazy"
+                        className="w-full aspect-square object-contain rounded bg-surface-elevated mb-3"
+                      />
+                    ) : (
+                      <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center mb-3">
+                        <span className="text-[10px] text-text-muted">sin imagen</span>
+                      </div>
                     )}
-                    <AddToCartButton product={product} />
-                  </div>
+                    <div className="font-mono text-[10px] text-text-sku mb-0.5">{product.id}</div>
+                    <div className="text-sm font-semibold text-brand-primary leading-tight mb-1 flex-1">
+                      {product.name}
+                    </div>
+                    {category && (
+                      <div className="text-[10px] text-text-muted">{category.name}</div>
+                    )}
+                  </Link>
                 )
               })}
             </div>

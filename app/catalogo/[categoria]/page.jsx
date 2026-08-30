@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { getCategories, getProductsByCategory, getCategoryById, getCategoryDisplayMode, getProductImageAlt } from '@/lib/products'
 import config from '@/client.config.js'
 import { notFound } from 'next/navigation'
-import AddToCartButton from '@/components/AddToCartButton'
 import TrackView from '@/components/TrackView'
 
 export function generateStaticParams() {
@@ -85,6 +84,12 @@ export default function CategoriaPage({ params }) {
         <h1 className="font-brand text-3xl font-bold text-brand-primary mb-3">
           {category.name}
         </h1>
+
+        {isCatalog && (
+          <p className="text-sm text-text-secondary mb-3">
+            Armá tu lista de productos y pedí cotización — te respondemos por WhatsApp.
+          </p>
+        )}
 
         {category.richDescription && isCatalog ? (
           <div className="text-sm text-text-secondary leading-relaxed max-w-3xl mb-10 space-y-3">
@@ -220,46 +225,40 @@ export default function CategoriaPage({ params }) {
                   : product.dimensions?.map(d => `${d.value}${d.unit}`).join(' · ') ?? ''
 
                 return (
-                  <div key={product.id} className="bg-white border border-black/8 rounded-card p-3 flex flex-col">
-
+                  <Link
+                    key={product.id}
+                    href={`/catalogo/${categoria}/${product.id}`}
+                    className="bg-white border border-black/8 rounded-card p-3 flex flex-col transition hover:border-brand-accent hover:shadow-sm focus-visible:border-brand-accent focus-visible:shadow-sm"
+                  >
                     {/* Imagem */}
-                    <Link href={`/catalogo/${categoria}/${product.id}`} className="block mb-3">
-                      {product.images?.primary ? (
-                        <img
-                          src={product.images.primary}
-                          alt={getProductImageAlt(product)}
-                          width={300}
-                          height={300}
-                          loading="lazy"
-                          className="w-full aspect-square object-contain rounded bg-surface-elevated"
-                        />
-                      ) : (
-                        <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center">
-                          <span className="text-[10px] text-text-muted">sin imagen</span>
-                        </div>
-                      )}
-                    </Link>
+                    {product.images?.primary ? (
+                      <img
+                        src={product.images.primary}
+                        alt={getProductImageAlt(product)}
+                        width={300}
+                        height={300}
+                        loading="lazy"
+                        className="w-full aspect-square object-contain rounded bg-surface-elevated mb-3"
+                      />
+                    ) : (
+                      <div className="w-full aspect-square rounded bg-surface-elevated flex items-center justify-center mb-3">
+                        <span className="text-[10px] text-text-muted">sin imagen</span>
+                      </div>
+                    )}
 
                     {/* SKU */}
                     <div className="font-mono text-[10px] text-text-sku mb-0.5">{product.id}</div>
 
                     {/* Nome */}
-                    <Link
-                      href={`/catalogo/${categoria}/${product.id}`}
-                      className="text-sm font-semibold text-brand-primary leading-tight mb-1 hover:underline decoration-brand-accent underline-offset-2 transition flex-1"
-                    >
+                    <div className="text-sm font-semibold text-brand-primary leading-tight mb-1 flex-1">
                       {product.name}
-                    </Link>
+                    </div>
 
                     {/* Subtexto */}
                     {subtext && (
-                      <div className="text-[10px] text-text-muted mb-3">{subtext}</div>
+                      <div className="text-[10px] text-text-muted">{subtext}</div>
                     )}
-
-                    {/* CTA */}
-                    <AddToCartButton product={product} />
-
-                  </div>
+                  </Link>
                 )
               })}
             </div>

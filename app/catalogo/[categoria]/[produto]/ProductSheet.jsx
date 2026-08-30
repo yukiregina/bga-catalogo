@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import { track } from '@/lib/analytics'
@@ -11,13 +12,14 @@ import {
   buildLineTitle,
   buildConfigLabel,
 } from '@/lib/products'
+import RecommendedProducts from '@/components/RecommendedProducts'
 
 // ─── Componente interativo ───────────────────────────────────────────────────
 
 // Comparadores de minThicknessRule → símbolo exibido
 const OP_SYMBOLS = { '>=': '≥', '<=': '≤', '>': '>', '<': '<', '=': '=' }
 
-export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [] }) {
+export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [], recommended = [] }) {
   const gs = globalSpecs ?? {}
   const variants = (product.variants ?? []).map(normalizeVariant)
   const hasVariants  = variants.length > 0
@@ -40,7 +42,6 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const [selectedGauge,     setSelectedGauge]     = useState(gs.thicknesses?.[1]?.gauge ?? gs.thicknesses?.[0]?.gauge ?? null)
   const [qty,      setQty]      = useState(1)
   const [activeTab, setActiveTab] = useState('specs')
-  const [added,    setAdded]    = useState(false)
   const [galleryTab, setGalleryTab] = useState('primary') // 'primary' | 'tapa'
 
   // kit-de-uniones: a imagem carrega a tornillería do ala escolhido — troca
@@ -55,7 +56,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
     ? getProductImageAlt(product, { ala: kitAla })
     : getProductImageAlt(product, galleryTab === 'tapa' && product.images?.tapa ? 'tapa' : 'primary')
 
-  const { addItem } = useCart()
+  const { addItem, items } = useCart()
 
   // Base do SKU: variante escolhida > SKU único da página > id da página.
   // Com variantes disponíveis e nenhuma escolhida, o pedido sai sem punir
@@ -66,6 +67,10 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   )
   const composedSKU = buildComposedSKU(baseSku, axesForSku, selectedMaterial, selectedGauge, null)
     + (hasVariants && !selectedVariant ? ' (variante a confirmar)' : '')
+
+  // O botão reflete o carrinho, não um estado próprio: a configuração atual
+  // já está lá se essa linha (mesmo lineId = composedSKU) existir.
+  const cartLine = items.find(i => i.lineId === composedSKU)
 
   const lineTitle = buildLineTitle(product, selectedVariant)
   const configLabel = buildConfigLabel({
@@ -96,8 +101,6 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
       title: lineTitle,
       configLabel,
     })
-    setAdded(true)
-    setTimeout(() => setAdded(false), 2200)
 
     track('agregar_cotizacion', {
       sku: product.id,
@@ -245,23 +248,24 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                   ))}
                 </select>
 
-                {/* Diagrama de apoio: corte transversal tipo U / tipo C (só bandeja-portacables) */}
+                {/* Diagrama de apoio: corte transversal tipo U / tipo C (só bandeja-portacables) —
+                    legenda do select acima, não um card à parte. */}
                 {product.secciones && (
-                  <div className="grid grid-cols-2 gap-2 mt-2">
+                  <div className="grid grid-cols-2 gap-3 mt-2">
                     {[
-                      { tipo: 'U', src: product.secciones.U },
-                      { tipo: 'C', src: product.secciones.C },
+                      { tipo: 'U', src: product.secciones.U, label: 'Tipo U — alas rectas' },
+                      { tipo: 'C', src: product.secciones.C, label: 'Tipo C — alas con retorno' },
                     ].filter(s => s.src).map(s => (
-                      <div key={s.tipo} className="bg-surface-elevated border border-border-subtle rounded-lg p-2 text-center">
+                      <div key={s.tipo} className="text-center">
                         <img
                           src={s.src}
                           alt={`Corte transversal Tipo ${s.tipo} — ${product.name} BGA`}
-                          width={100}
-                          height={60}
+                          width={300}
+                          height={100}
                           loading="lazy"
-                          className="w-full h-14 object-contain mb-1"
+                          className="w-full h-auto"
                         />
-                        <span className="text-[10px] text-text-muted">Tipo {s.tipo}</span>
+                        <span className="text-[10px] text-text-muted">{s.label}</span>
                       </div>
                     ))}
                   </div>
@@ -420,9 +424,13 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
 
               <button
                 onClick={handleAddToCart}
-                className="w-full sm:flex-1 h-11 bg-brand-primary text-white rounded-lg text-sm font-semibold hover:brightness-110 transition"
+                className={`w-full sm:flex-1 h-11 rounded-lg text-sm font-semibold transition ${
+                  cartLine
+                    ? 'bg-brand-primary text-white hover:brightness-110'
+                    : 'bg-brand-accent text-brand-primary hover:brightness-105'
+                }`}
               >
-                {added ? '✓ Agregado' : 'Agregar a cotización'}
+                {cartLine ? `✓ En tu cotización (${cartLine.quantity})` : 'Agregar a cotización'}
               </button>
 
               {product.configurable && (
@@ -440,6 +448,18 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                 </a>
               )}
             </div>
+
+            {/* Peças complementares (campo `recommended` do Sheet) — só link, sem CTA próprio */}
+            <RecommendedProducts products={recommended} />
+
+            {cartLine && (
+              <Link
+                href="/cotacao"
+                className="block text-center sm:text-left text-xs text-text-muted hover:text-brand-primary hover:underline transition mt-2"
+              >
+                Ver cotización →
+              </Link>
+            )}
 
             {!product.configurable && (
               <a

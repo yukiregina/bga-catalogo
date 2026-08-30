@@ -17,6 +17,9 @@ export default function CatalogoPage() {
         <h1 className="font-brand text-2xl font-bold text-brand-primary mb-2">
           {config.catalog.title}
         </h1>
+        <p className="text-sm text-text-secondary mb-1">
+          Armá tu lista de productos y pedí cotización — te respondemos por WhatsApp.
+        </p>
         <p className="text-sm text-text-muted mb-8">
           Línea completa para canalización eléctrica industrial y tableros.
         </p>
