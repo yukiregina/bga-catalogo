@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
@@ -11,6 +11,7 @@ import {
   normalizeVariant,
   buildLineTitle,
   buildConfigLabel,
+  buildConfigQuery,
 } from '@/lib/products'
 import RecommendedProducts from '@/components/RecommendedProducts'
 
@@ -43,6 +44,14 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const [qty,      setQty]      = useState(1)
   const [activeTab, setActiveTab] = useState('specs')
   const [galleryTab, setGalleryTab] = useState('primary') // 'primary' | 'tapa'
+
+  // A primeira escrita na URL precisa esperar a leitura (mesmo commit,
+  // efeito anterior) terminar de aplicar seus setState — senão ela usa o
+  // estado default (do render anterior à leitura) e sobrescreve os
+  // parâmetros que acabaram de chegar. Adia pro próximo tick e lê o valor
+  // mais recente por uma ref, não pelo closure: por aí, não importa quantos
+  // renders a leitura disparar (zero ou vários), o valor já assentou.
+  const skipInitialWrite = useRef(true)
 
   // kit-de-uniones: a imagem carrega a tornillería do ala escolhido — troca
   // sozinha, sem clique. As demais páginas seguem a galeria peça/tapa normal.
@@ -81,6 +90,18 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
     globalSpecs: gs,
   })
 
+  // Configuração crua (sem o sufixo do composedSKU) — vira query da URL e vai
+  // pro carrinho, pra a linha saber pra onde linkar de volta.
+  const currentConfig = {
+    variante: selectedVariant?.sku,
+    axes: axesForSku,
+    material: selectedMaterial,
+    espesor: selectedGauge,
+  }
+  const configQuery = buildConfigQuery(currentConfig)
+  const configQueryRef = useRef(configQuery)
+  configQueryRef.current = configQuery
+
   const waText = encodeURIComponent(
     `Hola, tengo una consulta técnica sobre ${product.name} (${composedSKU}).`
   )
@@ -94,12 +115,79 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
     })
   }, [product.id, product.name, product.categoryId])
 
+  // Lê a configuração da URL uma vez, no mount — não usar useSearchParams:
+  // com output 'export' ele exige fronteira de Suspense e quebra o build.
+  // Nunca confiar no valor cru: cada parâmetro só aplica se bater com um
+  // valor real do produto; se não bater, mantém o default atual.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+
+    const varianteSku = params.get('variante')
+    if (varianteSku) {
+      const v = variants.find(v => v.sku === varianteSku)
+      if (v) {
+        setSelectedVariant(v)
+        setGalleryTab(v.role === 'tapa' ? 'tapa' : 'primary')
+      }
+    }
+
+    const materialId = params.get('material')
+    if (materialId && gs.materials?.some(m => m.id === materialId)) {
+      setSelectedMaterial(materialId)
+    }
+
+    const gauge = params.get('espesor')
+    if (gauge && gs.thicknesses?.some(t => t.gauge === gauge)) {
+      setSelectedGauge(gauge)
+    }
+
+    product.dimensionAxes?.forEach(ax => {
+      const raw = params.get(ax.id)
+      if (raw == null) return
+      const match = ax.values.find(v => String(v) === raw)
+      if (match !== undefined) {
+        setSelectedAxes(prev => ({ ...prev, [ax.id]: match }))
+      }
+    })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Escreve a configuração na URL a cada mudança — replaceState, não
+  // router.push: é a mesma página, não uma navegação nova no histórico.
+  useEffect(() => {
+    if (skipInitialWrite.current) {
+      skipInitialWrite.current = false
+      // Adia pro próximo tick: dá tempo do efeito de leitura (que roda antes,
+      // no mesmo commit) assentar seus setState e o React re-renderizar —
+      // lê pela ref porque o closure daqui é o do primeiro render (default).
+      const id = setTimeout(() => {
+        const q = configQueryRef.current
+        const url = q ? `${window.location.pathname}?${q}` : window.location.pathname
+        window.history.replaceState(null, '', url)
+      }, 0)
+      return () => clearTimeout(id)
+    }
+    const url = configQuery ? `${window.location.pathname}?${configQuery}` : window.location.pathname
+    window.history.replaceState(null, '', url)
+  }, [configQuery])
+
+  // Última ficha visitada — a /cotacao usa isso pro breadcrumb "← Volver a…".
+  useEffect(() => {
+    try {
+      const href = `/catalogo/${product.categoryId}/${product.id}/${window.location.search}`
+      sessionStorage.setItem('bga-last-product', JSON.stringify({ href, name: product.name }))
+    } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   function handleAddToCart() {
     addItem({ ...product, composedSKU }, qty, {
       image: mainImageSrc,
       imageAlt: mainImageAlt,
       title: lineTitle,
       configLabel,
+      config: currentConfig,
     })
 
     track('agregar_cotizacion', {

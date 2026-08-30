@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import { registrarCotizacion } from '@/lib/leads'
 import { track } from '@/lib/analytics'
-import { getProductImageAlt } from '@/lib/products'
+import { getProductImageAlt, buildConfigQuery } from '@/lib/products'
 
 const RUBROS = [
   'Seleccioná un rubro',
@@ -18,6 +18,16 @@ const RUBROS = [
 
 export default function CotacaoPage() {
   const { items, removeItem, updateQuantity, updateObservation } = useCart()
+
+  // Lido no efeito, nunca na render — sessionStorage não existe no primeiro
+  // render do servidor, e ler direto quebraria a hidratação.
+  const [lastProduct, setLastProduct] = useState(null)
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem('bga-last-product')
+      if (raw) setLastProduct(JSON.parse(raw))
+    } catch {}
+  }, [])
 
   const [form, setForm] = useState({
     nombre: '',
@@ -86,7 +96,11 @@ export default function CotacaoPage() {
 
       <div className="max-w-[1180px] mx-auto px-6 py-8">
         <div className="text-xs text-text-muted mb-4">
-          <Link href="/catalogo" className="hover:underline">← Catálogo</Link>
+          {lastProduct ? (
+            <Link href={lastProduct.href} className="hover:underline">← Volver a {lastProduct.name}</Link>
+          ) : (
+            <Link href="/catalogo" className="hover:underline">← Catálogo</Link>
+          )}
         </div>
         <h1 className="font-brand text-2xl font-bold text-brand-primary mb-1">Tu cotización</h1>
         <p className="text-sm text-text-muted mb-6">
@@ -110,12 +124,16 @@ export default function CotacaoPage() {
 
             {/* ── Lista de produtos ─────────────────────────────────── */}
             <div className="space-y-3">
-              {items.map(({ lineId, product, quantity, observation, image, imageAlt, title, configLabel }) => {
+              {items.map(({ lineId, product, quantity, observation, image, imageAlt, title, configLabel, config: itemConfig }) => {
                 // Linha vinda da ficha (title definido) usa `image` tal como veio, null
                 // inclusive (ex.: tapa sem render — nunca cai na foto da peça). Linha sem
                 // meta (grade/recomendados/subfamília) cai em images.primary como antes.
                 const hasMeta = title !== undefined
                 const thumbSrc = hasMeta ? image : (image ?? product.images?.primary)
+
+                const query = itemConfig ? buildConfigQuery(itemConfig) : ''
+                const productHref = `/catalogo/${product.categoryId}/${product.id}/${query ? `?${query}` : ''}`
+
                 return (
                 <div
                   key={lineId}
@@ -123,30 +141,35 @@ export default function CotacaoPage() {
                 >
                   {/* Linha principal */}
                   <div className="flex gap-3 items-center">
-                    {/* Thumb */}
-                    <div className="w-14 h-14 bg-surface-elevated rounded flex-shrink-0 flex items-center justify-center">
-                      {thumbSrc
-                        ? <img src={thumbSrc} alt={imageAlt ?? getProductImageAlt(product)} width={56} height={56} className="w-full h-full object-contain" />
-                        : <span className="text-[9px] text-text-muted text-center leading-tight px-1">sin imagen</span>
-                      }
-                    </div>
-
-                    {/* Info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="font-mono text-[10px] text-text-sku">{product.composedSKU ?? product.id}</div>
-                      <div className="text-sm font-semibold text-brand-primary leading-tight mt-0.5">
-                        {title ?? product.name}
+                    <Link
+                      href={productHref}
+                      className="flex gap-3 items-center flex-1 min-w-0 -m-1 p-1 rounded-lg border border-transparent transition hover:border-brand-accent hover:shadow-sm focus-visible:border-brand-accent focus-visible:shadow-sm"
+                    >
+                      {/* Thumb */}
+                      <div className="w-14 h-14 bg-surface-elevated rounded flex-shrink-0 flex items-center justify-center">
+                        {thumbSrc
+                          ? <img src={thumbSrc} alt={imageAlt ?? getProductImageAlt(product)} width={56} height={56} className="w-full h-full object-contain" />
+                          : <span className="text-[9px] text-text-muted text-center leading-tight px-1">sin imagen</span>
+                        }
                       </div>
-                      {configLabel ? (
-                        <div className="text-[11px] text-text-muted mt-0.5">
-                          {configLabel}
+
+                      {/* Info */}
+                      <div className="flex-1 min-w-0">
+                        <div className="font-mono text-[10px] text-text-sku">{product.composedSKU ?? product.id}</div>
+                        <div className="text-sm font-semibold text-brand-primary leading-tight mt-0.5">
+                          {title ?? product.name}
                         </div>
-                      ) : product.dimensions?.length > 0 && (
-                        <div className="text-[11px] text-text-muted mt-0.5">
-                          {product.dimensions.map(d => `${d.label}: ${d.value}${d.unit}`).join(' · ')}
-                        </div>
-                      )}
-                    </div>
+                        {configLabel ? (
+                          <div className="text-[11px] text-text-muted mt-0.5">
+                            {configLabel}
+                          </div>
+                        ) : product.dimensions?.length > 0 && (
+                          <div className="text-[11px] text-text-muted mt-0.5">
+                            {product.dimensions.map(d => `${d.label}: ${d.value}${d.unit}`).join(' · ')}
+                          </div>
+                        )}
+                      </div>
+                    </Link>
 
                     {/* Qty + trash */}
                     <div className="flex items-center gap-2 flex-shrink-0">

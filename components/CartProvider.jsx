@@ -31,10 +31,12 @@ export function CartProvider({ children }) {
     }
   }, [items, mounted])
 
-  // meta (opcional): { image, imageAlt, title, configLabel } — só a ficha
-  // manda, porque só ela sabe qual variante/eixo/material foi escolhido.
-  // Sem meta, os quatro campos ficam undefined e o comportamento é o mesmo
-  // de antes (grade, recomendados, subfamília).
+  // meta (opcional): { image, imageAlt, title, configLabel, config } — só a
+  // ficha manda, porque só ela sabe qual variante/eixo/material foi
+  // escolhido. Sem meta, os cinco campos ficam undefined e o comportamento é
+  // o mesmo de antes (grade, recomendados, subfamília). `config` é a versão
+  // crua ({ variante, axes, material, espesor }) que vira a query da URL
+  // quando a linha é clicada de volta pra ficha.
   function addItem(product, quantity = 1, meta = {}) {
     const lineId = getLineId(product)
     setItems(prev => {
@@ -56,6 +58,7 @@ export function CartProvider({ children }) {
         imageAlt: meta.imageAlt,
         title: meta.title,
         configLabel: meta.configLabel,
+        config: meta.config,
       }]
     })
   }
