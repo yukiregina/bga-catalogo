@@ -4,27 +4,13 @@ import { useState, useEffect } from 'react'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import { track } from '@/lib/analytics'
-import { getProductImageAlt } from '@/lib/products'
-
-// ─── SKU composto ────────────────────────────────────────────────────────────
-
-function buildComposedSKU(baseSku, axes, materialId, gauge, treatmentId) {
-  let sku = baseSku
-
-  const axisVals = Object.values(axes)
-  if (axisVals.length > 0) sku += '-' + axisVals.join('x')
-
-  if (materialId) {
-    const names = { sae1006: 'SAE1006', aisi304: 'AISI304', alum1100: 'ALUM' }
-    sku += ' · ' + (names[materialId] ?? materialId.toUpperCase())
-  }
-  if (gauge) sku += ' · ' + gauge
-  if (treatmentId) {
-    const names = { pz: 'PZ', gf: 'GF', elec: 'ELEC', liq: 'LIQ' }
-    sku += ' · ' + (names[treatmentId] ?? treatmentId.toUpperCase())
-  }
-  return sku
-}
+import {
+  getProductImageAlt,
+  buildComposedSKU,
+  normalizeVariant,
+  buildLineTitle,
+  buildConfigLabel,
+} from '@/lib/products'
 
 // ─── Componente interativo ───────────────────────────────────────────────────
 
@@ -33,9 +19,11 @@ const OP_SYMBOLS = { '>=': '≥', '<=': '≤', '>': '>', '<': '<', '=': '=' }
 
 export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [] }) {
   const gs = globalSpecs ?? {}
-  const hasVariants  = product.variants?.length > 0
+  const variants = (product.variants ?? []).map(normalizeVariant)
+  const hasVariants  = variants.length > 0
   const [selectedVariant, setSelectedVariant] = useState(null)
   const isTapa = selectedVariant?.role === 'tapa'
+  const tapaImageMissing = isTapa && !product.images?.tapa
 
   // A tapa não tem "ala" própria — segue só o ancho da bandeja que cobre.
   const axesToShow   = product.dimensionAxes?.filter(ax => !(isTapa && ax.id === 'ala')) ?? []
@@ -60,12 +48,14 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const kitAla = product.images?.byAla ? String(selectedAxes.ala ?? '') : null
   const mainImageSrc = kitAla
     ? (product.images.byAla[kitAla] ?? product.images.primary)
-    : (galleryTab === 'tapa' && product.images?.tapa ? product.images.tapa : product.images?.primary)
+    : tapaImageMissing
+      ? null // tapa sem render: vazio, nunca a foto da peça — é a troca que comunica a variante
+      : (galleryTab === 'tapa' && product.images?.tapa ? product.images.tapa : product.images?.primary)
   const mainImageAlt = kitAla
     ? getProductImageAlt(product, { ala: kitAla })
     : getProductImageAlt(product, galleryTab === 'tapa' && product.images?.tapa ? 'tapa' : 'primary')
 
-  const { addItem, updateQuantity } = useCart()
+  const { addItem } = useCart()
 
   // Base do SKU: variante escolhida > SKU único da página > id da página.
   // Com variantes disponíveis e nenhuma escolhida, o pedido sai sem punir
@@ -76,6 +66,15 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   )
   const composedSKU = buildComposedSKU(baseSku, axesForSku, selectedMaterial, selectedGauge, null)
     + (hasVariants && !selectedVariant ? ' (variante a confirmar)' : '')
+
+  const lineTitle = buildLineTitle(product, selectedVariant)
+  const configLabel = buildConfigLabel({
+    variant: selectedVariant,
+    axes: axesToShow.map(ax => ({ label: ax.label, unit: ax.unit, value: selectedAxes[ax.id] })),
+    material: selectedMaterial,
+    gauge: selectedGauge,
+    globalSpecs: gs,
+  })
 
   const waText = encodeURIComponent(
     `Hola, tengo una consulta técnica sobre ${product.name} (${composedSKU}).`
@@ -91,8 +90,12 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   }, [product.id, product.name, product.categoryId])
 
   function handleAddToCart() {
-    addItem({ ...product, composedSKU })
-    if (qty > 1) updateQuantity(product.id, qty)
+    addItem({ ...product, composedSKU }, qty, {
+      image: mainImageSrc,
+      imageAlt: mainImageAlt,
+      title: lineTitle,
+      configLabel,
+    })
     setAdded(true)
     setTimeout(() => setAdded(false), 2200)
 
@@ -144,7 +147,9 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                 <div className="text-center px-6">
                   <div className="text-5xl opacity-10 mb-3 select-none">⬡</div>
                   <p className="text-[10px] text-text-muted leading-relaxed">
-                    Imagen disponible<br />próximamente
+                    {tapaImageMissing
+                      ? <>Tapa — imagen<br />en preparación</>
+                      : <>Imagen disponible<br />próximamente</>}
                   </p>
                 </div>
               )}
@@ -228,13 +233,14 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                 <select
                   value={selectedVariant?.sku ?? ''}
                   onChange={e => {
-                    const v = product.variants.find(v => v.sku === e.target.value)
+                    const v = variants.find(v => v.sku === e.target.value)
                     setSelectedVariant(v ?? null)
+                    setGalleryTab(v?.role === 'tapa' ? 'tapa' : 'primary')
                   }}
                   className="w-full text-sm border border-border-subtle rounded-lg px-3 py-2 bg-white text-text-primary"
                 >
                   <option value="">Seleccioná modelo y tipo…</option>
-                  {product.variants.map(v => (
+                  {variants.map(v => (
                     <option key={v.sku} value={v.sku}>{v.label}</option>
                   ))}
                 </select>

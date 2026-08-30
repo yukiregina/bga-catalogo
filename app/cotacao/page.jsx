@@ -33,9 +33,9 @@ export default function CotacaoPage() {
 
   function buildMessage() {
     const lines = ['Hola, quisiera cotizar:']
-    items.forEach(({ product, quantity, observation }) => {
+    items.forEach(({ product, quantity, observation, title }) => {
       const obs = observation ? ` (${observation})` : ''
-      lines.push(`• ${product.composedSKU ?? product.id} — ${product.name} · ${quantity} un${obs}`)
+      lines.push(`• ${product.composedSKU ?? product.id} — ${title ?? product.name} · ${quantity} un${obs}`)
     })
     lines.push('')
     if (form.nombre)  lines.push(`Cliente: ${form.nombre}${form.empresa ? ` — ${form.empresa}` : ''}`)
@@ -58,9 +58,9 @@ export default function CotacaoPage() {
       rubro: form.rubro && form.rubro !== RUBROS[0] ? form.rubro : '',
       proyecto: form.proyecto,
       plazo: form.plazo,
-      items: items.map(({ product, quantity, observation }) => ({
+      items: items.map(({ product, quantity, observation, title }) => ({
         sku: product.composedSKU ?? product.id,
-        nombre: product.name,
+        nombre: title ?? product.name,
         familia: product.categoryId || '',
         cantidad: quantity,
         observacion: observation || '',
@@ -110,17 +110,23 @@ export default function CotacaoPage() {
 
             {/* ── Lista de produtos ─────────────────────────────────── */}
             <div className="space-y-3">
-              {items.map(({ product, quantity, observation }) => (
+              {items.map(({ lineId, product, quantity, observation, image, imageAlt, title, configLabel }) => {
+                // Linha vinda da ficha (title definido) usa `image` tal como veio, null
+                // inclusive (ex.: tapa sem render — nunca cai na foto da peça). Linha sem
+                // meta (grade/recomendados/subfamília) cai em images.primary como antes.
+                const hasMeta = title !== undefined
+                const thumbSrc = hasMeta ? image : (image ?? product.images?.primary)
+                return (
                 <div
-                  key={product.id}
+                  key={lineId}
                   className="bg-white border border-border-subtle rounded-card p-3 space-y-2"
                 >
                   {/* Linha principal */}
                   <div className="flex gap-3 items-center">
                     {/* Thumb */}
                     <div className="w-14 h-14 bg-surface-elevated rounded flex-shrink-0 flex items-center justify-center">
-                      {product.images?.primary
-                        ? <img src={product.images.primary} alt={getProductImageAlt(product)} width={56} height={56} className="w-full h-full object-contain" />
+                      {thumbSrc
+                        ? <img src={thumbSrc} alt={imageAlt ?? getProductImageAlt(product)} width={56} height={56} className="w-full h-full object-contain" />
                         : <span className="text-[9px] text-text-muted text-center leading-tight px-1">sin imagen</span>
                       }
                     </div>
@@ -129,9 +135,13 @@ export default function CotacaoPage() {
                     <div className="flex-1 min-w-0">
                       <div className="font-mono text-[10px] text-text-sku">{product.composedSKU ?? product.id}</div>
                       <div className="text-sm font-semibold text-brand-primary leading-tight mt-0.5">
-                        {product.name}
+                        {title ?? product.name}
                       </div>
-                      {product.dimensions?.length > 0 && (
+                      {configLabel ? (
+                        <div className="text-[11px] text-text-muted mt-0.5">
+                          {configLabel}
+                        </div>
+                      ) : product.dimensions?.length > 0 && (
                         <div className="text-[11px] text-text-muted mt-0.5">
                           {product.dimensions.map(d => `${d.label}: ${d.value}${d.unit}`).join(' · ')}
                         </div>
@@ -142,17 +152,17 @@ export default function CotacaoPage() {
                     <div className="flex items-center gap-2 flex-shrink-0">
                       <div className="flex items-center border border-black/20 rounded h-7">
                         <button
-                          onClick={() => updateQuantity(product.id, quantity - 1)}
+                          onClick={() => updateQuantity(lineId, quantity - 1)}
                           className="w-6 text-center text-sm text-text-primary hover:bg-surface-sunken rounded-l transition"
                         >−</button>
                         <span className="w-7 text-center font-mono text-xs">{quantity}</span>
                         <button
-                          onClick={() => updateQuantity(product.id, quantity + 1)}
+                          onClick={() => updateQuantity(lineId, quantity + 1)}
                           className="w-6 text-center text-sm text-text-primary hover:bg-surface-sunken rounded-r transition"
                         >+</button>
                       </div>
                       <button
-                        onClick={() => removeItem(product.id)}
+                        onClick={() => removeItem(lineId)}
                         className="text-text-muted hover:text-red-500 transition p-1"
                         title="Quitar"
                       >
@@ -171,11 +181,12 @@ export default function CotacaoPage() {
                     type="text"
                     placeholder="Observación (opcional)"
                     value={observation}
-                    onChange={e => updateObservation(product.id, e.target.value)}
+                    onChange={e => updateObservation(lineId, e.target.value)}
                     className="w-full h-7 text-[11px] px-2 border border-border-subtle rounded bg-surface-elevated text-text-primary placeholder:text-text-muted focus:outline-none focus:border-brand-primary transition-colors"
                   />
                 </div>
-              ))}
+                )
+              })}
 
               <Link
                 href="/catalogo"

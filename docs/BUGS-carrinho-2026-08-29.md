@@ -12,17 +12,28 @@ catálogo" e "conserto do carrinho".
 
 ## A ordem, e por quê
 
-A ordem não é por incômodo, é por dependência: **1 é a causa dos outros dois.**
+A ordem não é por incômodo, é por consequência: **primeiro o que corrompe o
+pedido, depois o que incomoda.** O 1 é pré-requisito do 5 — sem linha com
+identidade própria não há onde guardar a variante escolhida.
 O 2 e o 3 são consertos de interface que só fazem sentido depois que a linha do
 carrinho tiver identidade própria. O 4 não depende de ninguém — vai por último
-por ser o único que não muda comportamento.
+por ser o único que não muda comportamento nem dado.
 
-| # | Bug | Tipo | Bloqueia |
+| # | Bug | Tipo | Estado |
 | --- | --- | --- | --- |
-| 1 | Variantes colapsam numa linha só | **dado** — o lead sai errado | 2 e 3 |
-| 2 | Botão "Agregar" volta ao estado original | feedback | — |
-| 3 | Carrinho sem volta pro produto | navegação | — |
-| 4 | `<select>` de variante fora do DS | estilo | — |
+| 1 | Variantes colapsam numa linha só | **dado** — o lead sai errado | ✅ feito 29/08 |
+| 5 | Imagem e nome não seguem a variante | **dado** — o lead sai errado | ✅ feito 29/08 |
+| 2 | Botão "Agregar" volta ao estado original | feedback | ⬜ próximo |
+| 3 | Carrinho sem volta pro produto | navegação | ⬜ |
+| 4 | `<select>` de variante fora do DS | estilo | ⬜ |
+
+**Ordem de execução: 1 → 5 → 2 → 3 → 4.** Os dois primeiros são bugs de dado: o
+pedido que chega na Aida sai errado. O resto é interface.
+
+**1 e 5 saíram em 29/08**, num commit só (`fix: carrinho identifica a
+configuração escolhida`) — estavam entrelaçados nos mesmos arquivos e separar
+depois não valia o `git add -p`. Inclui a correção do vazio da tapa
+(retângulo vazio em vez de foto legendada, ver seção 5).
 
 ---
 
@@ -269,7 +280,191 @@ sistema; se ficar, é o limite descrito acima, não o fix falhando.
 
 ---
 
-## 5. Threads já desbloqueadas (não são bugs)
+## 5. Imagem e nome não seguem a variante (achado em 29/08, depois do fix 1)
+
+**Sintoma:** escolho a tapa, parece que mudou, mas a imagem continua a da
+bandeja — e no carrinho fica confuso.
+
+**É maior que a imagem.** No carrinho da captura há duas linhas `CT3211`, que são
+**tapas**, e as duas aparecem como:
+
+- foto da bandeja (`cotacao/page.jsx` renderiza sempre `product.images.primary`)
+- título "Bandeja Portacables" (`product.name`, que é o nome da *página*)
+- a palavra "Tapa" não aparece em lugar nenhum — só codificada no `CT3211`
+
+E vaza pro lead: `buildMessage()` monta `• {SKU} — {product.name} · {qtd} un`, e
+o `bga-leads-apps-script.gs:80` monta a linha da planilha com o mesmo `it.nombre`.
+**A Aida recebe "CT3211-500 — Bandeja Portacables · 2 un" para uma tapa.** Mesma
+classe do bug 1: dado errado no pedido, não enfeite.
+
+**Causa na ficha:** `ProductSheet.jsx:60-62` — a imagem principal depende de
+`galleryTab`, um estado manual de miniatura, e nunca de `selectedVariant`. Há
+dois controles para a mesma coisa (o seletor de variante e as miniaturas
+Pieza/Tapa) e eles não conversam. O `isTapa` já existe na linha 38, só não é
+usado para escolher a imagem.
+
+**Restrição de conteúdo — verificada no `catalog.json`, não é palpite:** 22
+páginas têm variante de tapa; **só 10 têm render de tapa**. Faltam 12:
+
+`curva-horizontal-recta-90` · `curva-vertical-externa-45` ·
+`curva-vertical-interna-45` · `curva-horizontal-45` · `te-horizontal-recto` ·
+`te-vertical-ascendente` · `union-cruzeta-recta` · `desnivel-simple` ·
+`desvio-horizontal-derecho` · `desvio-horizontal-izquierdo` ·
+`reduccion-lateral-derecha` · `reduccion-lateral-izquierda`
+
+Nessas 12, mostrar a foto da peça quando a tapa está escolhida é exatamente o que
+confundiu a Yuki.
+
+**Decisão (revisada em 29/08, com a Yuki): retângulo vazio, não foto legendada.**
+A primeira proposta era manter a foto da peça com legenda. Está errada, e o
+motivo é o próprio bug: o que confundiu não foi a foto errada, foi a foto **não
+mudar** ao trocar de variante — a interface disse "não aconteceu nada". Legenda
+é o elemento menos lido da tela e não corrige isso; um placeholder corrige,
+porque ele muda e o que ele afirma é verdade. No carrinho a legenda nem cabe:
+a miniatura tem 56 px, e a foto da bandeja ali é o erro original de novo.
+
+Duas condições para o vazio ler como estado e não como falha:
+
+- **Texto específico.** O genérico que já existe na ficha ("Imagen disponible
+  próximamente") diz que o produto não tem foto — falso, tem. Tem que dizer o
+  que falta: `Tapa — imagen en preparación`.
+- **Mesmo bloco de vazio já usado na ficha** (glifo `⬡` a 10% + texto), para ler
+  como estado do sistema, não como imagem que falhou ao carregar.
+
+Efeito colateral desejável: 12 tapas sem render viram 12 buracos visíveis, e
+buraco visível vira pedido para o Akira — junto com as 3 imagens de texto
+queimado já listadas no `ESTADO`.
+
+**Quem carrega o peso:** com 12 páginas sem render, é a **palavra** que
+desambigua, não a foto. Por isso o prompt trata o rótulo como obrigatório e a
+imagem como melhoria.
+
+**Zero mudança no Apps Script:** ele monta a linha da planilha a partir do
+`it.nombre` que o site manda. Enriquecendo o `nombre` no cliente, a planilha da
+BGA já sai certa — sem redeploy do script.
+
+### Alcance — auditei as 36 fichas ativas, não é só a tapa
+
+Hoje só `bandejas` está em modo `catalog`: **36 fichas**, 23 com variantes, 34
+com eixos, todas com `images.primary`. A perda de informação no carrinho tem
+**três formas**, e a tapa é só a mais visível:
+
+**a) Tapa (22 páginas).** Nome e imagem erradas. Render de tapa existe em 10.
+É o caso que você viu.
+
+**b) Variantes de peça (mesmas 22 páginas, 4 variantes cada).** Lisa Tipo U,
+Lisa Tipo C, Perforada Tipo U, Perforada Tipo C — **as quatro compartilham o
+mesmo e único render da página**. Duas linhas no carrinho com a mesma foto, o
+mesmo título e diferença só no código (`CT3011` vs `CT3111`). Aqui **imagem
+nenhuma resolve**: teria que existir render por variante, 4 por página × 22
+páginas. Não vale. **Só o rótulo resolve** — e é por isso que o fix trata a
+palavra como obrigatória e a imagem como melhoria.
+
+(Exceção parcial: `bandeja-portacables` tem os diagramas de corte U e C em
+`product.secciones`. Dava pra usar como miniatura de variante, mas cobre U vs C,
+não lisa vs perforada. Fica de melhoria opcional, não entra agora.)
+
+**c) Eixos, material e espesor (34 páginas).** O ancho e o ala escolhidos só
+existem dentro do SKU composto — o carrinho não os mostra em palavra nenhuma. O
+material e o espesor aparecem abreviados (`AISI304 · #14`). Quem confere o
+pedido antes de enviar lê código, não lê spec.
+
+**Landmine, ainda não ativa — vale saber:** `ST2239` (perfilados) e `KIT5262`
+(escaleras) usam **outro schema de variante** — `{ code, attributes }` em vez de
+`{ sku, label, role }`. O `ProductSheet` lê `v.sku` e `v.label`, então nessas
+páginas o dropdown renderiza opções em branco e nunca seleciona nada. **Não
+quebra nada hoje**, porque `perfilados` e `escaleras` estão em `displayMode:
+'pdf'` e não têm rota de ficha. Quebra silenciosamente no dia em que uma dessas
+famílias virar `catalog`. Está no prompt como normalização defensiva.
+
+### Prompt pro Claude Code
+
+```
+A configuração escolhida tem que aparecer no carrinho em palavras — hoje ela só
+existe dentro do SKU composto, e a variante some por completo.
+
+Contexto: a página se chama "Bandeja Portacables" e tem 5 variantes (4 peças +
+Tapa). Quem escolhe a tapa vê no carrinho a foto da bandeja, o título "Bandeja
+Portacables" e nenhuma menção a tapa; quem escolhe Lisa Tipo C vê exatamente a
+mesma linha que Perforada Tipo U. A mesma perda vai pro WhatsApp e pra planilha
+do cliente, porque buildMessage e o payload usam product.name.
+
+1. lib/products.js — duas funções puras, para o carrinho e a ficha usarem o
+   mesmo texto:
+   - buildLineTitle(product, variant): variant.role === 'tapa'
+     → `Tapa para ${product.name}`; senão product.name.
+   - buildConfigLabel({ variant, axes, material, gauge, globalSpecs }): string
+     legível em espanhol, partes separadas por " · ", omitindo o que não existe.
+     Ex: "Lisa Tipo C · Ancho 500 mm · Ala 150 mm · Acero inoxidable AISI 304 ·
+     Espesor #14". Usar os `name` de globalSpecs.materials e o `label`/`unit` de
+     dimensionAxes — nada de abreviação nova.
+   - Mover buildComposedSKU do ProductSheet pra cá também, para os três textos
+     (SKU, título, config) saírem do mesmo lugar.
+   - normalizeVariant(v): aceita { sku, label, role } e o schema antigo
+     { code, attributes } → { sku: v.sku ?? v.code, label: v.label ?? (valores
+     de attributes juntados por " · "), role: v.role ?? 'pieza' }. Aplicar na
+     leitura das variantes. ST2239 e KIT5262 usam o schema antigo e hoje
+     renderizariam opções em branco — não estão roteados, mas não deixe a bomba
+     armada.
+
+2. app/catalogo/[categoria]/[produto]/ProductSheet.jsx
+   - Imagem principal derivada da seleção: kit byAla (atual) > variante com
+     role 'tapa' e images.tapa existente > images.primary.
+   - Escolher variante role 'tapa' faz setGalleryTab('tapa'); voltar pra 'pieza'
+     faz setGalleryTab('primary'). Miniaturas continuam clicáveis pra comparar.
+   - Variante tapa sem images.tapa: NÃO mostrar images.primary. Renderizar o
+     mesmo bloco de estado vazio que a ficha já usa quando não há imagem (glifo
+     ⬡ a 10% + texto), trocando o texto por "Tapa — imagen en preparación".
+     A imagem tem que MUDAR ao trocar de variante: é a mudança que comunica.
+     São 12 páginas nessa situação.
+   - Nesse caso, meta.image vai como null (ver item 3).
+   - handleAddToCart passa meta:
+     { image: mainImageSrc, imageAlt: mainImageAlt,
+       title: buildLineTitle(product, selectedVariant),
+       configLabel: buildConfigLabel({...}) }
+
+3. components/CartProvider.jsx
+   - addItem(product, quantity = 1, meta = {}) — a linha guarda também
+     { image, imageAlt, title, configLabel }. Sem meta, tudo undefined e o
+     comportamento atual continua (grade, recomendados, subfamília).
+
+4. app/cotacao/page.jsx — cada linha passa a mostrar, nesta ordem:
+   - SKU composto (mono, como hoje)
+   - título: item.title ?? product.name
+   - configLabel numa linha abaixo, no estilo hoje usado por product.dimensions
+     (mesmo tamanho e cor). Quando não houver configLabel, cai no
+     product.dimensions atual.
+   - thumb: quando a linha tem meta, usar EXATAMENTE item.image — se for null,
+     mostrar o bloco "sin imagen" que já existe, nunca cair em
+     product.images.primary (foto da bandeja numa linha de tapa é o bug
+     original). O fallback para product.images?.primary vale só para linhas
+     antigas/sem meta, vindas da grade.
+   - buildMessage: a linha do WhatsApp usa item.title, não product.name. O
+     configLabel NÃO entra na mensagem — o SKU composto já carrega a spec e a
+     mensagem precisa ficar curta.
+   - registrarCotizacion: o campo `nombre` de cada item usa item.title.
+     NÃO mexer em docs/bga-leads-apps-script.gs — ele monta a linha da planilha
+     a partir de it.nombre, então isso já resolve do lado do site.
+
+Copy em espanhol. Rode `npm run build` no final.
+```
+
+**Como conferir, nesta ordem:**
+
+1. `bandeja-portacables`: agregar Lisa Tipo C e Perforada Tipo U, mesmo ancho.
+   Duas linhas com títulos iguais mas `configLabel` diferente — é o caso (b), o
+   que a imagem não resolve.
+2. Mesma página: agregar a Tapa. Título "Tapa para Bandeja Portacables" e a foto
+   da tapa (essa página tem render).
+3. `curva-horizontal-45`: agregar a Tapa. Ao selecionar a tapa a imagem tem que
+   **trocar** para o vazio "Tapa — imagen en preparación" — é uma das 12 sem
+   render. No carrinho, essa linha fica com a miniatura vazia e o título
+   "Tapa para Curva Horizontal 45°".
+4. Vista previa WhatsApp: a linha da tapa precisa dizer "Tapa para …".
+
+---
+
+## 6. Threads já desbloqueadas (não são bugs)
 
 Estavam travadas pelos briefs 1 e 2 no `ESTADO-2026-08-29.md`, thread 1. **Os
 briefs saíram — estão livres**, e mexem nos mesmos arquivos dos bugs 1–3:

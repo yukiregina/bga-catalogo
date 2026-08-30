@@ -4,6 +4,13 @@ import { createContext, useContext, useState, useEffect } from 'react'
 
 const CartContext = createContext(null)
 
+// A identidade da linha é o SKU composto (variante + eixos + material +
+// espesor), não o id da página. Duas configurações diferentes do mesmo
+// produto são duas linhas — sem isso a segunda escolha some do carrinho.
+function getLineId(product) {
+  return product.composedSKU ?? product.id
+}
+
 export function CartProvider({ children }) {
   const [items, setItems] = useState([])
   const [mounted, setMounted] = useState(false)
@@ -11,7 +18,7 @@ export function CartProvider({ children }) {
   // Carrega do localStorage após montar
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('bga-cart')
+      const saved = localStorage.getItem('bga-cart-v2')
       if (saved) setItems(JSON.parse(saved))
     } catch {}
     setMounted(true)
@@ -20,38 +27,53 @@ export function CartProvider({ children }) {
   // Salva no localStorage a cada mudança
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem('bga-cart', JSON.stringify(items))
+      localStorage.setItem('bga-cart-v2', JSON.stringify(items))
     }
   }, [items, mounted])
 
-  function addItem(product) {
+  // meta (opcional): { image, imageAlt, title, configLabel } — só a ficha
+  // manda, porque só ela sabe qual variante/eixo/material foi escolhido.
+  // Sem meta, os quatro campos ficam undefined e o comportamento é o mesmo
+  // de antes (grade, recomendados, subfamília).
+  function addItem(product, quantity = 1, meta = {}) {
+    const lineId = getLineId(product)
     setItems(prev => {
-      const exists = prev.find(i => i.product.id === product.id)
+      const exists = prev.find(i => i.lineId === lineId)
       if (exists) {
         return prev.map(i =>
-          i.product.id === product.id
-            ? { ...i, quantity: i.quantity + 1 }
+          i.lineId === lineId
+            ? { ...i, quantity: i.quantity + quantity }
             : i
         )
       }
-      return [...prev, { product, quantity: 1, observation: '' }]
+      return [...prev, {
+        lineId,
+        product,
+        composedSKU: product.composedSKU,
+        quantity,
+        observation: '',
+        image: meta.image,
+        imageAlt: meta.imageAlt,
+        title: meta.title,
+        configLabel: meta.configLabel,
+      }]
     })
   }
 
-  function removeItem(productId) {
-    setItems(prev => prev.filter(i => i.product.id !== productId))
+  function removeItem(lineId) {
+    setItems(prev => prev.filter(i => i.lineId !== lineId))
   }
 
-  function updateQuantity(productId, qty) {
+  function updateQuantity(lineId, qty) {
     if (qty < 1) return
     setItems(prev =>
-      prev.map(i => i.product.id === productId ? { ...i, quantity: qty } : i)
+      prev.map(i => i.lineId === lineId ? { ...i, quantity: qty } : i)
     )
   }
 
-  function updateObservation(productId, obs) {
+  function updateObservation(lineId, obs) {
     setItems(prev =>
-      prev.map(i => i.product.id === productId ? { ...i, observation: obs } : i)
+      prev.map(i => i.lineId === lineId ? { ...i, observation: obs } : i)
     )
   }
 

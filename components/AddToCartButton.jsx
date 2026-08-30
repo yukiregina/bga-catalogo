@@ -5,7 +5,9 @@ import { track } from '@/lib/analytics'
 
 export default function AddToCartButton({ product }) {
   const { addItem, items } = useCart()
-  const inCart = items.some(i => i.product.id === product.id)
+  // Sem composedSKU (grade/recomendados/subfamília não escolhem variante),
+  // o lineId é o id da página — mesmo comportamento de antes.
+  const inCart = items.some(i => i.lineId === (product.composedSKU ?? product.id))
 
   function handleAdd() {
     addItem(product)
