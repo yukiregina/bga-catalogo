@@ -1887,6 +1887,169 @@ ficar vazio ou NaN.
 
 ---
 
+## 25. Chapa negra sai do catálogo — o Akira respondeu (31/08)
+
+A proposta que tinha ido pra ele (item 22) era **dividir** a linha de CN em duas:
+CN + GF para exterior, CN + pintura para interior. Ele respondeu outra coisa —
+não dividir, **tirar**. Nas palavras dele, em áudio:
+
+> "Vamos tirar essa chapa negra, a gente deixa o aço carbono 1006/1010
+> pregalvanizado como o material, e aí o aço inox AISI 304 e o AISI 316 como
+> outra opção de material. E o revestimento — ou tratamento, é sinônimo — a gente
+> coloca ali como opção: galvanizado caliente ou pintura eletrostática."
+
+> "Não vou criar um cadastro todo de chapa negra, não faz sentido. Eu vou usar o
+> padrão, que é o pregalvanizado; daí se ele quiser chapa negra a gente bota uma
+> observação e dá um desconto — na prática é o que a gente acaba fazendo, porque
+> eu não mantenho estoque desse material, ele oxida muito fácil."
+
+> "O que talvez dê pra deixar é uma pequena observação de que é possível entregar
+> só em chapa negra, se for exigência do cliente, mas aí ele pede especificamente
+> pra vendedora."
+
+**O que muda:** material passa a ser três — acero SAE 1006/1010 (entregue
+pregalvanizado, padrão), AISI 304 e AISI 316. Galvanizado a fogo e pintura
+eletrostática deixam de ser "o que se faz com a chapa negra" e passam a ser
+**opções de tratamento sobre o mesmo aço carbono** — e são **só essas duas**
+(confirmado pela Yuki em 31/08: são as duas marcadas, o resto da tabela de
+tratamentos não é palavra dele). Chapa negra pura vira exceção sob pedido.
+
+Consequência: o pregalvanizado sai da tabela de tratamentos, porque não é um
+tratamento que se escolhe — é o estado com que o aço carbono sai de fábrica, e já
+está dito na coluna Material. A pintura líquida sai porque nunca teve ambiente
+nem norma e ele não a citou.
+
+**O que isso confirma:** a regra do dia — *o ambiente recomendado é da combinação
+chapa + tratamento* — continua valendo. Só que agora a coluna Material não muda
+entre as linhas de aço carbono; o que muda é a coluna Tratamento. A tabela fica
+mais fácil de ler exatamente por isso.
+
+**Onde a exceção mora:** só na página de materiales. Repetir o aviso nas 36
+fichas seria conteúdo genérico em 36 páginas — a regra que já custou o item 9. E
+o canal para pedir já existe: o carrinho tem "Observación (opcional)" por linha,
+que é literalmente o que o Akira descreve ("a gente bota uma observação").
+
+### Prompt pro Claude Code
+
+```
+Resposta do cliente (Akira, 31/08): a chapa negra sai do catálogo como material.
+Material passa a ser 3 — acero SAE 1006/1010 (entregue pregalvanizado por
+padrão), AISI 304 e AISI 316 — e galvanizado en caliente e pintura electrostática
+passam a ser opções de tratamento sobre o aço carbono. Entrega em chapa negra sem
+tratamento continua possível como exceção, a pedido, falando com a vendedora.
+
+É tudo conteúdo: não muda carrinho, SKU composto, localStorage nem GA4.
+
+1. lib/catalog.json — globalSpecs.materials, sae1006.description
+   "Acero al carbono laminado. Se entrega pregalvanizado (PZ): sale de fábrica
+   con recubrimiento de zinc aplicado antes del conformado y no requiere
+   tratamiento adicional para uso interior. Para exterior o ambiente húmedo
+   recibe galvanizado por inmersión en caliente o pintura electrostática en
+   polvo."
+   aisi304 e aisi316 não mudam.
+
+2. lib/catalog.json — categories.bandejas.materialTable
+   A linha "Acero SAE 1006 chapa negra (CN)" sai. O aço carbono passa a ocupar
+   três linhas — mesma matéria-prima, tratamento diferente — e as duas de inox
+   continuam iguais, no fim da tabela:
+
+   material   "Acero SAE 1006/1010 pregalvanizado (PZ)"
+   tratamiento"Sin tratamiento adicional"
+   ambiente   "Interiores secos, sin exposición a humedad, agentes químicos o salinidad"
+   norma      "NBR 7008"
+
+   material   "Acero SAE 1006/1010"
+   tratamiento"Galvanizado por inmersión en caliente (GF)"
+   ambiente   "Exterior, ambiente húmedo o mojado, o con agentes corrosivos"
+   norma      "NBR 6323 / ASTM 123"
+
+   material   "Acero SAE 1006/1010"
+   tratamiento"Pintura electrostática en polvo"
+   ambiente   "Interior y exterior, cuando además se busca color o acabado estético"
+   norma      "—"
+
+3. lib/catalog.json — globalSpecs.surfaceTreatments
+   Fica com dois tratamentos, que são os dois que o cliente citou:
+
+   { id: "gf",   name: "Galvanizado por Inmersión en Caliente",
+     norm: "NBR 6323 / ASTM 123", useCase: "exteriores, ambientes húmedos" }
+   { id: "elec", name: "Pintura Electrostática en Polvo",
+     useCase: "interiores y exteriores, con color y acabado estético" }
+
+   Saem "pz" (pregalvanizado não é tratamento que se escolhe: é o estado de
+   fábrica do aço carbono, e já aparece na coluna Material) e "liq" (pintura
+   líquida, que nunca teve useCase nem norm e renderizava "— —").
+   `surfaceTreatments` só é lido em app/materiales-y-tratamientos/page.jsx —
+   nenhum outro arquivo depende desses ids.
+
+4. lib/catalog.json — categories.bandejas.richDescription
+   Trocar "(pregalvanizada o chapa negra) o acero inoxidable AISI 304" por
+   "pregalvanizada o en acero inoxidable AISI 304 y AISI 316".
+   Reler a frase inteira depois da troca; o resto do parágrafo não muda.
+
+5. lib/catalog.json — longDescription dos produtos
+   O mesmo parágrafo aparece em 41 fichas, em duas variantes. As duas viram uma:
+
+   sai (36x): "Disponible en chapa pregalvanizada (PZ) y chapa negra (CN), con
+   galvanizado por inmersión en caliente (GF) o pintura electrostática para
+   exterior. También en acero inoxidable AISI 304 y AISI 316."
+
+   sai (5x): "Disponible en chapa pregalvanizada (PZ), chapa negra (CN) y acero
+   inoxidable AISI 304, con galvanizado por inmersión en caliente (GF) o pintura
+   electrostática para exterior."
+
+   entra (nas 41): "Disponible en acero SAE 1006/1010 pregalvanizado (PZ) para
+   interior, con galvanizado por inmersión en caliente (GF) o pintura
+   electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316."
+
+   Nenhuma outra frase da longDescription muda.
+
+6. lib/catalog.json — materialsPage.longDescription
+   Os dois últimos parágrafos são boilerplate de ficha de produto que vazou pra
+   esta página: o "Disponible en chapa pregalvanizada (PZ) y chapa negra (CN)…" e
+   o "Fabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala,
+   material, espesor y tratamiento…". Os dois saem — esta página não é ficha de
+   produto, não tem ancho nem ala, e o conteúdo deles já está nas seções acima.
+   Além disso, com o pregalvanizado fora da tabela de tratamentos, a explicação
+   dele muda de parágrafo — o texto técnico continua o mesmo, só troca de lugar.
+   O parágrafo "Materia prima: acero SAE 1006/1010 y acero inoxidable AISI 304 y
+   AISI 316." passa a terminar com a frase que hoje abre o parágrafo dos
+   tratamentos: "El acero al carbono se entrega pregalvanizado (PZ): inmersión
+   continua de la chapa en zinc a 455 °C, hecha en la planta de producción de la
+   chapa, según NBR 7008, para interior seco y atmósfera no agresiva." E o
+   parágrafo dos tratamentos passa a começar direto no GF: "Tratamientos
+   superficiales. El galvanizado por inmersión en caliente (GF) sumerge…".
+   O resto do texto não muda.
+
+7. app/materiales-y-tratamientos/page.jsx — a nota da chapa negra
+   Na seção "Materia prima", logo depois do grid de cards e ainda dentro da
+   <section>, uma nota de rodapé (não é card):
+
+   <p className="text-xs text-text-muted leading-relaxed max-w-3xl mt-3">
+     El estándar de fábrica es chapa pregalvanizada. La entrega en chapa negra
+     sin tratamiento es posible como excepción, a pedido del cliente: no se
+     mantiene en stock porque oxida con facilidad. Indicalo en la observación de
+     tu cotización o consultá con la vendedora.
+   </p>
+
+   Só aqui. Não repetir nas fichas nem na página de família — a tabela da família
+   já linka para esta página.
+
+Rode `npm run build` no final.
+```
+
+**Como conferir:** `/materiales-y-tratamientos` não tem mais a palavra "negra" em
+lugar nenhum a não ser na nota da seção "Materia prima"; a tabela de tratamentos
+tem duas linhas, as duas com ambiente preenchido e nenhum "— —"; e a página
+termina no CLINCH, sem o parágrafo de "se cotiza por ancho, ala". Em
+`/catalogo/bandejas`, a tabela tem cinco linhas, e as três de aço carbono se
+distinguem pela coluna Tratamento. Em qualquer ficha, o parágrafo de
+disponibilidade começa por "Disponible en acero SAE 1006/1010 pregalvanizado".
+
+**Commit:** `content: chapa negra sale del catálogo, tratamiento como opción`
+
+---
+
 ## Checklist do dia da publicação — só verificável no ar
 
 Junto com os itens 10 (404 no GA4) e 11 (política de privacidade):
