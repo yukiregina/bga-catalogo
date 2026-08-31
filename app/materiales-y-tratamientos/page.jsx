@@ -91,6 +91,12 @@ export default function MaterialesYTratamientosPage() {
               </div>
             ))}
           </div>
+          <p className="text-xs text-text-muted leading-relaxed max-w-3xl mt-3">
+            El estándar de fábrica es chapa pregalvanizada. La entrega en chapa negra
+            sin tratamiento es posible como excepción, a pedido del cliente: no se
+            mantiene en stock porque oxida con facilidad. Indicalo en la observación de
+            tu cotización o consultá con la vendedora.
+          </p>
         </section>
 
         {/* Tratamentos superficiais */}

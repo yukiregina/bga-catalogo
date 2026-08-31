@@ -33,7 +33,7 @@
         "id": "sae1006",
         "name": "Acero SAE 1006/1010",
         "default": true,
-        "description": "Acero al carbono laminado. En chapa negra (CN) requiere tratamiento posterior obligatorio — galvanizado en caliente o pintura electrostática en polvo. En pregalvanizado (PZ) sale de fábrica con recubrimiento de zinc aplicado antes del conformado, y no requiere tratamiento adicional para uso interno."
+        "description": "Acero al carbono laminado. Se entrega pregalvanizado (PZ): sale de fábrica con recubrimiento de zinc aplicado antes del conformado y no requiere tratamiento adicional para uso interior. Para exterior o ambiente húmedo recibe galvanizado por inmersión en caliente o pintura electrostática en polvo."
       },
       {
         "id": "aisi304",
@@ -48,12 +48,6 @@
     ],
     "surfaceTreatments": [
       {
-        "id": "pz",
-        "name": "Pregalvanizado",
-        "norm": "NBR 7008",
-        "useCase": "interiores, ambientes secos"
-      },
-      {
         "id": "gf",
         "name": "Galvanizado por Inmersión en Caliente",
         "norm": "NBR 6323 / ASTM 123",
@@ -61,12 +55,8 @@
       },
       {
         "id": "elec",
-        "name": "Pintura Electrostática",
-        "useCase": "interiores y exteriores, estética superior"
-      },
-      {
-        "id": "liq",
-        "name": "Pintura Líquida"
+        "name": "Pintura Electrostática en Polvo",
+        "useCase": "interiores y exteriores, con color y acabado estético"
       }
     ],
     "thicknesses": [
@@ -109,7 +99,7 @@
       "name": "Bandejas y Accesorios",
       "image": "/images/bandeja-portacables-bga-acero-galvanizado-paraguay.webp",
       "description": "Bandejas portacables: sistemas versátiles diseñados para la conducción y distribución segura de cables eléctricos en instalaciones industriales, comerciales y residenciales.",
-      "richDescription": "Las bandejas portacables BGA son sistemas de canalización diseñados para la conducción y soporte de cables eléctricos de potencia, control e instrumentación en instalaciones industriales, comerciales y de infraestructura. Se fabrican en chapa de acero SAE 1006/1010 (pregalvanizada o chapa negra) o acero inoxidable AISI 304, y se unen mediante el proceso CLINCH — unión en frío que preserva la capa de zinc sin daño al recubrimiento.\n\nEstán disponibles en dos perfiles principales: Tipo U (base plana, alas laterales) y Tipo C (con retorno en las alas), en versiones lisas y perforadas. Los anchos van de 50 a 800 mm, con alas de 50 a 200 mm según el volumen y peso de cableado requerido. El catálogo incluye curvas, tes, uniones, reducciones, soportes y tapas que permiten resolver cualquier trayectoria de instalación.\n\nEl tratamiento superficial define el ambiente de uso: pregalvanizado (NBR 7008) para interiores secos, galvanizado por inmersión en caliente (NBR 6323 / ASTM 123) para exteriores o ambientes húmedos y corrosivos, y pintura electrostática para aplicaciones con requisitos estéticos. Las bandejas BGA cumplen con normas IEC 61537 y ABNT NBR 6323.",
+      "richDescription": "Las bandejas portacables BGA son sistemas de canalización diseñados para la conducción y soporte de cables eléctricos de potencia, control e instrumentación en instalaciones industriales, comerciales y de infraestructura. Se fabrican en chapa de acero SAE 1006/1010 pregalvanizada o en acero inoxidable AISI 304 y AISI 316, y se unen mediante el proceso CLINCH — unión en frío que preserva la capa de zinc sin daño al recubrimiento.\n\nEstán disponibles en dos perfiles principales: Tipo U (base plana, alas laterales) y Tipo C (con retorno en las alas), en versiones lisas y perforadas. Los anchos van de 50 a 800 mm, con alas de 50 a 200 mm según el volumen y peso de cableado requerido. El catálogo incluye curvas, tes, uniones, reducciones, soportes y tapas que permiten resolver cualquier trayectoria de instalación.\n\nEl tratamiento superficial define el ambiente de uso: pregalvanizado (NBR 7008) para interiores secos, galvanizado por inmersión en caliente (NBR 6323 / ASTM 123) para exteriores o ambientes húmedos y corrosivos, y pintura electrostática para aplicaciones con requisitos estéticos. Las bandejas BGA cumplen con normas IEC 61537 y ABNT NBR 6323.",
       "intentCards": [
         {
           "label": "Instalación en exterior o zona húmeda",
@@ -150,16 +140,22 @@
       ],
       "materialTable": [
         {
-          "material": "Acero SAE 1006 pregalvanizado (PZ)",
-          "tratamiento": "De fábrica, sin proceso adicional",
+          "material": "Acero SAE 1006/1010 pregalvanizado (PZ)",
+          "tratamiento": "Sin tratamiento adicional",
           "ambiente": "Interiores secos, sin exposición a humedad, agentes químicos o salinidad",
           "norma": "NBR 7008"
         },
         {
-          "material": "Acero SAE 1006 chapa negra (CN)",
-          "tratamiento": "Galvanizado en caliente o pintura electrostática",
-          "ambiente": "Exterior / húmedo / corrosivo",
+          "material": "Acero SAE 1006/1010",
+          "tratamiento": "Galvanizado por inmersión en caliente (GF)",
+          "ambiente": "Exterior, ambiente húmedo o mojado, o con agentes corrosivos",
           "norma": "NBR 6323 / ASTM 123"
+        },
+        {
+          "material": "Acero SAE 1006/1010",
+          "tratamiento": "Pintura electrostática en polvo",
+          "ambiente": "Interior y exterior, cuando además se busca color o acabado estético",
+          "norma": "—"
         },
         {
           "material": "Acero inoxidable AISI 304",
@@ -729,7 +725,7 @@
       "name": "Bandeja Portacables",
       "subtitle": "Tramo recto de 3000 mm · lisa o perforada · tipo U o tipo C",
       "shortDescription": "Bandeja Portacables BGA — tramo recto de 3000 mm · lisa o perforada · tipo U o tipo C. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La bandeja portacables es el tramo recto del sistema de canalización: sostiene y distribuye los cables eléctricos a lo largo del recorrido, en instalaciones industriales, comerciales y de infraestructura.\n\nSe especifica en cuatro combinaciones. El fondo perforado favorece la ventilación y la disipación térmica del cable y permite fijar abrazaderas en cualquier punto; el fondo liso protege mejor contra polvo y goteo. El ala tipo C lleva un pliegue de refuerzo en el borde, que aumenta la rigidez y permite mayor distancia entre soportes que el ala tipo U.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La bandeja portacables es el tramo recto del sistema de canalización: sostiene y distribuye los cables eléctricos a lo largo del recorrido, en instalaciones industriales, comerciales y de infraestructura.\n\nSe especifica en cuatro combinaciones. El fondo perforado favorece la ventilación y la disipación térmica del cable y permite fijar abrazaderas en cualquier punto; el fondo liso protege mejor contra polvo y goteo. El ala tipo C lleva un pliegue de refuerzo en el borde, que aumenta la rigidez y permite mayor distancia entre soportes que el ala tipo U.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo conviene bandeja perforada y cuándo lisa?",
@@ -833,7 +829,7 @@
       "name": "Curva Horizontal 90°",
       "subtitle": "Cambio de dirección horizontal a 90° con radio",
       "shortDescription": "Curva Horizontal 90° para bandeja portacables BGA — cambio de dirección horizontal a 90° con radio. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La curva horizontal 90° resuelve el giro del recorrido en el plano horizontal, manteniendo el radio de curvatura que el cable necesita para no sufrir tensión en el doblez.\n\nSe especifica por ancho y ala, iguales a los de la bandeja que continúa. Existe también la versión recta (CT3116 / CT3016), en ángulo vivo, para cuando no hay espacio para el radio.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La curva horizontal 90° resuelve el giro del recorrido en el plano horizontal, manteniendo el radio de curvatura que el cable necesita para no sufrir tensión en el doblez.\n\nSe especifica por ancho y ala, iguales a los de la bandeja que continúa. Existe también la versión recta (CT3116 / CT3016), en ángulo vivo, para cuando no hay espacio para el radio.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cómo especifico una curva horizontal?",
@@ -932,7 +928,7 @@
       "name": "Curva Horizontal Recta 90°",
       "subtitle": "Giro horizontal a 90° en ángulo vivo, sin radio",
       "shortDescription": "Curva Horizontal Recta 90° para bandeja portacables BGA — giro horizontal a 90° en ángulo vivo, sin radio. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La curva horizontal recta 90° gira el recorrido en ángulo vivo, sin radio de curvatura. Ocupa menos espacio que la curva con radio.\n\nSe usa donde el trazado no admite el radio de la curva convencional: pasos junto a columnas, esquinas cerradas o entrepisos con poco espacio libre. Conviene verificar el radio mínimo de curvatura del cable antes de especificarla.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La curva horizontal recta 90° gira el recorrido en ángulo vivo, sin radio de curvatura. Ocupa menos espacio que la curva con radio.\n\nSe usa donde el trazado no admite el radio de la curva convencional: pasos junto a columnas, esquinas cerradas o entrepisos con poco espacio libre. Conviene verificar el radio mínimo de curvatura del cable antes de especificarla.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo uso recta en vez de curva con radio?",
@@ -1030,7 +1026,7 @@
       "name": "Curva Vertical Externa 90°",
       "subtitle": "Cambio de nivel a 90° en el plano vertical, cara externa",
       "shortDescription": "Curva Vertical Externa 90° para bandeja portacables BGA — cambio de nivel a 90° en el plano vertical, cara externa. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La curva vertical externa 90° cambia el nivel del recorrido en el plano vertical, doblando por la cara externa de la bandeja. La caída estándar del render es de 148 mm.\n\nSe usa para subir o bajar el trazado al cruzar una viga, un ducto o un cambio de altura de losa, sin cortar el cable ni forzar el radio.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La curva vertical externa 90° cambia el nivel del recorrido en el plano vertical, doblando por la cara externa de la bandeja. La caída estándar del render es de 148 mm.\n\nSe usa para subir o bajar el trazado al cruzar una viga, un ducto o un cambio de altura de losa, sin cortar el cable ni forzar el radio.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuál es la diferencia entre externa e interna?",
@@ -1129,7 +1125,7 @@
       "name": "Curva Vertical Interna 90°",
       "subtitle": "Cambio de nivel a 90° en el plano vertical, cara interna",
       "shortDescription": "Curva Vertical Interna 90° para bandeja portacables BGA — cambio de nivel a 90° en el plano vertical, cara interna. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La curva vertical interna 90° cambia el nivel del recorrido doblando por la cara interna de la bandeja, con caída estándar de 148 mm.\n\nEs la pieza complementaria de la curva vertical externa: juntas resuelven el sube y baja completo de un tramo que salva un obstáculo y vuelve a su altura original.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La curva vertical interna 90° cambia el nivel del recorrido doblando por la cara interna de la bandeja, con caída estándar de 148 mm.\n\nEs la pieza complementaria de la curva vertical externa: juntas resuelven el sube y baja completo de un tramo que salva un obstáculo y vuelve a su altura original.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cómo sé si necesito la interna o la externa?",
@@ -1228,7 +1224,7 @@
       "name": "Curva Vertical Externa 45°",
       "subtitle": "Cambio de nivel a 45° en el plano vertical, cara externa",
       "shortDescription": "Curva Vertical Externa 45° para bandeja portacables BGA — cambio de nivel a 45° en el plano vertical, cara externa. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La curva vertical externa 45° resuelve el cambio de nivel con una transición más suave que la de 90°, doblando por la cara externa.\n\nSe prefiere en tramos con mucho cable o con cables de sección grande, donde el radio de 90° obligaría a un doblez ajustado. También en recorridos largos en rampa.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La curva vertical externa 45° resuelve el cambio de nivel con una transición más suave que la de 90°, doblando por la cara externa.\n\nSe prefiere en tramos con mucho cable o con cables de sección grande, donde el radio de 90° obligaría a un doblez ajustado. También en recorridos largos en rampa.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Por qué elegir 45° en lugar de 90°?",
@@ -1326,7 +1322,7 @@
       "name": "Curva Vertical Interna 45°",
       "subtitle": "Cambio de nivel a 45° en el plano vertical, cara interna",
       "shortDescription": "Curva Vertical Interna 45° para bandeja portacables BGA — cambio de nivel a 45° en el plano vertical, cara interna. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La curva vertical interna 45° es la contraparte de la externa: cambia el nivel del recorrido con transición suave, doblando por la cara interna.\n\nSe usa junto con la externa de 45° para armar el sube y baja completo de un tramo, con el menor esfuerzo posible sobre el cable.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La curva vertical interna 45° es la contraparte de la externa: cambia el nivel del recorrido con transición suave, doblando por la cara interna.\n\nSe usa junto con la externa de 45° para armar el sube y baja completo de un tramo, con el menor esfuerzo posible sobre el cable.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo conviene 45° y no 90°?",
@@ -1424,7 +1420,7 @@
       "name": "Curva Horizontal 45°",
       "subtitle": "Giro horizontal de 45°",
       "shortDescription": "Curva Horizontal 45° para bandeja portacables BGA — giro horizontal de 45°. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La curva horizontal 45° gira el recorrido medio ángulo en el plano horizontal, para trazados que no son perpendiculares.\n\nAparece cuando la bandeja tiene que acompañar una nave en diagonal, esquivar una columna o entrar en un tablero que no está a 90° del recorrido principal.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La curva horizontal 45° gira el recorrido medio ángulo en el plano horizontal, para trazados que no son perpendiculares.\n\nAparece cuando la bandeja tiene que acompañar una nave en diagonal, esquivar una columna o entrar en un tablero que no está a 90° del recorrido principal.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Puedo hacer un giro de 90° con dos de 45°?",
@@ -1522,7 +1518,7 @@
       "name": "Curva de Descarga",
       "subtitle": "Salida descendente de cables hacia equipo o tablero",
       "shortDescription": "Curva de Descarga para bandeja portacables BGA — salida descendente de cables hacia equipo o tablero. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La curva de descarga, también llamada curva de inversión, baja el cable desde la bandeja hacia un tablero, un motor o un equipo situado por debajo del recorrido.\n\nEs la pieza que cierra el trayecto entre la canalización y el equipo. Acompaña el cable en la bajada respetando el radio de curvatura, en lugar de dejarlo colgar del borde de la bandeja.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La curva de descarga, también llamada curva de inversión, baja el cable desde la bandeja hacia un tablero, un motor o un equipo situado por debajo del recorrido.\n\nEs la pieza que cierra el trayecto entre la canalización y el equipo. Acompaña el cable en la bajada respetando el radio de curvatura, en lugar de dejarlo colgar del borde de la bandeja.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Qué diferencia hay con la curva vertical?",
@@ -1621,7 +1617,7 @@
       "name": "Te Horizontal",
       "subtitle": "Derivación en T en el plano horizontal",
       "shortDescription": "Te Horizontal para bandeja portacables BGA — derivación en T en el plano horizontal. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El Te horizontal divide el recorrido en dos ramales dentro del mismo plano, con radio de curvatura en la derivación.\n\nEs la pieza de reparto: desde el tronco principal salen los ramales hacia sectores, tableros secundarios o líneas de máquinas.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El Te horizontal divide el recorrido en dos ramales dentro del mismo plano, con radio de curvatura en la derivación.\n\nEs la pieza de reparto: desde el tronco principal salen los ramales hacia sectores, tableros secundarios o líneas de máquinas.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿El ramal puede tener otro ancho?",
@@ -1721,7 +1717,7 @@
       "name": "Te Horizontal Recto",
       "subtitle": "Derivación en T con ángulo vivo, sin radio",
       "shortDescription": "Te Horizontal Recto para bandeja portacables BGA — derivación en T con ángulo vivo, sin radio. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El Te horizontal recto deriva un ramal perpendicular en ángulo vivo, sin radio de curvatura.\n\nSe usa donde no hay espacio para el radio del Te convencional. Como en toda pieza recta, conviene verificar el radio mínimo del cable que va a doblar hacia el ramal.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El Te horizontal recto deriva un ramal perpendicular en ángulo vivo, sin radio de curvatura.\n\nSe usa donde no hay espacio para el radio del Te convencional. Como en toda pieza recta, conviene verificar el radio mínimo del cable que va a doblar hacia el ramal.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo elegir el recto?",
@@ -1819,7 +1815,7 @@
       "name": "Te Vertical Ascendente",
       "subtitle": "Derivación con ramal que sube",
       "shortDescription": "Te Vertical Ascendente para bandeja portacables BGA — derivación con ramal que sube. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El Te vertical ascendente deriva un ramal hacia arriba, dejando el tramo principal siguiendo en su nivel.\n\nTípico en plantas de varios niveles: el tronco corre por el entrepiso y desde él suben los ramales hacia equipos, luminarias o el nivel superior.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El Te vertical ascendente deriva un ramal hacia arriba, dejando el tramo principal siguiendo en su nivel.\n\nTípico en plantas de varios niveles: el tronco corre por el entrepiso y desde él suben los ramales hacia equipos, luminarias o el nivel superior.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuál es la diferencia con la curva vertical?",
@@ -1917,7 +1913,7 @@
       "name": "Te Vertical de Descarga",
       "subtitle": "Derivación con ramal que baja",
       "shortDescription": "Te Vertical de Descarga para bandeja portacables BGA — derivación con ramal que baja. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El Te vertical de descarga deriva un ramal hacia abajo con caída de 148 mm, sin interrumpir el tramo principal.\n\nEs la pieza para alimentar tableros y motores desde una bandeja que sigue de largo: baja lo que hace falta y el tronco continúa.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El Te vertical de descarga deriva un ramal hacia abajo con caída de 148 mm, sin interrumpir el tramo principal.\n\nEs la pieza para alimentar tableros y motores desde una bandeja que sigue de largo: baja lo que hace falta y el tronco continúa.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Qué diferencia hay con la curva de descarga?",
@@ -2016,7 +2012,7 @@
       "name": "Te Vertical de Descarga Lateral",
       "subtitle": "Derivación descendente por el costado",
       "shortDescription": "Te Vertical de Descarga Lateral para bandeja portacables BGA — derivación descendente por el costado. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El Te vertical de descarga lateral baja el ramal por el lateral de la bandeja, no por el eje.\n\nSe usa cuando el equipo a alimentar está desplazado respecto del eje del recorrido, o cuando algo debajo del tramo impide la bajada central.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El Te vertical de descarga lateral baja el ramal por el lateral de la bandeja, no por el eje.\n\nSe usa cuando el equipo a alimentar está desplazado respecto del eje del recorrido, o cuando algo debajo del tramo impide la bajada central.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo conviene la lateral y no la central?",
@@ -2115,7 +2111,7 @@
       "name": "Unión Cruzeta",
       "subtitle": "Cruce de cuatro vías en el plano horizontal",
       "shortDescription": "Unión Cruzeta para bandeja portacables BGA — cruce de cuatro vías en el plano horizontal. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La unión cruzeta resuelve el cruce de cuatro vías, con radio de curvatura en cada boca.\n\nAparece en el nudo central de plantas grandes, donde el recorrido principal se cruza con uno transversal y hay que repartir en las cuatro direcciones.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La unión cruzeta resuelve el cruce de cuatro vías, con radio de curvatura en cada boca.\n\nAparece en el nudo central de plantas grandes, donde el recorrido principal se cruza con uno transversal y hay que repartir en las cuatro direcciones.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Las cuatro bocas tienen el mismo ancho?",
@@ -2214,7 +2210,7 @@
       "name": "Unión Cruzeta Recta",
       "subtitle": "Cruce de cuatro vías en ángulo vivo",
       "shortDescription": "Unión Cruzeta Recta para bandeja portacables BGA — cruce de cuatro vías en ángulo vivo. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La unión cruzeta recta cruza cuatro vías sin radio de curvatura, en ángulo vivo.\n\nEs la opción para nudos en espacios ajustados, donde la cruzeta con radio no entra.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La unión cruzeta recta cruza cuatro vías sin radio de curvatura, en ángulo vivo.\n\nEs la opción para nudos en espacios ajustados, donde la cruzeta con radio no entra.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo uso la recta?",
@@ -2312,7 +2308,7 @@
       "name": "Desnivel Simple",
       "subtitle": "Salto de altura entre dos tramos del mismo eje",
       "shortDescription": "Desnivel Simple para bandeja portacables BGA — salto de altura entre dos tramos del mismo eje. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El desnivel simple conecta dos tramos de bandeja alineados en el mismo eje pero a distinta altura. Es posible cambiar la altura según su necesidad, para esto confirmar con el vendedor.\n\nSe usa para esquivar una viga baja, un ducto o una canalización cruzada, sin sacar el recorrido de su eje ni armar un par de curvas verticales.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El desnivel simple conecta dos tramos de bandeja alineados en el mismo eje pero a distinta altura. Es posible cambiar la altura según su necesidad, para esto confirmar con el vendedor.\n\nSe usa para esquivar una viga baja, un ducto o una canalización cruzada, sin sacar el recorrido de su eje ni armar un par de curvas verticales.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿En qué se diferencia de la curva vertical?",
@@ -2411,7 +2407,7 @@
       "name": "Desvío Horizontal Derecho",
       "subtitle": "Desplazamiento lateral a la derecha, misma dirección",
       "shortDescription": "Desvío Horizontal Derecho para bandeja portacables BGA — desplazamiento lateral a la derecha, misma dirección. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El desvío horizontal derecho corre el recorrido hacia la derecha sin cambiar su dirección: entra y sale paralelo, desplazado.\n\nSirve para esquivar una columna, una máquina o una canalización de otra especialidad, y volver a la línea original más adelante.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El desvío horizontal derecho corre el recorrido hacia la derecha sin cambiar su dirección: entra y sale paralelo, desplazado.\n\nSirve para esquivar una columna, una máquina o una canalización de otra especialidad, y volver a la línea original más adelante.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Qué diferencia hay con una reducción lateral?",
@@ -2509,7 +2505,7 @@
       "name": "Desvío Horizontal Izquierdo",
       "subtitle": "Desplazamiento lateral a la izquierda, misma dirección",
       "shortDescription": "Desvío Horizontal Izquierdo para bandeja portacables BGA — desplazamiento lateral a la izquierda, misma dirección. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El desvío horizontal izquierdo corre el recorrido hacia la izquierda manteniendo la dirección.\n\nEs la pieza espejo del desvío derecho; juntas permiten rodear un obstáculo y retomar la línea original del trazado.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El desvío horizontal izquierdo corre el recorrido hacia la izquierda manteniendo la dirección.\n\nEs la pieza espejo del desvío derecho; juntas permiten rodear un obstáculo y retomar la línea original del trazado.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cómo defino si es derecho o izquierdo?",
@@ -2607,7 +2603,7 @@
       "name": "Reducción Lateral Derecha",
       "subtitle": "Cambio de ancho alineado por el lado derecho",
       "shortDescription": "Reducción Lateral Derecha para bandeja portacables BGA — cambio de ancho alineado por el lado derecho. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La reducción lateral derecha cambia el ancho de la bandeja manteniendo alineado el lado derecho del recorrido.\n\nSe usa cuando el tramo pierde circuitos y ya no necesita el ancho original, pero uno de los lados tiene que seguir la misma línea, por ejemplo contra una pared.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La reducción lateral derecha cambia el ancho de la bandeja manteniendo alineado el lado derecho del recorrido.\n\nSe usa cuando el tramo pierde circuitos y ya no necesita el ancho original, pero uno de los lados tiene que seguir la misma línea, por ejemplo contra una pared.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo uso lateral y cuándo central?",
@@ -2705,7 +2701,7 @@
       "name": "Reducción Lateral Izquierda",
       "subtitle": "Cambio de ancho alineado por el lado izquierdo",
       "shortDescription": "Reducción Lateral Izquierda para bandeja portacables BGA — cambio de ancho alineado por el lado izquierdo. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La reducción lateral izquierda cambia el ancho manteniendo alineado el lado izquierdo del recorrido.\n\nEs la pieza espejo de la derecha. La elección depende de qué borde de la bandeja tiene que seguir la línea de la obra.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La reducción lateral izquierda cambia el ancho manteniendo alineado el lado izquierdo del recorrido.\n\nEs la pieza espejo de la derecha. La elección depende de qué borde de la bandeja tiene que seguir la línea de la obra.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cómo sé cuál pedir?",
@@ -2803,7 +2799,7 @@
       "name": "Reducción Central",
       "subtitle": "Cambio de ancho simétrico respecto del eje",
       "shortDescription": "Reducción Central para bandeja portacables BGA — cambio de ancho simétrico respecto del eje. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La reducción central cambia el ancho de la bandeja manteniendo el mismo eje: la reducción se reparte por igual a ambos lados.\n\nEs la opción habitual en recorridos suspendidos, donde no hay una pared que obligue a alinear un borde y conviene que el tramo siga centrado con los soportes.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La reducción central cambia el ancho de la bandeja manteniendo el mismo eje: la reducción se reparte por igual a ambos lados.\n\nEs la opción habitual en recorridos suspendidos, donde no hay una pared que obligue a alinear un borde y conviene que el tramo siga centrado con los soportes.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Por qué central y no lateral?",
@@ -2902,7 +2898,7 @@
       "name": "Final de Tramo",
       "subtitle": "Cierre del extremo de la bandeja",
       "shortDescription": "Final de Tramo para bandeja portacables BGA — cierre del extremo de la bandeja. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El final de tramo cierra el extremo de la bandeja, dejando el borde terminado.\n\nEvita el canto vivo al final del recorrido y da terminación al tramo cuando la canalización no continúa.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El final de tramo cierra el extremo de la bandeja, dejando el borde terminado.\n\nEvita el canto vivo al final del recorrido y da terminación al tramo cuando la canalización no continúa.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Es lo mismo que la tapa?",
@@ -2973,7 +2969,7 @@
       "name": "Final de Tramo tipo Descarga",
       "subtitle": "Cierre de extremo con salida de cable hacia abajo",
       "shortDescription": "Final de Tramo tipo Descarga para bandeja portacables BGA — cierre de extremo con salida de cable hacia abajo. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El final de tramo tipo descarga cierra el extremo de la bandeja y a la vez deja bajar el cable hacia el equipo.\n\nResuelve en una sola pieza el cierre del recorrido y la salida del cable, sin necesidad de una curva de descarga adicional.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El final de tramo tipo descarga cierra el extremo de la bandeja y a la vez deja bajar el cable hacia el equipo.\n\nResuelve en una sola pieza el cierre del recorrido y la salida del cable, sin necesidad de una curva de descarga adicional.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo elijo esto y no una curva de descarga?",
@@ -3044,7 +3040,7 @@
       "name": "Unión Simple",
       "subtitle": "Empalme entre tramos, fijado por el ala",
       "shortDescription": "Unión Simple para bandeja portacables BGA — empalme entre tramos, fijado por el ala. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La unión simple empalma dos tramos de bandeja por el ala, con chapa de 4, 6 u 8 orificios según el ala de la bandeja.\n\nEs la pieza que da continuidad mecánica y eléctrica al recorrido. Se cotiza junto con el kit de tornillería KIT3062, que trae los tornillos, tuercas y arandelas de cada empalme.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La unión simple empalma dos tramos de bandeja por el ala, con chapa de 4, 6 u 8 orificios según el ala de la bandeja.\n\nEs la pieza que da continuidad mecánica y eléctrica al recorrido. Se cotiza junto con el kit de tornillería KIT3062, que trae los tornillos, tuercas y arandelas de cada empalme.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuántas uniones necesito?",
@@ -3114,7 +3110,7 @@
       "name": "Unión Interna",
       "subtitle": "Empalme por dentro del ala, exterior liso",
       "shortDescription": "Unión Interna para bandeja portacables BGA — empalme por dentro del ala, exterior liso. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La unión interna empalma dos tramos por el interior del ala, para ala de 50, 75 o 100 mm.\n\nSe elige cuando importa que el exterior de la bandeja quede sin piezas sobresalientes, por estética o porque el tramo pasa muy cerca de otra instalación.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La unión interna empalma dos tramos por el interior del ala, para ala de 50, 75 o 100 mm.\n\nSe elige cuando importa que el exterior de la bandeja quede sin piezas sobresalientes, por estética o porque el tramo pasa muy cerca de otra instalación.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo conviene la interna?",
@@ -3184,7 +3180,7 @@
       "name": "Kit de Uniones",
       "subtitle": "Kit de Uniones con tornillería para el empalme de tramos",
       "shortDescription": "Kit de Uniones para bandeja portacables BGA — tornillería para el empalme de tramos. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El kit de uniones trae la tornillería completa de un empalme: chapas, tornillos, tuercas y arandelas, en cantidad según el ala.\n\nSe especifica por ala: 50 mm (2 chapas y 8 tornillos), 75 mm (12 tornillos) y 100 mm (16 tornillos). Se pide junto con la unión simple o interna.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El kit de uniones trae la tornillería completa de un empalme: chapas, tornillos, tuercas y arandelas, en cantidad según el ala.\n\nSe especifica por ala: 50 mm (2 chapas y 8 tornillos), 75 mm (12 tornillos) y 100 mm (16 tornillos). Se pide junto con la unión simple o interna.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuántos kits necesito?",
@@ -3235,7 +3231,7 @@
       "name": "Tramo Divisor",
       "subtitle": "Separación longitudinal de circuitos, 3000 mm",
       "shortDescription": "Tramo Divisor para bandeja portacables BGA — separación longitudinal de circuitos, 3000 mm. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El tramo divisor es un perfil L de la misma altura del ala, de 3000 mm de largo por 25 mm de base, que separa circuitos dentro de la misma bandeja.\n\nPermite llevar fuerza y control, o circuitos de distinta tensión, en la misma canalización pero físicamente separados, sin duplicar bandeja.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El tramo divisor es un perfil L de la misma altura del ala, de 3000 mm de largo por 25 mm de base, que separa circuitos dentro de la misma bandeja.\n\nPermite llevar fuerza y control, o circuitos de distinta tensión, en la misma canalización pero físicamente separados, sin duplicar bandeja.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Sirve para separar fuerza y control?",
@@ -3292,7 +3288,7 @@
       "name": "Soporte de Suspensión tipo Omega",
       "subtitle": "Suspensión desde losa con perfil omega",
       "shortDescription": "Soporte de Suspensión tipo Omega para bandeja portacables BGA — suspensión desde losa con perfil omega. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El soporte de suspensión tipo omega cuelga la bandeja desde la losa o la estructura mediante varillas roscadas y un perfil omega bajo el fondo.\n\nEs la solución habitual para recorridos suspendidos en interior, donde no hay pared cerca para apoyar la bandeja.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El soporte de suspensión tipo omega cuelga la bandeja desde la losa o la estructura mediante varillas roscadas y un perfil omega bajo el fondo.\n\nEs la solución habitual para recorridos suspendidos en interior, donde no hay pared cerca para apoyar la bandeja.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cada cuánto va un soporte?",
@@ -3363,7 +3359,7 @@
       "name": "Soporte de Suspensión Horizontal tipo A",
       "subtitle": "Suspensión con brazo horizontal, fijación por cable de acero",
       "shortDescription": "Soporte de Suspensión Horizontal tipo A para bandeja portacables BGA — suspensión con brazo horizontal, fijación mediante cable de acero. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El Soporte Tipo A permite suspender la bandeja portacables en posición horizontal y cuenta con un extremo diseñado para su fijación mediante cable de acero.\n\nSe usa donde no se puede colocar dos puntos de anclaje en la losa y hay que colgar de un solo punto.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El Soporte Tipo A permite suspender la bandeja portacables en posición horizontal y cuenta con un extremo diseñado para su fijación mediante cable de acero.\n\nSe usa donde no se puede colocar dos puntos de anclaje en la losa y hay que colgar de un solo punto.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuál es la diferencia con el tipo B?",
@@ -3434,7 +3430,7 @@
       "name": "Soporte de Suspensión Vertical tipo B",
       "subtitle": "Suspensión vertical desde varilla roscada",
       "shortDescription": "Soporte de Suspensión Vertical tipo B para bandeja portacables BGA — suspensión vertical mediante varilla roscada. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "El Soporte Tipo B permite suspender la bandeja portacables en posición horizontal y cuenta con un extremo especialmente diseñado para su fijación mediante varilla roscada.\n\nAlternativa al tipo A para otras condiciones de anclaje y carga.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El Soporte Tipo B permite suspender la bandeja portacables en posición horizontal y cuenta con un extremo especialmente diseñado para su fijación mediante varilla roscada.\n\nAlternativa al tipo A para otras condiciones de anclaje y carga.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo se usa el tipo B y no el A?",
@@ -3505,7 +3501,7 @@
       "name": "Mano Francesa Simple",
       "subtitle": "Apoyo en pared, sin refuerzo triangular",
       "shortDescription": "Mano Francesa Simple para bandeja portacables BGA — apoyo en pared, sin refuerzo triangular. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La mano francesa simple apoya la bandeja contra la pared con un brazo recto, sin refuerzo triangular.\n\nSe dimensiona como el ancho de la bandeja más 50 mm; para escalera, el ancho más 100 mm. Es la opción para cargas livianas y anchos chicos.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La mano francesa simple apoya la bandeja contra la pared con un brazo recto, sin refuerzo triangular.\n\nSe dimensiona como el ancho de la bandeja más 50 mm; para escalera, el ancho más 100 mm. Es la opción para cargas livianas y anchos chicos.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuándo necesito la triangular en vez de la simple?",
@@ -3566,7 +3562,7 @@
       "name": "Mano Francesa Triangular",
       "subtitle": "Apoyo en pared con refuerzo triangular, 3 x M6",
       "shortDescription": "Mano Francesa Triangular para bandeja portacables BGA — apoyo en pared con refuerzo triangular. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La mano francesa triangular apoya la bandeja en pared con una chapa de refuerzo triangular.\n\nSe dimensiona como el ancho de la bandeja más 50 mm; para escalera, el ancho más 100 mm. El refuerzo permite anchos mayores y más carga de cable que la versión simple.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La mano francesa triangular apoya la bandeja en pared con una chapa de refuerzo triangular.\n\nSe dimensiona como el ancho de la bandeja más 50 mm; para escalera, el ancho más 100 mm. El refuerzo permite anchos mayores y más carga de cable que la versión simple.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Hasta qué ancho sirve?",
@@ -3627,7 +3623,7 @@
       "name": "Soporte Travesaño",
       "subtitle": "Travesaño de apoyo, perfil 38x19",
       "shortDescription": "Soporte Travesaño para bandeja portacables BGA — travesaño de apoyo, perfil 38x19. Se especifica por longitud, ancho, ala, material y tratamiento.",
-      "longDescription": "El soporte travesaño es un perfil de 38x19 que cruza por debajo de la bandeja y se cuelga de dos varillas roscadas.\n\nSe dimensiona como el ancho más 100 mm. Sirve tanto para bandeja como para escalera, y permite apoyar más de un recorrido sobre el mismo travesaño.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "El soporte travesaño es un perfil de 38x19 que cruza por debajo de la bandeja y se cuelga de dos varillas roscadas.\n\nSe dimensiona como el ancho más 100 mm. Sirve tanto para bandeja como para escalera, y permite apoyar más de un recorrido sobre el mismo travesaño.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Puedo colgar dos bandejas del mismo travesaño?",
@@ -3688,7 +3684,7 @@
       "name": "Salida Horizontal para Electroducto",
       "subtitle": "Conexión de bandeja a electroducto, de 1/2\" a 4\"",
       "shortDescription": "Salida Horizontal para Electroducto BGA — conexión de bandeja a electroducto, de 1/2\" a 4\". Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La salida horizontal para electroducto conecta el lateral de la bandeja con un caño, en diámetros de 1/2\", 3/4\", 1\", 1.1/4\", 1.1/2\", 2\", 2.1/2\", 3\" y 4\".\n\nEs la transición entre la canalización abierta y la entubada: el cable sale de la bandeja y entra al electroducto sin canto vivo.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La salida horizontal para electroducto conecta el lateral de la bandeja con un caño, en diámetros de 1/2\", 3/4\", 1\", 1.1/4\", 1.1/2\", 2\", 2.1/2\", 3\" y 4\".\n\nEs la transición entre la canalización abierta y la entubada: el cable sale de la bandeja y entra al electroducto sin canto vivo.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cómo elijo el diámetro?",
@@ -3770,7 +3766,7 @@
       "name": "Salida Lateral para Perfilado",
       "subtitle": "Conexión de bandeja a perfilado 38x38",
       "shortDescription": "Salida Lateral para Perfilado BGA — conexión de bandeja a perfilado 38x38. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "La salida lateral para perfilado conecta el lateral de la bandeja con la línea de perfilados 38x38.\n\nUne las dos familias del sistema: el tronco de cables va por bandeja y los ramales chicos, de iluminación o control, siguen por perfilado.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "La salida lateral para perfilado conecta el lateral de la bandeja con la línea de perfilados 38x38.\n\nUne las dos familias del sistema: el tronco de cables va por bandeja y los ramales chicos, de iluminación o control, siguen por perfilado.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Sirve para perfilado 38x19?",
@@ -3806,7 +3802,7 @@
       "name": "Accesorios de Curva y Derivación",
       "subtitle": "Curvas 90° y 45°, TEs y cruzetas · 15 piezas",
       "shortDescription": "Accesorios de Curva y Derivación BGA — curvas 90° y 45°, TEs y cruzetas · 15 piezas. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "Los accesorios de curva y derivación resuelven todos los cambios de dirección del recorrido: giros horizontales, cambios de nivel, derivaciones en T y cruces de cuatro vías.\n\nLa elección sigue tres preguntas: en qué plano ocurre el cambio (horizontal o vertical), con qué ángulo (90° o 45°) y si el recorrido se divide o solo gira. Cada pieza existe en cuatro versiones —lisa o perforada, tipo U o tipo C— y lleva su tapa correspondiente.\n\nDisponible en chapa pregalvanizada (PZ), chapa negra (CN) y acero inoxidable AISI 304, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "Los accesorios de curva y derivación resuelven todos los cambios de dirección del recorrido: giros horizontales, cambios de nivel, derivaciones en T y cruces de cuatro vías.\n\nLa elección sigue tres preguntas: en qué plano ocurre el cambio (horizontal o vertical), con qué ángulo (90° o 45°) y si el recorrido se divide o solo gira. Cada pieza existe en cuatro versiones —lisa o perforada, tipo U o tipo C— y lleva su tapa correspondiente.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cómo elijo entre curva de 90° y de 45°?",
@@ -3851,7 +3847,7 @@
       "name": "Reducciones y Desvíos",
       "subtitle": "Cambiar el ancho o correr el eje del recorrido · 6 piezas",
       "shortDescription": "Reducciones y Desvíos BGA — cambiar el ancho o correr el eje del recorrido · 6 piezas. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "Las reducciones cambian el ancho de la bandeja; los desvíos y el desnivel corren el recorrido de lugar sin cambiar su ancho.\n\nSe usan cuando el tramo pierde circuitos y ya no necesita el ancho original, o cuando hay que esquivar una columna, una viga o una canalización de otra especialidad y retomar la línea después.\n\nDisponible en chapa pregalvanizada (PZ), chapa negra (CN) y acero inoxidable AISI 304, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "Las reducciones cambian el ancho de la bandeja; los desvíos y el desnivel corren el recorrido de lugar sin cambiar su ancho.\n\nSe usan cuando el tramo pierde circuitos y ya no necesita el ancho original, o cuando hay que esquivar una columna, una viga o una canalización de otra especialidad y retomar la línea después.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Reducción o desvío?",
@@ -3887,7 +3883,7 @@
       "name": "Soportes y Fijación",
       "subtitle": "Suspender de losa o apoyar en pared · 6 piezas",
       "shortDescription": "Soportes y Fijación BGA — suspender de losa o apoyar en pared · 6 piezas. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "Los soportes sostienen la bandeja: suspendida desde la losa con varilla roscada, o apoyada contra la pared con ménsula.\n\nLa elección depende de dónde hay estructura disponible. Con losa, se cuelga (omega, tipo A, tipo B o travesaño). Con pared, se apoya (mano francesa simple o triangular). El travesaño permite además sostener más de un recorrido en el mismo punto.\n\nDisponible en chapa pregalvanizada (PZ), chapa negra (CN) y acero inoxidable AISI 304, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "Los soportes sostienen la bandeja: suspendida desde la losa con varilla roscada, o apoyada contra la pared con ménsula.\n\nLa elección depende de dónde hay estructura disponible. Con losa, se cuelga (omega, tipo A, tipo B o travesaño). Con pared, se apoya (mano francesa simple o triangular). El travesaño permite además sostener más de un recorrido en el mismo punto.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cada cuánto va un soporte?",
@@ -3923,7 +3919,7 @@
       "name": "Uniones y Empalmes",
       "subtitle": "Empalmar tramos y separar circuitos · 4 piezas",
       "shortDescription": "Uniones y Empalmes BGA — empalmar tramos y separar circuitos · 4 piezas. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "Las uniones dan continuidad mecánica y eléctrica entre dos tramos de bandeja; el kit trae la tornillería y el divisor separa circuitos dentro del mismo tramo.\n\nCada empalme usa dos chapas de unión más un kit de tornillería. La unión simple va por fuera del ala; la interna va por dentro y deja el exterior liso.\n\nDisponible en chapa pregalvanizada (PZ), chapa negra (CN) y acero inoxidable AISI 304, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "Las uniones dan continuidad mecánica y eléctrica entre dos tramos de bandeja; el kit trae la tornillería y el divisor separa circuitos dentro del mismo tramo.\n\nCada empalme usa dos chapas de unión más un kit de tornillería. La unión simple va por fuera del ala; la interna va por dentro y deja el exterior liso.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cuántas uniones necesito para mi obra?",
@@ -3957,7 +3953,7 @@
       "name": "Salidas y Terminaciones",
       "subtitle": "Dónde termina el recorrido o cambia de sistema · 4 piezas",
       "shortDescription": "Salidas y Terminaciones BGA — dónde termina el recorrido o cambia de sistema · 4 piezas. Se especifica por ancho, ala, material y tratamiento.",
-      "longDescription": "Estas piezas resuelven el final del recorrido y la transición hacia otro sistema de canalización: electroducto, perfilado o el cierre del tramo.\n\nLa salida para electroducto pasa el cable de la bandeja al caño, en nueve diámetros de 1/2\" a 4\". La salida lateral conecta con la línea de perfilados 38x38. Los finales de tramo cierran el extremo, con o sin bajada de cable.\n\nDisponible en chapa pregalvanizada (PZ), chapa negra (CN) y acero inoxidable AISI 304, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+      "longDescription": "Estas piezas resuelven el final del recorrido y la transición hacia otro sistema de canalización: electroducto, perfilado o el cierre del tramo.\n\nLa salida para electroducto pasa el cable de la bandeja al caño, en nueve diámetros de 1/2\" a 4\". La salida lateral conecta con la línea de perfilados 38x38. Los finales de tramo cierran el extremo, con o sin bajada de cable.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
       "faq": [
         {
           "q": "¿Cómo paso de bandeja a caño?",
@@ -3989,7 +3985,7 @@
     "id": "materiales-y-tratamientos",
     "name": "Materiales y Tratamientos",
     "subtitle": "Materia prima, tratamiento superficial, espesores y unión CLINCH",
-    "longDescription": "Todos los productos BGA se fabrican en tres materias primas y se entregan con distintos tratamientos superficiales. La combinación correcta depende del ambiente de la instalación, no del producto: la misma bandeja cambia de tratamiento según dónde va montada.\n\nMateria prima: acero SAE 1006/1010 y acero inoxidable AISI 304 y AISI 316.\n\nTratamientos superficiales. El pregalvanizado (PZ) es inmersión continua de la chapa en zinc a 455 °C, hecha en la planta de producción de la chapa, según NBR 7008: es para interior seco y atmósfera no agresiva. El galvanizado por inmersión en caliente (GF) sumerge la pieza ya fabricada en zinc a 455 °C, según NBR 6323 y ASTM 123: es para exterior, ambiente húmedo o mojado, y da la mayor resistencia a la corrosión. La pintura electrostática en polvo se polimeriza en horno a 200 °C durante 15 minutos y se ensaya por espesor de capa y adherencia; sirve en interior y exterior y agrega acabado estético.\n\nEspesores de chapa: #14 (2,0 mm), #16 (1,5 mm), #18 (1,2 mm), #20 (0,9 mm) y #22 (0,7 mm), con tolerancia de ±0,05 mm. El espesor mínimo sigue el ancho de la bandeja: desde 500 mm, #14; desde 300 mm, #16; por debajo de 300 mm, #18.\n\nUnión en frío CLINCH. En lugar de soldar, las piezas se unen por deformación en frío. La soldadura quema el zinc en el punto de unión y abre el camino a la corrosión; el CLINCH preserva la capa de zinc entera y mejora la terminación.\n\nDisponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Se cotiza por ancho, ala, material, espesor y tratamiento; el espesor mínimo sigue la regla >=500 mm: #14, >=300 mm: #16, menor a 300 mm: #18.",
+    "longDescription": "Todos los productos BGA se fabrican en tres materias primas y se entregan con distintos tratamientos superficiales. La combinación correcta depende del ambiente de la instalación, no del producto: la misma bandeja cambia de tratamiento según dónde va montada.\n\nMateria prima: acero SAE 1006/1010 y acero inoxidable AISI 304 y AISI 316. El acero al carbono se entrega pregalvanizado (PZ): inmersión continua de la chapa en zinc a 455 °C, hecha en la planta de producción de la chapa, según NBR 7008, para interior seco y atmósfera no agresiva.\n\nTratamientos superficiales. El galvanizado por inmersión en caliente (GF) sumerge la pieza ya fabricada en zinc a 455 °C, según NBR 6323 y ASTM 123: es para exterior, ambiente húmedo o mojado, y da la mayor resistencia a la corrosión. La pintura electrostática en polvo se polimeriza en horno a 200 °C durante 15 minutos y se ensaya por espesor de capa y adherencia; sirve en interior y exterior y agrega acabado estético.\n\nEspesores de chapa: #14 (2,0 mm), #16 (1,5 mm), #18 (1,2 mm), #20 (0,9 mm) y #22 (0,7 mm), con tolerancia de ±0,05 mm. El espesor mínimo sigue el ancho de la bandeja: desde 500 mm, #14; desde 300 mm, #16; por debajo de 300 mm, #18.\n\nUnión en frío CLINCH. En lugar de soldar, las piezas se unen por deformación en frío. La soldadura quema el zinc en el punto de unión y abre el camino a la corrosión; el CLINCH preserva la capa de zinc entera y mejora la terminación.",
     "faq": [
       {
         "q": "¿Cuándo uso pregalvanizado y cuándo galvanizado en caliente?",
