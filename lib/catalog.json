@@ -32,15 +32,18 @@
       {
         "id": "sae1006",
         "name": "Acero SAE 1006/1010",
-        "default": true
+        "default": true,
+        "description": "Acero al carbono laminado. En chapa negra (CN) requiere tratamiento posterior obligatorio — galvanizado en caliente o pintura electrostática en polvo. En pregalvanizado (PZ) sale de fábrica con recubrimiento de zinc aplicado antes del conformado, y no requiere tratamiento adicional para uso interno."
       },
       {
         "id": "aisi304",
-        "name": "Acero inoxidable AISI 304"
+        "name": "Acero inoxidable AISI 304",
+        "description": "Acero inoxidable austenítico (aprox. 18% Cr / 8% Ni), con acabado inoxidable natural que no requiere pintura."
       },
       {
         "id": "aisi316",
-        "name": "Acero inoxidable AISI 316"
+        "name": "Acero inoxidable AISI 316",
+        "description": "Acero inoxidable austenítico con adición de molibdeno (2–3%), acabado inoxidable natural y mayor resistencia a la corrosión que el 304."
       }
     ],
     "surfaceTreatments": [
@@ -149,7 +152,7 @@
         {
           "material": "Acero SAE 1006 pregalvanizado (PZ)",
           "tratamiento": "De fábrica, sin proceso adicional",
-          "ambiente": "Interior seco",
+          "ambiente": "Interiores secos, sin exposición a humedad, agentes químicos o salinidad",
           "norma": "NBR 7008"
         },
         {
@@ -161,13 +164,13 @@
         {
           "material": "Acero inoxidable AISI 304",
           "tratamiento": "Sin tratamiento adicional",
-          "ambiente": "Ambientes químicos agresivos",
+          "ambiente": "Higiene exigente — alimenticia, farmacéutica, hospitalaria; interior y exterior sin exposición agresiva a cloruros",
           "norma": "ASTM A240"
         },
         {
           "material": "Acero inoxidable AISI 316",
           "tratamiento": "Sin tratamiento adicional",
-          "ambiente": "PENDIENTE — confirmar con Akira",
+          "ambiente": "Exposición química, ambientes marinos o salinos, plantas químicas, ambientes ácidos o alcalinos y presencia de halógenos",
           "norma": "ASTM A240"
         }
       ],
@@ -4002,7 +4005,7 @@
       },
       {
         "q": "¿Cuándo conviene acero inoxidable en lugar de acero galvanizado?",
-        "a": "En ambientes químicamente agresivos, donde el zinc no alcanza: industria alimenticia, plantas químicas, tratamiento de efluentes. El AISI 304 cubre la mayoría de esos casos."
+        "a": "En ambientes químicamente agresivos, donde el zinc no alcanza. El AISI 304 cubre la mayoría de esos casos: higiene exigente — industria alimenticia, farmacéutica y hospitalaria —, interior y exterior sin exposición agresiva a cloruros. El AISI 316 lleva molibdeno (2–3%) y resiste más: ambientes marinos o salinos, plantas químicas, ambientes ácidos o alcalinos y presencia de halógenos."
       },
       {
         "q": "¿La pintura electrostática sirve para exterior?",

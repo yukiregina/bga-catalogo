@@ -85,6 +85,9 @@ export default function MaterialesYTratamientosPage() {
             {gs.materials.map(m => (
               <div key={m.id} className="bg-white border border-border-subtle rounded-card px-4 py-3">
                 <div className="text-sm font-semibold text-brand-primary">{m.name}</div>
+                {m.description && (
+                  <p className="text-xs text-text-secondary leading-relaxed mt-1">{m.description}</p>
+                )}
               </div>
             ))}
           </div>
