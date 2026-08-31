@@ -24,10 +24,14 @@ export function CartProvider({ children }) {
     setMounted(true)
   }, [])
 
-  // Salva no localStorage a cada mudança
+  // Salva no localStorage a cada mudança — storage bloqueado ou cota cheia
+  // não pode derrubar o provider (embrulha o site inteiro); o carrinho segue
+  // funcionando em memória durante a sessão, só não persiste.
   useEffect(() => {
     if (mounted) {
-      localStorage.setItem('bga-cart-v2', JSON.stringify(items))
+      try {
+        localStorage.setItem('bga-cart-v2', JSON.stringify(items))
+      } catch {}
     }
   }, [items, mounted])
 
