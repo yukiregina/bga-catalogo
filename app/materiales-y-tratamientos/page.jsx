@@ -128,6 +128,25 @@ export default function MaterialesYTratamientosPage() {
           <p className="text-xs text-text-muted">Tolerancia: {gs.thicknessTolerance}</p>
         </section>
 
+        {/* Normas de referencia */}
+        <section className="mb-10">
+          <h2 className="font-brand text-base font-bold text-brand-primary mb-4">Normas de referencia</h2>
+          <div className="bg-white border border-border-subtle rounded-card divide-y divide-border-subtle max-w-3xl">
+            {[
+              { code: 'IEC 61537', desc: 'Cable management systems: Cable tray systems and cable ladder systems' },
+              { code: 'ABNT NBR 6323', desc: 'Galvanização por imersão a quente de produtos de aço e ferro fundido' },
+              { code: 'NBR 7008', desc: 'Chapa de aço revestida de zinco pelo processo de imersão a quente' },
+              { code: 'ASTM A240', desc: 'Stainless Steel Plate, Sheet, and Strip for Pressure Vessels' },
+              { code: 'ASTM B209', desc: 'Aluminum and Aluminum-Alloy Sheet and Plate' },
+            ].map(n => (
+              <div key={n.code} className="px-4 py-2.5 text-xs">
+                <span className="font-mono text-text-primary">{n.code}</span>
+                <span className="text-text-secondary"> — {n.desc}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Unión CLINCH */}
         {gs.joiningProcess && (
           <section className="mb-10">

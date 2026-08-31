@@ -43,7 +43,6 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const [selectedMaterial,  setSelectedMaterial]  = useState(gs.materials?.[0]?.id ?? null)
   const [selectedGauge,     setSelectedGauge]     = useState(gs.thicknesses?.[1]?.gauge ?? gs.thicknesses?.[0]?.gauge ?? null)
   const [qty,      setQty]      = useState(1)
-  const [activeTab, setActiveTab] = useState('specs')
   const [galleryTab, setGalleryTab] = useState('primary') // 'primary' | 'tapa'
 
   // A primeira escrita na URL precisa esperar a leitura (mesmo commit,
@@ -209,12 +208,6 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
       origen: 'ficha',
     })
   }
-
-  const tabs = [
-    { id: 'specs',     label: 'Especificaciones' },
-    { id: 'materials', label: 'Materiales y Tratamientos' },
-    { id: 'norms',     label: 'Normas' },
-  ]
 
   // Regra de espesor que vale pro ancho escolhido — troca a lista inteira por
   // uma resposta. Sem ancho selecionado ou nenhuma regra batendo, cai no
@@ -576,6 +569,13 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               )}
             </div>
 
+            {/* Unidade de venda (campo do Sheet, existe em 3 das 36 fichas) */}
+            {product.unidadVenta && (
+              <p className="text-[11px] text-text-muted mt-1.5">
+                Unidad de venta: {product.unidadVenta}
+              </p>
+            )}
+
             {/* Peças complementares (campo `recommended` do Sheet) — só link, sem CTA próprio */}
             <RecommendedProducts products={recommended} />
 
@@ -604,125 +604,13 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="border-t border-border-subtle">
-          <div className="flex px-5 overflow-x-auto gap-0">
-            {tabs.map(tab => (
-              <button key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`text-xs py-3 px-4 whitespace-nowrap border-b-2 transition ${
-                  activeTab === tab.id
-                    ? 'border-text-primary font-semibold text-text-primary'
-                    : 'border-transparent text-text-muted hover:text-text-secondary'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Tab content */}
-        <div className="px-5 py-4">
-
-          {activeTab === 'specs' && (
-            <table className="w-full text-xs">
-              <tbody className="divide-y divide-border-subtle">
-                <tr>
-                  <td className="py-2 pr-4 text-text-muted w-2/5">Familia</td>
-                  <td className="py-2 text-text-primary">{category?.name ?? ''}</td>
-                </tr>
-                {product.dimensions?.map((d, i) => (
-                  <tr key={i}>
-                    <td className="py-2 pr-4 text-text-muted capitalize">{d.label}</td>
-                    <td className="py-2 font-mono text-text-primary">{d.value} {d.unit}</td>
-                  </tr>
-                ))}
-                {gs.joiningProcess && (
-                  <tr>
-                    <td className="py-2 pr-4 text-text-muted">Proceso de unión</td>
-                    <td className="py-2 text-text-primary">
-                      <span className="font-medium">{gs.joiningProcess.name}</span>
-                      {' — '}{gs.joiningProcess.description}
-                    </td>
-                  </tr>
-                )}
-                {gs.thicknessTolerance && (
-                  <tr>
-                    <td className="py-2 pr-4 text-text-muted">Tolerancia de espesor</td>
-                    <td className="py-2 font-mono text-text-primary">{gs.thicknessTolerance}</td>
-                  </tr>
-                )}
-                {product.features?.map((f, i) => (
-                  <tr key={i}>
-                    <td className="py-2 pr-4 text-text-muted">Característica {i + 1}</td>
-                    <td className="py-2 text-text-primary">{f}</td>
-                  </tr>
-                ))}
-                {product.note && (
-                  <tr>
-                    <td className="py-2 pr-4 text-text-muted">Nota</td>
-                    <td className="py-2 text-text-secondary">{product.note}</td>
-                  </tr>
-                )}
-                {product.unidadVenta && (
-                  <tr>
-                    <td className="py-2 pr-4 text-text-muted">Unidad de venta</td>
-                    <td className="py-2 text-text-primary">{product.unidadVenta}</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          )}
-
-          {activeTab === 'materials' && (
-            <div className="space-y-4">
-              <div className="overflow-x-auto">
-                <table className="w-full text-xs">
-                  <thead>
-                    <tr className="bg-surface-elevated">
-                      <th className="text-left py-2 px-3 text-text-muted font-medium">Tratamiento</th>
-                      <th className="text-left py-2 px-3 text-text-muted font-medium">Ambiente de uso</th>
-                      <th className="text-left py-2 px-3 text-text-muted font-medium">Norma</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border-subtle">
-                    {gs.surfaceTreatments?.map((t, i) => (
-                      <tr key={i}>
-                        <td className="py-2 px-3 text-text-primary font-medium">{t.name}</td>
-                        <td className="py-2 px-3 text-text-secondary">{t.useCase}</td>
-                        <td className="py-2 px-3 font-mono text-text-muted">{t.norm ?? '—'}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              {gs.joiningProcess && (
-                <div className="bg-surface-elevated rounded-lg px-4 py-3 text-xs text-text-secondary">
-                  <span className="font-semibold text-text-primary">{gs.joiningProcess.name}: </span>
-                  {gs.joiningProcess.description}
-                </div>
-              )}
-            </div>
-          )}
-
-          {activeTab === 'norms' && (
-            <div className="space-y-2 text-xs text-text-secondary">
-              {[
-                'IEC 61537 — Cable management systems: Cable tray systems and cable ladder systems',
-                'ABNT NBR 6323 — Galvanização por imersão a quente de produtos de aço e ferro fundido',
-                'NBR 7008 — Chapa de aço revestida de zinco pelo processo de imersão a quente',
-                'ASTM A240 — Stainless Steel Plate, Sheet, and Strip for Pressure Vessels',
-                'ASTM B209 — Aluminum and Aluminum-Alloy Sheet and Plate',
-              ].map((n, i) => (
-                <div key={i} className="flex gap-2">
-                  <span className="text-text-muted shrink-0">—</span>
-                  <span>{n}</span>
-                </div>
-              ))}
-            </div>
-          )}
-
+        {/* Materiales, tratamientos y normas — conteúdo global da família (era
+            duplicado em 3 abas, idêntico nas 36 fichas), não da peça. */}
+        <div className="border-t border-border-subtle px-5 py-3 text-xs text-text-muted">
+          Materiales, tratamientos y normas — iguales para toda la línea ·{' '}
+          <Link href="/materiales-y-tratamientos/" className="font-semibold text-brand-primary hover:underline">
+            Ver detalle →
+          </Link>
         </div>
       </div>
     </>
