@@ -1715,3 +1715,81 @@ largura da descrição longa.
 
 **Commit:** vai junto com o item 18 — o 18 não foi commitado ainda, e commitar
 sozinho gravaria um estado que já se sabe errado.
+
+---
+
+## 22. Conteúdo técnico do Akira sobre os materiais (30/08)
+
+O Akira mandou descrição e ambiente recomendado dos quatro materiais, mais uma
+tabela de referência de outro fabricante (em inglês, por combinação
+material+tratamento). **A tabela serve para confirmar o mapeamento, não para
+reproduzir no site** — é documento de terceiro.
+
+**Confirmado por ele:** é **AISI 316**, não 316L (o L da tabela de referência não
+vale para a BGA).
+
+**O que isso preenche:**
+
+- a seção "Materia prima" da página de materiales, que hoje é só o nome dentro de
+  um card;
+- a coluna `ambiente` do `materialTable` — inclusive o `PENDIENTE` do 316;
+- a FAQ "¿Cuándo conviene acero inoxidable...?", que terminava em "El AISI 304
+  cubre la mayoría de esos casos" sem dizer quando o 316 entra.
+
+**Conflito ainda aberto — a chapa negra.** A tabela do site diz que CN é para
+"Exterior / húmedo / corrosivo"; o texto do Akira diz "uso general en interiores,
+siempre que reciba el tratamiento posterior"; e a tabela de referência que ele
+mesmo mandou põe HDG (galvanizado por imersão) em exterior. Os três só se
+reconciliam se **o ambiente for da combinação chapa + tratamento**, não da chapa.
+Proposta enviada a ele: dividir a linha de CN em duas — CN + GF (exterior,
+húmedo, corrosivo) e CN + pintura electrostática (uso general en interiores).
+**Enquanto ele não confirma, a linha de CN fica como está.**
+
+### Prompt pro Claude Code
+
+```
+Conteúdo novo do cliente (Akira, 30/08) sobre os materiais. Tudo abaixo são
+palavras dele — não reescrever, não enfeitar.
+
+1. lib/catalog.json — globalSpecs.materials ganha "description"
+   sae1006: "Acero al carbono laminado. En chapa negra (CN) requiere tratamiento
+   posterior obligatorio — galvanizado en caliente o pintura electrostática en
+   polvo. En pregalvanizado (PZ) sale de fábrica con recubrimiento de zinc
+   aplicado antes del conformado, y no requiere tratamiento adicional para uso
+   interno."
+   aisi304: "Acero inoxidable austenítico (aprox. 18% Cr / 8% Ni), con acabado
+   inoxidable natural que no requiere pintura."
+   aisi316: "Acero inoxidable austenítico con adición de molibdeno (2–3%),
+   acabado inoxidable natural y mayor resistencia a la corrosión que el 304."
+
+2. app/materiales-y-tratamientos/page.jsx — seção "Materia prima"
+   Cada card passa a mostrar a description abaixo do nome, em text-xs
+   text-text-secondary leading-relaxed. Card sem description não quebra.
+
+3. lib/catalog.json — materialTable da família bandejas, coluna "ambiente"
+   PZ  → "Interiores secos, sin exposición a humedad, agentes químicos o salinidad"
+   304 → "Higiene exigente — alimenticia, farmacéutica, hospitalaria; interior y
+          exterior sin exposición agresiva a cloruros"
+   316 → "Exposición química, ambientes marinos o salinos, plantas químicas,
+          ambientes ácidos o alcalinos y presencia de halógenos"
+   A linha da chapa negra (CN) NÃO muda — está esperando confirmação do Akira
+   sobre separar por tratamento.
+
+4. lib/catalog.json — materialsPage.faq, a pergunta "¿Cuándo conviene acero
+   inoxidable en lugar de acero galvanizado?"
+   Resposta nova:
+   "En ambientes químicamente agresivos, donde el zinc no alcanza. El AISI 304
+   cubre la mayoría de esos casos: higiene exigente — industria alimenticia,
+   farmacéutica y hospitalaria —, interior y exterior sin exposición agresiva a
+   cloruros. El AISI 316 lleva molibdeno (2–3%) y resiste más: ambientes marinos
+   o salinos, plantas químicas, ambientes ácidos o alcalinos y presencia de
+   halógenos."
+
+Rode `npm run build` no final.
+```
+
+**Como conferir:** a página de materiales mostra os três materiais com descrição
+técnica, e a tabela da página de bandejas não tem mais `PENDIENTE`. A linha de CN
+continua igual — é o único ponto ainda dependente do cliente.
+
+**Commit:** `content: descripción técnica de materiales y ambientes, del cliente`
