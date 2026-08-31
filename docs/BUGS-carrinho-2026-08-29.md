@@ -1375,3 +1375,343 @@ um dia entrar uma nota que não seja sobre ancho, ela vai sumir sem motivo — e
 lugar de arrumar é aqui.
 
 **Commit:** `feat: ficha mais curta — espesor contextual y diagramas a la izquierda`
+
+---
+
+## 17. O item 9 levou duas coisas que não estavam em outro lugar (30/08)
+
+A Yuki notou logo depois de rodar o 9: "parece que perdeu info". Está certa, e é
+específico. Auditando o que saiu contra o que existe hoje no site:
+
+**Perdido de verdade:**
+
+- **As normas.** Estavam num array escrito à mão dentro do JSX da ficha e em
+  nenhum outro lugar. `/materiales-y-tratamientos` tem Materia prima,
+  Tratamientos superficiales, Espesores y tolerancia, Unión CLINCH e FAQ — **não
+  tem normas**. Ou seja: repetidas 36 vezes viraram zero.
+- **`unidadVenta`.** Existe em 3 produtos no `catalog.json` ("Tramo 3 m", "Kit",
+  "Tramo 3 m") e depois do 9 não é renderizado em lugar nenhum. É informação da
+  peça, não global — e importa na hora de cotar, porque muda o que a quantidade
+  significa.
+
+**Não perdido:** materia prima, tratamentos, espesores e tolerancia, proceso de
+unión — tudo isso está na página de materiales. Familia está no breadcrumb e na
+tag da ficha.
+
+**O erro foi meu, e é de método:** o item 9 dizia "a página de materiales já diz
+tudo isso uma vez". Eu não verifiquei o destino antes de mandar remover a origem.
+A regra que fica: **antes de tirar conteúdo apontando para outro lugar, abrir o
+outro lugar.**
+
+### Prompt pro Claude Code
+
+```
+O item 9 removeu as abas da ficha, e com elas duas informações que não existem
+em nenhum outro lugar do site. Recolocar cada uma onde ela pertence.
+
+1. Normas — na página de materiales, uma vez
+   Em app/materiales-y-tratamientos/page.jsx, acrescentar uma seção "Normas de
+   referencia" depois de "Espesores y tolerancia", no mesmo padrão visual das
+   outras seções (h2 font-brand text-base, card branco com border-border-subtle).
+   Lista:
+     IEC 61537 — Cable management systems: Cable tray systems and cable ladder systems
+     ABNT NBR 6323 — Galvanização por imersão a quente de produtos de aço e ferro fundido
+     NBR 7008 — Chapa de aço revestida de zinco pelo processo de imersão a quente
+     ASTM A240 — Stainless Steel Plate, Sheet, and Strip for Pressure Vessels
+     ASTM B209 — Aluminum and Aluminum-Alloy Sheet and Plate
+   O código da norma em font-mono text-text-primary, a descrição em
+   text-text-secondary.
+
+2. Unidad de venta — na ficha, junto da quantidade
+   Em app/catalogo/[categoria]/[produto]/ProductSheet.jsx: quando
+   product.unidadVenta existir, mostrar o valor como linha discreta logo abaixo
+   do seletor de quantidade, no formato "Unidad de venta: {valor}" em
+   text-[11px] text-text-muted. Só nos produtos que têm o campo (hoje 3 de 36).
+
+3. A linha de link que o item 9 criou passa a dizer também as normas:
+   "Materiales, tratamientos y normas — iguales para toda la línea · Ver detalle →"
+   (se já estiver com esse texto, não mexer).
+
+Rode `npm run build` no final.
+```
+
+**Para o Akira, não para o código:** `ASTM B209` é norma de alumínio, e a matéria-
+prima do catálogo é aço SAE 1006/1010 e inox AISI 304. Pode ser resíduo da
+listagem antiga. Confirmar com ele antes de publicar.
+
+**Commit:** `fix: normas en la página de materiales y unidad de venta en la ficha`
+
+---
+
+## 18. A ficha é a página mais estreita do site (30/08)
+
+**Medido:** `app/catalogo/[categoria]/[produto]/page.jsx` usa `max-w-4xl` (896px)
+com `px-4`. `/catalogo` e as páginas de família usam 1180px com `px-6`. Navegando
+de uma família para uma ficha, o container encolhe quase 300px sem motivo — e a
+ficha é justamente a página com mais controle na tela.
+
+**Correção de um número que eu dei errado no item 16:** eu disse que a coluna
+direita tinha ~880px. Com `max-w-4xl` menos a coluna de 260px da imagem, ela tem
+~580px. O aperto que a Yuki sentiu era real e mensurável.
+
+**O que a largura compra em altura** (é disso que se trata, não de estética):
+
+- **Grid dos eixos:** ancho tem 14 valores e o código limita a 6 colunas → 3
+  linhas de botões. Com a coluna larga, cabem em uma linha. ~60px, e a pessoa vê
+  todas as medidas de uma vez em vez de varrer três linhas.
+- **SKU composto e "pieza a medida"** passam a caber lado a lado: ~60px.
+- Material/espessor e a descrição curta quebram menos.
+
+**O que NÃO acompanha a largura:** descrição longa e FAQ já têm `max-w-3xl`
+próprio e continuam assim. Linha de leitura larga demais cansa; alargar o
+container não pode alargar o texto.
+
+### Prompt pro Claude Code
+
+```
+A ficha de produto é a única página do site em max-w-4xl (896px); o resto usa
+1180px. Alinhar, e usar a largura ganha para encurtar a coluna de configuração.
+
+1. app/catalogo/[categoria]/[produto]/page.jsx
+   O container passa de "max-w-4xl mx-auto px-4 py-6" para
+   "max-w-[1180px] mx-auto px-6 py-8", igual às páginas de família.
+   Não mexer no max-w-3xl da descrição longa nem no da FAQ — o texto continua
+   estreito de propósito.
+
+2. app/catalogo/[categoria]/[produto]/ProductSheet.jsx — coluna da imagem
+   O grid passa de md:grid-cols-[260px_1fr] para md:grid-cols-[320px_1fr].
+   Os renders são deitados (mediana 1,42) e com 320px a peça aparece maior sem
+   o frame ficar mais alto.
+
+3. Grid dos seletores de eixo
+   Hoje: repeat(Math.min(ax.values.length, 6), minmax(0, 1fr)).
+   Passa a: repeat(auto-fill, minmax(52px, 1fr)) — os botões mantêm largura
+   parecida e o número de colunas segue o espaço disponível. Com a coluna larga,
+   os 14 valores de ancho cabem numa linha; no mobile continua quebrando.
+
+4. SKU composto + "pieza a medida" lado a lado a partir de md
+   Os dois blocos viram um grid md:grid-cols-2 gap-3 (empilhados no mobile).
+   Quando só um dos dois existir, ele ocupa a largura toda — nada de coluna
+   vazia.
+
+Não mexer na ordem dos seletores nem nos CTAs. Rode `npm run build` no final.
+```
+
+**Como conferir:** navegar de `/catalogo/bandejas` para uma ficha — o container
+não pode mudar de largura. Os 14 valores de ancho em uma linha só no desktop. O
+texto longo continua estreito.
+
+**Commit:** `feat: ficha na largura do resto do site, configurador mais curto`
+
+---
+
+## 19. Normas em tabela, e as correções do Akira — DESTRAVADO (30/08)
+
+A seção de normas criada no item 17 é uma linha corrida por norma, e está ruim de
+ler. Duas coisas a resolver juntas:
+
+**Layout:** virar tabela de três colunas — `Norma · Alcance · Aplica a` —, no
+padrão da tabela de materiales da página de família.
+
+**Idioma:** as descrições estão em três idiomas num site em espanhol — inglês no
+IEC e no ASTM, português no NBR. Reescrever o "Alcance" em espanhol.
+
+**Do Akira (30/08):**
+- `ASTM B209` é de alumínio → **remover**.
+- SAE 1006/1010 é aço; serve para aço comum ou galvanizado.
+- AISI 304 e AISI 316 são a nomenclatura técnica das duas classes de inox.
+
+**Destravado:** o Akira confirmou que a BGA trabalha com AISI 316. Isso vira o
+item 20 (material no catálogo) e **roda antes deste**, porque a coluna "Aplica a"
+passa a citar os dois inox.
+
+**Tabela final** — o "Aplica a" é dedução a partir da explicação do Akira; vale
+ele bater o olho quando responder o `ambiente` do 316 (item 20):
+
+| Norma | Alcance | Aplica a |
+| --- | --- | --- |
+| IEC 61537 | Sistemas de canalización: bandejas y escaleras portacables | Todo el sistema |
+| ABNT NBR 6323 | Galvanizado por inmersión en caliente | Tratamiento GF |
+| NBR 7008 | Chapa de acero revestida de zinc por inmersión | Chapa pregalvanizada (PZ) |
+| ASTM A240 | Chapa y fleje de acero inoxidable | AISI 304 y 316 |
+
+### Prompt pro Claude Code
+
+```
+A seção "Normas de referencia" de app/materiales-y-tratamientos/page.jsx é hoje
+uma linha corrida por norma, difícil de ler, e as descrições estão em três
+idiomas (inglês no IEC e no ASTM, português no NBR) num site em espanhol.
+
+Trocar por uma tabela de três colunas, no mesmo padrão da tabela de materiales
+da página de família (thead em bg-surface-elevated, divide-y divide-border-subtle,
+card branco com border-border-subtle, text-xs):
+
+  Norma            | Alcance                                                    | Aplica a
+  IEC 61537        | Sistemas de canalización: bandejas y escaleras portacables  | Todo el sistema
+  ABNT NBR 6323    | Galvanizado por inmersión en caliente                       | Tratamiento GF
+  NBR 7008         | Chapa de acero revestida de zinc por inmersión              | Chapa pregalvanizada (PZ)
+  ASTM A240        | Chapa y fleje de acero inoxidable                           | AISI 304 y 316
+
+O código da norma em font-mono text-text-primary; as outras colunas em
+text-text-secondary.
+
+ASTM B209 sai — é norma de alumínio e a matéria-prima do catálogo é acero
+SAE 1006/1010 e inoxidable AISI 304/316 (confirmado pelo Akira em 30/08).
+
+Rode `npm run build` no final.
+```
+
+**Commit:** `content: normas en tabla, en español, sin la norma de aluminio`
+
+---
+
+## 20. AISI 316 entra no catálogo (30/08, confirmado pelo Akira)
+
+**Akira confirmou:** a BGA trabalha com inox AISI 316 além do 304. E `ASTM B209`
+(alumínio) sai da lista de normas.
+
+**Decidido:** o destaque do inox é **no conteúdo, não na ordem dos chips**. O
+padrão do distribuidor é o aço; pôr o inox primeiro no configurador faria a
+maioria varrer para achar o que sempre usa, e o chip default (SAE) deixaria de
+ser o primeiro. O que rende é a frase — hoje "acero inoxidable AISI 304" aparece
+de passagem, no fim de uma lista, e que a BGA faça 304 **e** 316 é informação
+nova para quem especifica ambiente agressivo.
+
+**Alcance levantado antes de escrever — é menor do que parece:**
+
+- o parágrafo que cita AISI 304 é **idêntico nos 36** `longDescription`: um
+  find/replace resolve os 36;
+- o material entra no SKU por um mapa em `lib/products.js`
+  (`{ sae1006, aisi304, alum1100 }`): mais uma linha;
+- **o carrinho não quebra** — o id da linha é o SKU composto e nenhum id
+  existente muda. Não precisa virar a chave do `localStorage`.
+
+### Prompt pro Claude Code
+
+```
+Incluir o acero inoxidable AISI 316 no catálogo, e dar ao inox o destaque que
+ele não tem hoje na descrição.
+
+1. lib/catalog.json — globalSpecs.materials
+   Acrescentar { "id": "aisi316", "name": "Acero inoxidable AISI 316" } depois
+   do aisi304. Não mexer no default (segue sae1006).
+
+2. lib/products.js — buildComposedSKU
+   No mapa de nomes, acrescentar aisi316: 'AISI316'.
+
+3. lib/catalog.json — os 36 longDescription
+   O parágrafo abaixo é idêntico nas 36 fichas; trocar em todas:
+
+   DE:
+   "Disponible en chapa pregalvanizada (PZ), chapa negra (CN) y acero inoxidable
+   AISI 304, con galvanizado por inmersión en caliente (GF) o pintura
+   electrostática para exterior."
+
+   PARA:
+   "Disponible en chapa pregalvanizada (PZ) y chapa negra (CN), con galvanizado
+   por inmersión en caliente (GF) o pintura electrostática para exterior.
+   También en acero inoxidable AISI 304 y AISI 316."
+
+   O inox ganha frase própria em vez de ficar no fim de uma lista. Nenhuma
+   afirmação de aplicação nova — a diferença entre 304 e 316 é do Akira, e entra
+   pela tabela do passo 4.
+
+4. lib/catalog.json — materialTable da família bandejas
+   Acrescentar a linha do 316 depois da do 304:
+   material: "Acero inoxidable AISI 316"
+   tratamiento: "Sin tratamiento adicional"
+   ambiente: "PENDIENTE — confirmar con Akira"
+   norma: "ASTM A240"
+   Deixar o texto de "ambiente" literalmente assim; é conteúdo do cliente e não
+   pode ser inventado.
+
+5. app/materiales-y-tratamientos/page.jsx
+   Conferir se a seção "Materia prima" lê globalSpecs.materials. Se ler, o 316
+   aparece sozinho e não há o que fazer. Se estiver escrito à mão, acrescentar.
+
+6. Nas 2 FAQs de produto que citam AISI 304, conferir se a resposta continua
+   correta com o 316 disponível; se a frase excluir outros inox por omissão,
+   ajustar só essas duas.
+
+Rode `npm run build` no final.
+```
+
+**Duas pendências que não são código:**
+
+- **`ambiente` do 316 na tabela** — precisa da frase do Akira. Fica com
+  "PENDIENTE" visível até ele responder; melhor um pendente à vista do que uma
+  recomendação de ambiente inventada por nós num material que o cliente vende.
+- **Quando o catálogo passar a vir do Sheet do cliente** (`googleSheetId` hoje é
+  null), esta mudança precisa entrar lá também — ver
+  `RUNBOOK-planilha-na-conta-do-cliente.md`.
+
+**Commit:** `content: acero inoxidable AISI 316 y destaque del inox en la ficha`
+
+---
+
+## 21. Três defeitos que o item 18 revelou (30/08)
+
+Achados pela Yuki testando a ficha do `kit-de-uniones` logo depois de rodar o 18.
+Os três vêm de suposição minha não verificada, não de erro de implementação.
+
+**1. A caixa de espessura aparece em ficha sem eixo `ancho`.** O item 16 mandava
+"se não houver eixo ancho, manter a lista como está". Fallback errado: se a peça
+não se especifica por ancho, a regra de ancho não é dela. Auditadas as 36, são
+**3 fichas**: `kit-de-uniones` (só `ala`), `salida-horizontal-electroducto` e
+`salida-lateral-perfilado` (**nenhum eixo** — a caixa lista três regras numa
+página sem nada para escolher).
+
+**2. Valor órfão no grid dos eixos.** O `repeat(auto-fill, minmax(52px,1fr))` do
+item 18 cria quantas colunas couberem: com 14 valores deu 13 + 1. Os eixos têm 14
+valores (26 fichas), 16 (6 fichas), 5, 3 e 1 — a sobra muda com o tamanho da
+janela. Precisa de linhas equilibradas, não de "quantas couberem".
+
+**3. A FAQ esticou.** O prompt do 18 dizia "não mexer no `max-w-3xl` da FAQ" — a
+FAQ nunca teve; só a descrição longa tinha. Com o container em 1180, os cards
+foram para ~1130px de largura.
+
+**Regra que fica, e é a terceira vez nesta sessão:** antes de escrever "manter o
+que já existe", abrir e confirmar que existe. Foi o mesmo erro do item 17 (linkar
+para uma página que não tinha as normas).
+
+### Prompt pro Claude Code
+
+```
+Dois defeitos na ficha, achados depois do item 18.
+
+1. A caixa "Espesor mínimo recomendado" aparece em fichas sem eixo ancho
+   Em app/catalogo/[categoria]/[produto]/ProductSheet.jsx: só renderizar o bloco
+   quando existir eixo 'ancho' em axesToShow E houver regra casando com o ancho
+   selecionado. Sem eixo ancho, não renderizar nada — remover o fallback que
+   mostra a lista completa (foi ele que causou isso).
+   Afeta 3 fichas: kit-de-uniones, salida-horizontal-electroducto,
+   salida-lateral-perfilado.
+
+2. O grid dos eixos deixa valor sobrando sozinho na última linha
+   O repeat(auto-fill, ...) do item 18 cria quantas colunas couberem, então 14
+   valores viram 13 + 1. Trocar por linhas equilibradas, calculadas no
+   componente:
+     const rows = Math.ceil(n / 8)
+     const cols = Math.ceil(n / rows)
+   com n = ax.values.length. Isso dá 14 → 7+7, 16 → 8+8, 5 → 5, 3 → 3, 1 → 1.
+   Aplicar como:
+     style={{ '--axis-cols': `repeat(${cols}, minmax(0, 88px))` }}
+     className="grid grid-cols-5 md:[grid-template-columns:var(--axis-cols)] gap-1"
+   O minmax com máximo de 88px evita o botão esticar quando há poucos valores;
+   no mobile continuam 5 colunas fixas.
+
+3. A FAQ da ficha esticou junto com o container
+   Em app/catalogo/[categoria]/[produto]/page.jsx, a <section> da FAQ não tem
+   limite de largura. Aplicar max-w-3xl no container dos cards, igual à
+   descrição longa. O h2 acompanha.
+
+Rode `npm run build` no final e confira a bandeja portacables (ancho de 14) e o
+kit-de-uniones (só ala).
+```
+
+**Como conferir:** no Kit, a caixa amarela some. Na bandeja, os 14 anchos em duas
+linhas de 7, e nenhum valor sozinho ao redimensionar a janela. A FAQ na mesma
+largura da descrição longa.
+
+**Commit:** vai junto com o item 18 — o 18 não foi commitado ainda, e commitar
+sozinho gravaria um estado que já se sabe errado.
