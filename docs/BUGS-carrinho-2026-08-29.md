@@ -1793,3 +1793,110 @@ técnica, e a tabela da página de bandejas não tem mais `PENDIENTE`. A linha d
 continua igual — é o único ponto ainda dependente do cliente.
 
 **Commit:** `content: descripción técnica de materiales y ambientes, del cliente`
+
+---
+
+## 23. Dois defeitos achados em auditoria (30/08)
+
+Nenhum dos dois aparece no uso normal da Yuki — por isso a auditoria.
+
+**1. A escrita no `localStorage` não está protegida.** Em
+`components/CartProvider.jsx` a leitura tem `try/catch`; a escrita
+(`localStorage.setItem('bga-cart-v2', ...)`) não tem. Em navegador com storage
+bloqueado ou cota estourada, o `setItem` lança — e como o provider embrulha o
+site inteiro, o erro não fica contido no carrinho.
+
+**2. `npm run dev` quebra em clone novo.** `lib/search-index.json` está no
+`.gitignore` e só é gerado pelo `prebuild`, que roda antes do `build`, não do
+`dev`. Na máquina da Yuki funciona porque o arquivo existe desde o item 7. Em
+máquina nova, o `lib/search.js` importa um arquivo que não está lá e o dev não
+sobe. O build de produção não é afetado.
+
+### Prompt pro Claude Code
+
+```
+Dois defeitos de robustez, sem mudança visual.
+
+1. components/CartProvider.jsx — proteger a escrita no localStorage
+   O useEffect que faz localStorage.setItem('bga-cart-v2', ...) precisa de
+   try/catch, igual à leitura logo acima. Storage bloqueado ou cota cheia não
+   pode derrubar o provider, que embrulha o site inteiro. O carrinho segue
+   funcionando em memória durante a sessão; só não persiste.
+
+2. package.json — o índice de busca precisa existir também em dev
+   Acrescentar "predev": "node scripts/build-search-index.mjs" ao lado do
+   prebuild que já existe. Sem isso, clone novo + npm run dev falha, porque
+   lib/search-index.json é gerado e está no .gitignore.
+
+Rode `npm run build` no final.
+```
+
+**Como conferir:** `rm lib/search-index.json && npm run dev` tem que subir
+normalmente (e recriar o arquivo).
+
+**Commit:** `fix: localStorage a prueba de fallos y índice de búsqueda en dev`
+
+---
+
+## 24. A quantidade só tem + e −, sem digitar (30/08)
+
+**O problema:** num distribuidor elétrico, pedir 80 peças ou 200 metros é
+normal. Hoje isso são 80 cliques — na ficha e de novo no carrinho, que tem os
+mesmos dois botões. A pessoa desiste e vai pro WhatsApp, onde ela **consegue**
+escrever "80". O site empurra para fora exatamente quem tem pedido grande.
+
+Não é bug: é o limite de um controle escolhido para ajuste fino sendo usado como
+entrada de valor.
+
+### Prompt pro Claude Code
+
+```
+A quantidade hoje só se ajusta por + e −, na ficha e no carrinho. Pedidos de
+distribuidor são de dezenas ou centenas de unidades; precisa dar para digitar.
+
+1. app/catalogo/[categoria]/[produto]/ProductSheet.jsx
+   O <span> que mostra qty vira <input> digitável entre os dois botões:
+   - type="text" inputMode="numeric" pattern="[0-9]*" (teclado numérico no
+     celular sem as setinhas do type=number)
+   - value={qty}, onChange aceitando só dígitos (descartar o resto), permitindo
+     campo vazio enquanto a pessoa digita
+   - onBlur normaliza: vazio ou 0 volta para 1; acima de 9999 vira 9999
+   - largura fixa (w-14), text-center font-mono, mesma altura dos botões,
+     borda só nas laterais para continuar parecendo um controle só
+   - aria-label="Cantidad"
+   Os botões + e − continuam, para ajuste de 1 em 1.
+
+2. app/cotacao/page.jsx — mesmo tratamento na linha do carrinho
+   O <span> da quantidade vira o mesmo input, chamando updateQuantity(lineId, n)
+   no blur já normalizado. Manter os botões.
+
+3. components/CartProvider.jsx — updateQuantity
+   Hoje faz `if (qty < 1) return`. Passa a normalizar: número inválido ou < 1
+   vira 1; acima de 9999 vira 9999. Assim a regra vale para quem chamar,
+   inclusive o input.
+
+Não mexer no formato da mensagem de WhatsApp nem no evento de GA4.
+Rode `npm run build` no final.
+```
+
+**Como conferir:** digitar 250 na ficha, agregar, e ver 250 no carrinho e na
+mensagem do WhatsApp. Apagar o campo e clicar fora tem que voltar para 1, nunca
+ficar vazio ou NaN.
+
+**Commit:** `feat: cantidad editable en la ficha y en el carrito`
+
+---
+
+## Checklist do dia da publicação — só verificável no ar
+
+Junto com os itens 10 (404 no GA4) e 11 (política de privacidade):
+
+- **`trailingSlash: true` × links sem barra.** Os links internos são escritos
+  `/catalogo/bandejas`, sem barra final. Navegando dentro do site não dá
+  problema; o risco é recarregar a página ou abrir um link compartilhado nessa
+  URL — aí quem responde é o Amplify, conforme a configuração dele. Testar com o
+  domínio apontado, antes de aposentar o `bga-site`.
+- **Webhook do Apps Script é `no-cors`.** Se falhar, nem o site nem ninguém fica
+  sabendo. É por desenho (o WhatsApp é o canal real, a planilha é registro), mas
+  significa que "lead não chegou" só se descobre olhando a planilha. Conferir a
+  aba "Cotizaciones" nos primeiros dias.
