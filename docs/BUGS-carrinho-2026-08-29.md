@@ -900,11 +900,66 @@ têm algo — e linkar para `/materiales-y-tratamientos`, que já existe e diz t
 isso uma vez. Nas outras 33 a tira de abas não aparece, e o `joiningProcess`
 duplicado some junto.
 
-**Por que está parado:** as abas foram povoadas nos briefs pensando em conteúdo
+**Por que estava parado:** as abas foram povoadas nos briefs pensando em conteúdo
 indexável. Tirá-las remove texto do HTML de 36 páginas. A leitura do Claude é que
 bloco repetido em 36 páginas quase não soma para SEO e que uma página forte
-linkada por 36 é o padrão — mas isso **não foi verificado em fonte atual**. Se
-SEO for a aposta principal do catálogo, olhar o Search Console antes.
+linkada por 36 é o padrão — mas isso **não foi verificado em fonte atual**.
+
+### Decidido em 30/08
+
+**Correção do que estava escrito acima:** "olhar o Search Console antes" não é
+possível. O catálogo nunca foi publicado; não existe dado nenhum dessas páginas.
+A sequência honesta é decidir pelo usuário agora, publicar, e revisar com dado
+depois. Se o orgânico não vier, o caminho de volta não é reencher aba com texto
+genérico — é escrever conteúdo próprio por peça, que é o que rankeia de todo
+jeito.
+
+**Nem o que parecia ser da peça é da peça:** `minThicknessRule` é idêntico nas 36;
+`recommendationNote` é idêntico nas 22 que o têm. O que é único por página é o
+`longDescription` (mediana de 623 caracteres) e a FAQ — 36 FAQs distintas —, mais
+eixos, variantes e SKUs. Ou seja, **as fichas não ficam magras sem as abas**.
+
+**O argumento do usuário, que é o que decidiu:** três abas prometendo
+profundidade técnica e entregando o mesmo texto em 36 páginas ensinam que ali não
+tem nada. Aí, na página onde houvesse algo específico, ninguém abre. Repetição
+não cansa só — destrói o valor de sinal do container. E o conteúdo não é
+desnecessário: está no lugar errado. `/materiales-y-tratamientos` já diz tudo
+isso uma vez, bem.
+
+### Prompt pro Claude Code
+
+```
+As três abas da ficha (Especificaciones, Materiales y Tratamientos, Normas) são
+conteúdo global repetido nas 36 fichas — inclusive o que parecia ser da peça:
+minThicknessRule é idêntico nas 36 e recommendationNote nas 22 que o têm.
+
+Em app/catalogo/[categoria]/[produto]/ProductSheet.jsx:
+
+1. Remover a tira de abas e todo o conteúdo delas, junto com o estado activeTab
+   e o array de normas escrito à mão no JSX. Some com isso a duplicação do
+   gs.joiningProcess, que aparecia em duas abas.
+
+2. No lugar, uma linha discreta no fim do bloco da ficha:
+   "Materiales, tratamientos y normas — iguales para toda la línea" seguida do
+   link "Ver detalle →" para /materiales-y-tratamientos/.
+   text-xs text-text-muted, link em font-semibold text-brand-primary.
+
+3. Não tocar no longDescription nem na FAQ da página (ficam em
+   app/catalogo/[categoria]/[produto]/page.jsx) — são o conteúdo próprio de cada
+   ficha e o que a distingue das outras 35.
+
+4. Conferir se globalSpecs ainda é usado no componente depois da remoção; se não
+   for, tirar a prop e o que ficou órfão em page.jsx.
+
+Rode `npm run build` no final e confirme que as 54 páginas continuam gerando.
+```
+
+**Como conferir:** a ficha termina no bloco de configuração + descrição longa +
+FAQ, com uma linha para materiales. Nenhuma página perde descrição própria nem
+FAQ. Depois de publicar, é este o item para revisitar com o Search Console —
+não antes, porque não há dado.
+
+**Commit:** `refactor: fuera las pestañas globales de la ficha, link a materiales`
 
 ---
 
@@ -1233,3 +1288,90 @@ escopo de evento. Sem isso, só se vê em Tempo real e DebugView. Vale conferir
 antes de esperar o número, porque não é retroativo.
 
 **Commit:** `feat: enviar lista propia por WhatsApp desde la cotización vacía`
+
+---
+
+## 16. O CTA da ficha está longe demais (30/08)
+
+**Medido:** na bandeja portacables, a coluna de configuração acumula ~670px antes
+do botão — descrição, variante, diagrama, dois eixos, aviso de espessura,
+recomendação, material, espessor, SKU, "pieza a medida". O `Agregar a cotización`
+cai por volta dos 750px de página, fora da primeira dobra.
+
+**As abas (item 9) não têm parte nisso** — elas ficam *abaixo* do CTA. Encurtar a
+ficha é este item; o 9 é sobre repetição de conteúdo.
+
+**O que engorda são dois blocos que cometem o mesmo erro das abas:** conteúdo
+genérico mostrado sempre.
+
+- O aviso de espessura lista as **três** regras o tempo todo, mesmo depois da
+  pessoa escolher o ancho. Ela lê três linhas para descobrir qual é a dela.
+- A recomendação é idêntica nas 22 fichas que a têm, aparece sempre, e o texto
+  fala de ancho ≥500 — ou seja, é conselho condicional exibido incondicionalmente.
+
+E há um efeito que não é de altura: os dois são caixas amareladas entre os
+seletores e o botão amarelo. Além de afastar o CTA, competem com ele.
+
+**Diagramas U/C vão para a coluna esquerda** (ideia da Yuki, 30/08): hoje ficam
+entre o seletor de variante e os eixos, no meio do caminho até o botão. São
+imagem, pertencem ao lado da galeria — que tem ~350px de espaço morto embaixo.
+**Alcance honesto: só 1 das 36 fichas tem `secciones`** (bandeja-portacables). É
+a peça principal do Akira, e o lugar certo conceitualmente, mas não encurta as
+outras 35.
+
+**Frame da imagem — decidido não mexer agora.** Os 48 renders vão de 0,45 a 2,48
+de proporção (mediana 1,42): 29 paisagem, 16 quase quadrados, 3 retrato. O frame
+quadrado existe porque o conjunto é heterogêneo. Um 4:3 economizaria ~65px e
+cobraria ~25% de tamanho das três verticais — pouco ganho para o custo, e melhor
+reavaliar com a ficha já encurtada.
+
+**Duas colunas no configurador — anotado, não decidido.** A coluna direita tem
+~880px em 1180 e empilha tudo em linha cheia; o desperdício horizontal está aí,
+não na galeria. Mas configurador em duas colunas quebra a leitura de sequência
+(variante → eixos → material → espessor → SKU) e gente pula passo. Se for por
+esse caminho, só o que **não é escolha** vai para o lado. Reavaliar depois deste
+item.
+
+### Prompt pro Claude Code
+
+```
+Encurtar a coluna de configuração da ficha
+(app/catalogo/[categoria]/[produto]/ProductSheet.jsx) para o "Agregar a
+cotización" subir. Três mudanças, nenhuma remove informação do usuário — todas
+trocam texto genérico por resposta.
+
+1. Aviso de espessura contextual (~linha 411)
+   Hoje o bloco lista todas as thicknessRules. Passa a mostrar só a regra que
+   vale para o ancho selecionado: percorrer thicknessRules na ordem e pegar a
+   primeira que casa com selectedAxes.ancho (os ops são >=, <=, >, <, =).
+   Uma linha: "Ancho {ancho} mm → espesor mínimo {gauge}".
+   Manter a caixa e o ícone, sem a lista.
+   Se não houver eixo ancho ou nenhuma regra casar, manter a lista como está —
+   é o fallback, não o caminho normal.
+
+2. Recomendação condicional (~linha 429)
+   Só renderizar product.recommendationNote quando selectedAxes.ancho for >=
+   thicknessRules[0].width (hoje 500, que é exatamente do que o texto fala).
+   Sem ancho selecionado ou abaixo disso, não renderizar.
+
+3. Diagramas de corte U/C vão para a coluna esquerda
+   Mover o bloco dos diagramas (product.secciones, hoje dentro do bloco de
+   variante) para a coluna esquerda, abaixo da galeria e das miniaturas
+   pieza/tapa. Mantém os rótulos Tipo U / Tipo C — o rótulo é o que desambigua,
+   a imagem ajuda (regra da sessão de 30/08).
+   A coluna esquerda tem 260px: o grid de 2 colunas continua servindo.
+
+Não mexer na ordem dos seletores, no SKU composto nem nos CTAs.
+Rode `npm run build` no final.
+```
+
+**Como conferir:** escolher ancho 600 e ver uma linha só de espessura, com #14.
+Escolher 200 e ver #18 — e a recomendação sumir. Em 1440×900, o `Agregar a
+cotización` deve estar visível sem rolar, ou muito perto disso.
+
+**Ressalva do passo 2:** isso acopla a exibição do texto à primeira regra de
+espessura. Vale porque hoje as 22 notas são idênticas e falam de ancho ≥500. Se
+um dia entrar uma nota que não seja sobre ancho, ela vai sumir sem motivo — e o
+lugar de arrumar é aqui.
+
+**Commit:** `feat: ficha mais curta — espesor contextual y diagramas a la izquierda`
