@@ -216,6 +216,30 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
     { id: 'norms',     label: 'Normas' },
   ]
 
+  // Regra de espesor que vale pro ancho escolhido — troca a lista inteira por
+  // uma resposta. Sem ancho selecionado ou nenhuma regra batendo, cai no
+  // fallback (a lista completa, como antes).
+  const anchoValue = selectedAxes.ancho
+  const matchedThicknessRule = anchoValue != null
+    ? thicknessRules.find(r => {
+        const w = Number(anchoValue)
+        switch (r.op) {
+          case '>=': return w >= r.width
+          case '<=': return w <= r.width
+          case '>':  return w > r.width
+          case '<':  return w < r.width
+          case '=':  return w === r.width
+          default:   return false
+        }
+      })
+    : undefined
+
+  // A nota fala especificamente do limiar de 500mm (primeira regra) — abaixo
+  // disso não se aplica.
+  const showRecommendationNote = anchoValue != null
+    && thicknessRules[0] != null
+    && Number(anchoValue) >= thicknessRules[0].width
+
   return (
     <>
       {/* ── Card principal ─────────────────────────────────────────────────── */}
@@ -273,6 +297,29 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                     </div>
                     <div className="text-[10px] text-text-muted py-0.5">{thumb.label}</div>
                   </button>
+                ))}
+              </div>
+            )}
+
+            {/* Diagrama de apoio: corte transversal tipo U / tipo C (só bandeja-portacables) —
+                fica perto da imagem, não do select: é o rótulo que desambigua, a imagem ajuda. */}
+            {product.secciones && (
+              <div className="grid grid-cols-2 gap-3 mt-3">
+                {[
+                  { tipo: 'U', src: product.secciones.U, label: 'Tipo U — alas rectas' },
+                  { tipo: 'C', src: product.secciones.C, label: 'Tipo C — alas con retorno' },
+                ].filter(s => s.src).map(s => (
+                  <div key={s.tipo} className="text-center">
+                    <img
+                      src={s.src}
+                      alt={`Corte transversal Tipo ${s.tipo} — ${product.name} BGA`}
+                      width={300}
+                      height={100}
+                      loading="lazy"
+                      className="w-full h-auto"
+                    />
+                    <span className="text-[10px] text-text-muted">{s.label}</span>
+                  </div>
                 ))}
               </div>
             )}
@@ -344,29 +391,6 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                     </svg>
                   </div>
                 </div>
-
-                {/* Diagrama de apoio: corte transversal tipo U / tipo C (só bandeja-portacables) —
-                    legenda do select acima, não um card à parte. */}
-                {product.secciones && (
-                  <div className="grid grid-cols-2 gap-3 mt-2">
-                    {[
-                      { tipo: 'U', src: product.secciones.U, label: 'Tipo U — alas rectas' },
-                      { tipo: 'C', src: product.secciones.C, label: 'Tipo C — alas con retorno' },
-                    ].filter(s => s.src).map(s => (
-                      <div key={s.tipo} className="text-center">
-                        <img
-                          src={s.src}
-                          alt={`Corte transversal Tipo ${s.tipo} — ${product.name} BGA`}
-                          width={300}
-                          height={100}
-                          loading="lazy"
-                          className="w-full h-auto"
-                        />
-                        <span className="text-[10px] text-text-muted">{s.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
             )}
 
@@ -415,19 +439,27 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                   <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M236.8,188.09,149.35,36.22a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"/></svg>
                   Espesor mínimo recomendado
                 </div>
-                <ul className="text-[11px] text-text-secondary space-y-0.5">
-                  {thicknessRules.map((r, i) => (
-                    <li key={i}>
-                      Para anchos {OP_SYMBOLS[r.op] ?? r.op}{r.width} mm, espesor mínimo recomendado:{' '}
-                      <span className="font-mono font-semibold text-text-primary">{r.gauge}</span>
-                    </li>
-                  ))}
-                </ul>
+                {matchedThicknessRule ? (
+                  <p className="text-[11px] text-text-secondary">
+                    Ancho {anchoValue} mm → espesor mínimo{' '}
+                    <span className="font-mono font-semibold text-text-primary">{matchedThicknessRule.gauge}</span>
+                  </p>
+                ) : (
+                  <ul className="text-[11px] text-text-secondary space-y-0.5">
+                    {thicknessRules.map((r, i) => (
+                      <li key={i}>
+                        Para anchos {OP_SYMBOLS[r.op] ?? r.op}{r.width} mm, espesor mínimo recomendado:{' '}
+                        <span className="font-mono font-semibold text-text-primary">{r.gauge}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )}
 
-            {/* Tip de recomendación (recommendationNote do Sheet) */}
-            {product.recommendationNote && (
+            {/* Tip de recomendación (recommendationNote do Sheet) — só quando o ancho
+                escolhido é o que a nota descreve (hoje, >=500mm). */}
+            {product.recommendationNote && showRecommendationNote && (
               <div className="bg-surface-elevated border-l-4 border-brand-accent rounded-r-lg px-3 py-2.5 mb-4">
                 <div className="text-[11px] font-semibold text-brand-primary mb-0.5">💡 Recomendación</div>
                 <p className="text-[11px] text-text-secondary leading-relaxed">
