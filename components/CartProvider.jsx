@@ -71,10 +71,13 @@ export function CartProvider({ children }) {
     setItems(prev => prev.filter(i => i.lineId !== lineId))
   }
 
+  // Normaliza em vez de rejeitar — número inválido ou < 1 vira 1, acima de
+  // 9999 vira 9999. Vale pra quem chamar, inclusive input digitável.
   function updateQuantity(lineId, qty) {
-    if (qty < 1) return
+    const num = Number(qty)
+    const clamped = !num || num < 1 ? 1 : Math.min(num, 9999)
     setItems(prev =>
-      prev.map(i => i.lineId === lineId ? { ...i, quantity: qty } : i)
+      prev.map(i => i.lineId === lineId ? { ...i, quantity: clamped } : i)
     )
   }
 

@@ -20,6 +20,11 @@ const RUBROS = [
 export default function CotacaoPage() {
   const { items, removeItem, updateQuantity, updateObservation } = useCart()
 
+  // Texto digitado por linha, enquanto o campo está em edição — permite ficar
+  // vazio no meio da digitação sem forçar updateQuantity (que normalizaria pra
+  // 1 a cada tecla). Só sai daqui e vira updateQuantity no blur.
+  const [qtyDrafts, setQtyDrafts] = useState({})
+
   // Lido no efeito, nunca na render — sessionStorage não existe no primeiro
   // render do servidor, e ler direto quebraria a hidratação.
   const [lastProduct, setLastProduct] = useState(null)
@@ -203,7 +208,29 @@ export default function CotacaoPage() {
                           onClick={() => updateQuantity(lineId, quantity - 1)}
                           className="w-6 text-center text-sm text-text-primary hover:bg-surface-sunken rounded-l transition"
                         >−</button>
-                        <span className="w-7 text-center font-mono text-xs">{quantity}</span>
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          value={qtyDrafts[lineId] ?? String(quantity)}
+                          onChange={e => {
+                            const digits = e.target.value.replace(/\D/g, '')
+                            setQtyDrafts(prev => ({ ...prev, [lineId]: digits }))
+                          }}
+                          onBlur={() => {
+                            const raw = qtyDrafts[lineId]
+                            if (raw !== undefined) {
+                              updateQuantity(lineId, raw === '' ? 0 : Number(raw))
+                              setQtyDrafts(prev => {
+                                const next = { ...prev }
+                                delete next[lineId]
+                                return next
+                              })
+                            }
+                          }}
+                          aria-label="Cantidad"
+                          className="w-7 text-center font-mono text-xs border-x border-black/20 focus:outline-none"
+                        />
                         <button
                           onClick={() => updateQuantity(lineId, quantity + 1)}
                           className="w-6 text-center text-sm text-text-primary hover:bg-surface-sunken rounded-r transition"

@@ -18,6 +18,14 @@ import WhatsappIcon from '@/components/WhatsappIcon'
 
 // ─── Componente interativo ───────────────────────────────────────────────────
 
+// Normaliza a quantidade — inválido ou < 1 vira 1; acima de 9999 vira 9999.
+// Mesma regra do CartProvider, pra quem digita valer o mesmo que quem clica.
+function clampQty(n) {
+  const num = Number(n)
+  if (!num || num < 1) return 1
+  return Math.min(num, 9999)
+}
+
 export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [], recommended = [] }) {
   const gs = globalSpecs ?? {}
   const variants = (product.variants ?? []).map(normalizeVariant)
@@ -532,12 +540,24 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
               <div className="flex items-center border border-border-subtle rounded-lg overflow-hidden shrink-0 w-full sm:w-auto">
                 <button
-                  onClick={() => setQty(q => Math.max(1, q - 1))}
+                  onClick={() => setQty(q => Math.max(1, clampQty(q) - 1))}
                   className="w-8 h-11 sm:h-9 flex items-center justify-center text-text-muted hover:bg-surface-elevated transition text-lg leading-none"
                 >−</button>
-                <span className="flex-1 sm:w-8 text-center font-mono text-sm select-none">{qty}</span>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  value={qty}
+                  onChange={e => {
+                    const digits = e.target.value.replace(/\D/g, '')
+                    setQty(digits === '' ? '' : Number(digits))
+                  }}
+                  onBlur={() => setQty(q => clampQty(q))}
+                  aria-label="Cantidad"
+                  className="w-14 h-11 sm:h-9 text-center font-mono text-sm border-x border-border-subtle focus:outline-none"
+                />
                 <button
-                  onClick={() => setQty(q => q + 1)}
+                  onClick={() => setQty(q => Math.min(9999, clampQty(q) + 1))}
                   className="w-8 h-11 sm:h-9 flex items-center justify-center text-text-muted hover:bg-surface-elevated transition text-lg leading-none"
                 >+</button>
               </div>
