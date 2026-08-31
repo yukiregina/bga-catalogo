@@ -1102,14 +1102,14 @@ produz exatamente `/?`; é por aí que se procura, se alguém for investigar lá
 
 ---
 
-## 13. O produto não chega na primeira dobra da página de família (30/08)
+## 13. O produto não chega na primeira dobra da página de família (31/08)
 
 **Medido em `/catalogo/bandejas`:** ~810px de conteúdo antes do grid. Os dois
 blocos que ocupam isso são o `richDescription` (1167 caracteres, 3 parágrafos,
 ~360px) e os 6 cards de intenção, que em desktop viram 2 linhas de cards de
 ~108px (~308px). O card do produto não é o problema.
 
-**Decidido (30/08):** o texto desce; os cards viram uma linha de chips. E o card
+**Decidido (31/08):** o texto desce; os cards viram uma linha de chips. E o card
 "Galvanizado en caliente" **sai** — é o único dos 6 que não aponta para dentro do
 catálogo, e esse destino já tem link próprio embaixo da tabela de materiais
 (`Ver materiales y tratamientos en detalle →`). Repetir ali em cima seria o mesmo
@@ -1161,7 +1161,7 @@ baixo.
 
 ---
 
-## 14. O botão de cotización some quando o carrinho está vazio (30/08)
+## 14. O botão de cotización some quando o carrinho está vazio (31/08)
 
 **Como está:** `CartBadge.jsx` renderiza o link com `invisible
 pointer-events-none` quando `items.length === 0` — o espaço fica reservado, mas
@@ -1178,7 +1178,7 @@ já sabe o que é um carrinho; aqui o fluxo é o produto.
 compete com o `Agregar a cotización` da ficha. Mas precisa estar visível. Vazio =
 tinta leve, sem número. Com item = a pílula amarela sólida, com a contagem.
 
-**Cor decidida na tela, não no prompt (30/08):** a primeira versão saiu com
+**Cor decidida na tela, não no prompt (31/08):** a primeira versão saiu com
 contorno cinza. A Yuki apontou que esperava amarelo, e renderizado ela tem razão
 — a diferença de intensidade (15% de fundo contra 100%) já separa os dois papéis
 sem precisar trocar de matiz, e o amarelo diz que aquilo é da marca e é clicável.
@@ -1229,13 +1229,13 @@ duas telas o menu não pula de posição.
 
 ---
 
-## 15. "Ya tengo mi lista" no estado vazio da cotización (30/08)
+## 15. "Ya tengo mi lista" no estado vazio da cotización (31/08)
 
 **De onde veio:** o Akira diz que muita gente chega com a lista pronta — foto de
 um orçamento, planilha, PDF do projetista. Hoje o site só oferece o caminho de
 montar item por item.
 
-**Decidido (30/08): a versão simples primeiro.** Upload de arquivo é possível sem
+**Decidido (31/08): a versão simples primeiro.** Upload de arquivo é possível sem
 serviço novo — o Apps Script que já recebe as cotizaciones (`doPost` → aba
 "Cotizaciones") gravaria no Drive —, mas vem com resposta opaca (`no-cors`, o
 site não consegue confirmar que chegou), limite prático de poucos MB por causa
@@ -1291,7 +1291,7 @@ antes de esperar o número, porque não é retroativo.
 
 ---
 
-## 16. O CTA da ficha está longe demais (30/08)
+## 16. O CTA da ficha está longe demais (31/08)
 
 **Medido:** na bandeja portacables, a coluna de configuração acumula ~670px antes
 do botão — descrição, variante, diagrama, dois eixos, aviso de espessura,
@@ -1312,7 +1312,7 @@ genérico mostrado sempre.
 E há um efeito que não é de altura: os dois são caixas amareladas entre os
 seletores e o botão amarelo. Além de afastar o CTA, competem com ele.
 
-**Diagramas U/C vão para a coluna esquerda** (ideia da Yuki, 30/08): hoje ficam
+**Diagramas U/C vão para a coluna esquerda** (ideia da Yuki, 31/08): hoje ficam
 entre o seletor de variante e os eixos, no meio do caminho até o botão. São
 imagem, pertencem ao lado da galeria — que tem ~350px de espaço morto embaixo.
 **Alcance honesto: só 1 das 36 fichas tem `secciones`** (bandeja-portacables). É
@@ -1378,7 +1378,7 @@ lugar de arrumar é aqui.
 
 ---
 
-## 17. O item 9 levou duas coisas que não estavam em outro lugar (30/08)
+## 17. O item 9 levou duas coisas que não estavam em outro lugar (31/08)
 
 A Yuki notou logo depois de rodar o 9: "parece que perdeu info". Está certa, e é
 específico. Auditando o que saiu contra o que existe hoje no site:
@@ -1443,7 +1443,7 @@ listagem antiga. Confirmar com ele antes de publicar.
 
 ---
 
-## 18. A ficha é a página mais estreita do site (30/08)
+## 18. A ficha é a página mais estreita do site (31/08)
 
 **Medido:** `app/catalogo/[categoria]/[produto]/page.jsx` usa `max-w-4xl` (896px)
 com `px-4`. `/catalogo` e as páginas de família usam 1180px com `px-6`. Navegando
@@ -1505,7 +1505,7 @@ texto longo continua estreito.
 
 ---
 
-## 19. Normas em tabela, e as correções do Akira — DESTRAVADO (30/08)
+## 19. Normas em tabela, e as correções do Akira — DESTRAVADO (31/08)
 
 A seção de normas criada no item 17 é uma linha corrida por norma, e está ruim de
 ler. Duas coisas a resolver juntas:
@@ -1516,7 +1516,7 @@ padrão da tabela de materiales da página de família.
 **Idioma:** as descrições estão em três idiomas num site em espanhol — inglês no
 IEC e no ASTM, português no NBR. Reescrever o "Alcance" em espanhol.
 
-**Do Akira (30/08):**
+**Do Akira (31/08):**
 - `ASTM B209` é de alumínio → **remover**.
 - SAE 1006/1010 é aço; serve para aço comum ou galvanizado.
 - AISI 304 e AISI 316 são a nomenclatura técnica das duas classes de inox.
@@ -1556,7 +1556,7 @@ O código da norma em font-mono text-text-primary; as outras colunas em
 text-text-secondary.
 
 ASTM B209 sai — é norma de alumínio e a matéria-prima do catálogo é acero
-SAE 1006/1010 e inoxidable AISI 304/316 (confirmado pelo Akira em 30/08).
+SAE 1006/1010 e inoxidable AISI 304/316 (confirmado pelo Akira em 31/08).
 
 Rode `npm run build` no final.
 ```
@@ -1565,7 +1565,7 @@ Rode `npm run build` no final.
 
 ---
 
-## 20. AISI 316 entra no catálogo (30/08, confirmado pelo Akira)
+## 20. AISI 316 entra no catálogo (31/08, confirmado pelo Akira)
 
 **Akira confirmou:** a BGA trabalha com inox AISI 316 além do 304. E `ASTM B209`
 (alumínio) sai da lista de normas.
@@ -1649,7 +1649,7 @@ Rode `npm run build` no final.
 
 ---
 
-## 21. Três defeitos que o item 18 revelou (30/08)
+## 21. Três defeitos que o item 18 revelou (31/08)
 
 Achados pela Yuki testando a ficha do `kit-de-uniones` logo depois de rodar o 18.
 Os três vêm de suposição minha não verificada, não de erro de implementação.
@@ -1718,7 +1718,7 @@ sozinho gravaria um estado que já se sabe errado.
 
 ---
 
-## 22. Conteúdo técnico do Akira sobre os materiais (30/08)
+## 22. Conteúdo técnico do Akira sobre os materiais (31/08)
 
 O Akira mandou descrição e ambiente recomendado dos quatro materiais, mais uma
 tabela de referência de outro fabricante (em inglês, por combinação
@@ -1748,7 +1748,7 @@ húmedo, corrosivo) e CN + pintura electrostática (uso general en interiores).
 ### Prompt pro Claude Code
 
 ```
-Conteúdo novo do cliente (Akira, 30/08) sobre os materiais. Tudo abaixo são
+Conteúdo novo do cliente (Akira, 31/08) sobre os materiais. Tudo abaixo são
 palavras dele — não reescrever, não enfeitar.
 
 1. lib/catalog.json — globalSpecs.materials ganha "description"
@@ -1796,7 +1796,7 @@ continua igual — é o único ponto ainda dependente do cliente.
 
 ---
 
-## 23. Dois defeitos achados em auditoria (30/08)
+## 23. Dois defeitos achados em auditoria (31/08)
 
 Nenhum dos dois aparece no uso normal da Yuki — por isso a auditoria.
 
@@ -1838,7 +1838,7 @@ normalmente (e recriar o arquivo).
 
 ---
 
-## 24. A quantidade só tem + e −, sem digitar (30/08)
+## 24. A quantidade só tem + e −, sem digitar (31/08)
 
 **O problema:** num distribuidor elétrico, pedir 80 peças ou 200 metros é
 normal. Hoje isso são 80 cliques — na ficha e de novo no carrinho, que tem os
