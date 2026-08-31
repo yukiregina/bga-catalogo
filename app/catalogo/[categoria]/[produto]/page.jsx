@@ -104,7 +104,7 @@ export default function ProdutoPage({ params }) {
       )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
 
-      <div className="max-w-4xl mx-auto px-4 py-6">
+      <div className="max-w-[1180px] mx-auto px-6 py-8">
 
         {/* Breadcrumb */}
         <div className="text-xs text-text-muted mb-4 flex items-center gap-1 flex-wrap">
@@ -137,7 +137,7 @@ export default function ProdutoPage({ params }) {
 
         {/* FAQ */}
         {product.faq?.length > 0 && (
-          <section className="mt-8">
+          <section className="mt-8 max-w-3xl">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-4">
               Preguntas frecuentes
             </h2>

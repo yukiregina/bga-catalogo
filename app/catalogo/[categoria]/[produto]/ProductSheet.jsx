@@ -18,9 +18,6 @@ import WhatsappIcon from '@/components/WhatsappIcon'
 
 // ─── Componente interativo ───────────────────────────────────────────────────
 
-// Comparadores de minThicknessRule → símbolo exibido
-const OP_SYMBOLS = { '>=': '≥', '<=': '≤', '>': '>', '<': '<', '=': '=' }
-
 export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [], recommended = [] }) {
   const gs = globalSpecs ?? {}
   const variants = (product.variants ?? []).map(normalizeVariant)
@@ -239,7 +236,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
       <div className="bg-white rounded-card border border-border-subtle overflow-hidden">
 
         {/* Grid dois colunas */}
-        <div className="grid grid-cols-1 md:grid-cols-[260px_1fr]">
+        <div className="grid grid-cols-1 md:grid-cols-[320px_1fr]">
 
           {/* Coluna esquerda: imagem */}
           <div className="p-5 border-b md:border-b-0 md:border-r border-border-subtle">
@@ -390,63 +387,61 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
             {/* Seletores de eixos */}
             {hasAxes && (
               <div className="space-y-3 mb-4">
-                {axesToShow.map(ax => (
-                  <div key={ax.id}>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-xs text-text-muted">
-                        {ax.label ?? ax.id} · {ax.unit ?? 'mm'}
-                      </span>
-                      <span className="text-[11px] text-text-muted/60">
-                        Seleccionado: {selectedAxes[ax.id]}
-                      </span>
+                {axesToShow.map(ax => {
+                  // Linhas equilibradas em vez de "auto-fill" (que sobra um valor
+                  // sozinho na última linha): 14 → 7+7, 16 → 8+8, 5 → 5, 1 → 1.
+                  const n = ax.values.length
+                  const rows = Math.ceil(n / 8)
+                  const cols = Math.ceil(n / rows)
+                  return (
+                    <div key={ax.id}>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-xs text-text-muted">
+                          {ax.label ?? ax.id} · {ax.unit ?? 'mm'}
+                        </span>
+                        <span className="text-[11px] text-text-muted/60">
+                          Seleccionado: {selectedAxes[ax.id]}
+                        </span>
+                      </div>
+                      <div
+                        className="grid grid-cols-5 md:[grid-template-columns:var(--axis-cols)] gap-1"
+                        style={{ '--axis-cols': `repeat(${cols}, minmax(0, 88px))` }}
+                      >
+                        {ax.values.map(v => {
+                          const sel = selectedAxes[ax.id] === v
+                          return (
+                            <button key={v}
+                              onClick={() => setSelectedAxes(prev => ({ ...prev, [ax.id]: v }))}
+                              className={`text-center py-1.5 text-[11px] rounded font-mono transition ${
+                                sel
+                                  ? 'bg-text-primary text-white border border-text-primary font-medium'
+                                  : 'border border-border-subtle text-text-secondary hover:border-text-primary/30'
+                              }`}
+                            >
+                              {v}
+                            </button>
+                          )
+                        })}
+                      </div>
                     </div>
-                    <div
-                      className="grid gap-1"
-                      style={{ gridTemplateColumns: `repeat(${Math.min(ax.values.length, 6)}, minmax(0, 1fr))` }}
-                    >
-                      {ax.values.map(v => {
-                        const sel = selectedAxes[ax.id] === v
-                        return (
-                          <button key={v}
-                            onClick={() => setSelectedAxes(prev => ({ ...prev, [ax.id]: v }))}
-                            className={`text-center py-1.5 text-[11px] rounded font-mono transition ${
-                              sel
-                                ? 'bg-text-primary text-white border border-text-primary font-medium'
-                                : 'border border-border-subtle text-text-secondary hover:border-text-primary/30'
-                            }`}
-                          >
-                            {v}
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             )}
 
-            {/* Advertencia de espesor mínimo (minThicknessRule do Sheet) */}
-            {thicknessRules.length > 0 && (
+            {/* Advertencia de espesor mínimo (minThicknessRule do Sheet) — só faz
+                sentido em fichas com eixo ancho e regra batendo; sem ancho (ex.:
+                kit-de-uniones, só ala) não há nada certo pra mostrar. */}
+            {matchedThicknessRule && (
               <div className="bg-brand-accent/10 border border-brand-accent/50 rounded-lg px-3 py-2.5 mb-4">
                 <div className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-primary mb-1">
                   <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M236.8,188.09,149.35,36.22a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"/></svg>
                   Espesor mínimo recomendado
                 </div>
-                {matchedThicknessRule ? (
-                  <p className="text-[11px] text-text-secondary">
-                    Ancho {anchoValue} mm → espesor mínimo{' '}
-                    <span className="font-mono font-semibold text-text-primary">{matchedThicknessRule.gauge}</span>
-                  </p>
-                ) : (
-                  <ul className="text-[11px] text-text-secondary space-y-0.5">
-                    {thicknessRules.map((r, i) => (
-                      <li key={i}>
-                        Para anchos {OP_SYMBOLS[r.op] ?? r.op}{r.width} mm, espesor mínimo recomendado:{' '}
-                        <span className="font-mono font-semibold text-text-primary">{r.gauge}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <p className="text-[11px] text-text-secondary">
+                  Ancho {anchoValue} mm → espesor mínimo{' '}
+                  <span className="font-mono font-semibold text-text-primary">{matchedThicknessRule.gauge}</span>
+                </p>
               </div>
             )}
 
@@ -514,21 +509,24 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               </div>
             )}
 
-            {/* SKU composto */}
-            <div className="bg-surface-elevated rounded-lg px-3 py-2.5 mb-4">
-              <div className="text-[10px] text-text-muted mb-0.5">SKU compuesto</div>
-              <div className="font-mono text-sm font-medium text-text-primary tracking-tight">
-                {composedSKU}
+            {/* SKU composto + Pieza a medida — lado a lado a partir de md; sem o
+                segundo bloco, o primeiro ocupa a largura toda (sem coluna vazia). */}
+            <div className="grid md:grid-cols-2 gap-3 mb-4">
+              <div className={`bg-surface-elevated rounded-lg px-3 py-2.5 ${!product.configurable ? 'md:col-span-2' : ''}`}>
+                <div className="text-[10px] text-text-muted mb-0.5">SKU compuesto</div>
+                <div className="font-mono text-sm font-medium text-text-primary tracking-tight">
+                  {composedSKU}
+                </div>
               </div>
-            </div>
 
-            {/* Pieza a medida — la ficha lo dice explícitamente (ver Sheet §Peças configuráveis) */}
-            {product.configurable && (
-              <div className="bg-brand-accent/10 border border-brand-accent/50 rounded-lg px-3 py-2.5 mb-3 text-[11px] text-text-secondary">
-                <span className="font-semibold text-brand-primary">Pieza a medida — </span>
-                confirmá el detalle con el vendedor antes de cotizar (ver preguntas frecuentes abajo).
-              </div>
-            )}
+              {/* la ficha lo dice explícitamente (ver Sheet §Peças configuráveis) */}
+              {product.configurable && (
+                <div className="bg-brand-accent/10 border border-brand-accent/50 rounded-lg px-3 py-2.5 text-[11px] text-text-secondary">
+                  <span className="font-semibold text-brand-primary">Pieza a medida — </span>
+                  confirmá el detalle con el vendedor antes de cotizar (ver preguntas frecuentes abajo).
+                </div>
+              )}
+            </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
