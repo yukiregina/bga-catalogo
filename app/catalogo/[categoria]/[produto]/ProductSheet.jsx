@@ -363,7 +363,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
 
             {/* Variante (modelo/tipo ou diámetro) — seleção dentro da ficha, não rota */}
             {hasVariants && (
-              <div className="mb-4">
+              <div className="no-print mb-4">
                 <label htmlFor="variante" className="flex items-center justify-between mb-1.5">
                   <span className="text-xs text-text-muted">Modelo / variante</span>
                 </label>
@@ -412,7 +412,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                         </span>
                       </div>
                       <div
-                        className="grid grid-cols-5 md:[grid-template-columns:var(--axis-cols)] gap-1"
+                        className="no-print grid grid-cols-5 md:[grid-template-columns:var(--axis-cols)] gap-1"
                         style={{ '--axis-cols': `repeat(${cols}, minmax(0, 88px))` }}
                       >
                         {ax.values.map(v => {
@@ -466,7 +466,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
 
             {/* Material + Espesor */}
             {(hasMaterials || hasGauges) && (
-              <div className="flex gap-4 mb-4 flex-wrap">
+              <div className="no-print flex gap-4 mb-4 flex-wrap">
 
                 {hasMaterials && (
                   <div className="flex-1 min-w-[120px]">
@@ -537,7 +537,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            <div className="no-print flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
               <div className="flex items-center border border-border-subtle rounded-lg overflow-hidden shrink-0 w-full sm:w-auto">
                 <button
                   onClick={() => setQty(q => Math.max(1, clampQty(q) - 1))}
@@ -595,12 +595,14 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
             )}
 
             {/* Peças complementares (campo `recommended` do Sheet) — só link, sem CTA próprio */}
-            <RecommendedProducts products={recommended} />
+            <div className="no-print">
+              <RecommendedProducts products={recommended} />
+            </div>
 
             {cartLine && (
               <Link
                 href="/cotacao"
-                className="block text-center sm:text-left text-xs text-text-muted hover:text-brand-primary hover:underline transition mt-2"
+                className="no-print block text-center sm:text-left text-xs text-text-muted hover:text-brand-primary hover:underline transition mt-2"
               >
                 Ver cotización →
               </Link>
@@ -612,7 +614,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsappDirecto}
-                className="flex items-center justify-center sm:justify-start gap-1.5 mt-2 text-xs text-text-secondary hover:text-text-primary hover:underline transition"
+                className="no-print flex items-center justify-center sm:justify-start gap-1.5 mt-2 text-xs text-text-secondary hover:text-text-primary hover:underline transition"
               >
                 <WhatsappIcon size={14} className="text-wa" />
                 ¿Dudas técnicas? Consultá con un especialista
@@ -624,7 +626,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
 
         {/* Materiales, tratamientos y normas — conteúdo global da família (era
             duplicado em 3 abas, idêntico nas 36 fichas), não da peça. */}
-        <div className="border-t border-border-subtle px-5 py-3 text-xs text-text-muted">
+        <div className="no-print border-t border-border-subtle px-5 py-3 text-xs text-text-muted">
           Materiales, tratamientos y normas — iguales para toda la línea ·{' '}
           <Link href="/materiales-y-tratamientos/" className="font-semibold text-brand-primary hover:underline">
             Ver detalle →

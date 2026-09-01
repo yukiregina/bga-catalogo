@@ -421,7 +421,7 @@ export default function LandingPage() {
 
       <a
         href={waLink(`Hola! Estoy en la web de ${config.brand.name} y quiero más información.`)}
-        className={`${styles.waFloat} ${waFloatHidden ? styles.waFloatHidden : ''}`}
+        className={`no-print ${styles.waFloat} ${waFloatHidden ? styles.waFloatHidden : ''}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"

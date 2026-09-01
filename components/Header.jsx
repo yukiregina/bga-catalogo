@@ -46,7 +46,7 @@ export default function Header() {
   const categories = getCategories()
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
+    <header className={`no-print ${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
       <div className={styles.container}>
         <nav className={styles.nav} aria-label="Navegación principal">
           <button

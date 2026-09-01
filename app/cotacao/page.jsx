@@ -35,6 +35,13 @@ export default function CotacaoPage() {
     } catch {}
   }, [])
 
+  // Idem: a data de hoje só existe no navegador de quem imprime — no servidor
+  // (build estático) seria uma data congelada no momento do build.
+  const [printDate, setPrintDate] = useState('')
+  useEffect(() => {
+    setPrintDate(new Date().toLocaleDateString('es-PY', { day: '2-digit', month: 'long', year: 'numeric' }))
+  }, [])
+
   const [form, setForm] = useState({
     nombre: '',
     empresa: '',
@@ -114,15 +121,31 @@ export default function CotacaoPage() {
     <div className="min-h-screen">
 
       <div className="max-w-[1180px] mx-auto px-6 py-8">
-        <div className="text-xs text-text-muted mb-4">
+        <div className="text-xs text-text-muted mb-4 no-print">
           {lastProduct ? (
             <Link href={lastProduct.href} className="hover:underline">← Volver a {lastProduct.name}</Link>
           ) : (
             <Link href="/catalogo" className="hover:underline">← Catálogo</Link>
           )}
         </div>
-        <h1 className="font-brand text-2xl font-bold text-brand-primary mb-1">Tu cotización</h1>
-        <p className="text-sm text-text-muted mb-6">
+
+        {/* Cabeçalho — só existe na impressão, substitui o título de tela */}
+        <div className="hidden print:block mb-6">
+          <img src="/logo-bga-bandejas-portacables-paraguay.png" alt={config.brand.name} className="h-9 mb-4" />
+          <h1 className="text-xl font-bold mb-1">Lista de especificación</h1>
+          <p className="text-xs mb-2">{printDate}</p>
+          {(form.nombre || form.empresa || form.ciudad || (form.rubro && form.rubro !== RUBROS[0])) && (
+            <div className="text-xs space-y-0.5">
+              {form.nombre && <div>Nombre / empresa: {form.nombre}</div>}
+              {form.empresa && <div>RUC: {form.empresa}</div>}
+              {form.ciudad && <div>Ciudad: {form.ciudad}</div>}
+              {form.rubro && form.rubro !== RUBROS[0] && <div>Rubro: {form.rubro}</div>}
+            </div>
+          )}
+        </div>
+
+        <h1 className="font-brand text-2xl font-bold text-brand-primary mb-1 no-print">Tu cotización</h1>
+        <p className="text-sm text-text-muted mb-6 no-print">
           {items.length > 0
             ? `${items.length} producto${items.length > 1 ? 's' : ''} · revisá los datos antes de enviar.`
             : 'No tenés productos agregados aún.'}
@@ -138,22 +161,24 @@ export default function CotacaoPage() {
               Explorar catálogo →
             </Link>
 
-            <p className="text-xs text-text-muted mt-6 mb-1">
-              ¿Ya tenés tu lista? Mandanos la foto o el Excel por WhatsApp y te cotizamos.
-            </p>
-            <a
-              href={listaWaLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleWhatsappLista}
-              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary hover:underline"
-            >
-              <WhatsappIcon size={14} className="text-wa" />
-              Enviar mi lista por WhatsApp
-            </a>
+            <div className="no-print">
+              <p className="text-xs text-text-muted mt-6 mb-1">
+                ¿Ya tenés tu lista? Mandanos la foto o el Excel por WhatsApp y te cotizamos.
+              </p>
+              <a
+                href={listaWaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleWhatsappLista}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary hover:underline"
+              >
+                <WhatsappIcon size={14} className="text-wa" />
+                Enviar mi lista por WhatsApp
+              </a>
+            </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 max-w-5xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 max-w-6xl">
 
             {/* ── Lista de produtos ─────────────────────────────────── */}
             <div className="space-y-3">
@@ -170,7 +195,7 @@ export default function CotacaoPage() {
                 return (
                 <div
                   key={lineId}
-                  className="bg-white border border-border-subtle rounded-card p-3 space-y-2"
+                  className="cart-line bg-white border border-border-subtle rounded-card p-3 space-y-2"
                 >
                   {/* Linha principal */}
                   <div className="flex gap-3 items-center">
@@ -209,7 +234,7 @@ export default function CotacaoPage() {
                       <div className="flex items-center border border-black/20 rounded h-7">
                         <button
                           onClick={() => updateQuantity(lineId, quantity - 1)}
-                          className="w-6 text-center text-sm text-text-primary hover:bg-surface-sunken rounded-l transition"
+                          className="no-print w-6 text-center text-sm text-text-primary hover:bg-surface-sunken rounded-l transition"
                         >−</button>
                         <input
                           type="text"
@@ -236,12 +261,12 @@ export default function CotacaoPage() {
                         />
                         <button
                           onClick={() => updateQuantity(lineId, quantity + 1)}
-                          className="w-6 text-center text-sm text-text-primary hover:bg-surface-sunken rounded-r transition"
+                          className="no-print w-6 text-center text-sm text-text-primary hover:bg-surface-sunken rounded-r transition"
                         >+</button>
                       </div>
                       <button
                         onClick={() => removeItem(lineId)}
-                        className="text-text-muted hover:text-red-500 transition p-1"
+                        className="no-print text-text-muted hover:text-red-500 transition p-1"
                         title="Quitar"
                       >
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -268,7 +293,7 @@ export default function CotacaoPage() {
 
               <Link
                 href="/catalogo"
-                className="block text-center text-xs text-text-muted hover:text-brand-primary transition py-2"
+                className="no-print block text-center text-xs text-text-muted hover:text-brand-primary transition py-2"
               >
                 + Agregar más productos
               </Link>
@@ -277,8 +302,10 @@ export default function CotacaoPage() {
             {/* ── Form + Preview ─────────────────────────────────────── */}
             <div className="space-y-4">
 
-              {/* Preview WhatsApp */}
-              <div className="bg-white border border-border-subtle rounded-card p-4">
+              {/* Preview WhatsApp — o cabeçalho impresso já resume estes mesmos
+                  dados como texto; a bolha de chat e o form de captura são só
+                  pra tela. */}
+              <div className="no-print bg-white border border-border-subtle rounded-card p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-semibold text-brand-primary">Vista previa WhatsApp</span>
                   <span className="text-[10px] text-text-muted font-mono">{config.contact.whatsapp}</span>
@@ -289,7 +316,7 @@ export default function CotacaoPage() {
               </div>
 
               {/* Form */}
-              <div className="bg-white border border-border-subtle rounded-card p-4 space-y-3">
+              <div className="no-print bg-white border border-border-subtle rounded-card p-4 space-y-3">
                 <div className="text-sm font-semibold text-brand-primary">Datos del proyecto</div>
 
                 {[
@@ -330,19 +357,31 @@ export default function CotacaoPage() {
                 </div>
               </div>
 
-              {/* Botão */}
-              <button
-                onClick={handleSend}
-                className="w-full h-11 bg-wa text-white text-sm font-semibold rounded-lg flex items-center justify-center gap-2 hover:brightness-105 transition"
-              >
-                <WhatsappIcon size={16} />
-                Enviar cotización por WhatsApp
-              </button>
-              <p className="text-[11px] text-text-muted leading-relaxed mt-2">
+              {/* Botões — empilhados no mobile, senão o texto do WhatsApp
+                  não cabe ao lado do de imprimir e a página estoura pros lados */}
+              <div className="no-print flex flex-col sm:flex-row gap-2">
+                <button
+                  onClick={handleSend}
+                  className="w-full sm:flex-1 h-11 bg-wa text-white text-sm font-semibold rounded-lg flex items-center justify-center gap-2 hover:brightness-105 transition whitespace-nowrap"
+                >
+                  <WhatsappIcon size={16} />
+                  Enviar cotización por WhatsApp
+                </button>
+                <button
+                  onClick={() => window.print()}
+                  className="w-full sm:w-auto h-11 px-3 border border-border-subtle text-brand-primary text-sm font-semibold rounded-lg hover:bg-surface-elevated transition whitespace-nowrap"
+                >
+                  Imprimir / Guardar PDF
+                </button>
+              </div>
+              <p className="no-print text-[11px] text-text-muted leading-relaxed mt-2">
                 Al enviar, BGA recibe estos datos para preparar tu cotización.{' '}
                 <Link href="/politica-de-privacidad/" className="underline hover:text-brand-primary">
                   Política de privacidad
                 </Link>
+              </p>
+              <p className="hidden print:block text-[10px] mt-6 pt-3 border-t border-border-subtle">
+                Lista de especificación — no es un presupuesto. Los precios se confirman con el equipo comercial de BGA.
               </p>
 
             </div>

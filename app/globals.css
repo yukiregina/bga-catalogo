@@ -47,3 +47,26 @@ body {
   font-size: 14px;
   color: #222222;
 }
+
+/*
+  Impressão — window.print() + esta folha, sem biblioteca. `.no-print` marca
+  o que não é conteúdo (nav, controles, botões): mais simples que caçar
+  seletor por seletor toda vez que a UI muda.
+*/
+@media print {
+  .no-print { display: none !important; }
+
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  body { background: #fff !important; }
+
+  /* Não imprimir a URL depois de cada link. */
+  a[href]::after { content: ''; }
+
+  /* Uma linha do carrinho não pode ser cortada ao meio entre páginas. */
+  .cart-line { break-inside: avoid; }
+}
