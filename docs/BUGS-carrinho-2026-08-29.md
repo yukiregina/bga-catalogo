@@ -2754,7 +2754,8 @@ assets e o Apps Script. **O build passa limpo** — 55 páginas, exit 0, com o
 segurança de verdade; a segunda ameaça a regra 3 no dia do deploy.
 
 **Duas delas não terminam em commit** — precisam de mão humana em console de
-terceiro. Estão marcadas ⚠️ abaixo e repetidas no checklist do dia.
+terceiro. A do Apps Script (34a) **foi feita e verificada em 01/09**; falta a do
+Amplify (34b), que só dá pra fazer no dia em que o repo for conectado.
 
 ---
 
@@ -2790,10 +2791,18 @@ linhas consome a cota diária do Apps Script, e cota estourada significa lead re
 deixando de gravar **em silêncio** — o `no-cors` esconde a falha, que é
 exatamente o ponto cego da seção 5.2.
 
-⚠️ **Ação manual, sem a qual nada disso vale:** o arquivo do repo é cópia de
-referência; o script que roda está na conta da BGA. Colar
-`docs/bga-leads-apps-script.gs` (agora v4) no editor e **publicar NOVA VERSÃO** —
-editar o `Code.gs` não implanta (runbook, Parte 5).
+✅ **Feito em 01/09 — v4 no ar.** O arquivo do repo é cópia de referência; o que
+roda está na conta da BGA. Foi colado no editor e publicado como **nova versão**
+(editar o `Code.gs` não implanta — runbook, Parte 5).
+
+**Como foi confirmado, e por que o teste tinha que ser esse:** a implantação
+responde `ok` rodando v3 ou v4 — "respondeu bem" não prova nada. O único sinal
+que separa as duas versões é a célula gravada. Mandado um lead com `=1+1` no
+campo Nombre; na planilha aparece **o texto `=1+1`**, não o número `2`. Ou seja,
+o `clampField` novo está mesmo em execução. *(Ficou uma linha marcada
+`PRUEBA — BORRAR ESTA FILA` na primeira aba; apagar.)*
+
+Vale desde já pro formulário da home, que já está no ar.
 
 **Commit:** `fix: neutraliza inyección de fórmula en la planilla de leads`
 
@@ -2918,11 +2927,10 @@ Junto com os itens 10 (404 no GA4) e 11 (política de privacidade):
   sabendo. É por desenho (o WhatsApp é o canal real, a planilha é registro), mas
   significa que "lead não chegou" só se descobre olhando a planilha. Conferir a
   aba "Cotizaciones" nos primeiros dias.
-- **Apps Script v4 publicado?** (item 34a) O conserto da injeção de fórmula só
-  existe depois de colar o arquivo no editor e publicar **nova versão** — editar
-  o `Code.gs` não implanta. Vale também pro formulário da home, que já está no
-  ar. Testar depois: mandar um lead com `=1+1` no campo Nombre e conferir que na
-  planilha aparece o texto `=1+1`, não o número `2`.
+- ~~**Apps Script v4 publicado?**~~ ✅ **feito 01/09** (item 34a) — confirmado
+  pelo teste do `=1+1`: a planilha gravou o texto, não o número. Já protege
+  também o formulário da home. Falta só apagar a linha `PRUEBA — BORRAR ESTA
+  FILA` da primeira aba.
 - **Plataforma do app no Amplify diz "Web", não "Web Compute"?** (item 34b) Se
   disser Web Compute, há um servidor rodando na conta do cliente e o
   `amplify.yml` não pegou.
