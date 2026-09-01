@@ -45,10 +45,11 @@ export default function LandingPage() {
     const form = e.target
     const nombre = form.nombre.value.trim()
     const empresa = form.empresa.value.trim()
+    const ciudad = form.ciudad.value.trim()
     const sector = form.sector.value
     const mensaje = form.mensaje.value.trim()
 
-    const params = { nombre, empresa, sector, mensaje }
+    const params = { nombre, empresa, ciudad, sector, mensaje }
     if (config.data.leadWebhookUrl) {
       const search = new URLSearchParams(params)
       if (config.data.leadWebhookSecret) search.set('key', config.data.leadWebhookSecret)
@@ -59,7 +60,8 @@ export default function LandingPage() {
     // a file into the chat automatically, so we just flag it in the message and
     // rely on the on-screen reminder telling the user to attach it themselves.
     const adjunto = attachedFileName ? `\n\n📎 Adjunto: ${attachedFileName} (lo adjunto acá mismo en el chat)` : ''
-    const texto = `Hola, soy ${nombre} de ${empresa}.\nSector: ${sector}.\n\n${mensaje}${adjunto}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
+    const ciudadLinea = ciudad ? `\nCiudad: ${ciudad}.` : ''
+    const texto = `Hola, soy ${nombre} de ${empresa}.\nSector: ${sector}.${ciudadLinea}\n\n${mensaje}${adjunto}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
 
     setSubmitting(true)
     window.open(waLink(texto), '_blank', 'noopener,noreferrer')
@@ -311,7 +313,7 @@ export default function LandingPage() {
               </div>
               <div className={styles.formWrapper} ref={formWrapperRef}>
                 <h3>Solicitar cotización</h3>
-                <p className={styles.formSub}>4 datos. 30 segundos. Tu mensaje sale por WhatsApp.</p>
+                <p className={styles.formSub}>4 datos y ciudad (opcional). 30 segundos. Tu mensaje sale por WhatsApp.</p>
                 <form onSubmit={handleContactSubmit}>
                   <div className={styles.formField}>
                     <label htmlFor="nombre">Nombre completo</label>
@@ -320,6 +322,10 @@ export default function LandingPage() {
                   <div className={styles.formField}>
                     <label htmlFor="empresa">Empresa o RUC</label>
                     <input id="empresa" name="empresa" type="text" required placeholder="Ej. Construlógica · 80000000-0" />
+                  </div>
+                  <div className={styles.formField}>
+                    <label htmlFor="ciudad">Ciudad</label>
+                    <input id="ciudad" name="ciudad" type="text" placeholder="Asunción · Ciudad del Este · …" />
                   </div>
                   <div className={styles.formField}>
                     <label htmlFor="sector">Rubro</label>

@@ -2281,6 +2281,89 @@ tem que ser ajustado lá também — isso não é código deste repo.
 
 **Commit:** `feat: ciudad en el formulario de cotización`
 
+### Parte 2 — o formulário da home e o Apps Script (31/08)
+
+O item acima cobriu só o formulário do catálogo. **O da home coleta lead igual** —
+foi de lá que vieram os dois ou três contatos que a Aida citou na entrevista — e
+também não pergunta a cidade. Os dois caminhos gravam na mesma planilha, em abas
+diferentes: `doGet` da LP na primeira aba, `doPost` do catálogo na aba
+*Cotizaciones*.
+
+**A armadilha, e ela é séria.** O `bga-leads-apps-script.gs` escreve o cabeçalho
+**uma vez só**, quando a aba está vazia (`getLastRow() === 0`). Numa planilha que
+já tem linhas, mudar o código não mexe no cabeçalho: o `appendRow` passa a
+escrever um valor a mais numa coluna sem título — e, se a coluna nova entrar no
+meio, **todas as linhas novas ficam desalinhadas em relação às antigas**. Fecha em
+silêncio, como todo o resto desse caminho (`no-cors` não reporta erro).
+
+Duas saídas. Como a planilha hoje tem quase nada — o catálogo nunca esteve no ar e
+a aba *Cotizaciones* só tem linhas de teste —, **migrar é mais barato que
+remendar**: inserir a coluna na posição certa na mão, nas duas abas, e só então
+publicar a versão nova do script. Se a planilha já tivesse histórico, a coluna
+teria que ir no fim, feia mas segura.
+
+### Prompt pro Claude Code — parte 2
+
+```
+A cidade também tem que existir no formulário da home e no Apps Script. O .gs
+está versionado em docs/bga-leads-apps-script.gs — atualizar o arquivo do repo,
+não só cuspir o código no chat.
+
+1. components/LandingPage.jsx — campo no formulário
+   Um input de texto "Ciudad", depois do campo de empresa e antes do Rubro, no
+   mesmo padrão dos outros (.formField, label + input), com
+   placeholder "Asunción · Ciudad del Este · …".
+   NÃO marcar como required: os outros quatro já são, e um quinto obrigatório
+   num formulário que se vende como "4 datos, 30 segundos" cobra caro.
+   Ajustar esse subtítulo se o campo entrar — hoje diz "4 datos".
+
+2. components/LandingPage.jsx — handleContactSubmit
+   Ler `const ciudad = form.ciudad.value.trim()`, incluir em `params` (vai como
+   query string pro doGet), e acrescentar na mensagem do WhatsApp uma linha
+   `Ciudad: ${ciudad}` logo depois de `Sector:`, só quando preenchida.
+
+3. docs/bga-leads-apps-script.gs — as duas entradas
+   doGet (aba da LP):
+   - ler `var ciudad = clampField(e.parameter.ciudad, LIMITS.empresa);`
+   - NÃO entrar na guarda de bad_request: o campo é opcional, e o script rejeitar
+     o que o formulário aceita seria falha silenciosa
+   - cabeçalho passa a ['Fecha','Nombre','Empresa','Ciudad','Rubro','Mensaje'] e o
+     setFontWeight/getRange de 5 colunas vira 6
+   - appendRow na mesma ordem do cabeçalho
+
+   doPost (aba Cotizaciones):
+   - `HEADERS_COTIZACIONES` ganha 'Ciudad' entre 'RUC / Empresa' e 'Rubro'
+   - o appendRow ganha `clampField(data.ciudad, LIMITS.empresa)` na mesma posição
+   - **a coluna Estado deixa de ser a 11ª e passa a ser a 12ª** — corrigir o
+     `sheet.getRange(2, 11, 2000, 1).setDataValidation(regra)` para 12, senão a
+     lista suspensa vai parar na coluna errada
+   - conferir os `setColumnWidth(5, 320)` e `setColumnWidth(7, 200)`, que apontam
+     para Ítems e SKUs por índice e também andam uma casa
+
+   - subir a versão no comentário do topo (v2 → v3, com a data) e dizer numa
+     linha o que mudou
+
+4. Não mexer em lib/leads.js: ele repassa o payload inteiro, então basta o
+   `ciudad` estar no objeto que app/cotacao/page.jsx monta (parte 1).
+
+Rode `npm run build` no final.
+```
+
+**A parte que não é código, e sem ela nada disso grava:**
+
+1. Abrir a planilha e **inserir a coluna na mão** nas duas abas, na mesma posição
+   do código: `Ciudad` depois de `Empresa` na primeira aba, e depois de
+   `RUC / Empresa` na *Cotizaciones*. Fazer isso **antes** de publicar o script.
+2. Colar o `.gs` novo no editor do Apps Script e **Implantar → Gerenciar
+   implantações → Editar → Nova versão → Implantar**. Salvar sem nova versão não
+   muda nada do que está no ar — é o erro clássico.
+3. Enviar um lead de cada caminho e **olhar a planilha**. O `no-cors` não reporta
+   erro: "abriu o WhatsApp" não prova que gravou.
+
+**Commit:** `feat: ciudad también en el formulario de la home y en el Apps Script`
+
+
+
 ---
 
 ## 28. O espessor #12 está na ficha e falta no texto (31/08)

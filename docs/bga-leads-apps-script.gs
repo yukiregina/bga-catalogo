@@ -1,6 +1,10 @@
-// BGA Lead Tracker — Google Apps Script  ·  v2 (2026-08-24)
+// BGA Lead Tracker — Google Apps Script  ·  v3 (2026-09-01)
 // Cole em: script.google.com → seu projeto → Code.gs
 // Implantar → Gerenciar implantações → Editar (lápis) → Nova versão → Implantar
+//
+// MUDANÇA DA v3: campo "Ciudad" novo em doGet e doPost — opcional em ambos,
+// nunca entra na guarda de bad_request. Isso deslocou em uma coluna tudo que
+// vinha depois dele: Estado (Cotizaciones) agora é a 12ª coluna, não a 11ª.
 //
 // DUAS ENTRADAS, UMA PLANILHA:
 //   doGet  → formulário de contato da landing page  → primeira aba (como antes)
@@ -25,7 +29,7 @@ var LIMITS = { nombre: 120, empresa: 120, sector: 80, mensaje: 4000 };
 var TAB_COTIZACIONES = 'Cotizaciones';
 
 var HEADERS_COTIZACIONES = [
-  'Fecha', 'Nombre', 'RUC / Empresa', 'Rubro',
+  'Fecha', 'Nombre', 'RUC / Empresa', 'Ciudad', 'Rubro',
   'Ítems', 'Cant. total', 'SKUs', 'Obra', 'Plazo', 'Origen',
   'Estado', 'Contactado el', 'Propuesta el', 'Notas'
 ];
@@ -39,9 +43,12 @@ function doGet(e) {
 
   var nombre  = clampField(e.parameter.nombre, LIMITS.nombre);
   var empresa = clampField(e.parameter.empresa, LIMITS.empresa);
+  var ciudad  = clampField(e.parameter.ciudad, LIMITS.empresa);
   var sector  = clampField(e.parameter.sector, LIMITS.sector);
   var mensaje = clampField(e.parameter.mensaje, LIMITS.mensaje);
 
+  // Ciudad é opcional: não entra na guarda. Rejeitar o que o formulário aceita
+  // seria falha silenciosa — o dado que existe se perderia sem aviso.
   if (!nombre || !empresa || !sector || !mensaje) {
     return jsonOut({ status: 'bad_request' });
   }
@@ -49,12 +56,12 @@ function doGet(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
 
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['Fecha', 'Nombre', 'Empresa', 'Rubro', 'Mensaje']);
-    sheet.getRange(1, 1, 1, 5).setFontWeight('bold');
+    sheet.appendRow(['Fecha', 'Nombre', 'Empresa', 'Ciudad', 'Rubro', 'Mensaje']);
+    sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
     sheet.setFrozenRows(1);
   }
 
-  sheet.appendRow([new Date(), nombre, empresa, sector, mensaje]);
+  sheet.appendRow([new Date(), nombre, empresa, ciudad, sector, mensaje]);
   return jsonOut({ status: 'ok' });
 }
 
@@ -90,6 +97,7 @@ function doPost(e) {
     new Date(),
     clampField(data.nombre, LIMITS.nombre),
     clampField(data.empresa, LIMITS.empresa),
+    clampField(data.ciudad, LIMITS.empresa),
     clampField(data.rubro, LIMITS.sector),
     clampField(linhas, LIMITS.mensaje),
     total,
@@ -119,16 +127,17 @@ function abaCotizaciones_() {
     sheet.getRange(1, 1, 1, HEADERS_COTIZACIONES.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
 
-    // Coluna Estado (11ª) com lista suspensa — é o que faz a métrica de
-    // processo existir: pedidos completos, completados pela vendedora, perdidos.
+    // Coluna Estado (12ª, desde que "Ciudad" entrou na 4ª) com lista suspensa
+    // — é o que faz a métrica de processo existir: pedidos completos,
+    // completados pela vendedora, perdidos.
     var regra = SpreadsheetApp.newDataValidation()
       .requireValueInList(ESTADOS, true)
       .setAllowInvalid(false)
       .build();
-    sheet.getRange(2, 11, 2000, 1).setDataValidation(regra);
+    sheet.getRange(2, 12, 2000, 1).setDataValidation(regra);
 
-    sheet.setColumnWidth(5, 320);  // Ítems
-    sheet.setColumnWidth(7, 200);  // SKUs
+    sheet.setColumnWidth(6, 320);  // Ítems
+    sheet.setColumnWidth(8, 200);  // SKUs
   }
 
   return sheet;
