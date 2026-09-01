@@ -2050,6 +2050,620 @@ disponibilidade começa por "Disponible en acero SAE 1006/1010 pregalvanizado".
 
 ---
 
+## 26. Política de privacidade — o bloqueio vermelho antes de publicar (31/08)
+
+Não existe política de privacidade neste projeto (item 11). É o único item que
+impede publicar: o site coleta nome, RUC e rubro num formulário, grava numa
+planilha do Google e mede com GA4, sem dizer isso em lugar nenhum.
+
+**O texto abaixo não é genérico — foi escrito a partir do código.** Cada frase
+corresponde a uma coleta que existe de verdade:
+
+| O que a política afirma | Onde isso acontece no código |
+| --- | --- |
+| nombre/empresa, RUC, rubro | `form` em `app/cotacao/page.jsx` |
+| lista de produtos, quantidades e observações | payload de `registrarCotizacion()` |
+| telefone e nome de perfil | o `wa.me` abre a conversa com o número do visitante |
+| páginas vistas, dispositivo, origem | GA4 `G-3PF2RG7WNG` em `components/Analytics.jsx` |
+| a lista fica no navegador até enviar | `localStorage` do `CartProvider` |
+| Google, Meta e AWS como terceiros | Apps Script + Sheets, `wa.me`, Amplify |
+
+**Base legal:** o pedido de cotização é relação pré-contratual — a pessoa está
+pedindo um orçamento. Não precisa de checkbox de consentimento nem de banner de
+cookies para isso. O que precisa é **dizer**, no ponto da coleta, e é o que a
+linha abaixo do botão faz.
+
+**Sobre a lei:** o Paraguai promulgou a **Ley N° 7593/2025 de Protección de Datos
+Personales** no fim de novembro de 2025, com período de adequação de 24 meses —
+ou seja, exigibilidade plena por volta de novembro de 2027. Confirmar as datas no
+texto oficial; a fonte aqui é análise de escritório, não a lei. Na prática: hoje
+isso não é multa, é higiene — e escrever agora sai de graça, escrever depois de
+um problema não.
+
+**Isto não é parecer jurídico.** Não sou advogada; o texto descreve com precisão
+o que o sistema faz, o que é a parte que costuma estar errada nas políticas
+copiadas. Se a BGA tiver assessoria jurídica, mandar para revisão é barato.
+
+### Prompt pro Claude Code
+
+```
+Criar a página de política de privacidade — hoje não existe, e é o item que
+bloqueia a publicação.
+
+1. app/politica-de-privacidad/page.jsx — página nova, estática, sem 'use client'
+   Estrutura visual igual à de app/materiales-y-tratamientos/page.jsx:
+   container max-w-[1180px] mx-auto px-6 py-8, breadcrumb "Inicio › Política de
+   Privacidad", h1 em font-brand text-3xl font-bold text-brand-primary, e o corpo
+   em max-w-3xl (texto legal em coluna estreita, como o resto do conteúdo longo).
+   Cada seção: h2 em font-brand text-base font-bold text-brand-primary mb-3,
+   parágrafos em text-sm text-text-secondary leading-relaxed.
+   Sem FAQ schema, sem JSON-LD, sem CTA de cotización, sem WhatsApp.
+
+   generateMetadata: title "Política de Privacidad | BGA Electric",
+   description "Qué datos recoge el sitio de BGA Electric, para qué se usan, con
+   quién se comparten y cómo pedir acceso, corrección o eliminación.",
+   alternates.canonical '/politica-de-privacidad/', e robots noindex NÃO — a
+   página é indexável, é normal que seja.
+
+   Os dados de contato e dirección saem de client.config.js (config.contact.email,
+   config.contact.phone, config.brand.address), não hardcoded.
+
+   TEXTO (é o conteúdo da página, em espanhol, na íntegra):
+
+   ---
+   Política de Privacidad
+
+   Última actualización: 31 de agosto de 2026
+
+   1. Quién es responsable de tus datos
+   BGA Electric S.A. — RUC [CONFIRMAR CON EL CLIENTE] —, con domicilio en Minga
+   Guazú, Ruta PY02 km 14, Alto Paraná, Paraguay. Para cualquier tema de datos
+   personales: ventas@bga.com.py o WhatsApp +595 974 733 100.
+
+   2. Qué datos recogemos y cuándo
+   Este sitio no pide registro ni crea cuentas de usuario. Recogemos datos en tres
+   momentos:
+
+   Cuando pedís una cotización: lo que escribís en el formulario — nombre o
+   empresa, RUC y rubro — junto con la lista de productos, las cantidades y las
+   observaciones que hayas cargado.
+
+   Cuando seguís por WhatsApp: al abrirse la conversación vemos tu número de
+   teléfono y el nombre de tu perfil, como en cualquier mensaje de WhatsApp.
+
+   Mientras navegás: datos de uso del sitio a través de Google Analytics —
+   páginas vistas, tipo de dispositivo, ciudad aproximada y desde dónde llegaste.
+   Google procesa tu dirección IP para eso; nosotros no la vemos junto a tu
+   nombre.
+
+   La lista de productos que vas armando se guarda en tu propio navegador y no
+   sale de tu equipo hasta que apretás enviar. Si limpiás los datos del navegador,
+   se borra.
+
+   3. Para qué los usamos
+   Para preparar y responder tu cotización, y para contactarte por ese pedido.
+   También para entender qué productos se consultan más y mejorar el catálogo. No
+   vendemos ni cedemos tus datos, y no usamos este formulario para enviarte
+   publicidad masiva.
+
+   4. Con quién se comparten
+   Solo con los proveedores que hacen funcionar el sitio: Google — Sheets, donde
+   queda registrado el pedido en una cuenta de BGA, y Analytics, para la
+   medición —, Meta (WhatsApp) si elegís seguir la conversación por ahí, y Amazon
+   Web Services, donde está alojado el sitio. Cada uno trata los datos según sus
+   propias políticas.
+
+   5. Cuánto tiempo los guardamos
+   Los pedidos de cotización quedan registrados mientras dure la relación
+   comercial y por [CONFIRMAR: 5 años] más, por razones contables y de historial
+   de obra. Podés pedirnos que los borremos antes.
+
+   6. Tus derechos
+   Podés pedirnos acceder a tus datos, corregirlos, eliminarlos, oponerte a su uso
+   o pedir una copia. Escribí a ventas@bga.com.py con el asunto "Datos
+   personales". Respondemos dentro de los 30 días.
+
+   7. Cookies y medición
+   Usamos Google Analytics 4, que instala cookies para contar visitas y entender
+   el recorrido por el catálogo. No usamos cookies de publicidad ni de
+   remarketing. Podés bloquearlas desde la configuración de tu navegador o con el
+   complemento de inhabilitación de Google Analytics: el catálogo sigue
+   funcionando igual.
+
+   8. Seguridad
+   El sitio se sirve por conexión cifrada (HTTPS). El registro de cotizaciones
+   está en una cuenta de Google de BGA, con acceso limitado al equipo comercial.
+
+   9. Menores de edad
+   Este es un sitio de venta entre empresas. No está dirigido a menores de edad ni
+   recogemos sus datos de forma intencional.
+
+   10. Cambios en esta política
+   Si cambiamos algo, actualizamos la fecha del encabezado.
+
+   Esta política sigue los principios de la Ley N° 7593/2025 de Protección de
+   Datos Personales del Paraguay.
+   ---
+
+2. app/cotacao/page.jsx — aviso no ponto da coleta
+   Logo abaixo do botão "Enviar cotización por WhatsApp", uma linha:
+
+   <p className="text-[11px] text-text-muted leading-relaxed mt-2">
+     Al enviar, BGA recibe estos datos para preparar tu cotización.{' '}
+     <Link href="/politica-de-privacidad/" className="underline hover:text-brand-primary">
+       Política de privacidad
+     </Link>
+   </p>
+
+   Não é checkbox e não bloqueia o envio: pedir cotização é relação
+   pré-contratual, o que a lei pede é informar, não pedir permissão. Um checkbox
+   aqui só adicionaria atrito num formulário que já é curto de propósito.
+   Importar Link de next/link se ainda não estiver importado.
+
+3. components/LandingPage.jsx — link no rodapé
+   No .footerBottom, ao lado do "© 2026 BGA Electric · Todos los derechos
+   reservados", um <Link href="/politica-de-privacidad/"> com o texto "Política de
+   privacidad", no mesmo estilo dos outros links do rodapé.
+
+Não mexer no formulário, no payload de registrarCotizacion nem nos eventos GA4.
+Rode `npm run build` no final.
+```
+
+**Como conferir:** `/politica-de-privacidad/` abre, tem os dois `[CONFIRMAR]`
+visíveis (é para eles chamarem atenção antes de publicar), e o link aparece no
+rodapé da home e embaixo do botão da cotização. O build tem que gerar a rota
+nova no `out/`.
+
+**Commit:** `feat: política de privacidad y aviso en el punto de recolección`
+
+### O que só o Akira responde
+
+Quatro coisas. As duas primeiras seguram a publicação; as outras duas mudam o
+texto se ele responder diferente:
+
+1. **RUC da BGA Electric S.A.** e razão social exata como está no registro.
+2. **Prazo de guarda** dos pedidos. A proposta é 5 anos; se ele já tem uma regra
+   contábil, vale a dele.
+3. **Quem mais acessa a planilha.** O texto diz "acceso limitado al equipo
+   comercial". Se a funcionária que mexe na planilha do catálogo também vê os
+   leads, continua verdadeiro; se acessar mais gente, o texto muda.
+4. **Uso futuro dos leads.** A política diz que este formulário não vira lista de
+   publicidade. Se ele pretende mandar novidades ou campanha para quem cotou, é
+   melhor decidir agora — muda a frase, e depois é caro corrigir.
+
+---
+
+## 27. Falta a cidade no formulário de cotização (31/08, da entrevista com a Aida)
+
+A Aida é explícita sobre o que precisa de um cliente novo: *"la ubicación, si es
+de Asunción, si es de Ciudad del Este, porque eso nos ayuda a definir el plazo y
+también los envíos, hay zonas que cubrimos y hay zonas que no cubrimos. Eso sería
+esencial."*
+
+O formulário pede nombre/empresa, RUC e rubro. Nome e telefone chegam de graça
+pelo WhatsApp; **a cidade não chega de lugar nenhum** — e é o dado que define
+prazo e frete, que são, pela boca dela, os dois fatores que derrubam a venda.
+
+Campo livre, não select: a lista de cidades do Paraguai que importam pra BGA não
+está levantada, e um select errado é pior que um input.
+
+### Prompt pro Claude Code
+
+```
+Adicionar o campo de cidade no formulário de cotização. É o dado que a vendedora
+usa para definir prazo de entrega e frete, e hoje não é coletado em lugar nenhum.
+
+1. app/cotacao/page.jsx — estado do form
+   Adicionar `ciudad: ''` ao useState do form, junto de nombre/empresa/rubro.
+
+2. Campo na UI, depois do RUC e antes do Rubro, no mesmo array de campos:
+   { label: 'Ciudad', name: 'ciudad', placeholder: 'Asunción · Ciudad del Este · …' }
+   Mesmo estilo dos outros dois (não é mono).
+
+3. buildMessage() — a linha entra logo depois de Cliente/Empresa e antes de Rubro:
+   if (form.ciudad) lines.push(`Ciudad: ${form.ciudad}`)
+
+4. registrarCotizacion() — incluir `ciudad: form.ciudad` no payload, entre
+   `empresa` e `rubro`.
+
+Nenhum campo vira obrigatório: o formulário é curto de propósito e um campo
+requerido a mais custa mais do que um dado a menos. Não mexer nos eventos GA4.
+Rode `npm run build` no final.
+```
+
+**Como conferir:** preencher só a cidade e enviar — a linha `Ciudad:` tem que
+aparecer no preview da mensagem e na aba Cotizaciones. Deixar em branco não pode
+produzir linha vazia.
+
+**Atenção pra planilha:** o Apps Script grava as colunas que recebe. Conferir na
+aba *Cotizaciones* se a coluna nova aparece; se o script tiver cabeçalho fixo,
+tem que ser ajustado lá também — isso não é código deste repo.
+
+**Commit:** `feat: ciudad en el formulario de cotización`
+
+---
+
+## 28. O espessor #12 está na ficha e falta no texto (31/08)
+
+A Aida lista os espessores duas vezes na entrevista, e as duas vezes são cinco:
+*"tenemos 22, 20, 18, 16, 14, son los espesores de chapa."* O
+`globalSpecs.thicknesses` tem seis — inclui o **#12 (2,5 mm)**, que aparece como
+chip clicável nas 36 fichas.
+
+**O #12 é legítimo: foi o Akira quem pediu para incluir.** Então a inconsistência
+existe, mas o conserto é o contrário do que parecia: o texto é que está
+desatualizado, não o dado.
+
+O único lugar em prosa que lista espessores é o `materialsPage.longDescription`,
+e ele para no #14. Quem lê a página de materiales conta cinco; quem abre uma
+ficha vê seis.
+
+**A pergunta que sobra pro Akira, de uma linha:** o #12 é venda normal ou é
+espessor de projeto especial? A Aida não o cita no dia a dia. Se for especial,
+oferecê-lo como chip igual aos outros cria uma expectativa que ela depois tem que
+desmanchar no WhatsApp — e aí vale uma marca no chip ou uma frase no texto. Se
+for venda normal, basta o texto listar os seis.
+
+### Prompt pro Claude Code
+
+```
+lib/catalog.json — materialsPage.longDescription, o parágrafo que começa em
+"Espesores de chapa:".
+
+Hoje lista cinco e o configurador oferece seis. O #12 (2,5 mm) é vendido
+— confirmado com o cliente —, então entra no texto, na frente, mantendo a ordem
+decrescente de espessura:
+
+  "Espesores de chapa: #12 (2,5 mm), #14 (2,0 mm), #16 (1,5 mm), #18 (1,2 mm),
+  #20 (0,9 mm) y #22 (0,7 mm), con tolerancia de ±0,05 mm."
+
+O resto do parágrafo — a regra de espessor mínimo por ancho — não muda: ela
+começa no #14 porque #14 é o mínimo para ancho ≥500, e o #12 é mais grosso que o
+mínimo, não conflita.
+
+Não mexer em globalSpecs.thicknesses nem no padrão do configurador.
+Rode `npm run build` no final.
+```
+
+**Como conferir:** contar os espessores na página de materiales e nos chips de
+uma ficha — os dois têm que dar seis.
+
+**Commit:** `content: espesor #12 en el texto de materiales`
+
+---
+
+## 29. O pedido literal da Aida ficou de fora da LP (31/08)
+
+Da entrevista, sobre a landing page:
+
+> *"Sería bueno que al lado de ese [formulário onde deixam os dados] esté el
+> catálogo, y tipo que diga: verificar acá las piezas que necesita y las opciones
+> que están para producir. Porque hay veces que ellos tampoco miran."*
+
+Hoje o único link para o catálogo na LP está no rodapé. Quem chega na seção de
+cotização — que é o fundo da página, onde a intenção é máxima — não tem como
+descobrir que existe um catálogo navegável do lado.
+
+Isso não é enfeite: ela recebe listas incompletas e perde tempo arrancando
+espessor e estilo. O catálogo é a ferramenta que faz a lista chegar completa, e
+ela está pedindo para ele aparecer exatamente onde a pessoa vai escrever a lista.
+
+### Prompt pro Claude Code
+
+```
+components/LandingPage.jsx — na seção #contacto, dentro do .ctaLeft, depois do
+último .ctaInfoBlock ("Atendemos"), um bloco de link para o catálogo:
+
+  <Link href="/catalogo" className={styles.ctaCatalogLink}>
+    <strong>¿No sabés qué pedir?</strong>
+    <span>Mirá el catálogo, armá tu lista con medida, material y espesor, y
+    mandala en un mensaje. Así la cotización sale más rápido.</span>
+  </Link>
+
+E o estilo em app/landing.module.css, seguindo o padrão visual dos
+.ctaInfoBlock que já existem ali (mesmo espaçamento e alinhamento), com
+tratamento de link: cursor pointer, o <strong> na cor de destaque da seção, e
+hover que adensa a mesma matiz — não troca de cor.
+
+`Link` de next/link já está importado no arquivo.
+
+Não mexer no formulário nem no fluxo do WhatsApp.
+Rode `npm run build` no final.
+```
+
+**Como conferir:** rolar até a seção de cotização na home e ver o link antes do
+formulário, não depois. No mobile, ele tem que aparecer acima do formulário, que
+é a ordem natural do `.ctaGrid` empilhado — conferir.
+
+**Commit:** `feat: enlace al catálogo junto al formulario de cotización`
+
+---
+
+## 30. Duas frases da LP prometem o que o resto do site não sustenta (31/08)
+
+**A primeira briga com a política de privacidade (item 26).** Embaixo do
+formulário: *"Tu información no queda en bases de terceros."* Os dados vão para
+uma planilha do Google e a navegação é medida pelo GA4 — os dois são terceiros. A
+intenção da frase é "não vendemos sua lista", e isso é verdade; a redação é que
+está errada. No dia em que a política subir, uma contradiz a outra na mesma
+página, e é exatamente isso que faz política de privacidade não valer nada.
+
+**A segunda é uma promessa que outra pessoa tem que cumprir.** No bloco
+"Tiempo de respuesta": *"Hábil en menos de 1 hora."* A Aida cumpre a saudação
+imediata — *"normalmente suelo saludarle a todos al instante"* —, mas a cotação
+em si depende do tamanho da lista: *"si es muy largo... a veces tarda mucho uno o
+dos presupuestos"*, e às vezes a resposta sai no dia seguinte. Prometer uma hora
+para a resposta e entregar uma saudação em uma hora é o tipo de coisa que queima
+confiança na primeira vez.
+
+Não é para apagar a promessa — velocidade é diferencial real dela. É para
+prometer o que ela de fato entrega.
+
+### Prompt pro Claude Code
+
+```
+Duas frases da landing page em components/LandingPage.jsx.
+
+1. A nota embaixo do formulário (.formNote), hoje:
+   "Al enviar, abrimos WhatsApp con tu mensaje pre-formado. Tu información no
+   queda en bases de terceros."
+
+   A segunda frase é falsa a partir do item 26: los datos quedan registrados en
+   una planilla de Google y la navegación se mide con GA4. Trocar por:
+
+   "Al enviar, abrimos WhatsApp con tu mensaje pre-formado. Usamos tus datos solo
+   para responderte: no los vendemos ni los cedemos para publicidad.
+   [Política de privacidad]"
+
+   com "Política de privacidad" como <Link href="/politica-de-privacidad/">,
+   sublinhado, no mesmo tom de texto da nota.
+
+2. O bloco .ctaInfoBlock de "Tiempo de respuesta", hoje "Hábil en menos de 1 hora."
+   Trocar o <span> por:
+   "Te saludamos en menos de 1 hora hábil. La cotización depende del largo de
+   la lista."
+
+   O <strong> "Tiempo de respuesta" não muda.
+
+Rode `npm run build` no final.
+```
+
+**Como conferir:** abrir a home e a política lado a lado — as duas têm que contar
+a mesma história sobre para onde vão os dados.
+
+**Commit:** `content: dos promesas de la landing alineadas con la realidad`
+
+---
+
+## 31. O GA4 vai disparar na URL de teste (31/08)
+
+O `Analytics.jsx` barra a medição por `NODE_ENV !== 'production'`. Isso protege o
+localhost — e **não protege o staging**, porque um build do Amplify é produção.
+Quando o Akira e a Aida navegarem na URL `*.amplifyapp.com`, cada clique deles
+entra na propriedade do cliente.
+
+Isso importa mais do que parece: o catálogo nunca esteve no ar, então a
+propriedade está limpa. Os primeiros dias de dado são a linha de base contra a
+qual todo o resto vai ser comparado, e sujá-la com uma sessão de teste é
+irreversível — no GA4 não se apaga evento.
+
+**Barrar por hostname resolve pra sempre**, inclusive para qualquer preview
+futuro, e não depende de lembrar de configurar nada no console.
+
+### Prompt pro Claude Code
+
+```
+components/Analytics.jsx — hoje só barra a medição por NODE_ENV, o que protege o
+localhost mas não o staging do Amplify (build de staging é NODE_ENV=production).
+Passar a injetar o GA4 apenas nos hostnames de produção.
+
+Com export estático o HTML é gerado no build, então o hostname só existe no
+navegador: a decisão tem que ser em runtime, dentro do script.
+
+Trocar os dois <Script> por um só, que injeta o gtag apenas se o hostname estiver
+na lista:
+
+  <Script id="ga4-init" strategy="afterInteractive">
+    {`(function(){
+      var ok = ['bga.com.py','www.bga.com.py'];
+      if (ok.indexOf(location.hostname) === -1) return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=${id}';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', '${id}');
+    })();`}
+  </Script>
+
+Manter as duas guardas que já existem (sem gaMeasurementId não injeta; fora de
+produção não injeta) — a de hostname é uma terceira, não uma substituição.
+
+Atualizar o comentário do topo do arquivo: explicar que NODE_ENV não distingue
+staging de produção no Amplify, e que a lista de hostnames é o que faz isso.
+
+A lista de hostnames precisa mudar junto se o domínio mudar — deixar isso dito no
+comentário. `lib/analytics.js` não muda: track() já é no-op sem window.gtag.
+
+Rode `npm run build` no final.
+```
+
+**Como conferir:** no `out/`, o HTML tem o script; abrindo o arquivo local ou o
+staging, o `window.gtag` não existe e a aba de rede não chama o googletagmanager.
+Depois de publicar no domínio, conferir em tempo real no GA4 que o evento chega.
+
+**Commit:** `fix: GA4 solo en los hostnames de producción`
+
+---
+
+## 32. Os PDFs do site contradizem o próprio site (31/08)
+
+Abrindo os arquivos de `public/docs`, a ficha técnica de bandejas (7 páginas,
+julho/2026) diz, em "Materia Prima":
+
+- **"Aluminio ASTM 1100"** — matéria-prima que o catálogo não oferece. O rastro
+  disso ainda está no código: a ficha faz `.replace(' ASTM 1100','')` no nome do
+  material, sobra de quando o alumínio existia.
+- **nenhuma menção ao AISI 316** — que o Akira confirmou em 31/08.
+- **"Chapa negra"** como matéria-prima — que ele acabou de tirar (item 25).
+
+Ou seja: o PDF contradiz o site nas três decisões de material dos últimos dois
+dias. **Por isso não entra botão de download da ficha de bandejas.** Duas
+respostas contraditórias no mesmo site é a falha do item 30, agravada: PDF é o
+que o cliente salva e manda pro pessoal da obra.
+
+**Dois problemas separados, e o segundo é maior:**
+
+**a) 8,9 MB de PDF órfão.** `ficha-tecnica-bandeja-portacables-bga.pdf` (3,2 MB) e
+`catalogo-bga-bandejas-portacables-paraguay-2025-2026.pdf` (5,7 MB) não são
+referenciados por página nenhuma — a ficha porque bandejas é `displayMode:
+catalog` e o botão de PDF só renderiza no modo `pdf`; o catálogo geral porque a
+seção de cards de PDF da home virou o `ProductFinder`. Export estático serve tudo
+que está em `public/`: sem link nenhum, os dois seguem acessíveis por URL direta
+e indexáveis. Documento desatualizado no ar que ninguém sabe que está no ar.
+
+**b) Os quatro PDFs que ESTÃO linkados também dizem "Aluminio ASTM 1100".**
+Escaleras, perfilados, gabinetes e tableros — conferido nos quatro arquivos. E
+eles são a única coisa que essas famílias têm no site. Publicar hoje é entregar,
+em quatro páginas do catálogo, um documento que diz que a BGA fabrica em
+alumínio. Isso não se resolve em código.
+
+### Prompt pro Claude Code — só a parte (a)
+
+```
+Tirar do build os dois PDFs que nenhuma página referencia e que estão
+desatualizados (dizem "Aluminio ASTM 1100" e "chapa negra", que saíram do
+catálogo):
+
+  public/docs/ficha-tecnica-bandeja-portacables-bga.pdf
+  public/docs/catalogo-bga-bandejas-portacables-paraguay-2025-2026.pdf
+
+Não apagar os arquivos: mover para fora do repo, para
+~/Desktop/BGA-catalogo/4. Catálogo Sitioweb/pdfs-desatualizados-2026-08/, e
+remover do git com `git rm --cached` seguido do move, ou `git rm` depois de
+copiar. Confirmar antes que nenhum código os referencia:
+
+  grep -rn "ficha-tecnica-bandeja-portacables\|catalogo-bga-bandejas" app components lib client.config.js
+
+Os quatro PDFs restantes (escaleras, perfilados, gabinetes, cajas) ficam onde
+estão: são a única coisa que essas famílias têm, e a correção deles é do cliente.
+
+Rode `npm run build` e confira que `out/docs/` tem só os quatro.
+```
+
+**Commit:** `chore: saca del build los PDF huérfanos y desactualizados`
+
+### O que fica pro cliente
+
+O material é do Akira e ele já decidiu tudo o que muda. A lista é curta:
+**alumínio sai, AISI 316 entra, chapa negra sai.** Vale mandar junto das perguntas
+da política.
+
+**E uma decisão de go/no-go pro dia da publicação:** os quatro PDFs linkados
+dizem alumínio. As opções são publicar assim e corrigir depois, tirar os links e
+deixar as quatro famílias com descrição e WhatsApp, ou segurar até o Akira
+atualizar. É decisão dele com informação sua — não é para resolver em silêncio.
+
+---
+
+## 33. Imprimir a cotização — o artefato que falta no meio do processo (31/08)
+
+Da entrevista com a Aida, sobre o que custa tempo: *"yo suelo pasarles las
+opciones, ellos vuelven a consultar con su gente de obra y después me traen la
+información y vamos cargando."* Esse ida-e-volta hoje são mensagens soltas de
+WhatsApp — "é tipo U ou tipo C?", "chapa 20 ou 18?" — e é o gargalo que ela
+descreve duas vezes.
+
+Falta um artefato no meio: **a lista especificada**, que o cliente leva pro
+pessoal da obra e confere de uma vez. O carrinho já tem tudo o que ela precisa
+ter — SKU composto, configuração, quantidade, observação — e não tem como sair da
+tela.
+
+**Não é presupuesto e não pode parecer um.** O orçamento sai do sistema dela, com
+preço e com o desconto daquele cliente. O impresso do catálogo não tem preço
+nenhum, de propósito, e leva "Lista de especificación" no topo justamente para
+ninguém confundir.
+
+**Por que na cotização e não na ficha:** um botão de imprimir na ficha disputa com
+o "Agregar a cotización", que é o CTA que ficou sólido e sozinho de propósito.
+Na cotização não disputa com nada — a pessoa acabou de montar a lista, é o
+momento em que ela quer levar aquilo embora. (Foi por isso que o botão pareceu
+poluído quando esteve na ficha.)
+
+Não existe nada de impressão no projeto hoje: nem `@media print`, nem
+`window.print`. É folha nova.
+
+### Prompt pro Claude Code
+
+```
+Adicionar impressão da cotização. Sem biblioteca: window.print() mais folha de
+estilo de impressão — o "Guardar como PDF" do navegador é universal e funciona
+offline.
+
+1. app/globals.css — bloco @media print no fim do arquivo
+   - esconder por padrão o que não é conteúdo: header/nav, o botão do WhatsApp
+     flutuante, botões de + e −, remover/lixeira, o próprio botão de imprimir,
+     e o link "Ver cotización"
+   - fundo branco, texto preto, sem sombra e sem borda arredondada
+   - `a[href]::after { content: "" }` — não imprimir a URL depois dos links
+   - evitar quebra dentro de uma linha do carrinho:
+     `break-inside: avoid` na linha do item
+   Usar uma classe utilitária `.no-print` para marcar o que some, em vez de
+   caçar seletor por seletor.
+
+2. app/cotacao/page.jsx
+   - marcar com `no-print` os controles: botões de quantidade, remover, o botão
+     de enviar por WhatsApp e o bloco de "ya tengo mi lista"
+   - um cabeçalho que só aparece na impressão (`hidden print:block` ou uma
+     classe `.solo-print`), com: logo da BGA, "Lista de especificación",
+     a data de hoje, e os dados do formulário que estiverem preenchidos
+     (nombre/empresa, RUC, ciudad, rubro)
+   - uma nota no rodapé impresso: "Lista de especificación — no es un
+     presupuesto. Los precios se confirman con el equipo comercial de BGA."
+   - o botão, secundário, ao lado do de WhatsApp, com onClick={() => window.print()}
+     e o texto "Imprimir / Guardar PDF". Estilo de ação secundária: borda, sem
+     preenchimento sólido — não pode competir com o botão de enviar.
+
+3. app/catalogo/[categoria]/[produto]/ProductSheet.jsx — sem botão
+   Só marcar com `no-print` o header, o configurador e os CTAs, para que ⌘P numa
+   ficha saia legível: imagem, nome, SKU, specs e descrição. Ninguém pediu botão
+   aqui; a folha de estilo é para quem imprime de qualquer jeito.
+
+Testar de verdade na prévia de impressão do navegador — quebra de página e
+imagem são onde isso falha. Conferir com 1, com 12 e com 30 itens no carrinho.
+Rode `npm run build` no final.
+```
+
+**Como conferir:** ⌘P na cotização com 12 itens — uma folha limpa, sem nav, sem
+botões, com a lista inteira e a nota de que não é orçamento. E ⌘P numa ficha não
+pode sair com o configurador no meio.
+
+**Commit:** `feat: imprimir la lista de especificación desde la cotización`
+
+### A pergunta que o teste com a Aida responde
+
+Se ela mesma usar o catálogo para montar a lista candidata e mandar pro cliente,
+o PDF pode não ser o formato certo: no WhatsApp, **link é um toque e PDF é um
+anexo** — e com link o cliente muda a quantidade e devolve, que é exatamente o
+ida-e-volta dela. Hoje isso não existe: o carrinho vive só no `localStorage` e não
+há lista compartilhável (a configuração na URL do item 3 é por ficha, não por
+lista).
+
+Codificar a lista na URL é factível e não é enorme, mas é bem mais que este item.
+**Não construir antes do teste.** Na sessão com ela, a tarefa não é "monte uma
+cotação como se fosse cliente" e sim **"chegou essa lista incompleta no WhatsApp,
+resolve"** — e no fim, mostrar as duas saídas e perguntar qual ela mandaria.
+
+**Consequência a resolver antes de publicar:** se a Aida virar usuária do
+catálogo, ela suja o GA4 com uso interno. O filtro de tráfego interno planejado é
+por IP (o do Akira), e IP não pega ela no celular com dados móveis. Precisa de um
+marcador melhor.
+
+---
+
 ## Checklist do dia da publicação — só verificável no ar
 
 Junto com os itens 10 (404 no GA4) e 11 (política de privacidade):
