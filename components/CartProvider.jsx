@@ -15,11 +15,19 @@ export function CartProvider({ children }) {
   const [items, setItems] = useState([])
   const [mounted, setMounted] = useState(false)
 
-  // Carrega do localStorage após montar
+  // Carrega do localStorage após montar.
+  // O `Array.isArray` não é paranoia: este provider embrulha o site inteiro, e
+  // um valor que desserialize pra qualquer coisa que não seja array derruba o
+  // `items.reduce` daqui de baixo — tela branca em TODA página, sem saída a não
+  // ser limpar os dados do site, que ninguém sabe fazer. Valor estranho: começa
+  // com carrinho vazio, que é recuperável.
   useEffect(() => {
     try {
       const saved = localStorage.getItem('bga-cart-v2')
-      if (saved) setItems(JSON.parse(saved))
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (Array.isArray(parsed)) setItems(parsed)
+      }
     } catch {}
     setMounted(true)
   }, [])

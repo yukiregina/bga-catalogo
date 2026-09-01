@@ -53,7 +53,16 @@ export default function LandingPage() {
     if (config.data.leadWebhookUrl) {
       const search = new URLSearchParams(params)
       if (config.data.leadWebhookSecret) search.set('key', config.data.leadWebhookSecret)
-      fetch(`${config.data.leadWebhookUrl}?${search}`, { method: 'GET', mode: 'no-cors' }).catch(() => {})
+      // `keepalive` pelo mesmo motivo de lib/leads.js: garante que a requisição
+      // sobreviva se a aba mudar de contexto logo depois. Aqui o `window.open`
+      // abre outra aba e não descarrega esta, então hoje não é o que salva o
+      // lead — mas os dois caminhos de captura têm que ter a mesma garantia,
+      // senão o dia em que este virar redirect o lead some sem sintoma.
+      fetch(`${config.data.leadWebhookUrl}?${search}`, {
+        method: 'GET',
+        mode: 'no-cors',
+        keepalive: true,
+      }).catch(() => {})
     }
 
     // WhatsApp's wa.me links only support pre-filled text — there's no way to push
