@@ -6,7 +6,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { getProductImageAlt } from '@/lib/products'
+import { getProductImageAlt } from '@/lib/product-helpers'
 import { searchProducts } from '@/lib/search'
 
 export default function CategoryProductsGrid({ products, categoryId, categoryName }) {

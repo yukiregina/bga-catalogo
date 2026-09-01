@@ -4,6 +4,7 @@
 // the JSON-LD block server-side (needs to be in the static HTML, not injected
 // after hydration).
 import LandingPage from '@/components/LandingPage'
+import { getCategoryCards } from '@/lib/products'
 
 const TITLE = 'BGA · Bandejas Portacables y Tableros Eléctricos · Paraguay'
 const DESCRIPTION = 'BGA fabrica bandejas portacables, escaleras y tableros eléctricos en Paraguay con norma NBR IEC 61537. Cotizá por WhatsApp para proyectos industriales en el Mercosur.'
@@ -110,7 +111,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <LandingPage />
+      <LandingPage categories={getCategoryCards()} />
     </>
   )
 }

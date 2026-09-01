@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { getCategories, getProductsByCategory, getCategoryDisplayMode } from '@/lib/products'
 import styles from '@/app/landing.module.css'
 
 // TODO: once product entries carry a normalized `material` / `thickness` /
@@ -12,9 +11,12 @@ import styles from '@/app/landing.module.css'
 // parse spec query params yet, so a filter select was left out rather than shipping
 // a dropdown that silently does nothing.
 
-export default function ProductFinder() {
+// `categories` vem de app/page.jsx (Server Component) via LandingPage, já com
+// `productCount` resolvido — ver getCategoryCards() em lib/products.js. Antes
+// este componente importava lib/products.js e, sendo client, arrastava o
+// catalog.json inteiro pro bundle da home.
+export default function ProductFinder({ categories = [] }) {
   const router = useRouter()
-  const categories = getCategories()
   const [query, setQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
 
@@ -48,8 +50,7 @@ export default function ProductFinder() {
 
       <div className={styles.productsGrid}>
         {categories.map(cat => {
-          const isCatalog    = getCategoryDisplayMode(cat) === 'catalog'
-          const productCount = isCatalog ? getProductsByCategory(cat.id).length : 0
+          const productCount = cat.productCount ?? 0
           return (
             <Link key={cat.id} href={`/catalogo/${cat.id}`} className={styles.productCard}>
               <div className={styles.productImage}>

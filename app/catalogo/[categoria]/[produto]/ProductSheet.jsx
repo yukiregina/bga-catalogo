@@ -12,7 +12,7 @@ import {
   buildLineTitle,
   buildConfigLabel,
   buildConfigQuery,
-} from '@/lib/products'
+} from '@/lib/product-helpers'
 import RecommendedProducts from '@/components/RecommendedProducts'
 import WhatsappIcon from '@/components/WhatsappIcon'
 

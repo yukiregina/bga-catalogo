@@ -3,6 +3,7 @@
 import { Suspense } from 'react'
 import config from '@/client.config.js'
 import CatalogPageClient from '@/components/CatalogPageClient'
+import { getCategoryCards } from '@/lib/products'
 
 export const metadata = {
   title: config.catalog.title,
@@ -25,7 +26,7 @@ export default function CatalogoPage() {
         </p>
 
         <Suspense fallback={null}>
-          <CatalogPageClient />
+          <CatalogPageClient categories={getCategoryCards()} />
         </Suspense>
 
       </div>

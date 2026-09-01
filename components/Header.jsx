@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import config from '@/client.config.js'
-import { getCategories } from '@/lib/products'
 import CartBadge from './CartBadge'
 import styles from '@/app/landing.module.css'
 
@@ -18,7 +17,11 @@ const HOME_LINKS = [
   { href: '#contacto', label: 'Contacto' },
 ]
 
-export default function Header() {
+// `categories` vem do layout (Server Component) como [{ id, name }]. Antes o
+// Header chamava getCategories() direto e, por ser client e viver no layout
+// raiz, levava o catalog.json inteiro pro bundle de TODA página do site.
+// Ver item 34 do docs/BUGS-carrinho-2026-08-29.md.
+export default function Header({ categories = [] }) {
   const pathname = usePathname()
   const isHome = pathname === '/'
   const activeCategoria = pathname.match(/^\/catalogo\/([^/]+)/)?.[1] ?? null
@@ -42,8 +45,6 @@ export default function Header() {
   function closeNav() {
     setNavOpen(false)
   }
-
-  const categories = getCategories()
 
   return (
     <header className={`no-print ${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>

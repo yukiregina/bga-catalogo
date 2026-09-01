@@ -3,6 +3,7 @@ import config from '@/client.config.js'
 import { CartProvider } from '@/components/CartProvider'
 import Analytics from '@/components/Analytics'
 import Header from '@/components/Header'
+import { getCategoryNav } from '@/lib/products'
 
 const SITE_URL = 'https://bga.com.py'
 
@@ -39,7 +40,7 @@ export default function RootLayout({ children }) {
       <body>
         <CartProvider>
           <div className="max-w-[1920px] mx-auto">
-            <Header />
+            <Header categories={getCategoryNav()} />
             {children}
           </div>
         </CartProvider>

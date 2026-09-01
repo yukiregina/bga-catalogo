@@ -19,7 +19,10 @@ function waLink(text) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 }
 
-export default function LandingPage() {
+// `categories` só atravessa daqui pro ProductFinder — a home é Server Component
+// (app/page.jsx) e é lá que o catálogo é lido. Ver item 34 do
+// docs/BUGS-carrinho-2026-08-29.md.
+export default function LandingPage({ categories = [] }) {
   const [waFloatHidden, setWaFloatHidden] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [attachedFileName, setAttachedFileName] = useState('')
@@ -141,7 +144,7 @@ export default function LandingPage() {
             </div>
             <h2 id="productos-title" className={styles.sectionTitle}>{config.catalog.title}</h2>
             <p className={styles.sectionLead}>{config.brand.tagline} Buscá el producto que necesitás o entrá directo por familia.</p>
-            <ProductFinder />
+            <ProductFinder categories={categories} />
           </div>
         </section>
 

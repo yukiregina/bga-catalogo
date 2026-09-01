@@ -2,13 +2,14 @@
 
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { getCategories, getProductsByCategory, getCategoryDisplayMode } from '@/lib/products'
 import { searchProducts } from '@/lib/search'
 
-export default function CatalogPageClient() {
+// `categories` vem de app/catalogo/page.jsx (Server Component), já com
+// `productCount` resolvido. Mesmo motivo do ProductFinder: sendo client, um
+// import de lib/products.js traria o catalog.json inteiro pro navegador.
+export default function CatalogPageClient({ categories = [] }) {
   const searchParams = useSearchParams()
   const query = searchParams.get('q')?.trim() ?? ''
-  const categories = getCategories()
 
   // searchProducts já só cobre famílias em modo "catalog" — o índice
   // (lib/search-index.json) nem inclui as outras.
@@ -78,8 +79,7 @@ export default function CatalogPageClient() {
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {categories.map(cat => {
-          const isCatalog    = getCategoryDisplayMode(cat) === 'catalog'
-          const productCount = isCatalog ? getProductsByCategory(cat.id).length : 0
+          const productCount = cat.productCount ?? 0
 
           return (
             <div

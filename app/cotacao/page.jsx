@@ -6,7 +6,7 @@ import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import { registrarCotizacion } from '@/lib/leads'
 import { track } from '@/lib/analytics'
-import { getProductImageAlt, buildConfigQuery } from '@/lib/products'
+import { getProductImageAlt, buildConfigQuery } from '@/lib/product-helpers'
 import WhatsappIcon from '@/components/WhatsappIcon'
 
 const RUBROS = [
