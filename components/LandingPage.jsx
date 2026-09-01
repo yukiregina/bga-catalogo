@@ -294,7 +294,7 @@ export default function LandingPage() {
                 <p>Completá el formulario y disparamos un mensaje pre-armado a nuestro equipo. Hablás directo con quien cotiza, sin pasar por filtros.</p>
                 <div className={styles.ctaInfoBlock}>
                   <div className={styles.ctaInfoIcon}><svg viewBox="0 0 256 256" width="24" height="24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" aria-hidden="true"><circle cx="128" cy="128" r="96"/><polyline points="128 72 128 128 184 128"/></svg></div>
-                  <div><strong>Tiempo de respuesta</strong><span>Hábil en menos de 1 hora.</span></div>
+                  <div><strong>Tiempo de respuesta</strong><span>Te saludamos en menos de 1 hora hábil. La cotización depende del largo de la lista.</span></div>
                 </div>
                 <div className={styles.ctaInfoBlock}>
                   <div className={styles.ctaInfoIcon}><svg viewBox="0 0 256 256" width="24" height="24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="16" aria-hidden="true"><path d="M224,200v8a32,32,0,0,1-32,32H136"/><path d="M224,128H192a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16h32V128a96,96,0,1,0-192,0v56a16,16,0,0,0,16,16H64a16,16,0,0,0,16-16V144a16,16,0,0,0-16-16H32"/></svg></div>
@@ -357,7 +357,7 @@ export default function LandingPage() {
                     <WhatsappIcon size={20} />
                     {submitting ? 'Abriendo WhatsApp…' : 'Enviar por WhatsApp'}
                   </button>
-                  <p className={styles.formNote}>Al enviar, abrimos WhatsApp con tu mensaje pre-formado. Tu información no queda en bases de terceros.</p>
+                  <p className={styles.formNote}>Al enviar, abrimos WhatsApp con tu mensaje pre-formado. Usamos tus datos solo para responderte: no los vendemos ni los cedemos para publicidad. <Link href="/politica-de-privacidad/" className={styles.formNoteLink}>Política de privacidad</Link></p>
                 </form>
               </div>
             </div>
