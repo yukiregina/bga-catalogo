@@ -38,6 +38,7 @@ export default function CotacaoPage() {
   const [form, setForm] = useState({
     nombre: '',
     empresa: '',
+    ciudad: '',
     proyecto: '',
     plazo: '',
     rubro: '',
@@ -56,6 +57,7 @@ export default function CotacaoPage() {
     lines.push('')
     if (form.nombre)  lines.push(`Cliente: ${form.nombre}${form.empresa ? ` — ${form.empresa}` : ''}`)
     if (form.empresa && !form.nombre) lines.push(`Empresa: ${form.empresa}`)
+    if (form.ciudad) lines.push(`Ciudad: ${form.ciudad}`)
     if (form.rubro && form.rubro !== 'Seleccioná un rubro') lines.push(`Rubro: ${form.rubro}`)
     if (form.proyecto) lines.push(`Obra: ${form.proyecto}`)
     if (form.plazo)   lines.push(`Plazo: ${form.plazo}`)
@@ -71,6 +73,7 @@ export default function CotacaoPage() {
       origen: 'catalogo',
       nombre: form.nombre,
       empresa: form.empresa,
+      ciudad: form.ciudad,
       rubro: form.rubro && form.rubro !== RUBROS[0] ? form.rubro : '',
       proyecto: form.proyecto,
       plazo: form.plazo,
@@ -292,6 +295,7 @@ export default function CotacaoPage() {
                 {[
                   { label: 'Nombre / empresa', name: 'nombre', placeholder: 'Mariana Acosta · Acosta Eléctrica' },
                   { label: 'RUC / CNPJ', name: 'empresa', placeholder: '80012345-6', mono: true },
+                  { label: 'Ciudad', name: 'ciudad', placeholder: 'Asunción · Ciudad del Este · …' },
                 ].map(field => (
                   <div key={field.name}>
                     <label className="text-[11px] font-semibold text-text-secondary block mb-1">{field.label}</label>
