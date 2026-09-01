@@ -229,6 +229,13 @@
 .ctaInfoIcon { color: var(--bolt); min-width: 24px; display: flex; }
 .ctaInfoBlock strong { color: var(--ocean); display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; }
 .ctaInfoBlock span { font-size: 14px; color: var(--gray-700); }
+.ctaCatalogLink {
+  display: block; background: var(--ocean-50); padding: 22px 24px; border-radius: 8px;
+  margin-top: 8px; text-decoration: none; cursor: pointer; transition: background 0.2s;
+}
+.ctaCatalogLink:hover { background: var(--ocean-100); }
+.ctaCatalogLink strong { color: var(--ocean); display: block; margin-bottom: 4px; font-size: 16px; font-weight: 700; }
+.ctaCatalogLink span { font-size: 14px; color: var(--gray-700); }
 .formWrapper {
   background: var(--gray-100); padding: 40px; border-radius: 12px;
   border: 1px solid var(--gray-200); box-shadow: 0 4px 12px rgba(0,0,0,0.04);
