@@ -1,0 +1,60 @@
+# Build spec del Amplify — explícito a propósito.
+#
+# Sin este archivo, Amplify autodetecta "Next.js" por el package.json y genera
+# una spec que apunta a `.next` con el runtime SSR (plataforma "Web Compute").
+# Este proyecto usa `output: 'export'` (next.config.mjs) y escribe en `out/`.
+# El resultado de dejarlo autodetectar es o un deploy roto, o —peor— un
+# servidor corriendo 24/7 en la cuenta AWS del cliente, que es exactamente lo
+# que la regla 3 del CLAUDE.md existe para impedir.
+#
+# Al conectar el repo, verificar en la consola que la app dice plataforma
+# "Web" y no "Web Compute". Ver ítem 34 de docs/BUGS-carrinho-2026-08-29.md.
+
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        # `npm run build` dispara el prebuild que regenera lib/search-index.json
+        # (está en .gitignore: no viene del repo, se genera acá).
+        - npm run build
+  artifacts:
+    baseDirectory: out
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+
+customHeaders:
+  # Cabeceras de seguridad. Con export estático no se pueden declarar en
+  # next.config.mjs (no hay servidor que las emita), así que van acá.
+  #
+  # No entra CSP: el sitio carga gtag desde googletagmanager.com y una CSP mal
+  # calibrada mata la medición sin avisar — el mismo fallo silencioso que ya
+  # nos costó caro con el no-cors. Se agrega después, probada en el navegador.
+  #
+  # Tampoco entra HSTS: se cachea en el navegador por mucho tiempo y el dominio
+  # todavía va a cambiar de app. Se agrega cuando bga.com.py ya apunte acá.
+  - pattern: '**'
+    headers:
+      - key: X-Content-Type-Options
+        value: 'nosniff'
+      - key: X-Frame-Options
+        value: 'SAMEORIGIN'
+      - key: Referrer-Policy
+        value: 'strict-origin-when-cross-origin'
+      - key: Permissions-Policy
+        value: 'geolocation=(), camera=(), microphone=(), interest-cohort=()'
+
+  # Los chunks de /_next/static llevan hash en el nombre: cambian de nombre
+  # cuando cambia el contenido, así que cachearlos para siempre es seguro.
+  # El HTML NO se toca acá — tiene que seguir revalidando, si no un deploy
+  # nuevo no llega al visitante.
+  - pattern: '/_next/static/**'
+    headers:
+      - key: Cache-Control
+        value: 'public, max-age=31536000, immutable'
