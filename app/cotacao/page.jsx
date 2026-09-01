@@ -334,6 +334,12 @@ export default function CotacaoPage() {
                 <WhatsappIcon size={16} />
                 Enviar cotización por WhatsApp
               </button>
+              <p className="text-[11px] text-text-muted leading-relaxed mt-2">
+                Al enviar, BGA recibe estos datos para preparar tu cotización.{' '}
+                <Link href="/politica-de-privacidad/" className="underline hover:text-brand-primary">
+                  Política de privacidad
+                </Link>
+              </p>
 
             </div>
           </div>

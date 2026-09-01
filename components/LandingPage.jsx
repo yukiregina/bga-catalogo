@@ -403,6 +403,7 @@ export default function LandingPage() {
           </div>
           <div className={styles.footerBottom}>
             <span>© 2026 {config.brand.name} · Todos los derechos reservados</span>
+            <Link href="/politica-de-privacidad/">Política de privacidad</Link>
             <span>Hecho en Paraguay</span>
           </div>
         </div>
