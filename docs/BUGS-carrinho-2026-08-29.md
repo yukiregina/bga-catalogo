@@ -2381,11 +2381,10 @@ O único lugar em prosa que lista espessores é o `materialsPage.longDescription
 e ele para no #14. Quem lê a página de materiales conta cinco; quem abre uma
 ficha vê seis.
 
-**A pergunta que sobra pro Akira, de uma linha:** o #12 é venda normal ou é
-espessor de projeto especial? A Aida não o cita no dia a dia. Se for especial,
-oferecê-lo como chip igual aos outros cria uma expectativa que ela depois tem que
-desmanchar no WhatsApp — e aí vale uma marca no chip ou uma frase no texto. Se
-for venda normal, basta o texto listar os seis.
+**Respondido pelo Akira (01/09): é venda normal, e com volume alto agora.** Ou
+seja, o #12 é um espessor como os outros — nada de marca no chip nem de ressalva
+no texto. A Aida ter citado só cinco na entrevista provavelmente reflete o mix de
+antes; se o #12 cresceu há pouco, vale ela saber que ele está no configurador.
 
 ### Prompt pro Claude Code
 
