@@ -294,6 +294,62 @@ O catálogo está parado desde julho esperando a planilha de SKUs. A causa
 provável não é desinteresse: é que o pedido chegou como um template de 6 abas
 × 100 linhas em branco.
 
+### 5.6 Planilha de catálogo — fonte viva no Drive da BGA (decidido em 01/09/2026)
+
+**Onde estava até 01/09:** local, em
+`Desktop/BGA-catalogo/4. Catálogo Sitioweb/BGA_Catalog_Template_vF_bandejas RevAkira.xlsx`
+— nem no Drive. Os dados eram lidos dali e transcritos à mão pro `lib/catalog.json`;
+não existe (ainda) script de importação.
+
+**Migrado em 01/09 para o Drive da própria BGA** — mesma conta do GA4 e da
+planilha de Cotizaciones, não a conta pessoal da Yuki. Segue a regra 4
+(arquivos-fonte são do cliente).
+
+- Folder: **"Catalogo digital web"**,
+  `https://drive.google.com/drive/u/0/folders/141h7Hlq-kE1gl9OpmxGh46bsZ21R38Jn`
+  — dono `mkt@bga.com.py`
+- Arquivo: `BGA_Catalog_Template_vF_bandejas RevAkira.xlsx` (as 8 abas, incluindo
+  `00_INSTRUCCIONES` e `07_TEXTOS_SEO`)
+- ⬜ **Pendente:** ainda subiu como `.xlsx` puro, não converteu pra Planilhas
+  Google nativo. Precisa abrir e "Arquivo → Salvar como Planilhas Google" — sem
+  isso não dá pra ler por link/export CSV depois.
+- ⬜ **Não apagar o arquivo local (nem os backups) ainda.** Mesmo princípio da
+  seção 5.1 com a planilha de leads: só depois de confirmar que a versão no
+  Drive está convertida e íntegra, com alguns dias de uso real.
+
+**Conflito encontrado e resolvido:** a aba `00_INSTRUCCIONES` desse template
+promete "o produto desaparece do catálogo em até 10 minutos" e descreve
+"o sitio lee los datos en tiempo real (cache de hasta 10 min)" — plano de
+**antes** da mudança de direção pós-TripleR, quando o catálogo ainda ia ser
+servido dinamicamente. Contradiz a decisão de export estático travada em 5.1b/c
+(zero servidor 24/7). Confirmado com a Yuki em 01/09: o texto ficou desatualizado,
+não foi decisão nova.
+
+**Meio-termo decidido:** nada de servidor 24/7 novo — reaproveitar o que já
+existe (Amplify já builda a cada `git push`; Apps Script já roda na conta da
+BGA pros leads). O gatilho passa a ser a planilha, não mais só commit manual:
+
+```
+Planilha (Google Sheets)
+  → Apps Script (onEdit ou de tempo — mesmo mecanismo dos leads)
+  → webhook de build do Amplify
+  → build (com um passo novo de prebuild que lê a planilha e regera catalog.json)
+  → publica
+```
+
+Não é tempo real — é build disparado por evento, igual ao que já acontece hoje
+com `git push`. Um build+deploy do Amplify fecha em poucos minutos, então dá
+pra chegar perto da promessa original sem violar a regra 3.
+
+**A construir, depois do lançamento de Bandejas** (mesmo pacote da seção 5.5,
+agora com desenho definido):
+1. Passo de `prebuild` que lê a Planilha (não mais o `.xlsx` local) e regera
+   `lib/catalog.json`
+2. Gatilho no Apps Script apontando pro webhook de build do Amplify
+3. Reescrever `00_INSTRUCCIONES`: trocar "tempo real" por algo como "minutos,
+   via publicação automática quando alguém edita a planilha" — mais preciso e
+   ainda uma boa promessa pro Akira/Aida
+
 ---
 
 ## 6. Fase 2 — nomear, nunca construir
