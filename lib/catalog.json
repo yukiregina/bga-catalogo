@@ -3150,6 +3150,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
       "images": {
         "primary": "/images/productos/union-simple.webp"
       }
@@ -3220,6 +3221,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
       "images": {
         "primary": "/images/productos/union-interna.webp"
       }
@@ -3267,6 +3269,7 @@
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "unidadVenta": "Kit",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
       "images": {
         "primary": "/images/productos/kit-de-uniones.webp",
         "byAla": {

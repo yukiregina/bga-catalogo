@@ -660,6 +660,13 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                       />
                     </div>
                   )}
+
+                  {/* Nota da peça sobre a terminação (campo `finishNote` do Sheet) —
+                      opcional, hoje só nas peças de união/kit que precisam bater com
+                      o acabamento da bandeja que empalman. */}
+                  {product.finishNote && (
+                    <p className="text-[10.5px] text-text-muted mt-1.5">{product.finishNote}</p>
+                  )}
                 </div>
               </>
             ) : (
