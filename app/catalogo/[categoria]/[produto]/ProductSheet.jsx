@@ -59,7 +59,10 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const resolvedFinishes = hasFinishes
     ? product.finishes.map(id => gs.finishes.find(f => f.id === id)).filter(Boolean)
     : []
-  const [selectedFinish, setSelectedFinish] = useState(null)
+  // Pré-seleciona o primeiro acabamento da lista do próprio produto — não
+  // 'pz' fixo, porque um produto futuro pode não oferecer pregalvanizado e
+  // o hardcode selecionaria algo que nem existe pra ele.
+  const [selectedFinish, setSelectedFinish] = useState(resolvedFinishes[0]?.id ?? null)
   const [selectedColor,  setSelectedColor]  = useState('')
   const activeFinish = hasFinishes ? resolvedFinishes.find(f => f.id === selectedFinish) ?? null : null
 
