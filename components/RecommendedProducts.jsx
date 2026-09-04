@@ -7,7 +7,7 @@
 import Link from 'next/link'
 import { getProductImageAlt } from '@/lib/products'
 
-export default function RecommendedProducts({ products }) {
+export default function RecommendedProducts({ products, configQuery }) {
   if (!products?.length) return null
 
   return (
@@ -16,7 +16,7 @@ export default function RecommendedProducts({ products }) {
       {products.map(product => (
         <Link
           key={product.id}
-          href={`/catalogo/${product.categoryId}/${product.id}`}
+          href={`/catalogo/${product.categoryId}/${product.id}/${configQuery ? `?${configQuery}` : ''}`}
           className="flex items-center gap-2 rounded-lg border border-border-subtle px-2 py-1.5 transition hover:border-brand-accent hover:shadow-sm focus-visible:border-brand-accent focus-visible:shadow-sm"
         >
           {product.images?.primary ? (

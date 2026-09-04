@@ -801,9 +801,12 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               </p>
             )}
 
-            {/* Peças complementares (campo `recommended` do Sheet) — só link, sem CTA próprio */}
+            {/* Peças complementares (campo `recommended` do Sheet) — só link, sem CTA próprio.
+                configQuery leva a configuração atual (ancho, ala, finish, etc.) pro produto
+                relacionado — a ficha de destino só aplica o que bate com um valor real dela;
+                o que não bate cai no default sem quebrar. */}
             <div className="no-print">
-              <RecommendedProducts products={recommended} />
+              <RecommendedProducts products={recommended} configQuery={configQuery} />
             </div>
 
             {cartLine && (
