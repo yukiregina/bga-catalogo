@@ -814,7 +814,14 @@
       "unidadVenta": "Tramo 3 m",
       "images": {
         "primary": "/images/productos/bandeja-portacables.webp",
-        "tapa": "/images/productos/bandeja-portacables-tapa.webp"
+        "tapa": "/images/productos/bandeja-portacables-tapa.webp",
+        "bySku": {
+          "CT3011": "/images/productos/bandeja-portacables-lisa-ct3011.webp",
+          "CT3012": "/images/productos/bandeja-portacables-lisa-ct3012.webp",
+          "CT3111": "/images/productos/bandeja-portacables.webp",
+          "CT3112": "/images/productos/bandeja-portacables-perforada-ct3112.webp",
+          "CT3211": "/images/productos/bandeja-portacables-tapa.webp"
+        }
       },
       "secciones": {
         "U": "/images/productos/bandeja-portacables-seccion-u.webp",

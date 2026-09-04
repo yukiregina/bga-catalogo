@@ -61,14 +61,22 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   // kit-de-uniones: a imagem carrega a tornillería do ala escolhido — troca
   // sozinha, sem clique. As demais páginas seguem a galeria peça/tapa normal.
   const kitAla = product.images?.byAla ? String(selectedAxes.ala ?? '') : null
+  // bandeja-portacables: uma miniatura por variante (CT3011…CT3211), não o
+  // toggle peça/tapa fixo. Produto sem images.bySku não entra por aqui —
+  // os outros 71 continuam no galleryTab de sempre, sem mudar.
+  const hasBySku = !!product.images?.bySku
   const mainImageSrc = kitAla
     ? (product.images.byAla[kitAla] ?? product.images.primary)
     : tapaImageMissing
       ? null // tapa sem render: vazio, nunca a foto da peça — é a troca que comunica a variante
-      : (galleryTab === 'tapa' && product.images?.tapa ? product.images.tapa : product.images?.primary)
+      : hasBySku
+        ? (product.images.bySku[selectedVariant?.sku] ?? product.images.primary)
+        : (galleryTab === 'tapa' && product.images?.tapa ? product.images.tapa : product.images?.primary)
   const mainImageAlt = kitAla
     ? getProductImageAlt(product, { ala: kitAla })
-    : getProductImageAlt(product, galleryTab === 'tapa' && product.images?.tapa ? 'tapa' : 'primary')
+    : hasBySku
+      ? getProductImageAlt(product, selectedVariant ? { variantLabel: selectedVariant.label } : 'primary')
+      : getProductImageAlt(product, galleryTab === 'tapa' && product.images?.tapa ? 'tapa' : 'primary')
 
   const { addItem, items } = useCart()
 
@@ -269,34 +277,67 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               )}
             </div>
 
-            {/* Galería peza/tapa — a tapa se cotiza aparte, dos piezas distintas */}
-            {product.images?.tapa && (
-              <div className="flex gap-2">
-                {[
-                  { id: 'primary', label: 'Pieza', src: product.images.primary },
-                  { id: 'tapa',    label: 'Tapa',  src: product.images.tapa },
-                ].map(thumb => (
-                  <button
-                    key={thumb.id}
-                    onClick={() => setGalleryTab(thumb.id)}
-                    className={`flex-1 rounded-lg border overflow-hidden ${
-                      galleryTab === thumb.id ? 'border-text-primary/40' : 'border-border-subtle'
-                    }`}
-                  >
-                    <div className="bg-surface-elevated aspect-square flex items-center justify-center">
-                      <img
-                        src={thumb.src}
-                        alt={getProductImageAlt(product, thumb.id)}
-                        width={80}
-                        height={80}
-                        loading="lazy"
-                        className="w-full h-full object-contain p-1"
-                      />
-                    </div>
-                    <div className="text-[10px] text-text-muted py-0.5">{thumb.label}</div>
-                  </button>
-                ))}
+            {/* Galería de variantes (bandeja-portacables) — uma miniatura por SKU do
+                mapa images.bySku, na ordem de `variants`. Clicar seleciona a variante
+                no configurador, não só troca a imagem: é o mesmo estado do select
+                "Modelo / variante" abaixo, nos dois sentidos. */}
+            {hasBySku ? (
+              <div className="flex gap-1.5">
+                {variants.filter(v => product.images.bySku[v.sku]).map(v => {
+                  const sel = selectedVariant?.sku === v.sku
+                  return (
+                    <button
+                      key={v.sku}
+                      onClick={() => setSelectedVariant(v)}
+                      className={`flex-1 rounded-lg border overflow-hidden ${
+                        sel ? 'border-text-primary/40' : 'border-border-subtle'
+                      }`}
+                    >
+                      <div className="bg-surface-elevated aspect-square flex items-center justify-center">
+                        <img
+                          src={product.images.bySku[v.sku]}
+                          alt={getProductImageAlt(product, { variantLabel: v.label })}
+                          width={80}
+                          height={80}
+                          loading="lazy"
+                          className="w-full h-full object-contain p-1"
+                        />
+                      </div>
+                      <div className="text-[10px] text-text-muted py-0.5 leading-tight">{v.label.replace('Tipo ', '')}</div>
+                    </button>
+                  )
+                })}
               </div>
+            ) : (
+              /* Galería peza/tapa — a tapa se cotiza aparte, dos piezas distintas */
+              product.images?.tapa && (
+                <div className="flex gap-2">
+                  {[
+                    { id: 'primary', label: 'Pieza', src: product.images.primary },
+                    { id: 'tapa',    label: 'Tapa',  src: product.images.tapa },
+                  ].map(thumb => (
+                    <button
+                      key={thumb.id}
+                      onClick={() => setGalleryTab(thumb.id)}
+                      className={`flex-1 rounded-lg border overflow-hidden ${
+                        galleryTab === thumb.id ? 'border-text-primary/40' : 'border-border-subtle'
+                      }`}
+                    >
+                      <div className="bg-surface-elevated aspect-square flex items-center justify-center">
+                        <img
+                          src={thumb.src}
+                          alt={getProductImageAlt(product, thumb.id)}
+                          width={80}
+                          height={80}
+                          loading="lazy"
+                          className="w-full h-full object-contain p-1"
+                        />
+                      </div>
+                      <div className="text-[10px] text-text-muted py-0.5">{thumb.label}</div>
+                    </button>
+                  ))}
+                </div>
+              )
             )}
 
             {/* Diagrama de apoio: corte transversal tipo U / tipo C (só bandeja-portacables) —
