@@ -376,7 +376,12 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                 })}
               </div>
             ) : (
-              /* Galería peza/tapa — a tapa se cotiza aparte, dos piezas distintas */
+              /* Galería peza/tapa — a tapa se cotiza aparte, dos piezas distintas.
+                 Clicar seleciona a variante (mesmo estado do select "Modelo / variante",
+                 nos dois sentidos) — não só troca a imagem, senão a linha do carrinho sai
+                 com foto de tapa e SKU de peça. Sem variante role 'tapa' (não deveria
+                 acontecer: os 9 produtos com esta galeria têm), cai no comportamento
+                 antigo de só trocar o tab. */
               product.images?.tapa && (
                 <div className="flex gap-2">
                   {[
@@ -385,7 +390,16 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                   ].map(thumb => (
                     <button
                       key={thumb.id}
-                      onClick={() => setGalleryTab(thumb.id)}
+                      onClick={() => {
+                        if (thumb.id === 'tapa') {
+                          const tapaVariant = variants.find(v => v.role === 'tapa')
+                          if (tapaVariant) setSelectedVariant(tapaVariant)
+                          setGalleryTab('tapa')
+                        } else {
+                          if (isTapa) setSelectedVariant(null)
+                          setGalleryTab('primary')
+                        }
+                      }}
                       className={`flex-1 rounded-lg border overflow-hidden ${
                         galleryTab === thumb.id ? 'border-text-primary/40' : 'border-border-subtle'
                       }`}
