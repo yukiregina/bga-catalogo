@@ -24,14 +24,14 @@ export default function PoliticaDePrivacidadPage() {
 
         <div className="max-w-3xl">
           <p className="text-sm text-text-secondary mb-8 leading-relaxed">
-            Última actualización: 31 de agosto de 2026
+            Última actualización: 3 de septiembre de 2026
           </p>
 
           <section className="mb-10">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-3">1. Quién es responsable de tus datos</h2>
             <p className="text-sm text-text-secondary leading-relaxed">
-              {config.brand.name} S.A. — RUC [CONFIRMAR CON EL CLIENTE] —, con domicilio en {config.brand.address}.
-              Para cualquier tema de datos personales: <a href={`mailto:${config.contact.email}`} className="underline hover:text-brand-primary">{config.contact.email}</a> o
+              {config.brand.name} S.A. — RUC {config.brand.ruc} —, con domicilio en {config.brand.address}.
+              Para cualquier tema de datos personales: <a href={`mailto:${config.contact.privacyEmail}`} className="underline hover:text-brand-primary">{config.contact.privacyEmail}</a> o
               WhatsApp {config.contact.phone}.
             </p>
           </section>
@@ -82,9 +82,8 @@ export default function PoliticaDePrivacidadPage() {
           <section className="mb-10">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-3">5. Cuánto tiempo los guardamos</h2>
             <p className="text-sm text-text-secondary leading-relaxed">
-              Los pedidos de cotización quedan registrados mientras dure la relación comercial y por
-              [CONFIRMAR: 5 años] más, por razones contables y de historial de obra. Podés pedirnos que los
-              borremos antes.
+              Los pedidos de cotización quedan registrados mientras dure la relación comercial y por 5 años
+              más, por razones contables y de historial de obra. Podés pedirnos que los borremos antes.
             </p>
           </section>
 
@@ -92,7 +91,7 @@ export default function PoliticaDePrivacidadPage() {
             <h2 className="font-brand text-base font-bold text-brand-primary mb-3">6. Tus derechos</h2>
             <p className="text-sm text-text-secondary leading-relaxed">
               Podés pedirnos acceder a tus datos, corregirlos, eliminarlos, oponerte a su uso o pedir una copia.
-              Escribí a <a href={`mailto:${config.contact.email}`} className="underline hover:text-brand-primary">{config.contact.email}</a> con
+              Escribí a <a href={`mailto:${config.contact.privacyEmail}`} className="underline hover:text-brand-primary">{config.contact.privacyEmail}</a> con
               el asunto "Datos personales". Respondemos dentro de los 30 días.
             </p>
           </section>

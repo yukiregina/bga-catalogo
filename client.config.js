@@ -22,6 +22,7 @@ module.exports = {
       accent:  '#FFC600',
     },
     address: 'Minga Guazú, Ruta PY02 km14, Alto Paraná – Paraguay',
+    ruc:     '80097677-0',
   },
 
   // ─── Contato ──────────────────────────────────────────────────────────────
@@ -29,6 +30,9 @@ module.exports = {
     whatsapp: '+595974733100',
     phone:    '+595 974 733 100',
     email:    'ventas@bga.com.py',
+    // Contato de dados pessoais na política de privacidade — não é o
+    // comercial. Definido pelo cliente em 03/09/2026.
+    privacyEmail: 'financiero@bga.com.py',
     // Mensagem padrão enviada no WhatsApp ao cotar
     whatsappMessage: 'Hola, me interesa hacer una cotización de los siguientes productos:',
   },
