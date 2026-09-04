@@ -518,6 +518,8 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                         </span>
                       </div>
                       <div
+                        role="radiogroup"
+                        aria-label={ax.label ?? ax.id}
                         className="no-print grid grid-cols-5 md:[grid-template-columns:var(--axis-cols)] gap-1"
                         style={{ '--axis-cols': `repeat(${cols}, minmax(0, 88px))` }}
                       >
@@ -525,6 +527,8 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                           const sel = selectedAxes[ax.id] === v
                           return (
                             <button key={v}
+                              role="radio"
+                              aria-checked={sel}
                               onClick={() => setSelectedAxes(prev => ({ ...prev, [ax.id]: v }))}
                               className={`text-center py-1.5 text-[11px] rounded font-mono transition ${
                                 sel
@@ -584,11 +588,13 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                     <div className="text-[12px] font-semibold text-text-muted uppercase tracking-[.05em] mb-1.5">
                       Espesor
                     </div>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div role="radiogroup" aria-label="Espesor" className="flex flex-wrap gap-1.5">
                       {gs.thicknesses.map(t => {
                         const sel = selectedGauge === t.gauge
                         return (
                           <button key={t.gauge}
+                            role="radio"
+                            aria-checked={sel}
                             onClick={() => setSelectedGauge(t.gauge)}
                             className={`w-[62px] h-[62px] flex flex-col items-center justify-center gap-0.5 rounded font-mono text-[13.5px] transition ${
                               sel
@@ -620,11 +626,13 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                   <div className="text-[12px] font-semibold text-text-muted uppercase tracking-[.05em] mb-1.5">
                     Material y terminación
                   </div>
-                  <div className="space-y-1">
+                  <div role="radiogroup" aria-label="Material y terminación" className="space-y-1">
                     {resolvedFinishes.map(f => {
                       const sel = selectedFinish === f.id
                       return (
                         <button key={f.id}
+                          role="radio"
+                          aria-checked={sel}
                           onClick={() => setSelectedFinish(f.id)}
                           className={`w-full flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-left px-[11px] py-2 rounded-lg border transition ${
                             sel ? '' : 'border-border-subtle bg-white hover:border-text-primary/30'
