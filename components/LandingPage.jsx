@@ -25,7 +25,6 @@ function waLink(text) {
 export default function LandingPage({ categories = [] }) {
   const [waFloatHidden, setWaFloatHidden] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  const [attachedFileName, setAttachedFileName] = useState('')
   const formWrapperRef = useRef(null)
 
   useEffect(() => {
@@ -38,10 +37,6 @@ export default function LandingPage({ categories = [] }) {
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
-
-  function handleFileChange(e) {
-    setAttachedFileName(e.target.files?.[0]?.name ?? '')
-  }
 
   function handleContactSubmit(e) {
     e.preventDefault()
@@ -68,12 +63,8 @@ export default function LandingPage({ categories = [] }) {
       }).catch(() => {})
     }
 
-    // WhatsApp's wa.me links only support pre-filled text — there's no way to push
-    // a file into the chat automatically, so we just flag it in the message and
-    // rely on the on-screen reminder telling the user to attach it themselves.
-    const adjunto = attachedFileName ? `\n\n📎 Adjunto: ${attachedFileName} (lo adjunto acá mismo en el chat)` : ''
     const ciudadLinea = ciudad ? `\nCiudad: ${ciudad}.` : ''
-    const texto = `Hola, soy ${nombre} de ${empresa}.\nSector: ${sector}.${ciudadLinea}\n\n${mensaje}${adjunto}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
+    const texto = `Hola, soy ${nombre} de ${empresa}.\nSector: ${sector}.${ciudadLinea}\n\n${mensaje}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
 
     setSubmitting(true)
     window.open(waLink(texto), '_blank', 'noopener,noreferrer')
@@ -358,21 +349,8 @@ export default function LandingPage({ categories = [] }) {
                     <textarea id="mensaje" name="mensaje" required placeholder="Ej. Bandejas portacables tipo escalera, ~200 m, para obra industrial en Asunción. Plazo de entrega previsto: 30 días."></textarea>
                   </div>
                   <div className={styles.formField}>
-                    <label htmlFor="archivo">Adjuntar plano o foto (opcional)</label>
-                    <input
-                      id="archivo"
-                      name="archivo"
-                      type="file"
-                      accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf"
-                      onChange={handleFileChange}
-                      className={styles.fileInput}
-                    />
-                    <label htmlFor="archivo" className={styles.fileDrop}>
-                      <svg viewBox="0 0 256 256" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M208,88H152V32a8,8,0,0,0-13.66-5.66l-88,88A8,8,0,0,0,56,128h56v56a8,8,0,0,0,13.66,5.66l88-88A8,8,0,0,0,208,88ZM136,164.69V120a8,8,0,0,0-8-8H75.31L136,51.31V96a8,8,0,0,0,8,8h44.69Z"/></svg>
-                      <span>{attachedFileName || 'Elegir archivo · PNG, JPEG o PDF'}</span>
-                    </label>
-                    <p className={styles.fileHint}>
-                      WhatsApp no permite adjuntar archivos automáticamente desde la web: al enviar, vas a ver el chat abierto con tu mensaje — adjuntá el archivo ahí mismo.
+                    <p className={styles.formInvite}>
+                      ¿Tenés plano o una foto de tu lista? Mandalos en el chat de WhatsApp que se abre — desde ahí te cotizamos.
                     </p>
                   </div>
                   <button type="submit" className={styles.formSubmit} disabled={submitting}>
