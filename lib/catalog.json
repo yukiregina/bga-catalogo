@@ -51,11 +51,14 @@
         "id": "gf",
         "name": "Galvanizado por Inmersión en Caliente",
         "norm": "NBR 6323 / ASTM 123",
+        "base": "Sobre chapa negra",
         "useCase": "exteriores, ambientes húmedos"
       },
       {
         "id": "elec",
         "name": "Pintura Electrostática en Polvo",
+        "base": "Sobre chapa pregalvanizada",
+        "colores": ["BEIGE Texturizado RAL 7032", "NEGRO Microtexturizado", "GRIS Texturizado RAL 7035", "NARANJA RAL 2009"],
         "useCase": "interiores y exteriores, con color y acabado estético"
       }
     ],
@@ -151,7 +154,7 @@
           "norma": "NBR 6323 / ASTM 123"
         },
         {
-          "material": "Acero SAE 1006/1010",
+          "material": "Acero SAE 1006/1010 pregalvanizado",
           "tratamiento": "Pintura electrostática en polvo",
           "ambiente": "Interior y exterior, cuando además se busca color o acabado estético",
           "norma": "—"
@@ -185,6 +188,10 @@
         {
           "q": "¿Cómo se elige el ancho correcto de bandeja?",
           "a": "Se calcula en base al diámetro exterior de los cables y el factor de llenado recomendado (máximo 40% del área útil según IEC 61537). BGA ofrece anchos de 50 a 800 mm. Consultá con tu vendedor para el cálculo exacto según tu proyecto."
+        },
+        {
+          "q": "¿Cuál es la diferencia entre galvanizado por inmersión en caliente y pintura electrostática?",
+          "a": "El galvanizado por inmersión en caliente se aplica sobre chapa negra: la pieza se sumerge en zinc fundido y queda protegida para exterior, ambiente húmedo o con agentes corrosivos. La pintura electrostática en polvo se aplica sobre chapa pregalvanizada y suma color y terminación, para interior o exterior donde además importa el acabado. Los colores estándar son BEIGE texturizado RAL 7032, NEGRO microtexturizado, GRIS texturizado RAL 7035 y NARANJA RAL 2009; para otro color, consultá con la vendedora. BGA no hace pintura líquida."
         }
       ]
     },

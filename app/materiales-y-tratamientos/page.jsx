@@ -106,7 +106,7 @@ export default function MaterialesYTratamientosPage() {
             <table className="w-full text-xs">
               <thead className="bg-surface-elevated">
                 <tr>
-                  {['Tratamiento', 'Ambiente de uso', 'Norma'].map(h => (
+                  {['Tratamiento', 'Base', 'Ambiente de uso', 'Norma'].map(h => (
                     <th key={h} className="text-left px-4 py-2.5 text-text-muted font-semibold">{h}</th>
                   ))}
                 </tr>
@@ -115,6 +115,7 @@ export default function MaterialesYTratamientosPage() {
                 {gs.surfaceTreatments.map((t, i) => (
                   <tr key={i}>
                     <td className="px-4 py-2.5 text-text-primary font-medium">{t.name}</td>
+                    <td className="px-4 py-2.5 text-text-secondary">{t.base ?? '—'}</td>
                     <td className="px-4 py-2.5 text-text-secondary">{t.useCase}</td>
                     <td className="px-4 py-2.5 text-text-muted font-mono">{t.norm ?? '—'}</td>
                   </tr>
@@ -122,6 +123,11 @@ export default function MaterialesYTratamientosPage() {
               </tbody>
             </table>
           </div>
+          <p className="text-xs text-text-muted leading-relaxed max-w-3xl mt-3">
+            Colores estándar: BEIGE texturizado RAL 7032, NEGRO microtexturizado, GRIS
+            texturizado RAL 7035 y NARANJA RAL 2009. Para otro color, consultá con la
+            vendedora antes de cotizar.
+          </p>
         </section>
 
         {/* Espesores */}
