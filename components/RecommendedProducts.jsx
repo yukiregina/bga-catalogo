@@ -1,8 +1,9 @@
-// Tira compacta de peças complementares na ficha (campo `recommended` do Sheet).
-// Não é alternativa ao produto — é o que falta pra instalar essa peça, por
-// isso mora dentro da coluna direita, logo abaixo do CTA. Recebe produtos já
-// resolvidos (códigos inexistentes foram filtrados antes); lista vazia não
-// renderiza nada.
+// Tira compacta de produtos relacionados na ficha (campo `recommended` do
+// Sheet). Bloco definido pelo cliente — complementos de instalação e outros
+// itens que ele queira sugerir; a ordem vem do campo `recommended` e carrega
+// significado (o que precisa vs. o que também pode servir). Recebe produtos
+// já resolvidos (códigos inexistentes foram filtrados antes); lista vazia
+// não renderiza nada.
 import Link from 'next/link'
 import { getProductImageAlt } from '@/lib/products'
 
@@ -11,7 +12,7 @@ export default function RecommendedProducts({ products }) {
 
   return (
     <div className="mt-3 space-y-1.5">
-      <div className="text-[11px] text-text-muted">Para instalar esta pieza</div>
+      <div className="text-[11px] text-text-muted">Productos Relacionados</div>
       {products.map(product => (
         <Link
           key={product.id}
