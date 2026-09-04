@@ -477,7 +477,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                         return (
                           <button key={m.id}
                             onClick={() => setSelectedMaterial(m.id)}
-                            className="text-[11px] px-2 py-1 rounded transition"
+                            className="text-[11px] px-2 py-1 rounded transition capitalize"
                             style={sel
                               ? { background: '#E1F5EE', color: '#085041', outline: '1px solid #A7DFC9' }
                               : { background: '#F7F7F8', color: '#6E6E7C' }

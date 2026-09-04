@@ -31,7 +31,7 @@
     "materials": [
       {
         "id": "sae1006",
-        "name": "Acero SAE 1006/1010",
+        "name": "Acero pregalvanizado SAE 1006/1010",
         "default": true,
         "description": "Acero al carbono laminado. Se entrega pregalvanizado (PZ): sale de fábrica con recubrimiento de zinc aplicado antes del conformado y no requiere tratamiento adicional para uso interior. Para exterior o ambiente húmedo recibe galvanizado por inmersión en caliente o pintura electrostática en polvo."
       },
