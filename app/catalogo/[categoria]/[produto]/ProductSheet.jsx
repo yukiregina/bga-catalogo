@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import { track } from '@/lib/analytics'
@@ -94,7 +95,16 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
       ? getProductImageAlt(product, selectedVariant ? { variantLabel: selectedVariant.label } : 'primary')
       : getProductImageAlt(product, galleryTab === 'tapa' && product.images?.tapa ? 'tapa' : 'primary')
 
-  const { addItem, items } = useCart()
+  const { addItem, replaceItem, items } = useCart()
+  const router = useRouter()
+
+  // Presença de `editar` na URL (setada no mount-effect abaixo) diz que esta
+  // visita veio da /cotacao pra corrigir uma linha, não criar outra. É
+  // parâmetro de navegação — nunca entra em currentConfig/buildConfigQuery,
+  // então não é escrito de volta na URL nem vaza pros links de
+  // Productos Relacionados.
+  const [editingLineId, setEditingLineId] = useState(null)
+  const editingQtyAppliedRef = useRef(false)
 
   // Base do SKU: variante escolhida > SKU único da página > id da página.
   // Com variantes disponíveis e nenhuma escolhida, o pedido sai sem punir
@@ -221,8 +231,27 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
       }
     })
 
+    // Vem do link "editar" da /cotacao — não valida contra o produto porque
+    // não é config de peça, é o lineId da linha que está sendo corrigida.
+    const editar = params.get('editar')
+    if (editar) setEditingLineId(editar)
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // Puxa a quantidade da linha que está sendo editada — não dá pra fazer
+  // isso no efeito de leitura da URL porque o carrinho (localStorage) ainda
+  // pode não ter carregado no primeiro render. Roda de novo a cada mudança
+  // de `items` até achar a linha, e trava com a ref pra não sobrescrever o
+  // que a pessoa já esteja digitando no campo de quantidade.
+  useEffect(() => {
+    if (editingQtyAppliedRef.current || !editingLineId) return
+    const line = items.find(i => i.lineId === editingLineId)
+    if (line) {
+      setQty(line.quantity)
+      editingQtyAppliedRef.current = true
+    }
+  }, [editingLineId, items])
 
   // Escreve a configuração na URL a cada mudança — replaceState, não
   // router.push: é a mesma página, não uma navegação nova no histórico.
@@ -253,13 +282,19 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   }, [])
 
   function handleAddToCart() {
-    addItem({ ...product, composedSKU }, qty, {
+    const meta = {
       image: mainImageSrc,
       imageAlt: mainImageAlt,
       title: lineTitle,
       configLabel,
       config: currentConfig,
-    })
+    }
+
+    if (editingLineId) {
+      replaceItem(editingLineId, { ...product, composedSKU }, qty, meta)
+    } else {
+      addItem({ ...product, composedSKU }, qty, meta)
+    }
 
     track('agregar_cotizacion', {
       sku: product.id,
@@ -269,6 +304,10 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
       cantidad: qty,
       origen: 'ficha',
     })
+
+    // Voltar pra /cotacao é o que fecha o ciclo de "vim consertar uma linha"
+    // — sem isso a pessoa ficaria na ficha sem saber se a troca colou.
+    if (editingLineId) router.push('/cotacao')
   }
 
   function handleWhatsappDirecto() {
@@ -802,7 +841,9 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                     : 'bg-brand-accent text-brand-primary hover:brightness-105'
                 }`}
               >
-                {cartLine ? `✓ En tu cotización (${cartLine.quantity})` : 'Agregar a cotización'}
+                {editingLineId
+                  ? 'Actualizar cotización'
+                  : cartLine ? `✓ En tu cotización (${cartLine.quantity})` : 'Agregar a cotización'}
               </button>
 
               {product.configurable && (

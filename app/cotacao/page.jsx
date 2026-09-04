@@ -189,8 +189,14 @@ export default function CotacaoPage() {
                 const hasMeta = title !== undefined
                 const thumbSrc = hasMeta ? image : (image ?? product.images?.primary)
 
+                // `editar` avisa a ficha que esta visita vem pra corrigir a linha, não
+                // pra criar outra — encodeURIComponent porque o lineId (SKU composto)
+                // tem espaço e "·". É parâmetro de navegação, não de configuração: não
+                // entra em buildConfigQuery e não sobrevive ao efeito que reescreve a
+                // URL da ficha com a config atual.
                 const query = itemConfig ? buildConfigQuery(itemConfig) : ''
-                const productHref = `/catalogo/${product.categoryId}/${product.id}/${query ? `?${query}` : ''}`
+                const editarParam = `editar=${encodeURIComponent(lineId)}`
+                const productHref = `/catalogo/${product.categoryId}/${product.id}/?${query ? `${query}&${editarParam}` : editarParam}`
 
                 return (
                 <div

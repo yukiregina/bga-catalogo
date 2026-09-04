@@ -49,6 +49,21 @@ export function CartProvider({ children }) {
   // o mesmo de antes (grade, recomendados, subfamília). `config` é a versão
   // crua ({ variante, axes, material, espesor }) que vira a query da URL
   // quando a linha é clicada de volta pra ficha.
+  function makeLine(lineId, product, quantity, meta) {
+    return {
+      lineId,
+      product,
+      composedSKU: product.composedSKU,
+      quantity,
+      observation: '',
+      image: meta.image,
+      imageAlt: meta.imageAlt,
+      title: meta.title,
+      configLabel: meta.configLabel,
+      config: meta.config,
+    }
+  }
+
   function addItem(product, quantity = 1, meta = {}) {
     const lineId = getLineId(product)
     setItems(prev => {
@@ -60,18 +75,43 @@ export function CartProvider({ children }) {
             : i
         )
       }
-      return [...prev, {
-        lineId,
-        product,
-        composedSKU: product.composedSKU,
-        quantity,
-        observation: '',
-        image: meta.image,
-        imageAlt: meta.imageAlt,
-        title: meta.title,
-        configLabel: meta.configLabel,
-        config: meta.config,
-      }]
+      return [...prev, makeLine(lineId, product, quantity, meta)]
+    })
+  }
+
+  // Volta da ficha pra corrigir uma linha (link "editar" da /cotacao) — troca
+  // a linha de `oldLineId` pela configuração nova NA MESMA POSIÇÃO do array,
+  // em vez de remove+add, que jogaria a linha pro fim e bagunçaria a ordem
+  // que a pessoa montou. Se `oldLineId` já não existe mais (removida em
+  // outra aba, por exemplo), cai no addItem normal.
+  function replaceItem(oldLineId, product, quantity = 1, meta = {}) {
+    const newLineId = getLineId(product)
+    setItems(prev => {
+      const idx = prev.findIndex(i => i.lineId === oldLineId)
+      if (idx === -1) {
+        const exists = prev.find(i => i.lineId === newLineId)
+        if (exists) {
+          return prev.map(i =>
+            i.lineId === newLineId
+              ? { ...i, quantity: i.quantity + quantity }
+              : i
+          )
+        }
+        return [...prev, makeLine(newLineId, product, quantity, meta)]
+      }
+
+      // A configuração nova já existe em outra linha (ex.: a pessoa editou
+      // pra bater com algo que já estava no carrinho) — funde as quantidades
+      // lá e remove o slot editado, senão duas linhas ficariam com o mesmo
+      // lineId.
+      const collisionIdx = prev.findIndex((i, j) => j !== idx && i.lineId === newLineId)
+      if (collisionIdx !== -1) {
+        return prev
+          .map((i, j) => j === collisionIdx ? { ...i, quantity: i.quantity + quantity } : i)
+          .filter((_, j) => j !== idx)
+      }
+
+      return prev.map((i, j) => j === idx ? makeLine(newLineId, product, quantity, meta) : i)
     })
   }
 
@@ -104,6 +144,7 @@ export function CartProvider({ children }) {
       items,
       count: items.reduce((sum, i) => sum + i.quantity, 0),
       addItem,
+      replaceItem,
       removeItem,
       updateQuantity,
       updateObservation,
