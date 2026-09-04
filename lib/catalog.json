@@ -966,6 +966,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/curva-horizontal-90.webp",
         "tapa": "/images/productos/curva-horizontal-90-tapa.webp"
@@ -1064,6 +1065,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/curva-horizontal-recta-90.webp"
       }
@@ -1161,6 +1163,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/curva-vertical-externa-90.webp",
         "tapa": "/images/productos/curva-vertical-externa-90-tapa.webp"
@@ -1259,6 +1262,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/curva-vertical-interna-90.webp",
         "tapa": "/images/productos/curva-vertical-interna-90-tapa.webp"
@@ -1357,6 +1361,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/curva-vertical-externa-45.webp"
       }
@@ -1454,6 +1459,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/curva-vertical-interna-45.webp"
       }
@@ -1551,6 +1557,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/curva-horizontal-45.webp"
       }
@@ -1648,6 +1655,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/curva-de-descarga.webp",
         "tapa": "/images/productos/curva-de-descarga-tapa.webp"
@@ -1747,6 +1755,7 @@
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "configurable": true,
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/te-horizontal.webp",
         "tapa": "/images/productos/te-horizontal-tapa.webp"
@@ -1845,6 +1854,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/te-horizontal-recto.webp"
       }
@@ -1942,6 +1952,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/te-vertical-ascendente.webp"
       }
@@ -2039,6 +2050,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/te-vertical-descarga.webp",
         "tapa": "/images/productos/te-vertical-descarga-tapa.webp"
@@ -2137,6 +2149,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/te-vertical-descarga-lateral.webp",
         "tapa": "/images/productos/te-vertical-descarga-lateral-tapa.webp"
@@ -2235,6 +2248,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/union-cruzeta.webp",
         "tapa": "/images/productos/union-cruzeta-tapa.webp"
@@ -2333,6 +2347,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/union-cruzeta-recta.webp"
       }
@@ -2431,6 +2446,7 @@
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "configurable": true,
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/desnivel-simple.webp"
       }
@@ -2528,6 +2544,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/desvio-horizontal-derecho.webp"
       }
@@ -2625,6 +2642,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/desvio-horizontal-izquierdo.webp"
       }
@@ -2722,6 +2740,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/reduccion-lateral-derecha.webp"
       }
@@ -2819,6 +2838,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/reduccion-lateral-izquierda.webp"
       }
@@ -2916,6 +2936,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/reduccion-central.webp",
         "tapa": "/images/productos/reduccion-central-tapa.webp"
@@ -2987,6 +3008,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/final-de-tramo.webp"
       }
@@ -3057,6 +3079,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/final-de-tramo-descarga.webp"
       }
@@ -3126,6 +3149,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/union-simple.webp"
       }
@@ -3195,6 +3219,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/union-interna.webp"
       }
@@ -3241,6 +3266,7 @@
       "sku": "KIT3062",
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "unidadVenta": "Kit",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/kit-de-uniones.webp",
         "byAla": {
@@ -3303,6 +3329,7 @@
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "unidadVenta": "Tramo 3 m",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/tramo-divisor.webp"
       }
@@ -3374,6 +3401,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/soporte-suspension-omega.webp"
       }
@@ -3445,6 +3473,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/soporte-suspension-tipo-a.webp"
       }
@@ -3516,6 +3545,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/soporte-suspension-tipo-b.webp"
       }
@@ -3577,6 +3607,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/mano-francesa-simple.webp"
       }
@@ -3638,6 +3669,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/mano-francesa-triangular.webp"
       }
@@ -3699,6 +3731,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/soporte-travesano.webp"
       }
@@ -3781,6 +3814,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/salida-horizontal-electroducto.webp"
       }
@@ -3817,6 +3851,7 @@
         "bandeja-portacables"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/salida-lateral-perfilado.webp"
       }
