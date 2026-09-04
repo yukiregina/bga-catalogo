@@ -565,11 +565,6 @@ No produto, um array de ids apontando pro global — mesma forma do
 Presença = configurador novo. Ausência = caminho de hoje. **Só
 `bandeja-portacables` recebe o campo agora.**
 
-→ **ESTENDIDO em 04/09.** O campo foi replicado pros outros 35 produtos
-`categoryId: "bandejas"` + `type: "producto"` — os 36 da família inteira têm
-`finishes` hoje. As 5 páginas de subfamília (sem configurador) ficaram de
-fora, como devia.
-
 Array e não boolean por dois motivos: é a forma que o projeto já usa pra
 apontar ids num array global, e deixa um produto futuro oferecer um
 subconjunto sem inventar outro campo.
@@ -783,3 +778,68 @@ sozinho quando a linha sai. Não tentar migrar.
 - nenhum eixo `ancho` com 75; **todos** os eixos `ala` com 75 intactos
 - `kit-de-uniones` ainda mostra as três imagens por ala
 - `npm run build` regenera o `search-index.json` sem 75 nos haystacks de ancho
+
+---
+
+## 9. Bugs encontrados em uso — e o padrão por trás deles
+
+Os dois bugs desta sessão saíram do **mesmo lugar**, e nenhum dos dois dá erro
+de build. Anotados aqui porque o próximo catálogo vai ter a mesma estrutura e
+pode repetir os dois.
+
+### 9.1 O padrão
+
+**A identidade da linha do carrinho é derivada da configuração** — `lineId` é
+o SKU composto. Isso é bom: duas configurações diferentes viram duas linhas,
+sem inventar id.
+
+O preço é que qualquer descompasso entre *o que a pessoa vê* e *o que compõe
+o SKU* vira defeito silencioso. Duas formas de errar:
+
+- **A tela muda e o SKU não** → a linha sai com informação que contradiz o que
+  foi cotado.
+- **O SKU muda e a intenção não** → a pessoa quis corrigir e ganhou duplicata.
+
+Um de cada aconteceu.
+
+### 9.2 Bug 1 — a miniatura de tapa (achado pelo Akira, corrigido em `7d64d69`)
+
+Na galeria pieza/tapa, clicar na miniatura chamava só `setGalleryTab` — a
+variante não mudava. A imagem grande virava a tapa, e como o
+`handleAddToCart` manda `image: mainImageSrc`, a linha saía **com foto de tapa
+e SKU de curva**, marcada `(variante a confirmar)`.
+
+Afetava 9 produtos. A bandeja era imune porque o `bySku` já fazia a miniatura
+selecionar a variante — o caminho certo desde o início, que os outros não
+tinham herdado.
+
+**A tela mudou e o SKU não.**
+
+### 9.3 Bug 2 — editar pelo carrinho duplica (pendente)
+
+A linha da cotação linka de volta pra ficha já configurada, mas o link não diz
+que é edição. A pessoa troca a cor, clica em Agregar, e ganha uma linha nova
+com a errada ainda lá.
+
+Conserto: o `productHref` carrega `editar=<lineId>`, o `CartProvider` ganha um
+`replaceItem` que troca **na mesma posição**, e o CTA vira "Actualizar
+cotización". Adicionar duas vezes direto da ficha continua criando duas linhas
+— é caso legítimo, 100 em beige e 50 em laranja.
+
+**Cuidado no diff:** o `editar` não pode entrar no `buildConfigQuery`. É
+parâmetro de navegação, não de configuração — se entrar, gruda na URL e vaza
+pros links de Productos Relacionados, mandando "edite a linha X" pra ficha de
+outro produto.
+
+**O SKU mudou e a intenção não.**
+
+### 9.4 O que conferir no próximo catálogo
+
+- Todo controle que troca a imagem também troca a variante? Ou existe algum
+  que só troca a foto?
+- Tudo que entra no SKU composto está visível na tela, e o contrário também?
+- A linha do carrinho volta pra ficha sabendo que é edição, ou só configurada?
+- Trocar de eixo deixa estado velho pra trás que ainda entra no SKU? (A cor
+  foi verificada nesta sessão e está certa — é lida com
+  `activeFinish?.needsColor` no momento do uso, não do preenchimento.)
+- O rótulo da linha (`buildConfigLabel`) mostra tudo que o SKU mostra?
