@@ -92,7 +92,45 @@
     "joiningProcess": {
       "name": "CLINCH",
       "description": "Sistema de unión en frío que preserva la capa de zinc, sin daño al recubrimiento."
-    }
+    },
+    "finishes": [
+      {
+        "id": "pz",
+        "label": "Pregalvanizado (PZ)",
+        "material": "sae1006",
+        "treatment": "pz",
+        "ambiente": "Interior seco · sobre chapa pregalvanizada"
+      },
+      {
+        "id": "gf",
+        "label": "Galvanizado por inmersión en caliente",
+        "material": "sae1006",
+        "treatment": "gf",
+        "ambiente": "Exterior, húmedo o con agentes corrosivos · sobre chapa negra"
+      },
+      {
+        "id": "elec",
+        "label": "Pintura electrostática en polvo",
+        "material": "sae1006",
+        "treatment": "elec",
+        "needsColor": true,
+        "ambiente": "A la vista, cuando se busca color o terminación · sobre chapa pregalvanizada"
+      },
+      {
+        "id": "aisi304",
+        "label": "INOX AISI 304",
+        "material": "aisi304",
+        "treatment": null,
+        "ambiente": "Higiene exigente — alimenticia, farmacéutica, hospitalaria"
+      },
+      {
+        "id": "aisi316",
+        "label": "INOX AISI 316",
+        "material": "aisi316",
+        "treatment": null,
+        "ambiente": "Química, marina o salina"
+      }
+    ]
   },
   "categories": [
     {
@@ -819,6 +857,7 @@
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "unidadVenta": "Tramo 3 m",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/bandeja-portacables.webp",
         "tapa": "/images/productos/bandeja-portacables-tapa.webp",

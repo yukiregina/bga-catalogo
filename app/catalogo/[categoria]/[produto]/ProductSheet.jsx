@@ -50,6 +50,19 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const [qty,      setQty]      = useState(1)
   const [galleryTab, setGalleryTab] = useState('primary') // 'primary' | 'tapa'
 
+  // Material y terminación como eixo único (seção 6) — só entra quando o
+  // produto lista `finishes` (array de ids pra globalSpecs.finishes, mesmo
+  // padrão do `recommended`). Sem o campo, o produto segue no caminho de
+  // tags de Material + Espesor de sempre — os dois caminhos não se
+  // unificam, pra não vazar a UI nova pros outros 71 produtos.
+  const hasFinishes = product.finishes?.length > 0 && gs.finishes?.length > 0
+  const resolvedFinishes = hasFinishes
+    ? product.finishes.map(id => gs.finishes.find(f => f.id === id)).filter(Boolean)
+    : []
+  const [selectedFinish, setSelectedFinish] = useState(null)
+  const [selectedColor,  setSelectedColor]  = useState('')
+  const activeFinish = hasFinishes ? resolvedFinishes.find(f => f.id === selectedFinish) ?? null : null
+
   // A primeira escrita na URL precisa esperar a leitura (mesmo commit,
   // efeito anterior) terminar de aplicar seus setState — senão ela usa o
   // estado default (do render anterior à leitura) e sobrescreve os
@@ -87,8 +100,26 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const axesForSku = Object.fromEntries(
     axesToShow.map(ax => [ax.id, selectedAxes[ax.id]])
   )
-  const composedSKU = buildComposedSKU(baseSku, axesForSku, selectedMaterial, selectedGauge, null)
+  // Sem finish escolhido, o pedido sai sem punir (mesmo espírito do
+  // baseSku/variante). Com elec e sem cor, falta só o texto do color.
+  const finishSuffix = !hasFinishes
+    ? ''
+    : !selectedFinish
+      ? ' (terminación a confirmar)'
+      : (activeFinish?.needsColor && !selectedColor.trim())
+        ? ' (color a confirmar)'
+        : ''
+
+  const composedSKU = buildComposedSKU(
+    baseSku,
+    axesForSku,
+    hasFinishes ? (activeFinish?.material ?? null) : selectedMaterial,
+    selectedGauge,
+    hasFinishes ? (activeFinish?.treatment ?? null) : null,
+    hasFinishes && activeFinish?.needsColor ? selectedColor.trim() : null
+  )
     + (hasVariants && !selectedVariant ? ' (variante a confirmar)' : '')
+    + finishSuffix
 
   // O botão reflete o carrinho, não um estado próprio: a configuração atual
   // já está lá se essa linha (mesmo lineId = composedSKU) existir.
@@ -98,9 +129,11 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const configLabel = buildConfigLabel({
     variant: selectedVariant,
     axes: axesToShow.map(ax => ({ label: ax.label, unit: ax.unit, value: selectedAxes[ax.id] })),
-    material: selectedMaterial,
+    material: hasFinishes ? undefined : selectedMaterial,
     gauge: selectedGauge,
     globalSpecs: gs,
+    finish: hasFinishes ? selectedFinish ?? undefined : undefined,
+    color: hasFinishes && activeFinish?.needsColor ? (selectedColor.trim() || undefined) : undefined,
   })
 
   // Configuração crua (sem o sufixo do composedSKU) — vira query da URL e vai
@@ -108,8 +141,10 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const currentConfig = {
     variante: selectedVariant?.sku,
     axes: axesForSku,
-    material: selectedMaterial,
+    material: hasFinishes ? undefined : selectedMaterial,
     espesor: selectedGauge,
+    finish: hasFinishes ? selectedFinish ?? undefined : undefined,
+    color: hasFinishes && activeFinish?.needsColor ? (selectedColor.trim() || undefined) : undefined,
   }
   const configQuery = buildConfigQuery(currentConfig)
   const configQueryRef = useRef(configQuery)
@@ -147,6 +182,26 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
     const materialId = params.get('material')
     if (materialId && gs.materials?.some(m => m.id === materialId)) {
       setSelectedMaterial(materialId)
+    }
+
+    // Eixo de terminación (seção 6). `finish` primeiro; na ausência dele,
+    // cai no `material` antigo — carrinhos gravados antes desta mudança têm
+    // só esse parâmetro, e sem essa leitura a linha antiga perde o "voltar
+    // pra ficha configurada". `material` sozinho não diz qual tratamento:
+    // assume pregalvanizado (pz), que era a única opção antes de existir
+    // finish — exceto pra inox, onde o material já resolve sozinho.
+    if (hasFinishes) {
+      const finishId = params.get('finish')
+      if (finishId && resolvedFinishes.some(f => f.id === finishId)) {
+        setSelectedFinish(finishId)
+      } else if (materialId) {
+        const legacyMatches = resolvedFinishes.filter(f => f.material === materialId)
+        const legacyFinish = legacyMatches.find(f => f.treatment === 'pz') ?? legacyMatches[0]
+        if (legacyFinish) setSelectedFinish(legacyFinish.id)
+      }
+
+      const colorParam = params.get('color')
+      if (colorParam) setSelectedColor(colorParam.slice(0, 40))
     }
 
     const gauge = params.get('espesor')
@@ -245,6 +300,15 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const showRecommendationNote = anchoValue != null
     && thicknessRules[0] != null
     && Number(anchoValue) >= thicknessRules[0].width
+
+  // Compara em milímetro, não em número de bitola — #12 é mais grosso que
+  // #14, então comparar a string do rótulo inverteria o sentido. Só entra em
+  // âmbar (seção 6) quando a pessoa já escolheu uma bitola mais fina que o
+  // mínimo do ancho atual — hoje a caixa só informava, nunca comparava.
+  const gaugeMm = g => gs.thicknesses?.find(t => t.gauge === g)?.mm
+  const belowMinimumGauge = hasFinishes && matchedThicknessRule && selectedGauge
+    ? gaugeMm(selectedGauge) < gaugeMm(matchedThicknessRule.gauge)
+    : false
 
   return (
     <>
@@ -480,8 +544,11 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
 
             {/* Advertencia de espesor mínimo (minThicknessRule do Sheet) — só faz
                 sentido em fichas com eixo ancho e regra batendo; sem ancho (ex.:
-                kit-de-uniones, só ala) não há nada certo pra mostrar. */}
-            {matchedThicknessRule && (
+                kit-de-uniones, só ala) não há nada certo pra mostrar. Produto com
+                finishes (seção 6) não usa esta caixa — a mesma regra vira linha
+                embaixo do bloco de Espesor, e passa a comparar com a bitola
+                escolhida em vez de só informar. */}
+            {!hasFinishes && matchedThicknessRule && (
               <div className="bg-brand-accent/10 border border-brand-accent/50 rounded-lg px-3 py-2.5 mb-4">
                 <div className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-primary mb-1">
                   <svg viewBox="0 0 256 256" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M236.8,188.09,149.35,36.22a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"/></svg>
@@ -505,57 +572,153 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               </div>
             )}
 
-            {/* Material + Espesor */}
-            {(hasMaterials || hasGauges) && (
-              <div className="no-print flex gap-4 mb-4 flex-wrap">
-
-                {hasMaterials && (
-                  <div className="flex-1 min-w-[120px]">
-                    <div className="text-xs text-text-muted mb-1.5">Material</div>
-                    <div className="flex flex-wrap gap-1">
-                      {gs.materials.map(m => {
-                        const sel = selectedMaterial === m.id
-                        return (
-                          <button key={m.id}
-                            onClick={() => setSelectedMaterial(m.id)}
-                            className="text-[11px] px-2 py-1 rounded transition capitalize"
-                            style={sel
-                              ? { background: '#E1F5EE', color: '#085041', outline: '1px solid #A7DFC9' }
-                              : { background: '#F7F7F8', color: '#6E6E7C' }
-                            }
-                          >
-                            {m.name.replace('Acero ', '').replace(' ASTM 1100', '')}
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )}
-
+            {/* Espesor + Material y terminación (seção 6) — só produto com
+                `product.finishes`. Os outros 71 seguem no bloco de tags
+                Material + Espesor logo abaixo, sem nenhuma mudança; os dois
+                caminhos não se unificam de propósito. */}
+            {hasFinishes ? (
+              <>
                 {hasGauges && (
-                  <div className="flex-1 min-w-[120px]">
-                    <div className="text-xs text-text-muted mb-1.5">Espesor</div>
-                    <div className="flex flex-wrap gap-1">
+                  <div className="no-print mb-4">
+                    <div className="text-[12px] font-semibold text-text-muted uppercase tracking-[.05em] mb-1.5">
+                      Espesor
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
                       {gs.thicknesses.map(t => {
                         const sel = selectedGauge === t.gauge
                         return (
                           <button key={t.gauge}
                             onClick={() => setSelectedGauge(t.gauge)}
-                            className="text-[11px] px-2 py-1 rounded font-mono transition"
-                            style={sel
-                              ? { background: '#EEEDFE', color: '#3C3489', outline: '1px solid #C5C3F9' }
-                              : { background: '#F7F7F8', color: '#6E6E7C' }
-                            }
+                            className={`w-[62px] h-[62px] flex flex-col items-center justify-center gap-0.5 rounded font-mono text-[13.5px] transition ${
+                              sel
+                                ? 'bg-text-primary text-white border border-text-primary font-medium'
+                                : 'border border-border-subtle text-text-secondary hover:border-text-primary/30'
+                            }`}
                           >
-                            {t.gauge}
+                            <span>{t.gauge}</span>
+                            <span className={`text-[10px] ${sel ? 'opacity-80' : 'opacity-60'}`}>
+                              {String(t.mm).replace('.', ',')} mm
+                            </span>
                           </button>
                         )
                       })}
                     </div>
+                    {matchedThicknessRule && (
+                      <p className={`text-[11px] mt-1.5 ${belowMinimumGauge ? 'font-semibold' : 'text-text-muted'}`}
+                        style={belowMinimumGauge ? { color: '#92620B' } : undefined}
+                      >
+                        Espesor mínimo recomendado:{' '}
+                        <span className="font-mono font-semibold">{matchedThicknessRule.gauge}</span>
+                        {belowMinimumGauge ? ' — la bitola elegida está por debajo del mínimo' : ''}
+                      </p>
+                    )}
                   </div>
                 )}
 
-              </div>
+                <div className="no-print mb-4">
+                  <div className="text-[12px] font-semibold text-text-muted uppercase tracking-[.05em] mb-1.5">
+                    Material y terminación
+                  </div>
+                  <div className="space-y-1.5">
+                    {resolvedFinishes.map(f => {
+                      const sel = selectedFinish === f.id
+                      return (
+                        <button key={f.id}
+                          onClick={() => setSelectedFinish(f.id)}
+                          className={`w-full flex items-start gap-2.5 text-left px-3 py-2.5 rounded-lg border transition ${
+                            sel ? '' : 'border-border-subtle bg-white hover:border-text-primary/30'
+                          }`}
+                          style={sel ? { background: '#E1F5EE', borderColor: '#A7DFC9' } : undefined}
+                        >
+                          <span
+                            className="mt-[3px] w-4 h-4 rounded-full border-2 shrink-0 flex items-center justify-center"
+                            style={{ borderColor: sel ? '#085041' : '#C7C7CC' }}
+                            aria-hidden="true"
+                          >
+                            {sel && <span className="w-2 h-2 rounded-full" style={{ background: '#085041' }} />}
+                          </span>
+                          <span className="flex-1 min-w-0">
+                            <span className="block text-[14.5px] font-semibold"
+                              style={sel ? { color: '#085041' } : undefined}
+                            >
+                              {f.label}
+                            </span>
+                            <span className="block text-[11.5px] text-text-muted mt-0.5">{f.ambiente}</span>
+                          </span>
+                        </button>
+                      )
+                    })}
+                  </div>
+
+                  {activeFinish?.needsColor && (
+                    <div className="mt-3">
+                      <label htmlFor="color" className="block text-xs text-text-muted mb-1.5">¿Qué color?</label>
+                      <input
+                        id="color"
+                        type="text"
+                        maxLength={40}
+                        value={selectedColor}
+                        onChange={e => setSelectedColor(e.target.value)}
+                        placeholder="Escribí el color"
+                        className="w-full text-sm border border-border-subtle rounded-lg px-3 py-2 bg-white text-text-primary focus:outline-none focus:border-brand-primary transition-colors"
+                      />
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              /* Material + Espesor — caminho de hoje, intacto */
+              (hasMaterials || hasGauges) && (
+                <div className="no-print flex gap-4 mb-4 flex-wrap">
+
+                  {hasMaterials && (
+                    <div className="flex-1 min-w-[120px]">
+                      <div className="text-xs text-text-muted mb-1.5">Material</div>
+                      <div className="flex flex-wrap gap-1">
+                        {gs.materials.map(m => {
+                          const sel = selectedMaterial === m.id
+                          return (
+                            <button key={m.id}
+                              onClick={() => setSelectedMaterial(m.id)}
+                              className="text-[11px] px-2 py-1 rounded transition capitalize"
+                              style={sel
+                                ? { background: '#E1F5EE', color: '#085041', outline: '1px solid #A7DFC9' }
+                                : { background: '#F7F7F8', color: '#6E6E7C' }
+                              }
+                            >
+                              {m.name.replace('Acero ', '').replace(' ASTM 1100', '')}
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                  {hasGauges && (
+                    <div className="flex-1 min-w-[120px]">
+                      <div className="text-xs text-text-muted mb-1.5">Espesor</div>
+                      <div className="flex flex-wrap gap-1">
+                        {gs.thicknesses.map(t => {
+                          const sel = selectedGauge === t.gauge
+                          return (
+                            <button key={t.gauge}
+                              onClick={() => setSelectedGauge(t.gauge)}
+                              className="text-[11px] px-2 py-1 rounded font-mono transition"
+                              style={sel
+                                ? { background: '#EEEDFE', color: '#3C3489', outline: '1px solid #C5C3F9' }
+                                : { background: '#F7F7F8', color: '#6E6E7C' }
+                              }
+                            >
+                              {t.gauge}
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+              )
             )}
 
             {/* SKU composto + Pieza a medida — lado a lado a partir de md; sem o
