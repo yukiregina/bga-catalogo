@@ -99,14 +99,14 @@
         "label": "Pregalvanizado (PZ)",
         "material": "sae1006",
         "treatment": "pz",
-        "ambiente": "Interior seco · sobre chapa pregalvanizada"
+        "ambiente": "Interior seco"
       },
       {
         "id": "gf",
         "label": "Galvanizado por inmersión en caliente",
         "material": "sae1006",
         "treatment": "gf",
-        "ambiente": "Exterior, húmedo o con agentes corrosivos · sobre chapa negra"
+        "ambiente": "Exterior o húmedo"
       },
       {
         "id": "elec",
@@ -114,21 +114,21 @@
         "material": "sae1006",
         "treatment": "elec",
         "needsColor": true,
-        "ambiente": "A la vista, cuando se busca color o terminación · sobre chapa pregalvanizada"
+        "ambiente": "A la vista, con color"
       },
       {
         "id": "aisi304",
         "label": "INOX AISI 304",
         "material": "aisi304",
         "treatment": null,
-        "ambiente": "Higiene exigente — alimenticia, farmacéutica, hospitalaria"
+        "ambiente": "Higiene exigente"
       },
       {
         "id": "aisi316",
         "label": "INOX AISI 316",
         "material": "aisi316",
         "treatment": null,
-        "ambiente": "Química, marina o salina"
+        "ambiente": "Química o salina"
       }
     ]
   },

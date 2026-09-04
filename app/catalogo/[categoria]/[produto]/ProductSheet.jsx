@@ -619,32 +619,30 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                   <div className="text-[12px] font-semibold text-text-muted uppercase tracking-[.05em] mb-1.5">
                     Material y terminación
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1">
                     {resolvedFinishes.map(f => {
                       const sel = selectedFinish === f.id
                       return (
                         <button key={f.id}
                           onClick={() => setSelectedFinish(f.id)}
-                          className={`w-full flex items-start gap-2.5 text-left px-3 py-2.5 rounded-lg border transition ${
+                          className={`w-full flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-left px-[11px] py-2 rounded-lg border transition ${
                             sel ? '' : 'border-border-subtle bg-white hover:border-text-primary/30'
                           }`}
                           style={sel ? { background: '#E1F5EE', borderColor: '#A7DFC9' } : undefined}
                         >
                           <span
-                            className="mt-[3px] w-4 h-4 rounded-full border-2 shrink-0 flex items-center justify-center"
+                            className="w-4 h-4 rounded-full border-2 shrink-0 flex items-center justify-center"
                             style={{ borderColor: sel ? '#085041' : '#C7C7CC' }}
                             aria-hidden="true"
                           >
                             {sel && <span className="w-2 h-2 rounded-full" style={{ background: '#085041' }} />}
                           </span>
-                          <span className="flex-1 min-w-0">
-                            <span className="block text-[14.5px] font-semibold"
-                              style={sel ? { color: '#085041' } : undefined}
-                            >
-                              {f.label}
-                            </span>
-                            <span className="block text-[11.5px] text-text-muted mt-0.5">{f.ambiente}</span>
+                          <span className="text-[13px] font-semibold"
+                            style={sel ? { color: '#085041' } : undefined}
+                          >
+                            {f.label}
                           </span>
+                          <span className="text-[10.5px] text-text-muted ml-auto">{f.ambiente}</span>
                         </button>
                       )
                     })}
