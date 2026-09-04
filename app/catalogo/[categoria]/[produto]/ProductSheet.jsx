@@ -441,16 +441,14 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
               {product.name}
             </h1>
 
-            {/* SKU + subtitle */}
-            <div className="font-mono text-xs text-text-muted mb-3">
-              {product.id}{product.subtitle ? ` · ${product.subtitle}` : ''}
-            </div>
-
-            {/* Descrição curta */}
-            {product.shortDescription && (
-              <p className="text-xs text-text-secondary mb-4 leading-relaxed">
-                {product.shortDescription}
-              </p>
+            {/* Subtitle — só a frase, sem o slug do produto (não diz nada pra
+                quem compra) nem a shortDescription (repetia esta linha quase
+                palavra por palavra). shortDescription continua em
+                lib/catalog.json alimentando meta description e busca. */}
+            {product.subtitle && (
+              <div className="text-xs text-text-muted mb-4">
+                {product.subtitle}
+              </div>
             )}
 
             {/* Dimensões fixas (sem axes) */}
