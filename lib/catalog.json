@@ -1009,23 +1009,79 @@
           "sku": "CT3015",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3214",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-curva-horizontal-90",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
-        "primary": "/images/productos/curva-horizontal-90.webp",
-        "tapa": "/images/productos/curva-horizontal-90-tapa.webp"
+        "primary": "/images/productos/curva-horizontal-90.webp"
       }
+    },
+    {
+      "id": "tapa-curva-horizontal-90",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Curva Horizontal 90 Lisa",
+      "subtitle": "Cierre superior de la curva horizontal 90° · lisa",
+      "shortDescription": "Tapa Curva Horizontal 90 Lisa BGA — cierre superior de la curva horizontal 90°. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la curva horizontal 90°; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la curva horizontal 90° que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la curva horizontal 90°?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la curva horizontal 90°, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la curva horizontal 90° que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, codo 90, cambio de dirección horizontal, curva 90 bandeja",
+      "meta": {
+        "title": "Tapa para Curva Horizontal 90° | BGA Paraguay",
+        "description": "Tapa lisa para curva horizontal 90°: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3214",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "images": {
+        "primary": "/images/productos/curva-horizontal-90-tapa.webp"
+      },
+      "recommended": ["curva-horizontal-90"]
     },
     {
       "id": "curva-horizontal-recta-90",
@@ -1108,14 +1164,12 @@
           "sku": "CT3017",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3216",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-curva-horizontal-recta-90",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -1124,6 +1178,62 @@
       "images": {
         "primary": "/images/productos/curva-horizontal-recta-90.webp"
       }
+    },
+    {
+      "id": "tapa-curva-horizontal-recta-90",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Curva Horizontal Recta 90 Lisa",
+      "subtitle": "Cierre superior de la curva horizontal recta 90° · lisa",
+      "shortDescription": "Tapa Curva Horizontal Recta 90 Lisa BGA — cierre superior de la curva horizontal recta 90°. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la curva horizontal recta 90°; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la curva horizontal recta 90° que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la curva horizontal recta 90°?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la curva horizontal recta 90°, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la curva horizontal recta 90° que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, codo recto 90, curva cuadrada, ángulo vivo horizontal",
+      "meta": {
+        "title": "Tapa para Curva Horizontal Recta 90° | BGA Paraguay",
+        "description": "Tapa lisa para curva horizontal recta 90°: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3216",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "recommended": ["curva-horizontal-recta-90"]
     },
     {
       "id": "curva-vertical-externa-90",
@@ -1206,23 +1316,79 @@
           "sku": "CT3019",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3218",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-curva-vertical-externa-90",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
-        "primary": "/images/productos/curva-vertical-externa-90.webp",
-        "tapa": "/images/productos/curva-vertical-externa-90-tapa.webp"
+        "primary": "/images/productos/curva-vertical-externa-90.webp"
       }
+    },
+    {
+      "id": "tapa-curva-vertical-externa-90",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Curva Vertical Externa 90 Lisa",
+      "subtitle": "Cierre superior de la curva vertical externa 90° · lisa",
+      "shortDescription": "Tapa Curva Vertical Externa 90 Lisa BGA — cierre superior de la curva vertical externa 90°. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la curva vertical externa 90°; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la curva vertical externa 90° que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la curva vertical externa 90°?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la curva vertical externa 90°, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la curva vertical externa 90° que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, curva vertical, subida 90, cambio de nivel",
+      "meta": {
+        "title": "Tapa para Curva Vertical Externa 90° | BGA Paraguay",
+        "description": "Tapa lisa para curva vertical externa 90°: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3218",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "images": {
+        "primary": "/images/productos/curva-vertical-externa-90-tapa.webp"
+      },
+      "recommended": ["curva-vertical-externa-90"]
     },
     {
       "id": "curva-vertical-interna-90",
@@ -1305,23 +1471,79 @@
           "sku": "CT3021",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3220",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-curva-vertical-interna-90",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
-        "primary": "/images/productos/curva-vertical-interna-90.webp",
-        "tapa": "/images/productos/curva-vertical-interna-90-tapa.webp"
+        "primary": "/images/productos/curva-vertical-interna-90.webp"
       }
+    },
+    {
+      "id": "tapa-curva-vertical-interna-90",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Curva Vertical Interna 90 Lisa",
+      "subtitle": "Cierre superior de la curva vertical interna 90° · lisa",
+      "shortDescription": "Tapa Curva Vertical Interna 90 Lisa BGA — cierre superior de la curva vertical interna 90°. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la curva vertical interna 90°; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la curva vertical interna 90° que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la curva vertical interna 90°?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la curva vertical interna 90°, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la curva vertical interna 90° que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, curva vertical, bajada 90, cambio de nivel",
+      "meta": {
+        "title": "Tapa para Curva Vertical Interna 90° | BGA Paraguay",
+        "description": "Tapa lisa para curva vertical interna 90°: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3220",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "images": {
+        "primary": "/images/productos/curva-vertical-interna-90-tapa.webp"
+      },
+      "recommended": ["curva-vertical-interna-90"]
     },
     {
       "id": "curva-vertical-externa-45",
@@ -1404,14 +1626,12 @@
           "sku": "CT3023",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3222",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-curva-vertical-externa-45",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -1420,6 +1640,62 @@
       "images": {
         "primary": "/images/productos/curva-vertical-externa-45.webp"
       }
+    },
+    {
+      "id": "tapa-curva-vertical-externa-45",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Curva Vertical Externa 45 Lisa",
+      "subtitle": "Cierre superior de la curva vertical externa 45° · lisa",
+      "shortDescription": "Tapa Curva Vertical Externa 45 Lisa BGA — cierre superior de la curva vertical externa 45°. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la curva vertical externa 45°; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la curva vertical externa 45° que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la curva vertical externa 45°?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la curva vertical externa 45°, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la curva vertical externa 45° que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, curva vertical 45, rampa, cambio de nivel suave",
+      "meta": {
+        "title": "Tapa para Curva Vertical Externa 45° | BGA Paraguay",
+        "description": "Tapa lisa para curva vertical externa 45°: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3222",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "recommended": ["curva-vertical-externa-45"]
     },
     {
       "id": "curva-vertical-interna-45",
@@ -1502,14 +1778,12 @@
           "sku": "CT3025",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3224",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-curva-vertical-interna-45",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -1518,6 +1792,62 @@
       "images": {
         "primary": "/images/productos/curva-vertical-interna-45.webp"
       }
+    },
+    {
+      "id": "tapa-curva-vertical-interna-45",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Curva Vertical Interna 45 Lisa",
+      "subtitle": "Cierre superior de la curva vertical interna 45° · lisa",
+      "shortDescription": "Tapa Curva Vertical Interna 45 Lisa BGA — cierre superior de la curva vertical interna 45°. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la curva vertical interna 45°; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la curva vertical interna 45° que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la curva vertical interna 45°?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la curva vertical interna 45°, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la curva vertical interna 45° que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, curva vertical 45, rampa, cambio de nivel suave",
+      "meta": {
+        "title": "Tapa para Curva Vertical Interna 45° | BGA Paraguay",
+        "description": "Tapa lisa para curva vertical interna 45°: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3224",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "recommended": ["curva-vertical-interna-45"]
     },
     {
       "id": "curva-horizontal-45",
@@ -1600,14 +1930,12 @@
           "sku": "CT3027",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3226",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-curva-horizontal-45",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -1616,6 +1944,62 @@
       "images": {
         "primary": "/images/productos/curva-horizontal-45.webp"
       }
+    },
+    {
+      "id": "tapa-curva-horizontal-45",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Curva Horizontal 45 Lisa",
+      "subtitle": "Cierre superior de la curva horizontal 45° · lisa",
+      "shortDescription": "Tapa Curva Horizontal 45 Lisa BGA — cierre superior de la curva horizontal 45°. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la curva horizontal 45°; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la curva horizontal 45° que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la curva horizontal 45°?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la curva horizontal 45°, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la curva horizontal 45° que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, codo 45, curva 45 bandeja, desvio 45",
+      "meta": {
+        "title": "Tapa para Curva Horizontal 45° | BGA Paraguay",
+        "description": "Tapa lisa para curva horizontal 45°: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3226",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "recommended": ["curva-horizontal-45"]
     },
     {
       "id": "curva-de-descarga",
@@ -1698,23 +2082,79 @@
           "sku": "CT3029",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3228",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-curva-de-descarga",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
-        "primary": "/images/productos/curva-de-descarga.webp",
-        "tapa": "/images/productos/curva-de-descarga-tapa.webp"
+        "primary": "/images/productos/curva-de-descarga.webp"
       }
+    },
+    {
+      "id": "tapa-curva-de-descarga",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Curva De Descarga Lisa",
+      "subtitle": "Cierre superior de la curva de descarga · lisa",
+      "shortDescription": "Tapa Curva De Descarga Lisa BGA — cierre superior de la curva de descarga. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la curva de descarga; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la curva de descarga que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la curva de descarga?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la curva de descarga, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la curva de descarga que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, curva de inversión, bajada de cables, salida a tablero",
+      "meta": {
+        "title": "Tapa para Curva de Descarga | BGA Paraguay",
+        "description": "Tapa lisa para curva de descarga: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3228",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "images": {
+        "primary": "/images/productos/curva-de-descarga-tapa.webp"
+      },
+      "recommended": ["curva-de-descarga"]
     },
     {
       "id": "te-horizontal",
@@ -1797,14 +2237,12 @@
           "sku": "CT3031",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3230",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-te-horizontal",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -1812,9 +2250,67 @@
       "configurable": true,
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
-        "primary": "/images/productos/te-horizontal.webp",
-        "tapa": "/images/productos/te-horizontal-tapa.webp"
+        "primary": "/images/productos/te-horizontal.webp"
       }
+    },
+    {
+      "id": "tapa-te-horizontal",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Te Horizontal Lisa",
+      "subtitle": "Cierre superior del Te horizontal · lisa",
+      "shortDescription": "Tapa Te Horizontal Lisa BGA — cierre superior del Te horizontal. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior del Te horizontal; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho del Te horizontal que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con el Te horizontal?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala del Te horizontal, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] del Te horizontal que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, te, derivación, ramal horizontal, T bandeja",
+      "meta": {
+        "title": "Tapa para Te Horizontal | BGA Paraguay",
+        "description": "Tapa lisa para Te horizontal: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3230",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "images": {
+        "primary": "/images/productos/te-horizontal-tapa.webp"
+      },
+      "recommended": ["te-horizontal"]
     },
     {
       "id": "te-horizontal-recto",
@@ -1897,14 +2393,12 @@
           "sku": "CT3033",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3232",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-te-horizontal-recto",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -1913,6 +2407,62 @@
       "images": {
         "primary": "/images/productos/te-horizontal-recto.webp"
       }
+    },
+    {
+      "id": "tapa-te-horizontal-recto",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Te Horizontal Recto Lisa",
+      "subtitle": "Cierre superior del Te horizontal recto · lisa",
+      "shortDescription": "Tapa Te Horizontal Recto Lisa BGA — cierre superior del Te horizontal recto. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior del Te horizontal recto; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho del Te horizontal recto que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con el Te horizontal recto?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala del Te horizontal recto, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] del Te horizontal recto que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, te recta, derivación cuadrada, ramal perpendicular",
+      "meta": {
+        "title": "Tapa para Te Horizontal Recto | BGA Paraguay",
+        "description": "Tapa lisa para Te horizontal recto: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3232",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "recommended": ["te-horizontal-recto"]
     },
     {
       "id": "te-vertical-ascendente",
@@ -1995,14 +2545,12 @@
           "sku": "CT3035",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3234",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-te-vertical-ascendente",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -2011,6 +2559,62 @@
       "images": {
         "primary": "/images/productos/te-vertical-ascendente.webp"
       }
+    },
+    {
+      "id": "tapa-te-vertical-ascendente",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Te Vertical Ascendente Lisa",
+      "subtitle": "Cierre superior del Te vertical ascendente · lisa",
+      "shortDescription": "Tapa Te Vertical Ascendente Lisa BGA — cierre superior del Te vertical ascendente. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior del Te vertical ascendente; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho del Te vertical ascendente que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con el Te vertical ascendente?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala del Te vertical ascendente, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] del Te vertical ascendente que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, te vertical, ramal hacia arriba, derivación ascendente",
+      "meta": {
+        "title": "Tapa para Te Vertical Ascendente | BGA Paraguay",
+        "description": "Tapa lisa para Te vertical ascendente: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3234",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "recommended": ["te-vertical-ascendente"]
     },
     {
       "id": "te-vertical-descarga",
@@ -2093,23 +2697,79 @@
           "sku": "CT3037",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3236",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-te-vertical-descarga",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
-        "primary": "/images/productos/te-vertical-descarga.webp",
-        "tapa": "/images/productos/te-vertical-descarga-tapa.webp"
+        "primary": "/images/productos/te-vertical-descarga.webp"
       }
+    },
+    {
+      "id": "tapa-te-vertical-descarga",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Te Vertical Descarga Lisa",
+      "subtitle": "Cierre superior del Te vertical de descarga · lisa",
+      "shortDescription": "Tapa Te Vertical Descarga Lisa BGA — cierre superior del Te vertical de descarga. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior del Te vertical de descarga; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho del Te vertical de descarga que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con el Te vertical de descarga?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala del Te vertical de descarga, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] del Te vertical de descarga que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, te vertical, ramal hacia abajo, bajada de cables",
+      "meta": {
+        "title": "Tapa para Te Vertical de Descarga | BGA Paraguay",
+        "description": "Tapa lisa para Te vertical de descarga: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3236",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "images": {
+        "primary": "/images/productos/te-vertical-descarga-tapa.webp"
+      },
+      "recommended": ["te-vertical-descarga"]
     },
     {
       "id": "te-vertical-descarga-lateral",
@@ -2192,23 +2852,79 @@
           "sku": "CT3039",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3238",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-te-vertical-descarga-lateral",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
-        "primary": "/images/productos/te-vertical-descarga-lateral.webp",
-        "tapa": "/images/productos/te-vertical-descarga-lateral-tapa.webp"
+        "primary": "/images/productos/te-vertical-descarga-lateral.webp"
       }
+    },
+    {
+      "id": "tapa-te-vertical-descarga-lateral",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Te Vertical Descarga Lateral Lisa",
+      "subtitle": "Cierre superior del Te vertical de descarga lateral · lisa",
+      "shortDescription": "Tapa Te Vertical Descarga Lateral Lisa BGA — cierre superior del Te vertical de descarga lateral. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior del Te vertical de descarga lateral; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho del Te vertical de descarga lateral que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con el Te vertical de descarga lateral?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala del Te vertical de descarga lateral, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] del Te vertical de descarga lateral que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, te vertical lateral, bajada lateral, derivación lateral",
+      "meta": {
+        "title": "Tapa para Te Vertical de Descarga Lateral | BGA Paraguay",
+        "description": "Tapa lisa para Te vertical de descarga lateral: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3238",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "images": {
+        "primary": "/images/productos/te-vertical-descarga-lateral-tapa.webp"
+      },
+      "recommended": ["te-vertical-descarga-lateral"]
     },
     {
       "id": "union-cruzeta",
@@ -2291,23 +3007,79 @@
           "sku": "CT3041",
           "label": "Lisa Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3240",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
+        "tapa-union-cruzeta",
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
-        "primary": "/images/productos/union-cruzeta.webp",
-        "tapa": "/images/productos/union-cruzeta-tapa.webp"
+        "primary": "/images/productos/union-cruzeta.webp"
       }
+    },
+    {
+      "id": "tapa-union-cruzeta",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Unión Cruzeta Lisa",
+      "subtitle": "Cierre superior de la unión cruzeta · lisa",
+      "shortDescription": "Tapa Unión Cruzeta Lisa BGA — cierre superior de la unión cruzeta. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "Cierre superior de la unión cruzeta; protege los cables contra caída de polvo y objetos.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la unión cruzeta que cubre. Se cotiza aparte, por pieza.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la unión cruzeta?",
+          "a": "No. Se cotiza aparte, por pieza y por ancho. Se recomienda en anchos de 500 mm o más y en instalaciones expuestas a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la unión cruzeta, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la unión cruzeta que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de accesorio, tampa de conexão, cruz, cruceta, cruce 4 vías, X bandeja",
+      "meta": {
+        "title": "Tapa para Unión Cruzeta | BGA Paraguay",
+        "description": "Tapa lisa para unión cruzeta: cierre superior, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3240",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Pieza",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la pieza.",
+      "images": {
+        "primary": "/images/productos/union-cruzeta-tapa.webp"
+      },
+      "recommended": ["union-cruzeta"]
     },
     {
       "id": "union-cruzeta-recta",
