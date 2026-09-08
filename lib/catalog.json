@@ -843,18 +843,13 @@
           "sku": "CT3112",
           "label": "Perforada Tipo C",
           "role": "pieza"
-        },
-        {
-          "sku": "CT3211",
-          "label": "Tapa",
-          "role": "tapa"
         }
       ],
       "recommended": [
-        "kit-de-uniones",
-        "curva-horizontal-90",
-        "curva-vertical-externa-90",
-        "curva-vertical-interna-90"
+        "tapa-bandeja-portacables",
+        "union-simple",
+        "union-interna",
+        "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
@@ -862,19 +857,76 @@
       "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
       "images": {
         "primary": "/images/productos/bandeja-portacables.webp",
-        "tapa": "/images/productos/bandeja-portacables-tapa.webp",
         "bySku": {
           "CT3011": "/images/productos/bandeja-portacables-lisa-ct3011.webp",
           "CT3012": "/images/productos/bandeja-portacables-lisa-ct3012.webp",
           "CT3111": "/images/productos/bandeja-portacables.webp",
-          "CT3112": "/images/productos/bandeja-portacables-perforada-ct3112.webp",
-          "CT3211": "/images/productos/bandeja-portacables-tapa.webp"
+          "CT3112": "/images/productos/bandeja-portacables-perforada-ct3112.webp"
         }
       },
       "secciones": {
         "U": "/images/productos/bandeja-portacables-seccion-u.webp",
         "C": "/images/productos/bandeja-portacables-seccion-c.webp"
       }
+    },
+    {
+      "id": "tapa-bandeja-portacables",
+      "categoryId": "bandejas",
+      "type": "producto",
+      "name": "Tapa Bandeja Lisa",
+      "subtitle": "Cierre superior del tramo · 3000 mm · lisa",
+      "shortDescription": "Tapa Bandeja Lisa BGA — cierre superior del tramo de bandeja, 3000 mm. Se especifica por ancho, material y tratamiento.",
+      "longDescription": "La tapa cierra el tramo por arriba: protege los cables contra caída de polvo, agua y objetos, en recorridos expuestos o bajo estructura.\n\nEs de encaje, sin tornillería adicional, y se especifica por el mismo ancho de la bandeja que cubre. Se cotiza aparte de la bandeja, en tramos de 3000 mm.\n\nDisponible en acero SAE 1006/1010 pregalvanizado (PZ) para interior, con galvanizado por inmersión en caliente (GF) o pintura electrostática para exterior. También en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A.",
+      "faq": [
+        {
+          "q": "¿La tapa viene incluida con la bandeja?",
+          "a": "No. Se cotiza aparte, en tramos de 3000 mm y por ancho. Se recomienda en anchos de 500 mm o más y en cualquier tramo expuesto a caída de objetos."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje: se coloca a presión sobre el ala de la bandeja, sin tornillería adicional."
+        },
+        {
+          "q": "¿Qué ancho pido?",
+          "a": "El mismo ancho [A] de la bandeja que va a cubrir."
+        }
+      ],
+      "keywords": "tapa de bandeja, tampa eletrocalha, cubierta portacables",
+      "meta": {
+        "title": "Tapa para Bandeja Portacables | BGA Paraguay",
+        "description": "Tapa lisa para bandeja portacables: cierre superior en tramos de 3000 mm, por ancho. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            600,
+            700,
+            800
+          ],
+          "unit": "mm"
+        }
+      ],
+      "sku": "CT3211",
+      "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
+      "unidadVenta": "Tramo 3 m",
+      "finishes": ["pz", "gf", "elec", "aisi304", "aisi316"],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
+      "images": {
+        "primary": "/images/productos/bandeja-portacables-tapa.webp"
+      },
+      "recommended": ["bandeja-portacables"]
     },
     {
       "id": "curva-horizontal-90",
