@@ -3170,6 +3170,8 @@
         }
       ],
       "recommended": [
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -3268,6 +3270,8 @@
         }
       ],
       "recommended": [
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -3367,6 +3371,8 @@
         }
       ],
       "recommended": [
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -3465,6 +3471,8 @@
         }
       ],
       "recommended": [
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -3563,6 +3571,8 @@
         }
       ],
       "recommended": [
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -3661,6 +3671,8 @@
         }
       ],
       "recommended": [
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -3759,6 +3771,8 @@
         }
       ],
       "recommended": [
+        "union-simple",
+        "union-interna",
         "kit-de-uniones"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
@@ -4715,19 +4729,33 @@
       },
       "includedPages": [
         "curva-horizontal-90",
+        "tapa-curva-horizontal-90",
         "curva-horizontal-recta-90",
+        "tapa-curva-horizontal-recta-90",
         "curva-vertical-externa-90",
+        "tapa-curva-vertical-externa-90",
         "curva-vertical-interna-90",
+        "tapa-curva-vertical-interna-90",
         "curva-vertical-externa-45",
+        "tapa-curva-vertical-externa-45",
         "curva-vertical-interna-45",
+        "tapa-curva-vertical-interna-45",
         "curva-horizontal-45",
+        "tapa-curva-horizontal-45",
         "curva-de-descarga",
+        "tapa-curva-de-descarga",
         "te-horizontal",
+        "tapa-te-horizontal",
         "te-horizontal-recto",
+        "tapa-te-horizontal-recto",
         "te-vertical-ascendente",
+        "tapa-te-vertical-ascendente",
         "te-vertical-descarga",
+        "tapa-te-vertical-descarga",
         "te-vertical-descarga-lateral",
+        "tapa-te-vertical-descarga-lateral",
         "union-cruzeta",
+        "tapa-union-cruzeta",
         "union-cruzeta-recta"
       ]
     },
