@@ -69,6 +69,17 @@ Dentro de Bandejas (os 26 que vão subir):
 - **0 têm `shortDescription` ou `subtitle`**
 - **Todos os 72 produtos estão com `image: null`** — ver seção 5
 
+> **Atualização (08/09/2026):** a tabela acima é a medição de 24/08, mantida
+> como registro histórico. A família bandejas cresceu desde então com
+> acessórios, subfamílias e specs; ver `docs/BRIEF-tapas-2026-09-08.md` pro
+> estado atual. Mudança mais recente: a **tapa virou produto próprio**, não
+> mais uma variante (`role: "tapa"`) dentro da peça — cada peça tinha uma
+> variante de tapa e uma chave `images.tapa`; as duas saíram, e a tapa passou
+> a ter ficha, card e SKU próprios. Isso levou a contagem de bandejas de
+> **36 para 51 produtos** (15 tapas novas: a da bandeja e mais 14 de
+> acessórios de curva/derivação). Faltam 7 tapas — sem dado na planilha
+> ainda — listadas no brief.
+
 ---
 
 ## 4. O que foi feito em 2026-08-24 (e o que falta validar)
@@ -308,14 +319,15 @@ planilha de Cotizaciones, não a conta pessoal da Yuki. Segue a regra 4
 - Folder: **"Catalogo digital web"**,
   `https://drive.google.com/drive/u/0/folders/141h7Hlq-kE1gl9OpmxGh46bsZ21R38Jn`
   — dono `mkt@bga.com.py`
-- Arquivo: `BGA_Catalog_Template_vF_bandejas RevAkira.xlsx` (as 8 abas, incluindo
-  `00_INSTRUCCIONES` e `07_TEXTOS_SEO`)
-- ⬜ **Pendente:** ainda subiu como `.xlsx` puro, não converteu pra Planilhas
-  Google nativo. Precisa abrir e "Arquivo → Salvar como Planilhas Google" — sem
-  isso não dá pra ler por link/export CSV depois.
-- ⬜ **Não apagar o arquivo local (nem os backups) ainda.** Mesmo princípio da
-  seção 5.1 com a planilha de leads: só depois de confirmar que a versão no
-  Drive está convertida e íntegra, com alguns dias de uso real.
+- ✅ **Corrigido em 08/09/2026:** a planilha oficial é o Google Sheets **nativo**
+  id `1h2L1QS4rBOglMtwdk472kh9kN6wdpvU1I5K0yFm6_XI`, nessa mesma pasta. **Não** é
+  o `.xlsx` `13FPVH7dGC5LUdLw2-4-bWoUVhvhUvfZe` (conta `marcos@`) — esse é de uma
+  geração anterior do template e ficou sem as colunas de recomendados na aba de
+  perfilados. Detalhe do que a aba de bandejas cobre e não cobre:
+  `docs/BRIEF-tapas-2026-09-08.md`.
+- ⬜ **Não apagar o `.xlsx` local (nem os backups) ainda.** Mesmo princípio da
+  seção 5.1 com a planilha de leads: só depois de confirmar uso real do Sheets
+  nativo por alguns dias.
 
 **Conflito encontrado e resolvido:** a aba `00_INSTRUCCIONES` desse template
 promete "o produto desaparece do catálogo em até 10 minutos" e descreve
