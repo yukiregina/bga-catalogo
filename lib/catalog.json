@@ -851,7 +851,10 @@
         }
       ],
       "recommended": [
-        "kit-de-uniones"
+        "kit-de-uniones",
+        "curva-horizontal-90",
+        "curva-vertical-externa-90",
+        "curva-vertical-interna-90"
       ],
       "minThicknessRule": ">=500:#14; >=300:#16; <300:#18",
       "recommendationNote": "Para anchos >=500 mm, recomendamos tapa y soporte reforzado.",
