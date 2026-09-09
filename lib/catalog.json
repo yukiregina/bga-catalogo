@@ -3512,7 +3512,7 @@
       "dimensionAxes": [
         {
           "id": "ancho",
-          "label": "Ancho [A]",
+          "label": "Ancho mayor [A]",
           "values": [
             50,
             100,
@@ -3527,6 +3527,23 @@
             600,
             700,
             800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "anchoMenor",
+          "label": "Ancho menor [A']",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500
           ],
           "unit": "mm"
         },
@@ -3612,7 +3629,7 @@
       "dimensionAxes": [
         {
           "id": "ancho",
-          "label": "Ancho [A]",
+          "label": "Ancho mayor [A]",
           "values": [
             50,
             100,
@@ -3627,6 +3644,23 @@
             600,
             700,
             800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "anchoMenor",
+          "label": "Ancho menor [A']",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500
           ],
           "unit": "mm"
         },
@@ -3712,7 +3746,7 @@
       "dimensionAxes": [
         {
           "id": "ancho",
-          "label": "Ancho [A]",
+          "label": "Ancho mayor [A]",
           "values": [
             50,
             100,
@@ -3727,6 +3761,23 @@
             600,
             700,
             800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "anchoMenor",
+          "label": "Ancho menor [A']",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500
           ],
           "unit": "mm"
         },
