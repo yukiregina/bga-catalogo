@@ -277,6 +277,7 @@
     {
       "id": "ST2011",
       "categoryId": "perfilados",
+      "type": "producto",
       "name": "Perfilado 38x38 Liso",
       "dimensions": [
         {
@@ -288,13 +289,25 @@
           "label": "longitud",
           "value": 3000,
           "unit": "mm"
+        },
+        {
+          "label": "longitud alternativa",
+          "value": "2400,2000,1000,500",
+          "unit": "mm"
         }
+      ],
+      "unidadVenta": "Tramo 3 m",
+      "recommended": [
+        "KIT2227",
+        "ST2242",
+        "ST2252"
       ],
       "page": 3
     },
     {
       "id": "ST2111",
       "categoryId": "perfilados",
+      "type": "producto",
       "name": "Perfilado 38x38 Perforado",
       "dimensions": [
         {
@@ -306,13 +319,25 @@
           "label": "longitud",
           "value": 3000,
           "unit": "mm"
+        },
+        {
+          "label": "longitud alternativa",
+          "value": "2400,2000,1000,500",
+          "unit": "mm"
         }
+      ],
+      "unidadVenta": "Tramo 3 m",
+      "recommended": [
+        "KIT2227",
+        "ST2242",
+        "ST2252"
       ],
       "page": 3
     },
     {
       "id": "ST2112",
       "categoryId": "perfilados",
+      "type": "producto",
       "name": "Perfilado 38x19 Perforado",
       "dimensions": [
         {
@@ -322,16 +347,26 @@
         },
         {
           "label": "longitud",
-          "value": 3000,
+          "value": 2000,
+          "unit": "mm"
+        },
+        {
+          "label": "longitud alternativa",
+          "value": "1500, 1000",
           "unit": "mm"
         }
+      ],
+      "unidadVenta": "Tramo 3 m",
+      "recommended": [
+        "KIT2227"
       ],
       "page": 3
     },
     {
       "id": "CT3211",
       "categoryId": "perfilados",
-      "name": "Tapa Lisa",
+      "type": "producto",
+      "name": "Tapa para perfilado",
       "dimensions": [
         {
           "label": "perfil",
@@ -344,156 +379,282 @@
           "unit": "mm"
         }
       ],
+      "unidadVenta": "Tramo 3 m",
       "page": 3
     },
     {
       "id": "ST2214",
       "categoryId": "perfilados",
-      "name": "Curva Horizontal 90°",
+      "type": "producto",
+      "name": "Curva Horizontal 90",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ],
       "page": 3
     },
     {
-      "id": "ST2218",
+      "id": "ST2215",
       "categoryId": "perfilados",
-      "name": "Curva Vertical Interna 90°",
+      "type": "producto",
+      "name": "Curva Horizontal Recta 90",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ]
+    },
+    {
+      "id": "ST2216",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Curva Horizontal 45",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ],
       "page": 3
     },
     {
       "id": "ST2217",
       "categoryId": "perfilados",
-      "name": "Curva Vertical Externa 90°",
+      "type": "producto",
+      "name": "Curva Vertical Externa  90",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ],
+      "page": 3
+    },
+    {
+      "id": "ST2218",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Curva Vertical Interna 90",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ],
       "page": 3
     },
     {
       "id": "ST2266",
       "categoryId": "perfilados",
-      "name": "Curva de Inversión 90°",
-      "page": 3
-    },
-    {
-      "id": "ST2216",
-      "categoryId": "perfilados",
-      "name": "Curva Horizontal 45°",
-      "page": 3
-    },
-    {
-      "id": "ST2220",
-      "categoryId": "perfilados",
-      "name": "Curva Vertical Interna 45°",
+      "type": "producto",
+      "name": "Curva Vertical de Inversion 90",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ],
       "page": 3
     },
     {
       "id": "ST2219",
       "categoryId": "perfilados",
-      "name": "Curva Vertical Externa 45°",
+      "type": "producto",
+      "name": "Curva Vertical Externa 45",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ],
       "page": 3
     },
     {
-      "id": "ST2237",
+      "id": "ST2220",
       "categoryId": "perfilados",
-      "name": "Caja de Toma",
+      "type": "producto",
+      "name": "Curva Vertical Interna 45",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ],
       "page": 3
+    },
+    {
+      "id": "ST2221",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Te Horizontal para Pefilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ]
+    },
+    {
+      "id": "ST2222",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Cruzeta para Perfilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "KIT2227"
+      ]
     },
     {
       "id": "ST2226",
       "categoryId": "perfilados",
-      "name": "Unión Externa 38x38",
+      "type": "producto",
+      "name": "Unión Externa para Perfilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
       "page": 4
     },
     {
       "id": "ST2227",
       "categoryId": "perfilados",
-      "name": "Unión Interna 38x38",
+      "type": "producto",
+      "name": "Unión Interna  para Perfilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
       "page": 4
     },
     {
       "id": "ST2228",
       "categoryId": "perfilados",
-      "name": "Unión Interna L 90°",
+      "type": "producto",
+      "name": "Unión Interna L para Perfilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
       "page": 4
     },
     {
       "id": "ST2229",
       "categoryId": "perfilados",
-      "name": "Unión Interna T",
+      "type": "producto",
+      "name": "Unión Interna T para Perfilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
       "page": 4
     },
     {
       "id": "ST2230",
       "categoryId": "perfilados",
-      "name": "Unión Interna X",
+      "type": "producto",
+      "name": "Unión Interna X para Perfilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
       "page": 4
     },
     {
-      "id": "ST2242",
+      "id": "ST2237",
       "categoryId": "perfilados",
-      "name": "Soporte de Suspensión Corto",
-      "page": 4
-    },
-    {
-      "id": "ST2243",
-      "categoryId": "perfilados",
-      "name": "Soporte de Suspensión Largo",
-      "page": 4
-    },
-    {
-      "id": "ST2260",
-      "categoryId": "perfilados",
-      "name": "Soporte Colgante para Cable Corto / Largo",
-      "page": 4
-    },
-    {
-      "id": "ST2246",
-      "categoryId": "perfilados",
-      "name": "Base Suspensión Omega (ZZ)",
-      "page": 4
-    },
-    {
-      "id": "ST2249",
-      "categoryId": "perfilados",
-      "name": "Salida Lateral Simple para Electroducto",
-      "page": 4
-    },
-    {
-      "id": "ST2251",
-      "categoryId": "perfilados",
-      "name": "Salida Lateral Doble para Electroducto",
-      "page": 4
-    },
-    {
-      "id": "ST2267",
-      "categoryId": "perfilados",
-      "name": "Salida Vertical para Electroducto",
-      "page": 4
-    },
-    {
-      "id": "ST2244",
-      "categoryId": "perfilados",
-      "name": "Soporte para Luminaria Corto / Largo",
-      "page": 4
-    },
-    {
-      "id": "KIT2227",
-      "categoryId": "perfilados",
-      "name": "Kit unión para perfil",
-      "page": 4
-    },
-    {
-      "id": "ST2241",
-      "categoryId": "perfilados",
-      "name": "Base para conexión en tablero",
-      "page": 4
-    },
-    {
-      "id": "ST2250",
-      "categoryId": "perfilados",
-      "name": "Salida Final para Electroducto",
-      "page": 4
+      "type": "producto",
+      "name": "Caja De Toma Corriente",
+      "unidadVenta": "Pieza",
+      "page": 3
     },
     {
       "id": "ST2239",
       "categoryId": "perfilados",
-      "name": "Platibanda con 4 agujeros (Interna)",
+      "type": "producto",
+      "name": "Platabanda Interna con 4 Orificios",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
       "variants": [
         {
           "code": "ST2239",
@@ -511,9 +672,144 @@
       "page": 4
     },
     {
+      "id": "ST2242",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Soporte de Suspensión Corto para Perfilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "page": 4
+    },
+    {
+      "id": "ST2243",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Soporte de Suspensión Largo para Perfilado",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "page": 4
+    },
+    {
+      "id": "ST2244",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Soporte de Suspensión Corto para Luminaria",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "page": 4
+    },
+    {
+      "id": "ST2245",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Soporte de Suspensión Largo para Luminaria",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza"
+    },
+    {
+      "id": "ST2246",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Base Suspensión Omega (ZZ)",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "page": 4
+    },
+    {
+      "id": "ST2249",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Salida Lateral Para Electroducto",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "page": 4
+    },
+    {
+      "id": "ST2250",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Salida Final Para Electroducto",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "page": 4
+    },
+    {
+      "id": "ST2251",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Salida Doble Lateral Para Electroducto",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "page": 4
+    },
+    {
+      "id": "ST2252",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Soporte de Suspensión por Cable",
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza"
+    },
+    {
       "id": "ST2254",
       "categoryId": "perfilados",
+      "type": "producto",
       "name": "Grampa C",
+      "unidadVenta": "Pieza",
       "page": 4
     },
     {
