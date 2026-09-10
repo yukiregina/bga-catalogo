@@ -301,6 +301,20 @@
         "title": "Perfilado 38x38 Liso y Perforado | BGA Paraguay",
         "description": "Perfilado 38x38 mm: tramo recto liso o perforado, para cables y soporte de luminarias. Fabricado en Paraguay por BGA. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "largo",
+          "label": "Largo",
+          "values": [
+            3000,
+            2400,
+            2000,
+            1000,
+            500
+          ],
+          "unit": "mm"
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -319,6 +333,13 @@
         }
       ],
       "unidadVenta": "Tramo 3 m",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227",
         "ST2242",
@@ -356,6 +377,20 @@
         "title": "Perfilado 38x38 Liso y Perforado | BGA Paraguay",
         "description": "Perfilado 38x38 mm: tramo recto liso o perforado, para cables y soporte de luminarias. Fabricado en Paraguay por BGA. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "largo",
+          "label": "Largo",
+          "values": [
+            3000,
+            2400,
+            2000,
+            1000,
+            500
+          ],
+          "unit": "mm"
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -374,6 +409,13 @@
         }
       ],
       "unidadVenta": "Tramo 3 m",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227",
         "ST2242",
@@ -391,7 +433,7 @@
       "name": "Perfilado 38x19 Perforado",
       "subtitle": "Tramo recto 38x19 mm perforado",
       "shortDescription": "Perfilado 38x19 BGA — tramo recto perforado, en tramos de 2000 mm (también 1500 y 1000 mm). Para recorridos de menor volumen de cable.",
-      "longDescription": "El perfilado 38x19 es la versión de menor sección de la línea de perfilados BGA, para recorridos con menos cables o donde el espacio disponible es más chico.\n\nViene en versión perforada, que permite fijar abrazaderas en cualquier punto del tramo, con largo estándar de 2000 mm y opciones de 1500 y 1000 mm.\n\nDisponible en chapa pregalvanizada (PZ), acero inoxidable AISI 304 y AISI 316, con galvanizado por inmersión en caliente (GF) o pintura electrostática en los colores estándar de BGA para aplicaciones expuestas.\n\nFabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos). Se vende por tramo de 3 m.",
+      "longDescription": "El perfilado 38x19 es la versión de menor sección de la línea de perfilados BGA, para recorridos con menos cables o donde el espacio disponible es más chico.\n\nViene en versión perforada, que permite fijar abrazaderas en cualquier punto del tramo, con largo estándar de 2000 mm y opciones de 1500 y 1000 mm.\n\nDisponible en chapa pregalvanizada (PZ), acero inoxidable AISI 304 y AISI 316, con galvanizado por inmersión en caliente (GF) o pintura electrostática en los colores estándar de BGA para aplicaciones expuestas.\n\nFabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos). Se vende por tramo.",
       "faq": [
         {
           "q": "¿Cuándo usar el 38x19 en vez del 38x38?",
@@ -407,6 +449,18 @@
         "title": "Perfilado 38x19 Perforado | BGA Paraguay",
         "description": "Perfilado 38x19 mm perforado: tramo recto para recorridos de menor sección. Fabricado en Paraguay por BGA. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "largo",
+          "label": "Largo",
+          "values": [
+            2000,
+            1500,
+            1000
+          ],
+          "unit": "mm"
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -425,6 +479,13 @@
         }
       ],
       "unidadVenta": "Tramo 3 m",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -469,6 +530,13 @@
         }
       ],
       "unidadVenta": "Tramo 3 m",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/tapa-para-perfilado-ct3211.webp"
       },
@@ -505,6 +573,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -544,6 +619,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -582,6 +664,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -621,6 +710,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -660,6 +756,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -695,6 +798,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -734,6 +844,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -769,6 +886,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -808,6 +932,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -842,6 +973,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "recommended": [
         "KIT2227"
       ],
@@ -880,6 +1018,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/union-externa-para-perfilado-st2226.webp"
       },
@@ -912,6 +1057,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/union-interna-para-perfilado-st2227.webp"
       },
@@ -944,6 +1096,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/union-interna-l-para-perfilado-st2228.webp"
       },
@@ -976,6 +1135,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/union-interna-t-para-perfilado-st2229.webp"
       },
@@ -1008,6 +1174,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/union-interna-x-para-perfilado-st2230.webp"
       },
@@ -1037,6 +1210,13 @@
         "description": "Caja de Toma Corriente para perfilado: tipo N (Brasil) o tipo C (Paraguay). Fabricado en Paraguay por BGA. Cotizá online."
       },
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/caja-de-toma-corriente-st2237.webp"
       },
@@ -1069,19 +1249,12 @@
         }
       ],
       "unidadVenta": "Pieza",
-      "variants": [
-        {
-          "code": "ST2239",
-          "attributes": {
-            "tipo": "Interna"
-          }
-        },
-        {
-          "code": "ST22604",
-          "attributes": {
-            "tipo": "Externa"
-          }
-        }
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
       ],
       "images": {
         "primary": "/images/productos/platabanda-interna-con-4-orificios-st2239.webp"
@@ -1119,6 +1292,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-corto-para-perfilado-st2242.webp"
       },
@@ -1155,6 +1335,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-largo-para-perfilado-st2243.webp"
       },
@@ -1187,6 +1374,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-corto-para-luminaria-st2244.webp"
       },
@@ -1219,6 +1413,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-largo-para-luminaria-st2245.webp"
       }
@@ -1250,6 +1451,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/base-suspension-omega-zz-st2246.webp"
       },
@@ -1286,6 +1494,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/salida-lateral-para-electroducto-st2249.webp"
       },
@@ -1318,6 +1533,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/salida-final-para-electroducto-st2250.webp"
       },
@@ -1350,6 +1572,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/salida-doble-lateral-para-electroducto-st2251.webp"
       },
@@ -1382,6 +1611,13 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-por-cable-st2252.webp"
       }
@@ -1406,6 +1642,13 @@
         "description": "Grampa C para perfilado: fijación a la estructura. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
       "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
       "images": {
         "primary": "/images/productos/grampa-c-st2254.webp"
       },
