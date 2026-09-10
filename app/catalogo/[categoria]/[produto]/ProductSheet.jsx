@@ -38,8 +38,13 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   // A tapa não tem "ala" própria — segue só o ancho da bandeja que cobre.
   const axesToShow   = product.dimensionAxes?.filter(ax => !(isTapa && ax.id === 'ala')) ?? []
   const hasAxes      = axesToShow.length > 0
-  const hasMaterials = gs.materials?.length > 0
-  const hasGauges    = gs.thicknesses?.length > 0
+  // O eixo genérico de Material + Espesor (globalSpecs) é specs de bandejas —
+  // pra outra família (ex.: perfilados) mostrar esses valores seria inventar
+  // uma opção que não existe na planilha dela; o material de perfilados só
+  // vive na prosa da longDescription. Sem `finishes` (seção 6) nem ser
+  // bandejas, o produto não mostra seletor nenhum — o composedSKU sai limpo.
+  const hasMaterials = category?.id === 'bandejas' && gs.materials?.length > 0
+  const hasGauges    = category?.id === 'bandejas' && gs.thicknesses?.length > 0
 
   const [selectedAxes, setSelectedAxes] = useState(() => {
     const init = {}
@@ -126,8 +131,8 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const composedSKU = buildComposedSKU(
     baseSku,
     axesForSku,
-    hasFinishes ? (activeFinish?.material ?? null) : selectedMaterial,
-    selectedGauge,
+    hasFinishes ? (activeFinish?.material ?? null) : (hasMaterials ? selectedMaterial : null),
+    hasGauges ? selectedGauge : null,
     hasFinishes ? (activeFinish?.treatment ?? null) : null,
     hasFinishes && activeFinish?.needsColor ? selectedColor.trim() : null
   )
@@ -142,8 +147,8 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const configLabel = buildConfigLabel({
     variant: selectedVariant,
     axes: axesToShow.map(ax => ({ label: ax.label, unit: ax.unit, value: selectedAxes[ax.id] })),
-    material: hasFinishes ? undefined : selectedMaterial,
-    gauge: selectedGauge,
+    material: hasFinishes ? undefined : (hasMaterials ? selectedMaterial : undefined),
+    gauge: hasGauges ? selectedGauge : undefined,
     globalSpecs: gs,
     finish: hasFinishes ? selectedFinish ?? undefined : undefined,
     color: hasFinishes && activeFinish?.needsColor ? (selectedColor.trim() || undefined) : undefined,
@@ -154,8 +159,8 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const currentConfig = {
     variante: selectedVariant?.sku,
     axes: axesForSku,
-    material: hasFinishes ? undefined : selectedMaterial,
-    espesor: selectedGauge,
+    material: hasFinishes ? undefined : (hasMaterials ? selectedMaterial : undefined),
+    espesor: hasGauges ? selectedGauge : undefined,
     finish: hasFinishes ? selectedFinish ?? undefined : undefined,
     color: hasFinishes && activeFinish?.needsColor ? (selectedColor.trim() || undefined) : undefined,
   }

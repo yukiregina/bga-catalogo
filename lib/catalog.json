@@ -236,7 +236,7 @@
     {
       "id": "perfilados",
       "name": "Perfilados y Accesorios",
-      "displayMode": "pdf",
+      "displayMode": "catalog",
       "description": "Sistema utilizado para la distribución de cables de menor tamaño y soporte de luminarias. Permite instalaciones rápidas, con posibilidad de ampliaciones y modificaciones.",
       "image": "/images/perfilados-accesorios-bga-soporte-electrico-paraguay.webp",
       "pdfUrl": "/docs/ficha-tecnica-perfilados-accesorios-bga.pdf"
