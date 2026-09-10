@@ -313,6 +313,19 @@
             500
           ],
           "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
         }
       ],
       "dimensions": [
@@ -389,6 +402,19 @@
             500
           ],
           "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
         }
       ],
       "dimensions": [
@@ -459,6 +485,19 @@
             1000
           ],
           "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
         }
       ],
       "dimensions": [
@@ -517,6 +556,21 @@
         "title": "Tapa para Perfilado 38 | BGA Paraguay",
         "description": "Tapa lisa para perfilado 38: cierre superior en tramos de 3000 mm. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -565,6 +619,21 @@
         "title": "Curva Horizontal 90° para Perfilado | BGA Paraguay",
         "description": "Curva Horizontal 90° para perfilado: cambio de dirección horizontal a 90°. Fabricado en Paraguay por BGA. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -611,6 +680,21 @@
         "title": "Curva Horizontal Recta 90° Perfilado | BGA Paraguay",
         "description": "Curva Horizontal Recta 90° para perfilado: cambio de dirección en ángulo vivo. Fabricado en Paraguay por BGA. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -656,6 +740,21 @@
         "title": "Curva Horizontal 45° para Perfilado | BGA Paraguay",
         "description": "Curva Horizontal 45° para perfilado: cambio de dirección horizontal a 45°. Fabricado en Paraguay por BGA. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -702,6 +801,21 @@
         "title": "Curva Vertical Externa 90° Perfilado | BGA Paraguay",
         "description": "Curva Vertical Externa 90° para perfilado: cambio de nivel, configuración externa. Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -748,6 +862,21 @@
         "title": "Curva Vertical Interna 90° Perfilado | BGA Paraguay",
         "description": "Curva Vertical Interna 90° para perfilado: cambio de nivel, configuración interna. Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -790,6 +919,21 @@
         "title": "Curva Vertical de Inversión 90° Perfilado | BGA",
         "description": "Curva Vertical de Inversión 90° para perfilado: cambio de nivel con inversión. Fabricado en Paraguay por BGA. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -836,6 +980,21 @@
         "title": "Curva Vertical Externa 45° Perfilado | BGA Paraguay",
         "description": "Curva Vertical Externa 45° para perfilado: cambio de nivel, configuración externa. Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -878,6 +1037,21 @@
         "title": "Curva Vertical Interna 45° Perfilado | BGA Paraguay",
         "description": "Curva Vertical Interna 45° para perfilado: cambio de nivel, configuración interna. Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -924,6 +1098,21 @@
         "title": "Te Horizontal para Perfilado | BGA Paraguay",
         "description": "Te Horizontal para perfilado: derivación en T en el plano horizontal. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -965,6 +1154,21 @@
         "title": "Cruzeta para Perfilado | BGA Paraguay",
         "description": "Cruzeta para perfilado: cruce de cuatro vías en el plano horizontal. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1010,6 +1214,21 @@
         "title": "Unión Externa para Perfilado | BGA Paraguay",
         "description": "Unión Externa para perfilado: empalme entre tramos, montado por fuera. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1049,6 +1268,21 @@
         "title": "Unión Interna para Perfilado | BGA Paraguay",
         "description": "Unión Interna para perfilado: empalme entre tramos, exterior liso. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1088,6 +1322,21 @@
         "title": "Unión Interna L para Perfilado | BGA Paraguay",
         "description": "Unión Interna L para perfilado: empalme interno en ángulo de 90°. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1127,6 +1376,21 @@
         "title": "Unión Interna T para Perfilado | BGA Paraguay",
         "description": "Unión Interna T para perfilado: empalme interno en derivación T. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1166,6 +1430,21 @@
         "title": "Unión Interna X para Perfilado | BGA Paraguay",
         "description": "Unión Interna X para perfilado: empalme interno en cruce de cuatro vías. Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1209,6 +1488,29 @@
         "title": "Caja de Toma Corriente para Perfilado | BGA",
         "description": "Caja de Toma Corriente para perfilado: tipo N (Brasil) o tipo C (Paraguay). Fabricado en Paraguay por BGA. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        },
+        {
+          "id": "tipo",
+          "label": "Tipo de tomacorriente",
+          "values": [
+            "Tipo N (BR)",
+            "Tipo C (PY)"
+          ],
+          "unit": ""
+        }
+      ],
       "unidadVenta": "Pieza",
       "finishes": [
         "pz",
@@ -1241,6 +1543,19 @@
         "title": "Platibanda Interna para Perfilado | BGA Paraguay",
         "description": "Platibanda Interna para perfilado: refuerzo de unión con 4 orificios. Fabricado en Paraguay por BGA Electric."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1284,6 +1599,19 @@
         "title": "Soporte de Suspensión para Perfilado | BGA",
         "description": "Soporte de Suspensión para perfilado: corto o largo, según la distancia a la estructura. Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1327,6 +1655,19 @@
         "title": "Soporte de Suspensión para Perfilado | BGA",
         "description": "Soporte de Suspensión para perfilado: corto o largo, según la distancia a la estructura. Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1366,6 +1707,19 @@
         "title": "Soporte de Suspensión para Luminaria | BGA",
         "description": "Soporte de Suspensión para Luminaria sobre perfilado: corto o largo. Fabricado en Paraguay por BGA Electric."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1405,6 +1759,19 @@
         "title": "Soporte de Suspensión para Luminaria | BGA",
         "description": "Soporte de Suspensión para Luminaria sobre perfilado: corto o largo. Fabricado en Paraguay por BGA Electric."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1443,6 +1810,20 @@
         "title": "Base de Suspensión Omega para Perfilado | BGA",
         "description": "Base de Suspensión Omega para perfilado: colgado tipo omega (ZZ). Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1486,6 +1867,30 @@
         "title": "Salida Lateral para Electroducto | BGA Paraguay",
         "description": "Salida Lateral para Electroducto desde perfilado: 1/2\", 3/4\" o 1\". Fabricado en Paraguay por BGA Electric."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        },
+        {
+          "id": "diametro",
+          "label": "Diámetro",
+          "values": [
+            "1/2\"",
+            "3/4\"",
+            "1\""
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1525,6 +1930,30 @@
         "title": "Salida Final para Electroducto | BGA Paraguay",
         "description": "Salida Final para Electroducto desde perfilado: en el extremo del tramo, 1/2\" a 1\". Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        },
+        {
+          "id": "diametro",
+          "label": "Diámetro",
+          "values": [
+            "1/2\"",
+            "3/4\"",
+            "1\""
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1564,6 +1993,30 @@
         "title": "Salida Doble Lateral para Electroducto | BGA",
         "description": "Salida Doble Lateral para Electroducto desde perfilado: dos salidas, 1/2\" a 1\". Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        },
+        {
+          "id": "diametro",
+          "label": "Diámetro",
+          "values": [
+            "1/2\"",
+            "3/4\"",
+            "1\""
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1603,6 +2056,19 @@
         "title": "Soporte de Suspensión por Cable | BGA Paraguay",
         "description": "Soporte de Suspensión por Cable para perfilado: suspensión con cable de acero. Fabricado en Paraguay por BGA."
       },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18"
+          ],
+          "unit": ""
+        }
+      ],
       "dimensions": [
         {
           "label": "perfil",
@@ -1641,6 +2107,13 @@
         "title": "Grampa C para Perfilado | BGA Paraguay",
         "description": "Grampa C para perfilado: fijación a la estructura. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
+      "dimensions": [
+        {
+          "label": "espesor",
+          "value": "#14",
+          "unit": ""
+        }
+      ],
       "unidadVenta": "Pieza",
       "finishes": [
         "pz",
