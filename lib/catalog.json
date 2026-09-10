@@ -6249,6 +6249,10 @@
       {
         "q": "¿La pintura electrostática sirve para exterior?",
         "a": "Sí. Se aplica en polvo por carga electrostática, se polimeriza a 200 °C por 15 minutos y se ensaya por espesor y adherencia. Suma resistencia a la corrosión, la abrasión y la intemperie, y permite elegir color. En ambiente muy agresivo conviene combinarla con galvanizado."
+      },
+      {
+        "q": "¿Se puede pedir en chapa negra, sin tratamiento?",
+        "a": "Sí, pero solo bajo pedido especial a través de la vendedora. Los materiales de catálogo estándar son pregalvanizado (PZ), AISI 304 y AISI 316."
       }
     ],
     "keywords": "materiales bandeja portacables, galvanizado en caliente, pregalvanizado, NBR 6323, NBR 7008, ASTM 123, pintura electrostática, CLINCH, espesor de chapa",
