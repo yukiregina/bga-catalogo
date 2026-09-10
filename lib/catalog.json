@@ -1503,7 +1503,7 @@
         },
         {
           "id": "tipo",
-          "label": "Tipo de tomacorriente",
+          "label": "Tipo",
           "values": [
             "Tipo N (BR)",
             "Tipo C (PY)"
