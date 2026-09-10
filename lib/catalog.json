@@ -324,6 +324,9 @@
         "ST2242",
         "ST2252"
       ],
+      "images": {
+        "primary": "/images/productos/perfilado-38x38-liso-st2011.webp"
+      },
       "page": 3
     },
     {
@@ -376,6 +379,9 @@
         "ST2242",
         "ST2252"
       ],
+      "images": {
+        "primary": "/images/productos/perfilado-38x38-perforado-st2111.webp"
+      },
       "page": 3
     },
     {
@@ -422,6 +428,9 @@
       "recommended": [
         "KIT2227"
       ],
+      "images": {
+        "primary": "/images/productos/perfilado-38x19-perforado-st2112.webp"
+      },
       "page": 3
     },
     {
@@ -460,6 +469,9 @@
         }
       ],
       "unidadVenta": "Tramo 3 m",
+      "images": {
+        "primary": "/images/productos/tapa-para-perfilado-ct3211.webp"
+      },
       "page": 3
     },
     {
@@ -496,6 +508,9 @@
       "recommended": [
         "KIT2227"
       ],
+      "images": {
+        "primary": "/images/productos/curva-horizontal-90-st2214.webp"
+      },
       "page": 3
     },
     {
@@ -531,7 +546,10 @@
       "unidadVenta": "Pieza",
       "recommended": [
         "KIT2227"
-      ]
+      ],
+      "images": {
+        "primary": "/images/productos/curva-horizontal-recta-90-st2215.webp"
+      }
     },
     {
       "id": "ST2216",
@@ -567,6 +585,9 @@
       "recommended": [
         "KIT2227"
       ],
+      "images": {
+        "primary": "/images/productos/curva-horizontal-45-st2216.webp"
+      },
       "page": 3
     },
     {
@@ -603,6 +624,9 @@
       "recommended": [
         "KIT2227"
       ],
+      "images": {
+        "primary": "/images/productos/curva-vertical-externa-90-st2217.webp"
+      },
       "page": 3
     },
     {
@@ -639,6 +663,9 @@
       "recommended": [
         "KIT2227"
       ],
+      "images": {
+        "primary": "/images/productos/curva-vertical-interna-90-st2218.webp"
+      },
       "page": 3
     },
     {
@@ -671,6 +698,9 @@
       "recommended": [
         "KIT2227"
       ],
+      "images": {
+        "primary": "/images/productos/curva-vertical-de-inversion-90-st2266.webp"
+      },
       "page": 3
     },
     {
@@ -707,6 +737,9 @@
       "recommended": [
         "KIT2227"
       ],
+      "images": {
+        "primary": "/images/productos/curva-vertical-externa-45-st2219.webp"
+      },
       "page": 3
     },
     {
@@ -739,6 +772,9 @@
       "recommended": [
         "KIT2227"
       ],
+      "images": {
+        "primary": "/images/productos/curva-vertical-interna-45-st2220.webp"
+      },
       "page": 3
     },
     {
@@ -774,7 +810,10 @@
       "unidadVenta": "Pieza",
       "recommended": [
         "KIT2227"
-      ]
+      ],
+      "images": {
+        "primary": "/images/productos/te-horizontal-para-pefilado-st2221.webp"
+      }
     },
     {
       "id": "ST2222",
@@ -805,7 +844,10 @@
       "unidadVenta": "Pieza",
       "recommended": [
         "KIT2227"
-      ]
+      ],
+      "images": {
+        "primary": "/images/productos/cruzeta-para-perfilado-st2222.webp"
+      }
     },
     {
       "id": "ST2226",
@@ -838,6 +880,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/union-externa-para-perfilado-st2226.webp"
+      },
       "page": 4
     },
     {
@@ -867,6 +912,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/union-interna-para-perfilado-st2227.webp"
+      },
       "page": 4
     },
     {
@@ -896,6 +944,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/union-interna-l-para-perfilado-st2228.webp"
+      },
       "page": 4
     },
     {
@@ -925,6 +976,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/union-interna-t-para-perfilado-st2229.webp"
+      },
       "page": 4
     },
     {
@@ -954,6 +1008,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/union-interna-x-para-perfilado-st2230.webp"
+      },
       "page": 4
     },
     {
@@ -980,6 +1037,9 @@
         "description": "Caja de Toma Corriente para perfilado: tipo N (Brasil) o tipo C (Paraguay). Fabricado en Paraguay por BGA. Cotizá online."
       },
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/caja-de-toma-corriente-st2237.webp"
+      },
       "page": 3
     },
     {
@@ -1023,6 +1083,9 @@
           }
         }
       ],
+      "images": {
+        "primary": "/images/productos/platabanda-interna-con-4-orificios-st2239.webp"
+      },
       "page": 4
     },
     {
@@ -1056,6 +1119,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/soporte-de-suspension-corto-para-perfilado-st2242.webp"
+      },
       "page": 4
     },
     {
@@ -1089,6 +1155,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/soporte-de-suspension-largo-para-perfilado-st2243.webp"
+      },
       "page": 4
     },
     {
@@ -1118,6 +1187,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/soporte-de-suspension-corto-para-luminaria-st2244.webp"
+      },
       "page": 4
     },
     {
@@ -1146,7 +1218,10 @@
           "unit": "mm"
         }
       ],
-      "unidadVenta": "Pieza"
+      "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/soporte-de-suspension-largo-para-luminaria-st2245.webp"
+      }
     },
     {
       "id": "ST2246",
@@ -1175,6 +1250,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/base-suspension-omega-zz-st2246.webp"
+      },
       "page": 4
     },
     {
@@ -1208,6 +1286,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/salida-lateral-para-electroducto-st2249.webp"
+      },
       "page": 4
     },
     {
@@ -1237,6 +1318,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/salida-final-para-electroducto-st2250.webp"
+      },
       "page": 4
     },
     {
@@ -1266,6 +1350,9 @@
         }
       ],
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/salida-doble-lateral-para-electroducto-st2251.webp"
+      },
       "page": 4
     },
     {
@@ -1294,7 +1381,10 @@
           "unit": "mm"
         }
       ],
-      "unidadVenta": "Pieza"
+      "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/soporte-de-suspension-por-cable-st2252.webp"
+      }
     },
     {
       "id": "ST2254",
@@ -1316,6 +1406,9 @@
         "description": "Grampa C para perfilado: fijación a la estructura. Fabricado en Paraguay por BGA Electric. Cotizá online."
       },
       "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/grampa-c-st2254.webp"
+      },
       "page": 4
     },
     {
