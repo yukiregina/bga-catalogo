@@ -2128,6 +2128,200 @@
       "page": 4
     },
     {
+      "id": "KIT2227",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Kit de Uniones para Perfilado",
+      "subtitle": "Tornillería para empalme de tramos",
+      "shortDescription": "Kit de Uniones para perfilado BGA — tornillería para empalmar dos tramos de perfilado 38x38.",
+      "longDescription": "El kit de uniones trae la tornillería necesaria para empalmar dos tramos de perfilado 38x38 — bulones, arandelas y tuercas.\n\nEs el complemento recomendado para las uniones externa, interna, en L, T y X, y para la platabanda de refuerzo.\n\nDisponible en chapa pregalvanizada (PZ), acero inoxidable AISI 304 y AISI 316, con galvanizado por inmersión en caliente (GF) o pintura electrostática en los colores estándar de BGA para aplicaciones expuestas.\n\nFabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos). Se vende por pieza.",
+      "faq": [
+        {
+          "q": "¿Qué trae el kit?",
+          "a": "Bulones, arandelas y tuercas para empalmar dos tramos de perfilado 38x38."
+        },
+        {
+          "q": "¿Con qué piezas de unión se usa?",
+          "a": "Con la unión externa, interna, en L, T y X, y con la platabanda de refuerzo."
+        }
+      ],
+      "keywords": "kit de uniones perfilado, tornillería para perfilado, kit de empalme 38x38",
+      "meta": {
+        "title": "Kit de Uniones para Perfilado | BGA Paraguay",
+        "description": "Kit de Uniones para perfilado 38x38: tornillería para empalme de tramos. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
+      "dimensions": [
+        {
+          "label": "perfil",
+          "value": "38x38",
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6221"
+      ],
+      "images": {
+        "primary": "/images/productos/kit-de-uniones-para-perfilado-kit2227.webp"
+      },
+      "page": 4
+    },
+    {
+      "id": "FXS6221",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Bulón 5/16\" con Traba, Arandela y Tuerca",
+      "subtitle": "Tornillería suelta para perfilado y accesorios",
+      "shortDescription": "Bulón 5/16\" BGA — con traba, arandela y tuerca, para empalme de perfilado y montaje de accesorios.",
+      "longDescription": "El bulón 5/16\" con traba, arandela y tuerca es tornillería suelta para empalmar tramos de perfilado o fijar accesorios sobre el perfil.\n\nSe usa cuando se necesita reponer o completar tornillería, sin comprar el kit completo.\n\nDisponible en chapa pregalvanizada (PZ) y acero inoxidable AISI 304.\n\nFabricado en Paraguay por BGA Electric S.A. Se vende por pieza.",
+      "faq": [
+        {
+          "q": "¿Sirve para reponer tornillería perdida?",
+          "a": "Sí, se vende suelto para completar o reponer sin comprar el kit completo."
+        },
+        {
+          "q": "¿En qué se usa?",
+          "a": "En el empalme de tramos de perfilado y en el montaje de accesorios sobre el perfil."
+        }
+      ],
+      "keywords": "bulón 5/16 perfilado, tornillería suelta perfilado, bulón con traba",
+      "meta": {
+        "title": "Bulón 5/16\" para Perfilado | BGA Paraguay",
+        "description": "Bulón 5/16\" con traba, arandela y tuerca, para perfilado y accesorios. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "rosca",
+          "value": "5/16",
+          "unit": "\""
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304"
+      ],
+      "images": {
+        "primary": "/images/productos/bulon-5-16-con-traba-arandela-y-tuerca-fxs6221.webp"
+      },
+      "page": 4
+    },
+    {
+      "id": "FXS6219",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Tuerca Losangular con Pino 1/4\", Arandela y Tuerca",
+      "subtitle": "Fijación de soportes y accesorios sobre el perfil",
+      "shortDescription": "Tuerca losangular BGA — con pino 1/4\", arandela y tuerca, para fijar soportes y accesorios sobre el perfilado.",
+      "longDescription": "La tuerca losangular con pino 1/4\" se inserta en la ranura del perfilado para fijar soportes y accesorios, sin necesidad de perforar.\n\nViene con arandela y tuerca para completar el montaje.\n\nDisponible en chapa pregalvanizada (PZ) y acero inoxidable AISI 304.\n\nFabricado en Paraguay por BGA Electric S.A. Se vende por pieza.",
+      "faq": [
+        {
+          "q": "¿Necesito perforar el perfilado para usarla?",
+          "a": "No, se inserta directamente en la ranura del perfil."
+        },
+        {
+          "q": "¿Para qué se usa?",
+          "a": "Para fijar soportes y accesorios sobre el perfilado."
+        }
+      ],
+      "keywords": "tuerca losangular perfilado, tuerca de ranura, fijación sin perforar perfilado",
+      "meta": {
+        "title": "Tuerca Losangular para Perfilado | BGA Paraguay",
+        "description": "Tuerca losangular con pino 1/4\", arandela y tuerca, para perfilado. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "rosca",
+          "value": "1/4",
+          "unit": "\""
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304"
+      ],
+      "images": {
+        "primary": "/images/productos/tuerca-losangular-con-pino-1-4-arandela-y-tuerca-fxs6219.webp"
+      },
+      "page": 4
+    },
+    {
+      "id": "FXS6235",
+      "categoryId": "perfilados",
+      "type": "producto",
+      "name": "Varilla Roscada con Tuercas y Arandelas",
+      "subtitle": "Suspensión regulable · 1/4\" o 5/16\", 1000 o 3000 mm",
+      "shortDescription": "Varilla Roscada BGA — con tuercas y arandelas, para suspensión regulable del perfilado en 1/4\" o 5/16\", largo 1000 o 3000 mm.",
+      "longDescription": "La varilla roscada permite suspender y regular la altura del perfilado desde la estructura, junto con el soporte correspondiente.\n\nViene con tuercas y arandelas incluidas, en dos diámetros de rosca (1/4\" y 5/16\") y dos largos (1000 y 3000 mm).\n\nDisponible en chapa pregalvanizada (PZ) y acero inoxidable AISI 304.\n\nFabricado en Paraguay por BGA Electric S.A. Se vende por pieza.",
+      "faq": [
+        {
+          "q": "¿Qué diámetro elijo?",
+          "a": "Depende del soporte con el que se combina — consultar con la vendedora según la pieza de suspensión."
+        },
+        {
+          "q": "¿Qué largo conviene?",
+          "a": "1000 mm para distancias cortas a la estructura; 3000 mm cuando la suspensión es más larga."
+        }
+      ],
+      "keywords": "varilla roscada perfilado, varilla de suspensión, rosca 1/4 5/16 perfilado",
+      "meta": {
+        "title": "Varilla Roscada para Perfilado | BGA Paraguay",
+        "description": "Varilla roscada con tuercas y arandelas: 1/4\" o 5/16\", 1000 o 3000 mm. Fabricado en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "rosca",
+          "label": "Rosca",
+          "values": [
+            "1/4\"",
+            "5/16\""
+          ],
+          "unit": ""
+        },
+        {
+          "id": "largo",
+          "label": "Largo",
+          "values": [
+            1000,
+            3000
+          ],
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304"
+      ],
+      "images": {
+        "primary": "/images/productos/varilla-roscada-con-tuercas-y-arandelas-fxs6235.webp"
+      },
+      "page": 4
+    },
+    {
       "id": "curvas-de-perfilado",
       "categoryId": "perfilados",
       "type": "subfamilia",
