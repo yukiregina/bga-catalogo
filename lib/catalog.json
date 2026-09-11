@@ -1244,6 +1244,9 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6221"
+      ],
       "images": {
         "primary": "/images/productos/union-externa-para-perfilado-st2226.webp"
       },
@@ -1297,6 +1300,9 @@
         "aisi316",
         "gf",
         "elec"
+      ],
+      "recommended": [
+        "FXS6221"
       ],
       "images": {
         "primary": "/images/productos/union-interna-para-perfilado-st2227.webp"
@@ -1352,6 +1358,9 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6221"
+      ],
       "images": {
         "primary": "/images/productos/union-interna-l-para-perfilado-st2228.webp"
       },
@@ -1406,6 +1415,9 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6221"
+      ],
       "images": {
         "primary": "/images/productos/union-interna-t-para-perfilado-st2229.webp"
       },
@@ -1459,6 +1471,9 @@
         "aisi316",
         "gf",
         "elec"
+      ],
+      "recommended": [
+        "FXS6221"
       ],
       "images": {
         "primary": "/images/productos/union-interna-x-para-perfilado-st2230.webp"
@@ -1519,6 +1534,9 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6219"
+      ],
       "images": {
         "primary": "/images/productos/caja-de-toma-corriente-st2237.webp"
       },
@@ -1570,6 +1588,9 @@
         "aisi316",
         "gf",
         "elec"
+      ],
+      "recommended": [
+        "FXS6221"
       ],
       "images": {
         "primary": "/images/productos/platabanda-interna-con-4-orificios-st2239.webp"
@@ -1627,6 +1648,10 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6235",
+        "FXS6219"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-corto-para-perfilado-st2242.webp"
       },
@@ -1683,6 +1708,10 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6235",
+        "FXS6219"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-largo-para-perfilado-st2243.webp"
       },
@@ -1734,6 +1763,10 @@
         "aisi316",
         "gf",
         "elec"
+      ],
+      "recommended": [
+        "FXS6235",
+        "FXS6219"
       ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-corto-para-luminaria-st2244.webp"
@@ -1787,6 +1820,10 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6235",
+        "FXS6219"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-largo-para-luminaria-st2245.webp"
       }
@@ -1838,6 +1875,9 @@
         "aisi316",
         "gf",
         "elec"
+      ],
+      "recommended": [
+        "FXS6235"
       ],
       "images": {
         "primary": "/images/productos/base-suspension-omega-zz-st2246.webp"
@@ -1906,6 +1946,10 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6221",
+        "FXS6219"
+      ],
       "images": {
         "primary": "/images/productos/salida-lateral-para-electroducto-st2249.webp"
       },
@@ -1968,6 +2012,10 @@
         "aisi316",
         "gf",
         "elec"
+      ],
+      "recommended": [
+        "FXS6221",
+        "FXS6219"
       ],
       "images": {
         "primary": "/images/productos/salida-final-para-electroducto-st2250.webp"
@@ -2032,6 +2080,10 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6221",
+        "FXS6219"
+      ],
       "images": {
         "primary": "/images/productos/salida-doble-lateral-para-electroducto-st2251.webp"
       },
@@ -2084,6 +2136,9 @@
         "gf",
         "elec"
       ],
+      "recommended": [
+        "FXS6221"
+      ],
       "images": {
         "primary": "/images/productos/soporte-de-suspension-por-cable-st2252.webp"
       }
@@ -2121,6 +2176,9 @@
         "aisi316",
         "gf",
         "elec"
+      ],
+      "recommended": [
+        "FXS6235"
       ],
       "images": {
         "primary": "/images/productos/grampa-c-st2254.webp"
