@@ -244,7 +244,7 @@
     {
       "id": "escaleras",
       "name": "Escaleras y Accesorios",
-      "displayMode": "pdf",
+      "displayMode": "catalog",
       "description": "Escaleras portacables tipo Leve, con o sin perforación, para canalización de cables en grandes recorridos.",
       "image": "/images/escalera-portacables-bga-industria-paraguay.webp",
       "pdfUrl": "/docs/ficha-tecnica-escalera-portacables-bga.pdf"
@@ -2527,9 +2527,101 @@
       ]
     },
     {
-      "id": "CL5011",
+      "id": "escalera-portacables",
       "categoryId": "escaleras",
-      "name": "Escalera CL con perforación",
+      "type": "producto",
+      "name": "Escalera Portacables",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "dimensions": [
+        {
+          "label": "longitud",
+          "value": 3000,
+          "unit": "mm"
+        }
+      ],
+      "variants": [
+        {
+          "sku": "CL5011",
+          "label": "Con perforación · Tipo Leve",
+          "role": "pieza"
+        },
+        {
+          "sku": "CLY5011",
+          "label": "Sin perforación · Tipo Leve",
+          "role": "pieza"
+        },
+        {
+          "sku": "CL5114",
+          "label": "Con perforación · Tipo Pesado",
+          "role": "pieza"
+        }
+      ],
+      "unidadVenta": "Tramo 3 m",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera",
+        "soporte-travesano"
+      ],
+      "images": {
+        "primary": "/images/productos/escalera-portacables.webp",
+        "bySku": {
+          "CLY5011": "/images/productos/escalera-portacables-sin-perforacion-cly5011.webp"
+        }
+      }
+    },
+    {
+      "id": "curva-horizontal-90-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Curva Horizontal 90",
       "subtitle": "Tipo Leve - Alas externas",
       "dimensionAxes": [
         {
@@ -2554,18 +2646,48 @@
           "label": "Ala [B]",
           "values": [
             60,
+            65,
             75,
+            95,
             100
           ],
           "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
         }
       ],
-      "page": 8
+      "sku": "CL5016",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/curva-horizontal-90-escalera.webp"
+      }
     },
     {
-      "id": "CLY5011",
+      "id": "curva-horizontal-recta-90-escalera",
       "categoryId": "escaleras",
-      "name": "Escalera CLY sin perforación",
+      "type": "producto",
+      "name": "Curva Recta Horizontal 90",
       "subtitle": "Tipo Leve - Alas externas",
       "dimensionAxes": [
         {
@@ -2589,117 +2711,1531 @@
           "id": "ala",
           "label": "Ala [B]",
           "values": [
+            60,
             65,
-            95
+            75,
+            95,
+            100
           ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5018",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/curva-horizontal-recta-90-escalera.webp"
+      }
+    },
+    {
+      "id": "curva-horizontal-45-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Curva Horizontal 45",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5020",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/curva-horizontal-45-escalera.webp"
+      }
+    },
+    {
+      "id": "curva-vertical-externa-90-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Curva Vertical Externa 90",
+      "subtitle": "Tipo Leve - Alas internas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5022",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/curva-vertical-externa-90-escalera.webp"
+      }
+    },
+    {
+      "id": "curva-vertical-interna-90-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Curva Vertical Interna 90",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5024",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/curva-vertical-interna-90-escalera.webp"
+      }
+    },
+    {
+      "id": "curva-vertical-externa-45-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Curva Vertical Externa 45",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5026",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/curva-vertical-externa-45-escalera.webp"
+      }
+    },
+    {
+      "id": "curva-vertical-interna-45-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Curva Vertical Interna 45",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5028",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/curva-vertical-interna-45-escalera.webp"
+      }
+    },
+    {
+      "id": "curva-vertical-inversion-90-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Curva Vertical de Inversión 90",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5074",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/curva-vertical-inversion-90-escalera.webp"
+      }
+    },
+    {
+      "id": "te-horizontal-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Te Horizontal",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5030",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/te-horizontal-escalera.webp"
+      }
+    },
+    {
+      "id": "te-horizontal-recto-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Te Horizontal Recto",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5032",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/te-horizontal-recto-escalera.webp"
+      }
+    },
+    {
+      "id": "te-vertical-ascendente-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Te Vertical Ascendente 90",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5034",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/te-vertical-ascendente-escalera.webp"
+      }
+    },
+    {
+      "id": "te-vertical-descarga-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Te Vertical Descarga 90",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5036",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/te-vertical-descarga-escalera.webp"
+      }
+    },
+    {
+      "id": "union-cruzeta-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Unión Cruzeta",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5038",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/union-cruzeta-escalera.webp"
+      }
+    },
+    {
+      "id": "union-cruzeta-recta-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Unión Cruzeta Recta",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5040",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/union-cruzeta-recta-escalera.webp"
+      }
+    },
+    {
+      "id": "reduccion-central-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Reducción Central",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5042",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/reduccion-central-escalera.webp"
+      }
+    },
+    {
+      "id": "reduccion-lateral-derecha-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Reducción Lateral Derecha",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5044",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/reduccion-lateral-derecha-escalera.webp"
+      }
+    },
+    {
+      "id": "reduccion-lateral-izquierda-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Reducción Lateral Izquierda",
+      "subtitle": "Tipo Leve - Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5046",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "kit-de-uniones-escalera"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/reduccion-lateral-izquierda-escalera.webp"
+      }
+    },
+    {
+      "id": "union-simple-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Unión Simple",
+      "dimensionAxes": [
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "variants": [
+        {
+          "sku": "CL5264",
+          "label": "Ala 60/65 mm",
+          "role": "pieza"
+        },
+        {
+          "sku": "CL5265",
+          "label": "Ala 75/95/100 mm",
+          "role": "pieza"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6221"
+      ],
+      "images": {
+        "primary": "/images/productos/union-simple-escalera.webp",
+        "bySku": {
+          "CL5265": "/images/productos/union-simple-escalera-ala75.webp"
+        }
+      }
+    },
+    {
+      "id": "kit-de-uniones-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Kit de Uniones para Escalera",
+      "subtitle": "2pz Uniones + Tornillos",
+      "dimensionAxes": [
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "KIT5262",
+      "unidadVenta": "Kit",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6221"
+      ],
+      "images": {
+        "primary": "/images/productos/kit-de-uniones-escalera.webp",
+        "byAla": {
+          "60": "/images/productos/kit-de-uniones-escalera.webp",
+          "65": "/images/productos/kit-de-uniones-escalera.webp",
+          "75": "/images/productos/kit-de-uniones-escalera-ala75.webp",
+          "95": "/images/productos/kit-de-uniones-escalera-ala100.webp",
+          "100": "/images/productos/kit-de-uniones-escalera-ala100.webp"
+        }
+      }
+    },
+    {
+      "id": "tramo-divisor-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Tramo Divisor",
+      "dimensionAxes": [
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "dimensions": [
+        {
+          "label": "longitud",
+          "value": 3000,
           "unit": "mm"
         }
       ],
-      "page": 8
+      "sku": "CL5259",
+      "unidadVenta": "Tramo 3 m",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6221"
+      ],
+      "images": {
+        "primary": "/images/productos/tramo-divisor-escalera.webp"
+      }
     },
     {
-      "id": "CL5016",
+      "id": "soporte-suspension-escalera",
       "categoryId": "escaleras",
-      "name": "Curva Horizontal 90° — Escalera CL",
-      "page": 8
-    },
-    {
-      "id": "CL5030",
-      "categoryId": "escaleras",
-      "name": "TE Horizontal — Escalera",
-      "page": 8
-    },
-    {
-      "id": "CL5024",
-      "categoryId": "escaleras",
-      "name": "Curva Vertical Interna 90° — Escalera",
-      "page": 8
-    },
-    {
-      "id": "CL5022",
-      "categoryId": "escaleras",
-      "name": "Curva Vertical Externa 90° — Escalera",
-      "page": 8
-    },
-    {
-      "id": "CL5038",
-      "categoryId": "escaleras",
-      "name": "Unión Cruzeta — Escalera",
-      "page": 9
-    },
-    {
-      "id": "CL5042",
-      "categoryId": "escaleras",
-      "name": "Reducción Central — Escalera",
-      "page": 9
-    },
-    {
-      "id": "CL5046",
-      "categoryId": "escaleras",
-      "name": "Reducción Izquierda — Escalera",
-      "page": 9
-    },
-    {
-      "id": "CL5044",
-      "categoryId": "escaleras",
-      "name": "Reducción Derecha — Escalera",
-      "page": 9
-    },
-    {
-      "id": "CL5036",
-      "categoryId": "escaleras",
-      "name": "TE Vertical de Descarga",
-      "page": 9
-    },
-    {
-      "id": "CL5034",
-      "categoryId": "escaleras",
-      "name": "TE Vertical Ascendente",
-      "page": 9
-    },
-    {
-      "id": "CL5074",
-      "categoryId": "escaleras",
-      "name": "Curva Vertical de Inversión",
-      "page": 9
-    },
-    {
-      "id": "KIT5262",
-      "categoryId": "escaleras",
-      "name": "Kit de Uniones — Escalera",
-      "variants": [
+      "type": "producto",
+      "name": "Soporte De Suspensión — Escalera",
+      "dimensionAxes": [
         {
-          "code": "KIT5262-60",
-          "attributes": {
-            "ala": 60
-          }
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
         },
         {
-          "code": "KIT5262-65",
-          "attributes": {
-            "ala": 65
-          }
-        },
-        {
-          "code": "KIT5262-75",
-          "attributes": {
-            "ala": 75
-          }
-        },
-        {
-          "code": "KIT5262-95",
-          "attributes": {
-            "ala": 95
-          }
-        },
-        {
-          "code": "KIT5262-100",
-          "attributes": {
-            "ala": 100
-          }
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18"
+          ],
+          "unit": ""
         }
       ],
-      "page": 9
+      "sku": "CL5271",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6235"
+      ],
+      "images": {
+        "primary": "/images/productos/soporte-suspension-escalera.webp"
+      }
+    },
+    {
+      "id": "acoplamiento-para-tablero-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Acoplamiento Para Tablero",
+      "subtitle": "Alas externas",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            100,
+            150,
+            200,
+            250,
+            300,
+            400,
+            450,
+            500,
+            600,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5056",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6221"
+      ],
+      "minThicknessRule": ">=500:#14; >=400:#16; >=200:#18; <200:#20",
+      "images": {
+        "primary": "/images/productos/acoplamiento-para-tablero-escalera.webp"
+      }
+    },
+    {
+      "id": "salida-horizontal-electroducto-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Salida Horizontal Para Electroducto",
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        },
+        {
+          "id": "diametro",
+          "label": "Diámetro",
+          "values": [
+            "1/2\"",
+            "3/4\"",
+            "1\"",
+            "1.1/4\"",
+            "1.1/2\"",
+            "2\"",
+            "2.1/2\"",
+            "3\"",
+            "4\""
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5268",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6221"
+      ],
+      "images": {
+        "primary": "/images/productos/salida-horizontal-electroducto-escalera.webp"
+      }
+    },
+    {
+      "id": "salida-vertical-electroducto-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Salida Vertical Para Electroducto",
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        },
+        {
+          "id": "diametro",
+          "label": "Diámetro",
+          "values": [
+            "1/2\"",
+            "3/4\"",
+            "1\"",
+            "1.1/4\"",
+            "1.1/2\"",
+            "2\"",
+            "2.1/2\"",
+            "3\"",
+            "4\""
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5269",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6221"
+      ],
+      "images": {
+        "primary": "/images/productos/salida-vertical-electroducto-escalera.webp"
+      }
+    },
+    {
+      "id": "salida-lateral-perfilado-escalera",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Salida Lateral Para Perfilado",
+      "dimensionAxes": [
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CL5270",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "FXS6221"
+      ],
+      "images": {
+        "primary": "/images/productos/salida-lateral-perfilado-escalera.webp"
+      }
+    },
+    {
+      "id": "curvas-y-derivaciones-escalera",
+      "categoryId": "escaleras",
+      "type": "subfamilia",
+      "name": "Curvas y Derivaciones para Escalera",
+      "images": {
+        "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
+      },
+      "includedPages": [
+        "curva-horizontal-90-escalera",
+        "curva-horizontal-recta-90-escalera",
+        "curva-horizontal-45-escalera",
+        "curva-vertical-externa-90-escalera",
+        "curva-vertical-interna-90-escalera",
+        "curva-vertical-externa-45-escalera",
+        "curva-vertical-interna-45-escalera",
+        "curva-vertical-inversion-90-escalera",
+        "te-horizontal-escalera",
+        "te-horizontal-recto-escalera",
+        "te-vertical-ascendente-escalera",
+        "te-vertical-descarga-escalera",
+        "union-cruzeta-escalera",
+        "union-cruzeta-recta-escalera"
+      ]
+    },
+    {
+      "id": "reducciones-escalera",
+      "categoryId": "escaleras",
+      "type": "subfamilia",
+      "name": "Reducciones para Escalera",
+      "images": {
+        "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
+      },
+      "includedPages": [
+        "reduccion-central-escalera",
+        "reduccion-lateral-derecha-escalera",
+        "reduccion-lateral-izquierda-escalera"
+      ]
+    },
+    {
+      "id": "uniones-y-empalmes-escalera",
+      "categoryId": "escaleras",
+      "type": "subfamilia",
+      "name": "Uniones y Empalmes para Escalera",
+      "images": {
+        "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
+      },
+      "includedPages": [
+        "union-simple-escalera",
+        "kit-de-uniones-escalera",
+        "tramo-divisor-escalera"
+      ]
+    },
+    {
+      "id": "soportes-y-fijacion-escalera",
+      "categoryId": "escaleras",
+      "type": "subfamilia",
+      "name": "Soportes y Fijación para Escalera",
+      "images": {
+        "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
+      },
+      "includedPages": [
+        "soporte-suspension-escalera",
+        "acoplamiento-para-tablero-escalera"
+      ]
+    },
+    {
+      "id": "salidas-escalera",
+      "categoryId": "escaleras",
+      "type": "subfamilia",
+      "name": "Salidas para Escalera",
+      "images": {
+        "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
+      },
+      "includedPages": [
+        "salida-horizontal-electroducto-escalera",
+        "salida-vertical-electroducto-escalera",
+        "salida-lateral-perfilado-escalera"
+      ]
     },
     {
       "id": "TAB-STD",
