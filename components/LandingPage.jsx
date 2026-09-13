@@ -9,6 +9,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import config from '@/client.config.js'
+import { getAttribution } from '@/lib/attribution'
 import ProductFinder from './ProductFinder'
 import WhatsappIcon from './WhatsappIcon'
 import styles from '@/app/landing.module.css'
@@ -50,6 +51,11 @@ export default function LandingPage({ categories = [] }) {
     const params = { nombre, empresa, ciudad, sector, mensaje }
     if (config.data.leadWebhookUrl) {
       const search = new URLSearchParams(params)
+      // Origem da visita — só entra o que tiver valor, pra não inflar a URL
+      // do GET com campos vazios.
+      Object.entries(getAttribution()).forEach(([key, value]) => {
+        if (value) search.set(key, value)
+      })
       if (config.data.leadWebhookSecret) search.set('key', config.data.leadWebhookSecret)
       // `keepalive` pelo mesmo motivo de lib/leads.js: garante que a requisição
       // sobreviva se a aba mudar de contexto logo depois. Aqui o `window.open`

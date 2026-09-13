@@ -6,6 +6,7 @@ import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
 import { registrarCotizacion } from '@/lib/leads'
 import { track } from '@/lib/analytics'
+import { getAttribution } from '@/lib/attribution'
 import { getProductImageAlt, buildConfigQuery } from '@/lib/product-helpers'
 import WhatsappIcon from '@/components/WhatsappIcon'
 
@@ -78,6 +79,7 @@ export default function CotacaoPage() {
     // não solicitado e bloquear.
     registrarCotizacion({
       origen: 'catalogo',
+      ...getAttribution(),
       nombre: form.nombre,
       empresa: form.empresa,
       ciudad: form.ciudad,
