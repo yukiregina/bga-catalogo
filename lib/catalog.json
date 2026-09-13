@@ -244,7 +244,33 @@
       "displayMode": "catalog",
       "description": "Sistema utilizado para la distribución de cables de menor tamaño y soporte de luminarias. Permite instalaciones rápidas, con posibilidad de ampliaciones y modificaciones.",
       "image": "/images/perfilados-accesorios-bga-soporte-electrico-paraguay.webp",
-      "pdfUrl": "/docs/ficha-tecnica-perfilados-accesorios-bga.pdf"
+      "pdfUrl": "/docs/ficha-tecnica-perfilados-accesorios-bga.pdf",
+      "intentCards": [
+        {
+          "label": "Curvas y Derivaciones para Perfilado",
+          "description": "Curvas y Derivaciones para Perfilado BGA — curvas 90° y 45°, cambios de nivel, Te y cruzeta · 10 piezas",
+          "tag": "10 piezas",
+          "href": "/catalogo/perfilados/curvas-de-perfilado/"
+        },
+        {
+          "label": "Uniones y Empalmes para Perfilado",
+          "description": "Uniones y Empalmes para Perfilado BGA — recto, en ángulo, en T y en cruce · 6 piezas",
+          "tag": "6 piezas",
+          "href": "/catalogo/perfilados/uniones-de-perfilado/"
+        },
+        {
+          "label": "Soportes y Fijación para Perfilado",
+          "description": "Soportes y Fijación para Perfilado BGA — suspensión, grampa y soporte de luminaria · 5 piezas",
+          "tag": "7 piezas",
+          "href": "/catalogo/perfilados/soportes-y-fijacion-perfilado/"
+        },
+        {
+          "label": "Salidas y Cajas para Perfilado",
+          "description": "Salidas y Cajas para Perfilado BGA — salidas a electroducto y caja de tomacorriente · 4 piezas",
+          "tag": "4 piezas",
+          "href": "/catalogo/perfilados/salidas-y-cajas-perfilado/"
+        }
+      ]
     },
     {
       "id": "escaleras",
@@ -252,7 +278,39 @@
       "displayMode": "catalog",
       "description": "Escaleras portacables tipo Leve, con o sin perforación, para canalización de cables en grandes recorridos.",
       "image": "/images/escalera-portacables-bga-industria-paraguay.webp",
-      "pdfUrl": "/docs/ficha-tecnica-escalera-portacables-bga.pdf"
+      "pdfUrl": "/docs/ficha-tecnica-escalera-portacables-bga.pdf",
+      "intentCards": [
+        {
+          "label": "Curvas y Derivaciones para Escalera",
+          "description": "Curvas y Derivaciones para escalera portacables BGA — giros horizontales, cambios de plano, Te y cruzeta · 14 piezas, en anchos de 100 a 800 mm",
+          "tag": "14 piezas",
+          "href": "/catalogo/escaleras/curvas-y-derivaciones-escalera/"
+        },
+        {
+          "label": "Reducciones para Escalera",
+          "description": "Reducciones para escalera portacables BGA — cambio de ancho centrado o alineado por un lado · 3 piezas, de 100 a 800 mm",
+          "tag": "3 piezas",
+          "href": "/catalogo/escaleras/reducciones-escalera/"
+        },
+        {
+          "label": "Uniones y Empalmes para Escalera",
+          "description": "Uniones y Empalmes para escalera portacables BGA — unión simple en dos alas, kit completo con tornillería y tramo divisor · 3 piezas",
+          "tag": "3 piezas",
+          "href": "/catalogo/escaleras/uniones-y-empalmes-escalera/"
+        },
+        {
+          "label": "Soportes y Fijación para Escalera",
+          "description": "Soportes y Fijación para escalera portacables BGA — soporte de suspensión y acoplamiento para tablero · 2 piezas",
+          "tag": "2 piezas",
+          "href": "/catalogo/escaleras/soportes-y-fijacion-escalera/"
+        },
+        {
+          "label": "Salidas para Escalera",
+          "description": "Salidas y Transiciones para escalera portacables BGA — paso a electroducto en horizontal y vertical (1/2\" a 4\") y derivación a perfilado · 3 piezas",
+          "tag": "3 piezas",
+          "href": "/catalogo/escaleras/salidas-escalera/"
+        }
+      ]
     },
     {
       "id": "tableros",
@@ -260,7 +318,21 @@
       "displayMode": "catalog",
       "description": "Cajas metálicas en chapa galvanizada con pintura electrostática, bisagras y cerraduras reforzadas para protección de instalaciones eléctricas.",
       "image": "/images/caja-metalica-comando-bga-acero-galvanizado-paraguay.webp",
-      "pdfUrl": "/docs/ficha-tecnica-cajas-metalicas-bga.pdf"
+      "pdfUrl": "/docs/ficha-tecnica-cajas-metalicas-bga.pdf",
+      "intentCards": [
+        {
+          "label": "Caja Metálica Sobreponer",
+          "description": "Chapa galvanizada, IP55, más de 30 medidas",
+          "tag": "31 medidas",
+          "href": "/catalogo/tableros/caja-metalica-galvanizada/"
+        },
+        {
+          "label": "Caja Metálica Inoxidable",
+          "description": "AISI 304 para ambientes de higiene exigente",
+          "tag": "AISI 304",
+          "href": "/catalogo/tableros/caja-metalica-inox-304/"
+        }
+      ]
     },
     {
       "id": "gabinetes",
@@ -268,7 +340,27 @@
       "displayMode": "catalog",
       "description": "Estructura desmontable en chapa de acero de 2mm con paneles galvanizados, ojal de elevación, manija oscilante y perfil EPDM antipolvo IP.",
       "image": "/images/gabinete-modular-metalico-bga-tablero-electrico-paraguay.webp",
-      "pdfUrl": "/docs/ficha-tecnica-gabinetes-modulares-bga.pdf"
+      "pdfUrl": "/docs/ficha-tecnica-gabinetes-modulares-bga.pdf",
+      "intentCards": [
+        {
+          "label": "Gabinete Modular Puerta Simple",
+          "description": "600 u 800 mm de ancho, 1500 o 1900 de alto",
+          "tag": "9 medidas",
+          "href": "/catalogo/gabinetes/gabinete-modular-puerta-simple/"
+        },
+        {
+          "label": "Gabinete Modular Puerta Doble",
+          "description": "1200 mm de ancho, para tableros de gran porte",
+          "tag": "3 medidas",
+          "href": "/catalogo/gabinetes/gabinete-modular-puerta-doble/"
+        },
+        {
+          "label": "Placa de Montaje Modular",
+          "description": "Repuesto o placa adicional, tres anchos",
+          "tag": "Accesorio",
+          "href": "/catalogo/gabinetes/placa-de-montaje-modular/"
+        }
+      ]
     },
     {
       "id": "bandejas-de-alambre",
