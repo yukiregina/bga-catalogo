@@ -4213,7 +4213,14 @@
         "FXS6221"
       ],
       "images": {
-        "primary": "/images/productos/kit-de-uniones-escalera.webp"
+        "primary": "/images/productos/kit-de-uniones-escalera.webp",
+        "byAla": {
+          "60": "/images/productos/kit-de-uniones-escalera.webp",
+          "65": "/images/productos/kit-de-uniones-escalera.webp",
+          "75": "/images/productos/kit-de-uniones-escalera-ala75.webp",
+          "95": "/images/productos/kit-de-uniones-escalera-ala100.webp",
+          "100": "/images/productos/kit-de-uniones-escalera-ala100.webp"
+        }
       }
     },
     {
