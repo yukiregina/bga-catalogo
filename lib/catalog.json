@@ -366,7 +366,7 @@
       "id": "bandejas-de-alambre",
       "name": "Bandejas Portacables de Alambre",
       "navLabel": "Alambre",
-      "displayMode": "contact",
+      "displayMode": "catalog",
       "description": "Bandejas portacables en malla de alambre soldado — sistema tipo malla, liviano y ventilado, para telecomunicaciones, data centers y tendidos que cambian seguido.",
       "image": "/images/bandeja-portacable-alambre-bga-malla-soldada-paraguay.webp",
       "badge": "Nueva línea"
@@ -13601,6 +13601,347 @@
         "final-de-tramo",
         "final-de-tramo-descarga"
       ]
+    },
+    {
+      "id": "bandeja-portacable-de-alambre",
+      "categoryId": "bandejas-de-alambre",
+      "type": "producto",
+      "name": "Bandeja Portacable de Alambre",
+      "subtitle": "Tramo de 3000 mm · malla soldada · alambre 3/16\" o 1/4\"",
+      "shortDescription": "Tramo de bandeja portacable en malla de alambre soldado, de 3000 mm. Se especifica por ancho, ala, diámetro de alambre y acabado.",
+      "longDescription": "La bandeja portacable de alambre — también llamada bandeja tipo malla o de rejilla — es el tramo del sistema: varillas de acero soldadas por puntos que sostienen y distribuyen el cable a lo largo del recorrido, sin fondo cerrado. El cable queda ventilado y a la vista, lo que facilita la disipación de calor y la inspección del tendido.\n\nEl tramo estándar es de 3000 mm. Se ofrece en anchos de 50 a 600 mm y alas de 30, 50 y 100 mm, en dos diámetros de alambre: 3/16\" (4,76 mm) y 1/4\" (6,35 mm). La malla tiene paso de 100 mm en el sentido longitudinal y 50 mm en el transversal.\n\nEl diseño abierto permite resolver curvas, derivaciones y cambios de nivel directamente en obra, reduciendo el uso de accesorios y agilizando la instalación. El tramo se corta con herramienta manual y se empalma con la unión simple o el kit de uniones, sin soldadura.\n\nDisponible en chapa pregalvanizada (PZ) para interiores secos, galvanizado por inmersión en caliente (GF) para exterior o ambiente corrosivo, y acero inoxidable AISI 304 y AISI 316. Apta para interior y exterior. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos), NBR 7008 para el pregalvanizado y NBR 6323 / ASTM 123 para el galvanizado por inmersión en caliente.",
+      "faq": [
+        {
+          "q": "¿Qué diferencia hay entre el alambre de 3/16\" y el de 1/4\"?",
+          "a": "El diámetro del alambre: 3/16\" equivale a 4,76 mm y 1/4\" a 6,35 mm. El de 1/4\" es más rígido y admite mayor carga o mayor separación entre soportes; el de 3/16\" es más liviano y económico para tendidos de telecomunicaciones y datos. Los dos salen en los mismos anchos y acabados."
+        },
+        {
+          "q": "¿Qué diferencia hay entre una bandeja de alambre y una bandeja de chapa?",
+          "a": "La bandeja de chapa tiene fondo continuo (liso o perforado) y da mayor protección mecánica y contra polvo. La bandeja de alambre es una malla soldada sin fondo cerrado: pesa menos, ventila mejor el cable y permite ver el tendido completo. Para cables de potencia en ambiente industrial pesado se usa chapa; para telecomunicaciones, datos y tendidos que se modifican seguido, alambre."
+        },
+        {
+          "q": "¿Se puede cortar y derivar en obra?",
+          "a": "Sí. El tramo se corta a medida con herramienta manual, y curvas, derivaciones y cambios de nivel se resuelven doblando la propia malla. Eso reduce el uso de accesorios y acorta el montaje frente a un sistema de chapa. Los empalmes se hacen con la unión simple o el kit de uniones, sin soldadura."
+        },
+        {
+          "q": "¿En qué materiales y terminaciones sale?",
+          "a": "En los mismos cuatro acabados del resto del catálogo BGA: acero pregalvanizado (PZ) para interiores secos; galvanizado por inmersión en caliente (GF) para exterior, ambiente húmedo o con agentes corrosivos; acero inoxidable AISI 304 para higiene exigente — alimenticia, farmacéutica, hospitalaria; y AISI 316 para exposición química, ambientes marinos o salinos."
+        },
+        {
+          "q": "¿Qué normas cumple?",
+          "a": "Las mismas que las bandejas, perfilados y escaleras BGA: NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos), NBR 7008 para el pregalvanizado y NBR 6323 / ASTM 123 para el galvanizado por inmersión en caliente."
+        }
+      ],
+      "keywords": "bandeja portacable de alambre, bandeja portacables tipo malla, wire mesh cable tray, eletrocalha aramada, Paraguay",
+      "meta": {
+        "title": "Bandeja Portacable de Alambre Tipo Malla | BGA",
+        "description": "Bandeja portacable de alambre en malla soldada, tramo de 3000 mm, anchos de 50 a 600 mm, en PZ, GF, AISI 304 y AISI 316. BGA Paraguay."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            300,
+            400,
+            500,
+            600
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            30,
+            50,
+            100
+          ],
+          "unit": "mm"
+        }
+      ],
+      "variants": [
+        {
+          "sku": "WTX7011",
+          "label": "Alambre 3/16\" (4,76 mm)",
+          "role": "pieza"
+        },
+        {
+          "sku": "WTX7111",
+          "label": "Alambre 1/4\" (6,35 mm)",
+          "role": "pieza"
+        }
+      ],
+      "unidadVenta": "Tramo 3 m",
+      "finishes": [
+        "pz",
+        "gf",
+        "aisi304",
+        "aisi316"
+      ],
+      "recommended": [
+        "union-simple-alambre",
+        "kit-de-uniones-alambre",
+        "mano-francesa-triangular-alambre",
+        "soporte-travesano-omega-alambre",
+        "soporte-acople-vertical-alambre"
+      ],
+      "images": {
+        "primary": "/images/productos/bandeja-portacable-de-alambre.webp",
+        "bySku": {
+          "WTX7011": "/images/productos/bandeja-portacable-de-alambre.webp",
+          "WTX7111": "/images/productos/bandeja-portacable-de-alambre-wtx7111.webp"
+        }
+      }
+    },
+    {
+      "id": "union-simple-alambre",
+      "categoryId": "bandejas-de-alambre",
+      "type": "producto",
+      "name": "Unión Simple para Bandeja de Alambre",
+      "subtitle": "Acople exterior e interior · bulón M6 y tuerca",
+      "shortDescription": "Conjunto de unión para empalmar dos tramos de bandeja de alambre: acople exterior, acople interior, tornillo M6×20 y tuerca M6.",
+      "longDescription": "El conjunto de unión conecta y asegura los extremos de dos tramos de bandeja portacable de alambre, con una fijación firme mediante tornillo.\n\nCada conjunto está compuesto por un acople exterior, un acople interior, un tornillo M6×20 y una tuerca M6. Las chapas abrazan los alambres de los dos tramos por fuera y por dentro, y se aprietan con llave común — sin soldadura y sin perforar la malla. Chapa #14.\n\nPara un empalme completo se usan dos conjuntos: si preferís pedirlos de a pares, está el kit de uniones.\n\nDisponible en chapa pregalvanizada (PZ) para interiores secos, galvanizado por inmersión en caliente (GF) para exterior o ambiente corrosivo, y acero inoxidable AISI 304 y AISI 316. El acabado debe coincidir con el de la bandeja. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos), NBR 7008 para el pregalvanizado y NBR 6323 / ASTM 123 para el galvanizado por inmersión en caliente.",
+      "faq": [
+        {
+          "q": "¿Cuántos conjuntos necesito por empalme?",
+          "a": "Dos por empalme, uno de cada lado de la bandeja. Si preferís pedirlos de a pares, el kit de uniones ya trae los dos conjuntos con su tornillería."
+        },
+        {
+          "q": "¿Hace falta herramienta especial?",
+          "a": "No. Se aprieta con llave común. No lleva soldadura ni requiere perforar la malla."
+        },
+        {
+          "q": "¿En qué material conviene pedirlo?",
+          "a": "En el mismo material y acabado de la bandeja. Mezclar acabados en el mismo recorrido crea puntos de corrosión en la unión."
+        }
+      ],
+      "keywords": "unión simple bandeja de alambre, empalme bandeja tipo malla, acople bandeja portacable",
+      "meta": {
+        "title": "Unión Simple para Bandeja de Alambre | BGA",
+        "description": "Conjunto de unión para bandeja de alambre: acople exterior e interior, tornillo M6×20 y tuerca. En PZ, GF, AISI 304 y AISI 316. BGA Paraguay."
+      },
+      "sku": "WTX7062B",
+      "unidadVenta": "Conjunto",
+      "finishes": [
+        "pz",
+        "gf",
+        "aisi304",
+        "aisi316"
+      ],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
+      "recommended": [
+        "bandeja-portacable-de-alambre",
+        "kit-de-uniones-alambre"
+      ],
+      "images": {
+        "primary": "/images/productos/union-simple-alambre.webp"
+      }
+    },
+    {
+      "id": "kit-de-uniones-alambre",
+      "categoryId": "bandejas-de-alambre",
+      "type": "producto",
+      "name": "Kit de Uniones para Bandeja de Alambre",
+      "subtitle": "2 conjuntos de unión · 2 bulones M6 y tuercas",
+      "shortDescription": "Kit con los dos conjuntos de un empalme completo: 2 acoples exteriores, 2 interiores, 2 tornillos M6×20 y 2 tuercas M6.",
+      "longDescription": "El kit reúne los dos conjuntos de unión de un empalme completo entre tramos de bandeja portacable de alambre, con la tornillería incluida.\n\nContiene 2 acoples exteriores, 2 acoples interiores, 2 tornillos carro M6×20 y 2 tuercas M6. Chapa #14. Es la forma práctica de pedir el empalme sin contar piezas sueltas: un kit por junta entre tramos.\n\nDisponible en chapa pregalvanizada (PZ) para interiores secos, galvanizado por inmersión en caliente (GF) para exterior o ambiente corrosivo, y acero inoxidable AISI 304 y AISI 316. El acabado debe coincidir con el de la bandeja. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos), NBR 7008 para el pregalvanizado y NBR 6323 / ASTM 123 para el galvanizado por inmersión en caliente.",
+      "faq": [
+        {
+          "q": "¿Cuántos kits necesito?",
+          "a": "Uno por empalme entre tramos. Con tramos de 3000 mm eso equivale a un kit cada tres metros de recorrido, más uno por cada accesorio que se fije sobre el trayecto."
+        },
+        {
+          "q": "¿Qué diferencia hay con la unión simple?",
+          "a": "La unión simple es un conjunto; el kit trae los dos conjuntos que lleva un empalme completo, con su tornillería. Mismo componente, distinta unidad de pedido."
+        },
+        {
+          "q": "¿Hace falta herramienta especial?",
+          "a": "No. Se aprieta con llave común, sin soldadura y sin perforar la malla."
+        }
+      ],
+      "keywords": "kit de uniones bandeja de alambre, empalme bandeja tipo malla, tornillería bandeja portacable",
+      "meta": {
+        "title": "Kit de Uniones para Bandeja de Alambre | BGA",
+        "description": "Kit de unión para bandeja de alambre: 2 conjuntos con tornillería M6. En PZ, GF, AISI 304 y AISI 316. Nueva línea BGA Paraguay."
+      },
+      "sku": "KITX7062B",
+      "unidadVenta": "Kit",
+      "finishes": [
+        "pz",
+        "gf",
+        "aisi304",
+        "aisi316"
+      ],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
+      "recommended": [
+        "bandeja-portacable-de-alambre",
+        "union-simple-alambre"
+      ],
+      "images": {
+        "primary": "/images/productos/kit-de-uniones-alambre.webp"
+      }
+    },
+    {
+      "id": "mano-francesa-triangular-alambre",
+      "categoryId": "bandejas-de-alambre",
+      "type": "producto",
+      "name": "Mano Francesa Triangular para Bandeja de Alambre",
+      "subtitle": "Ménsula triangular de fijación a pared · anchos de 50 a 600 mm",
+      "shortDescription": "Ménsula triangular para fijar la bandeja de alambre a la pared, con puntos de montaje mural y encastres de posicionamiento.",
+      "longDescription": "Soporte metálico tipo ménsula, de configuración triangular, para la fijación de bandejas de alambre a pared.\n\nLa geometría triangular da apoyo y estabilidad a la bandeja y permite una instalación firme y segura. Incorpora puntos de fijación para el montaje mural y encastres para el posicionamiento de la bandeja. Se ofrece en anchos de 50 a 600 mm, en chapa #14, #16, #18 y #20.\n\nDisponible en chapa pregalvanizada (PZ) para interiores secos, galvanizado por inmersión en caliente (GF) para exterior o ambiente corrosivo, y acero inoxidable AISI 304 y AISI 316. El acabado debe coincidir con el de la bandeja. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos), NBR 7008 para el pregalvanizado y NBR 6323 / ASTM 123 para el galvanizado por inmersión en caliente.",
+      "faq": [
+        {
+          "q": "¿Qué ancho de ménsula pido?",
+          "a": "El que corresponde al ancho de la bandeja. Los anchos van de 50 a 600 mm, los mismos de la bandeja de alambre."
+        },
+        {
+          "q": "¿Cada cuánto se coloca una ménsula?",
+          "a": "Depende del ancho de la bandeja, del diámetro de alambre y del peso del cableado. Consultá con nuestro equipo: definimos la separación entre soportes según la carga de tu proyecto."
+        }
+      ],
+      "keywords": "mano francesa bandeja de alambre, ménsula bandeja tipo malla, soporte a pared bandeja portacable",
+      "meta": {
+        "title": "Mano Francesa para Bandeja de Alambre | BGA",
+        "description": "Ménsula triangular de fijación a pared para bandeja de alambre, anchos de 50 a 600 mm. En PZ, GF, AISI 304 y AISI 316. BGA Paraguay."
+      },
+      "sku": "WTX3071",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            550,
+            600
+          ],
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "gf",
+        "aisi304",
+        "aisi316"
+      ],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
+      "recommended": [
+        "bandeja-portacable-de-alambre",
+        "kit-de-uniones-alambre"
+      ],
+      "images": {
+        "primary": "/images/productos/mano-francesa-triangular-alambre.webp"
+      }
+    },
+    {
+      "id": "soporte-travesano-omega-alambre",
+      "categoryId": "bandejas-de-alambre",
+      "type": "producto",
+      "name": "Soporte Travesaño Omega para Bandeja de Alambre",
+      "subtitle": "Perfil 38×25 · suspensión horizontal desde varillas roscadas",
+      "shortDescription": "Travesaño omega 38×25 para suspender la bandeja de alambre desde varillas roscadas ancladas a techo o losa.",
+      "longDescription": "Soporte para la fijación y suspensión horizontal de bandejas portacables de alambre mediante varillas roscadas ancladas a techos o losas.\n\nEl perfil omega de 38×25 mm cruza bajo la bandeja y se cuelga de dos varillas, una de cada lado. También permite la fijación de la bandeja en posición vertical, lo que da versatilidad en distintas configuraciones de instalación. Se ofrece en anchos de 200 a 600 mm, en chapa #14, #16 y #18.\n\nDisponible en chapa pregalvanizada (PZ) para interiores secos, galvanizado por inmersión en caliente (GF) para exterior o ambiente corrosivo, y acero inoxidable AISI 304 y AISI 316. El acabado debe coincidir con el de la bandeja. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos), NBR 7008 para el pregalvanizado y NBR 6323 / ASTM 123 para el galvanizado por inmersión en caliente.",
+      "faq": [
+        {
+          "q": "¿Qué ancho de travesaño pido?",
+          "a": "El que corresponde al ancho de la bandeja. Los anchos van de 200 a 600 mm; para bandejas más angostas, consultá con nuestro equipo."
+        },
+        {
+          "q": "¿La varilla roscada viene incluida?",
+          "a": "No. La varilla y el anclaje a la losa se cotizan aparte. Consultá con nuestro equipo el diámetro compatible."
+        }
+      ],
+      "keywords": "travesaño omega bandeja de alambre, suspensión bandeja tipo malla, soporte varilla roscada bandeja portacable",
+      "meta": {
+        "title": "Travesaño Omega para Bandeja de Alambre | BGA",
+        "description": "Soporte travesaño omega 38×25 para suspender bandeja de alambre desde varillas roscadas. En PZ, GF, AISI 304 y AISI 316. BGA Paraguay."
+      },
+      "sku": "WTX7120",
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            550,
+            600
+          ],
+          "unit": "mm"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "gf",
+        "aisi304",
+        "aisi316"
+      ],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
+      "recommended": [
+        "bandeja-portacable-de-alambre",
+        "soporte-acople-vertical-alambre"
+      ],
+      "images": {}
+    },
+    {
+      "id": "soporte-acople-vertical-alambre",
+      "categoryId": "bandejas-de-alambre",
+      "type": "producto",
+      "name": "Soporte Acople Vertical para Bandeja de Alambre",
+      "subtitle": "60×40 · unión de la bandeja a la varilla roscada",
+      "shortDescription": "Acople 60×40 que une la bandeja de alambre a la varilla roscada, para suspensión vertical desde techo o losa.",
+      "longDescription": "Soporte para la fijación de bandejas portacables de alambre a varillas roscadas, que permite su suspensión vertical desde techos o losas.\n\nLa placa de 60×40 mm apoya sobre el fondo de la malla y se traba en los alambres; la varilla pasa por el centro y se asegura con tuerca. Proporciona una unión firme y segura entre la bandeja y la varilla, y facilita el montaje y el ajuste del sistema de suspensión. Chapa #14, #16 y #18.\n\nDisponible en chapa pregalvanizada (PZ) para interiores secos, galvanizado por inmersión en caliente (GF) para exterior o ambiente corrosivo, y acero inoxidable AISI 304 y AISI 316. El acabado debe coincidir con el de la bandeja. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos), NBR 7008 para el pregalvanizado y NBR 6323 / ASTM 123 para el galvanizado por inmersión en caliente.",
+      "faq": [
+        {
+          "q": "¿Perfora o daña la malla?",
+          "a": "No. La placa se traba en los alambres del fondo y se asegura con tuerca. No hay perforación ni soldadura, así que no se daña el recubrimiento de zinc."
+        },
+        {
+          "q": "¿La varilla roscada viene incluida?",
+          "a": "No. La varilla y el anclaje a la losa se cotizan aparte. Consultá con nuestro equipo el diámetro compatible."
+        }
+      ],
+      "keywords": "acople vertical bandeja de alambre, suspensión bandeja tipo malla, fijación varilla roscada bandeja portacable",
+      "meta": {
+        "title": "Acople Vertical · Bandeja de Alambre | BGA",
+        "description": "Soporte acople vertical 60×40 para suspender bandeja de alambre desde varilla roscada. En PZ, GF, AISI 304 y AISI 316. BGA Paraguay."
+      },
+      "sku": "WTX712164",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "gf",
+        "aisi304",
+        "aisi316"
+      ],
+      "finishNote": "El acabado debe coincidir con el de la bandeja.",
+      "recommended": [
+        "bandeja-portacable-de-alambre",
+        "soporte-travesano-omega-alambre"
+      ],
+      "images": {
+        "primary": "/images/productos/soporte-acople-vertical-alambre.webp"
+      }
     }
   ],
   "materialsPage": {
