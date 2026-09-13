@@ -15,6 +15,13 @@ export const metadata = {
   },
   description: config.meta.description,
   robots: { index: true, follow: true },
+  // Prova de propriedade do Search Console. A verificação está hoje presa ao
+  // snippet do gtag.js, que este deploy substitui pelo GTM — sem esta meta
+  // tag estática a verificação se perde em silêncio. Um token só cobre as
+  // propriedades com e sem "www".
+  verification: {
+    google: 'xRgwoXvqZ4F2kniFvppJgwjxaClSzsNkz_WiAtQSO50',
+  },
   alternates: { canonical: '/' },
   openGraph: {
     type:     'website',
