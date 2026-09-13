@@ -2533,6 +2533,36 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Escalera Portacables",
+      "subtitle": "Tramo de 3000 mm · con o sin perforación · tipo leve y pesado",
+      "shortDescription": "Escalera portacables BGA — tramo de 3000 mm en anchos de 100 a 800 mm, con travesaños perforados (CL) o sin perforación (CLY), en tipo leve y tipo pesado. Se especifica por ancho, ala, acabado y espesor.",
+      "longDescription": "La escalera portacables es la canalización para los tramos largos y las cargas altas: sostiene cables de fuerza de sección grande, permite mayor distancia entre soportes que una bandeja y deja el cable ventilado en toda su extensión.\n\nSe fabrica en dos líneas. La CL lleva los travesaños perforados, lo que permite fijar abrazaderas y precintos en cualquier punto del recorrido. La CLY va sin perforación, con un acabado más cerrado. Además de la versión leve, existe el tipo pesado (CL5114), con ala de 100 mm, para vanos mayores y cargas más exigentes.\n\nEl tramo estándar es de 3000 mm, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm, con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. El espesor se elige por ancho, siguiendo la regla de espesor mínimo de BGA, entre #12 y #20.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Cuál es la diferencia entre la CL y la CLY?",
+          "a": "La CL lleva los travesaños perforados y deja fijar abrazaderas en cualquier punto. La CLY va sin perforación, con un acabado más cerrado. Las dos comparten anchos, accesorios y acabados."
+        },
+        {
+          "q": "¿Cuándo conviene el tipo pesado?",
+          "a": "Cuando el vano entre soportes es mayor o la carga de cable es alta. El tipo pesado (CL5114) tiene ala de 100 mm y admite espesores desde #16 en los anchos chicos y #12 en 800 mm."
+        },
+        {
+          "q": "¿Cuándo uso escalera y cuándo bandeja portacables?",
+          "a": "La escalera es para recorridos largos con cables de fuerza de sección grande, donde importa la ventilación y la distancia entre soportes. La bandeja conviene cuando hay muchos cables de menor sección o se necesita fondo cerrado y tapa."
+        },
+        {
+          "q": "¿Qué espesor corresponde?",
+          "a": "El mismo del tramo. BGA aplica una regla de espesor mínimo por ancho: hasta 150 mm desde #20, de 200 a 350 mm desde #18, 400 y 450 mm desde #16, y de 500 a 800 mm desde #14."
+        },
+        {
+          "q": "¿Qué acabado pido según el ambiente?",
+          "a": "Interior seco: pregalvanizado (PZ). Exterior, húmedo o corrosivo: galvanizado por inmersión en caliente. A la vista y con color: pintura electrostática. Higiene exigente: AISI 304. Química o salina: AISI 316."
+        }
+      ],
+      "keywords": "escalera portacables, escalerilla portacable, bandeja tipo escalera, cable ladder, escalera porta cables Paraguay, leito para cabos",
+      "meta": {
+        "title": "Escalera Portacables | BGA Paraguay",
+        "description": "Escalera portacables de 100 a 800 mm, tramo de 3 m, con o sin perforación, tipo leve y pesado. Fabricada en Paraguay por BGA. Cotizá online."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -2624,7 +2654,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Curva Horizontal 90",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Giro de 90° en el plano horizontal · radio curvo",
+      "shortDescription": "Curva Horizontal 90° para escalera portacables BGA — resuelve el giro de 90° en el plano horizontal con radio curvo, en anchos de 100 a 800 mm.",
+      "longDescription": "La curva horizontal 90° soluciona el giro de noventa grados en el plano horizontal del recorrido, manteniendo el radio de curvatura del cable dentro de lo admisible. Es la pieza que evita el corte y el empalme del tramo en cada esquina de la instalación.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Se une a los tramos rectos con el Kit de Uniones para Escalera.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curva horizontal 90 escalera, curva 90 escalerilla, codo escalera portacables, curva cable ladder",
+      "meta": {
+        "title": "Curva Horizontal 90° para Escalera | BGA Paraguay",
+        "description": "Curva horizontal 90° para escalera portacables, de 100 a 800 mm. Giro de radio curvo sin forzar el cable. BGA Paraguay. Cotizá online."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -2690,7 +2737,28 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Curva Recta Horizontal 90",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Giro de 90° en el plano horizontal · trazado recto",
+      "shortDescription": "Curva Horizontal Recta 90° para escalera portacables BGA — giro a escuadra en el plano horizontal, para recorridos donde no entra el radio de la curva curva.",
+      "longDescription": "La curva horizontal recta resuelve el mismo giro de 90° que la curva curva, pero con trazado a escuadra. Se usa donde el espacio no permite el radio de la versión curva — pegado a una columna, contra una pared o en un pasaje estrecho.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Al ser un giro a escuadra, conviene verificar el radio mínimo de curvatura del cable antes de especificarla.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Cuándo uso la recta y cuándo la curva?",
+          "a": "La curva de radio curvo respeta mejor el radio de curvatura del cable y es la opción por defecto. La recta se usa cuando no hay espacio para ese radio."
+        },
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curva horizontal recta 90 escalera, curva recta escalerilla, codo recto escalera portacables",
+      "meta": {
+        "title": "Curva Horizontal Recta 90° Escalera | BGA Paraguay",
+        "description": "Curva horizontal recta 90° para escalera portacables, de 100 a 800 mm. Giro a escuadra para espacios ajustados. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -2756,7 +2824,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Curva Horizontal 45",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Giro de 45° en el plano horizontal",
+      "shortDescription": "Curva Horizontal 45° para escalera portacables BGA — desvío de 45° en el plano horizontal, en anchos de 100 a 800 mm.",
+      "longDescription": "La curva horizontal 45° resuelve los desvíos suaves del recorrido, cuando el trazado tiene que esquivar una estructura sin llegar a girar noventa grados. Dos curvas de 45° también arman un desplazamiento lateral sin cortar el tramo.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curva horizontal 45 escalera, curva 45 escalerilla, desvio 45 escalera portacables",
+      "meta": {
+        "title": "Curva Horizontal 45° para Escalera | BGA Paraguay",
+        "description": "Curva horizontal 45° para escalera portacables, de 100 a 800 mm. Desvío suave en el plano horizontal. BGA Paraguay. Cotizá online."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -2822,7 +2907,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Curva Vertical Externa 90",
-      "subtitle": "Tipo Leve - Alas internas",
+      "subtitle": "Bajada de 90° · alas internas",
+      "shortDescription": "Curva Vertical Externa 90° para escalera portacables BGA — cambio de plano de 90° hacia abajo, con alas internas, en anchos de 100 a 800 mm.",
+      "longDescription": "La curva vertical externa resuelve el cambio de plano de 90° en sentido descendente: el tramo que baja desde el cielorraso hacia un tablero, un equipo o un nivel inferior.\n\nSe fabrica con alas internas y acompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Se pide junto con la curva vertical interna cuando el recorrido baja y vuelve a subir.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curva vertical externa 90 escalera, bajada escalera portacables, cambio de nivel escalerilla",
+      "meta": {
+        "title": "Curva Vertical Externa 90° Escalera | BGA Paraguay",
+        "description": "Curva vertical externa 90° para escalera portacables, de 100 a 800 mm. Cambio de plano descendente. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -2888,7 +2990,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Curva Vertical Interna 90",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Subida de 90°",
+      "shortDescription": "Curva Vertical Interna 90° para escalera portacables BGA — cambio de plano de 90° hacia arriba, en anchos de 100 a 800 mm.",
+      "longDescription": "La curva vertical interna resuelve el cambio de plano de horizontal a vertical ascendente — el recorrido que sube por una columna o una pared después de correr por el cielorraso.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Se pide junto con la curva vertical externa cuando el recorrido sube y vuelve a bajar.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curva vertical interna 90 escalera, subida escalera portacables, cambio de plano escalerilla",
+      "meta": {
+        "title": "Curva Vertical Interna 90° Escalera | BGA Paraguay",
+        "description": "Curva vertical interna 90° para escalera portacables, de 100 a 800 mm. Cambio de plano ascendente. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -2954,7 +3073,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Curva Vertical Externa 45",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Bajada de 45°",
+      "shortDescription": "Curva Vertical Externa 45° para escalera portacables BGA — cambio de plano descendente de 45°, en anchos de 100 a 800 mm.",
+      "longDescription": "La curva vertical externa 45° baja el plano del recorrido de forma suave, sin el quiebre de la curva de 90°. Es la pieza que cierra el desnivel abierto por la curva vertical interna 45°.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curva vertical externa 45 escalera, bajada 45 escalera portacables, desnivel escalerilla",
+      "meta": {
+        "title": "Curva Vertical Externa 45° Escalera | BGA Paraguay",
+        "description": "Curva vertical externa 45° para escalera portacables, de 100 a 800 mm. Bajada suave de plano. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3020,7 +3156,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Curva Vertical Interna 45",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Subida de 45°",
+      "shortDescription": "Curva Vertical Interna 45° para escalera portacables BGA — cambio de plano ascendente de 45°, en anchos de 100 a 800 mm.",
+      "longDescription": "La curva vertical interna 45° resuelve la subida suave de plano, cuando el recorrido tiene que ganar altura sin el quiebre de una curva de 90°. Es la opción cuando hay que salvar una viga o un conducto a media altura.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Combinada con la curva vertical externa 45°, arma un desnivel completo.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curva vertical interna 45 escalera, subida 45 escalera portacables, desnivel escalerilla",
+      "meta": {
+        "title": "Curva Vertical Interna 45° Escalera | BGA Paraguay",
+        "description": "Curva vertical interna 45° para escalera portacables, de 100 a 800 mm. Subida suave de plano. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3086,6 +3239,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Curva Vertical de Inversión 90",
+      "subtitle": "Bajada de 90° con inversión de la escalera",
+      "shortDescription": "Curva Vertical de Inversión 90° para escalera portacables BGA — baja el plano del recorrido invirtiendo la posición de la escalera.",
+      "longDescription": "La curva vertical de inversión resuelve el cambio de plano de 90° en sentido descendente cuando, además de bajar, la escalera tiene que invertir su posición para seguir el recorrido — un caso habitual al pasar de un tendido colgado a uno apoyado.\n\nAcompaña la ala del tramo, con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curva vertical de inversion escalera, inversion 90 escalera portacables, cambio de plano escalerilla",
+      "meta": {
+        "title": "Curva Vertical de Inversión 90° | Escalera BGA",
+        "description": "Curva vertical de inversión 90° para escalera portacables. Baja el plano e invierte la posición del tramo. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3151,7 +3322,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Te Horizontal",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Derivación a 90° en el plano horizontal",
+      "shortDescription": "Te Horizontal para escalera portacables BGA — abre una derivación a 90° en el plano horizontal, en anchos de 100 a 800 mm.",
+      "longDescription": "La Te horizontal abre un ramal a 90° sobre el recorrido principal, con radio curvo. Es la pieza de las derivaciones hacia un sector, un tablero seccional o una línea de equipos.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. El ramal puede pedirse en un ancho menor y resolverse con una reducción.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "te horizontal escalera, derivacion escalera portacables, te escalerilla, ramal escalera",
+      "meta": {
+        "title": "Te Horizontal para Escalera | BGA Paraguay",
+        "description": "Te horizontal para escalera portacables, de 100 a 800 mm. Derivación a 90° en el plano horizontal. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3217,7 +3405,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Te Horizontal Recto",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Derivación a 90° con trazado recto",
+      "shortDescription": "Te Horizontal Recto para escalera portacables BGA — derivación a 90° con trazado a escuadra, en anchos de 100 a 800 mm.",
+      "longDescription": "La Te horizontal recta abre el mismo ramal a 90° que la Te curva, pero con trazado a escuadra, para los puntos donde no hay lugar para el radio de la versión curva.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Conviene verificar el radio mínimo de curvatura del cable antes de especificarla.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "te horizontal recto escalera, te recta escalerilla, derivacion recta escalera portacables",
+      "meta": {
+        "title": "Te Horizontal Recto Escalera | BGA Paraguay",
+        "description": "Te horizontal recto para escalera portacables, de 100 a 800 mm. Derivación a escuadra para espacios ajustados. BGA."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3283,7 +3488,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Te Vertical Ascendente 90",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Derivación que sube a 90°",
+      "shortDescription": "Te Vertical Ascendente 90° para escalera portacables BGA — abre un ramal que sube desde el recorrido principal, en anchos de 100 a 800 mm.",
+      "longDescription": "La Te vertical ascendente deriva un ramal hacia arriba sin interrumpir el recorrido principal — el caso del tendido que corre por el piso o a media altura y alimenta un equipo o un tablero en un nivel superior.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "te vertical ascendente escalera, derivacion vertical escalera portacables, ramal ascendente escalerilla",
+      "meta": {
+        "title": "Te Vertical Ascendente 90° Escalera | BGA",
+        "description": "Te vertical ascendente 90° para escalera portacables, de 100 a 800 mm. Ramal que sube desde el recorrido. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3349,7 +3571,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Te Vertical Descarga 90",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Derivación que baja a 90°",
+      "shortDescription": "Te Vertical de Descarga 90° para escalera portacables BGA — abre un ramal que baja desde el recorrido principal, en anchos de 100 a 800 mm.",
+      "longDescription": "La Te vertical de descarga deriva un ramal hacia abajo sin cortar el recorrido principal. Es la pieza de la bajada a un tablero, un motor o un punto de conexión en el nivel inferior.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "te vertical de descarga escalera, bajada a tablero escalera portacables, ramal descendente escalerilla",
+      "meta": {
+        "title": "Te Vertical de Descarga 90° Escalera | BGA",
+        "description": "Te vertical de descarga 90° para escalera portacables, de 100 a 800 mm. Ramal que baja hacia tablero o equipo. BGA."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3415,7 +3654,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Unión Cruzeta",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Cruce de cuatro vías en el plano horizontal",
+      "shortDescription": "Unión Cruzeta para escalera portacables BGA — resuelve el cruce de cuatro vías en el plano horizontal, en anchos de 100 a 800 mm.",
+      "longDescription": "La unión cruzeta arma el cruce de cuatro vías: el recorrido principal sigue de largo y salen dos ramales, uno a cada lado. Es la pieza de los nodos de distribución en planta.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Los ramales pueden llevar reducción si salen en un ancho menor.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "union cruzeta escalera, cruz escalera portacables, cruzeta escalerilla, cruce cuatro vias",
+      "meta": {
+        "title": "Unión Cruzeta para Escalera | BGA Paraguay",
+        "description": "Unión cruzeta para escalera portacables, de 100 a 800 mm. Cruce de cuatro vías con radio curvo. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3481,7 +3737,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Unión Cruzeta Recta",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Cruce de cuatro vías con trazado recto",
+      "shortDescription": "Unión Cruzeta Recta para escalera portacables BGA — cruce de cuatro vías con trazado a escuadra, en anchos de 100 a 800 mm.",
+      "longDescription": "La unión cruzeta recta resuelve el mismo cruce de cuatro vías que la versión curva, con trazado a escuadra, para los nodos donde el espacio no permite el radio de la cruzeta curva.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Conviene verificar el radio mínimo de curvatura del cable antes de especificarla.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "union cruzeta recta escalera, cruz recta escalera portacables, cruzeta recta escalerilla",
+      "meta": {
+        "title": "Unión Cruzeta Recta Escalera | BGA Paraguay",
+        "description": "Unión cruzeta recta para escalera portacables, de 100 a 800 mm. Cruce a escuadra para espacios ajustados. BGA."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3547,7 +3820,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Reducción Central",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Cambio de ancho centrado",
+      "shortDescription": "Reducción Central para escalera portacables BGA — pasa de un ancho a otro manteniendo los dos tramos centrados, en anchos de 100 a 800 mm.",
+      "longDescription": "La reducción central pasa de un ancho a otro manteniendo alineados los ejes de los dos tramos. Se usa donde el recorrido pierde cables y ya no necesita el ancho de origen — típicamente después de una derivación.\n\nSe pide indicando el ancho de entrada y el de salida, dentro de la serie de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "reduccion central escalera, reduccion escalera portacables, cambio de ancho escalerilla",
+      "meta": {
+        "title": "Reducción Central para Escalera | BGA Paraguay",
+        "description": "Reducción central para escalera portacables, de 100 a 800 mm. Cambio de ancho con los ejes alineados. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3613,7 +3903,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Reducción Lateral Derecha",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Cambio de ancho alineado por la derecha",
+      "shortDescription": "Reducción Lateral Derecha para escalera portacables BGA — cambia el ancho manteniendo alineado el lado derecho del recorrido.",
+      "longDescription": "La reducción lateral derecha cambia el ancho del recorrido manteniendo alineado uno de los lados. Es la que se usa cuando el tendido corre pegado a una pared o a una estructura y ese lado no puede moverse.\n\nSe pide indicando el ancho de entrada y el de salida, dentro de la serie de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. El lado se define mirando en el sentido del recorrido.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "reduccion lateral derecha escalera, reduccion lateral escalera portacables, cambio de ancho escalerilla",
+      "meta": {
+        "title": "Reducción Lateral Derecha Escalera | BGA Paraguay",
+        "description": "Reducción lateral derecha para escalera portacables, de 100 a 800 mm. Cambio de ancho con un lado alineado. BGA."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3679,7 +3986,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Reducción Lateral Izquierda",
-      "subtitle": "Tipo Leve - Alas externas",
+      "subtitle": "Cambio de ancho alineado por la izquierda",
+      "shortDescription": "Reducción Lateral Izquierda para escalera portacables BGA — cambia el ancho manteniendo alineado el lado izquierdo del recorrido.",
+      "longDescription": "La reducción lateral izquierda es la contraparte de la derecha: cambia el ancho del recorrido manteniendo alineado el lado izquierdo, para los tendidos que corren pegados a una pared o estructura de ese lado.\n\nSe pide indicando el ancho de entrada y el de salida, dentro de la serie de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. El lado se define mirando en el sentido del recorrido.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "reduccion lateral izquierda escalera, reduccion lateral escalera portacables, cambio de ancho escalerilla",
+      "meta": {
+        "title": "Reducción Lateral Izquierda Escalera | BGA",
+        "description": "Reducción lateral izquierda para escalera portacables, de 100 a 800 mm. Cambio de ancho con un lado alineado. BGA."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -3745,6 +4069,28 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Unión Simple",
+      "subtitle": "Empalme entre tramos · dos versiones por ala",
+      "shortDescription": "Unión Simple para escalera portacables BGA — empalma dos tramos consecutivos. Dos versiones: CL5264 para ala 60/65 mm y CL5265 para ala 75, 95 y 100 mm.",
+      "longDescription": "La unión simple empalma dos tramos consecutivos de escalera, manteniendo la continuidad mecánica y eléctrica del recorrido. Es la pieza de empalme de uso corriente en obra.\n\nSe fabrica en dos versiones, elegidas por la ala del tramo: la CL5264 para ala de 60 mm (CL) y 65 mm (CLY), y la CL5265 para ala de 75 y 100 mm (CL) y 95 mm (CLY).\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Cuál de las dos versiones pido?",
+          "a": "Por la ala del tramo: CL5264 para ala 60 mm (CL) o 65 mm (CLY); CL5265 para ala 75 y 100 mm (CL) o 95 mm (CLY)."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. Para el empalme completo con tornillería está el Kit de Uniones para Escalera (KIT5262), que incluye 2 piezas de unión más los tornillos."
+        },
+        {
+          "q": "¿Cuántas uniones necesito por tramo?",
+          "a": "Dos por empalme, una de cada lado de la escalera. El kit ya viene con ese par armado."
+        }
+      ],
+      "keywords": "union simple escalera, empalme escalera portacables, union CL CLY, junta escalerilla",
+      "meta": {
+        "title": "Unión Simple para Escalera CL y CLY | BGA",
+        "description": "Unión simple para escalera portacables CL y CLY. Empalme entre tramos, en dos versiones según la ala. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ala",
@@ -3806,7 +4152,28 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Kit de Uniones para Escalera",
-      "subtitle": "2pz Uniones + Tornillos",
+      "subtitle": "2 piezas de unión + tornillería",
+      "shortDescription": "Kit de Uniones para escalera portacables BGA — 2 piezas de unión más la tornillería, lo necesario para un empalme completo entre tramos.",
+      "longDescription": "El kit de uniones resuelve un empalme completo entre dos tramos de escalera: trae las dos piezas de unión, una para cada lado, y la tornillería correspondiente.\n\nPedir el kit en vez de las piezas sueltas evita el faltante más común en obra, que es tener las uniones sin los tornillos. Se cotiza por kit, uno por empalme.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Cuántos kits necesito?",
+          "a": "Uno por empalme. Un recorrido de 30 m armado con tramos de 3 m lleva nueve empalmes, es decir nueve kits."
+        },
+        {
+          "q": "¿Sirve para CL y para CLY?",
+          "a": "Sí. Se pide por la ala del tramo, en ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY."
+        },
+        {
+          "q": "¿Qué trae exactamente?",
+          "a": "Dos piezas de unión más los tornillos. El detalle del contenido se confirma en la cotización."
+        }
+      ],
+      "keywords": "kit de uniones escalera, kit union escalera portacables, tornilleria escalera, empalme escalerilla",
+      "meta": {
+        "title": "Kit de Uniones para Escalera | BGA Paraguay",
+        "description": "Kit de uniones para escalera portacables: 2 piezas de unión más tornillería. Resuelve un empalme completo. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ala",
@@ -3846,14 +4213,7 @@
         "FXS6221"
       ],
       "images": {
-        "primary": "/images/productos/kit-de-uniones-escalera.webp",
-        "byAla": {
-          "60": "/images/productos/kit-de-uniones-escalera.webp",
-          "65": "/images/productos/kit-de-uniones-escalera.webp",
-          "75": "/images/productos/kit-de-uniones-escalera-ala75.webp",
-          "95": "/images/productos/kit-de-uniones-escalera-ala100.webp",
-          "100": "/images/productos/kit-de-uniones-escalera-ala100.webp"
-        }
+        "primary": "/images/productos/kit-de-uniones-escalera.webp"
       }
     },
     {
@@ -3861,6 +4221,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Tramo Divisor",
+      "subtitle": "Separador longitudinal · tramo de 3000 mm",
+      "shortDescription": "Tramo Divisor para escalera portacables BGA — separador longitudinal de 3000 mm que divide el ancho de la escalera en dos sectores.",
+      "longDescription": "El tramo divisor corre a lo largo de la escalera y separa el ancho en dos sectores. Se usa para mantener separados circuitos que no deben compartir espacio — fuerza y control, o tensiones distintas — sin tener que montar dos recorridos.\n\nSe fabrica en tramos de 3000 mm, con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY, para acompañar la altura del larguero.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "tramo divisor escalera, separador escalera portacables, divisor de circuitos escalerilla",
+      "meta": {
+        "title": "Tramo Divisor para Escalera | BGA Paraguay",
+        "description": "Tramo divisor para escalera portacables, 3000 mm. Separa circuitos dentro del mismo recorrido. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ala",
@@ -3915,6 +4293,28 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Soporte De Suspensión — Escalera",
+      "subtitle": "Fijación colgada del recorrido",
+      "shortDescription": "Soporte de Suspensión para escalera portacables BGA — sostiene el recorrido colgado desde la losa o la estructura, con ala de 60 a 100 mm.",
+      "longDescription": "El soporte de suspensión sostiene la escalera colgada desde la losa o la estructura superior. Es la fijación estándar de los recorridos aéreos, y define junto con el espesor de la escalera la distancia admisible entre apoyos.\n\nSe pide por la ala del tramo, con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY, en espesores de #12 a #18. Se completa con varilla roscada, tuercas y arandelas (FXS6235).\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Cada cuánto se coloca?",
+          "a": "Depende del ancho, del espesor y de la carga de cable. Como referencia de obra se usan vanos de 1,5 a 3 m; el vano final conviene definirlo con la vendedora según el caso."
+        },
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "soporte de suspension escalera, colgante escalera portacables, fijacion escalerilla, soporte escalera",
+      "meta": {
+        "title": "Soporte de Suspensión para Escalera | BGA",
+        "description": "Soporte de suspensión para escalera portacables. Fijación colgada desde losa o estructura. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ala",
@@ -3961,7 +4361,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Acoplamiento Para Tablero",
-      "subtitle": "Alas externas",
+      "subtitle": "Llegada de la escalera al tablero",
+      "shortDescription": "Acoplamiento para Tablero de escalera portacables BGA — remata la llegada del recorrido al gabinete o tablero, en anchos de 100 a 800 mm.",
+      "longDescription": "El acoplamiento para tablero remata la llegada de la escalera al gabinete o al tablero, dando una entrada prolija y firme en lugar de un corte de tramo terminado en obra.\n\nAcompaña el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm. Se fija con bulón 5/16\" con traba, arandela y tuerca (FXS6221).\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "acoplamiento para tablero escalera, llegada a tablero escalera portacables, remate escalerilla",
+      "meta": {
+        "title": "Acoplamiento para Tablero | Escalera BGA",
+        "description": "Acoplamiento para tablero de escalera portacables, de 100 a 800 mm. Remate de llegada al tablero. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "ancho",
@@ -4027,6 +4444,28 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Salida Horizontal Para Electroducto",
+      "subtitle": "Salida lateral a caño · de 1/2\" a 4\"",
+      "shortDescription": "Salida Horizontal para Electroducto de escalera portacables BGA — conecta el recorrido al electroducto en el plano horizontal, en medidas de 1/2\" a 4\".",
+      "longDescription": "La salida horizontal para electroducto resuelve el paso del cable desde la escalera hacia un caño, en el plano horizontal. Es el punto donde la canalización abierta se convierte en canalización cerrada para llegar al equipo.\n\nSe fabrica en las medidas de electroducto de 1/2\", 3/4\", 1\", 1.1/4\", 1.1/2\", 2\", 2.1/2\", 3\" y 4\".\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Qué medidas de caño cubre?",
+          "a": "De 1/2\" a 4\": 1/2\", 3/4\", 1\", 1.1/4\", 1.1/2\", 2\", 2.1/2\", 3\" y 4\"."
+        },
+        {
+          "q": "¿Cuál es la diferencia con la salida vertical?",
+          "a": "La horizontal saca el cable en el plano de la escalera; la vertical lo saca hacia arriba o hacia abajo. Se eligen por la posición del equipo."
+        },
+        {
+          "q": "¿Cómo se fija?",
+          "a": "Con bulón 5/16\" con traba, arandela y tuerca (FXS6221), que se cotiza aparte."
+        }
+      ],
+      "keywords": "salida horizontal electroducto escalera, salida a caño escalera portacables, conexion electroducto escalerilla",
+      "meta": {
+        "title": "Salida Horizontal para Electroducto | Escalera BGA",
+        "description": "Salida horizontal para electroducto en escalera portacables, de 1/2\" a 4\". Pasa el cable de la escalera al caño. BGA."
+      },
       "dimensionAxes": [
         {
           "id": "espesor",
@@ -4078,6 +4517,28 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Salida Vertical Para Electroducto",
+      "subtitle": "Salida vertical a caño · de 1/2\" a 4\"",
+      "shortDescription": "Salida Vertical para Electroducto de escalera portacables BGA — conecta el recorrido al electroducto en sentido vertical, en medidas de 1/2\" a 4\".",
+      "longDescription": "La salida vertical para electroducto pasa el cable desde la escalera al caño en sentido vertical, hacia arriba o hacia abajo. Es la salida típica de las bajadas a motores, tomas y tableros ubicados debajo del recorrido.\n\nSe fabrica en las medidas de electroducto de 1/2\", 3/4\", 1\", 1.1/4\", 1.1/2\", 2\", 2.1/2\", 3\" y 4\".\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Qué medidas de caño cubre?",
+          "a": "De 1/2\" a 4\": 1/2\", 3/4\", 1\", 1.1/4\", 1.1/2\", 2\", 2.1/2\", 3\" y 4\"."
+        },
+        {
+          "q": "¿Cuál es la diferencia con la salida horizontal?",
+          "a": "La vertical saca el cable hacia arriba o hacia abajo; la horizontal lo saca en el plano de la escalera."
+        },
+        {
+          "q": "¿Cómo se fija?",
+          "a": "Con bulón 5/16\" con traba, arandela y tuerca (FXS6221), que se cotiza aparte."
+        }
+      ],
+      "keywords": "salida vertical electroducto escalera, bajada a caño escalera portacables, conexion electroducto escalerilla",
+      "meta": {
+        "title": "Salida Vertical para Electroducto | Escalera BGA",
+        "description": "Salida vertical para electroducto en escalera portacables, de 1/2\" a 4\". Baja o sube el cable al caño. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "espesor",
@@ -4129,6 +4590,24 @@
       "categoryId": "escaleras",
       "type": "producto",
       "name": "Salida Lateral Para Perfilado",
+      "subtitle": "Paso de la escalera al perfilado",
+      "shortDescription": "Salida Lateral para Perfilado de escalera portacables BGA — deriva desde la escalera hacia un tramo de perfilado.",
+      "longDescription": "La salida lateral para perfilado conecta el recorrido principal de escalera con un tramo de perfilado, que es la canalización de los ramales de menor sección — alimentación de luminarias, tomas y circuitos de control.\n\nSe fija con bulón 5/16\" con traba, arandela y tuerca (FXS6221). Del otro lado se continúa con los accesorios de la línea de perfilados de BGA.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "salida lateral para perfilado escalera, derivacion a perfilado, escalera a perfilado, transicion canalizacion",
+      "meta": {
+        "title": "Salida Lateral para Perfilado | Escalera BGA",
+        "description": "Salida lateral para perfilado en escalera portacables. Deriva del recorrido principal al perfilado. BGA Paraguay."
+      },
       "dimensionAxes": [
         {
           "id": "espesor",
@@ -4164,6 +4643,28 @@
       "categoryId": "escaleras",
       "type": "subfamilia",
       "name": "Curvas y Derivaciones para Escalera",
+      "subtitle": "Giros, cambios de plano, Te y cruzeta · 14 piezas",
+      "shortDescription": "Curvas y Derivaciones para escalera portacables BGA — giros horizontales, cambios de plano, Te y cruzeta · 14 piezas, en anchos de 100 a 800 mm.",
+      "longDescription": "Las curvas y derivaciones resuelven todos los cambios de dirección, de plano y las salidas de ramal del recorrido de escalera, sin cortar ni empalmar tramos en obra.\n\nIncluye las curvas horizontales de 90° y 45°, en versión curva y recta; las curvas verticales externas e internas de 90° y 45° y la de inversión; las Te horizontales y verticales; y la unión cruzeta en sus dos trazados.\n\nTodas acompañan el ancho y la ala del tramo, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm, y se unen con el Kit de Uniones para Escalera.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Cuándo uso la versión curva y cuándo la recta?",
+          "a": "La curva respeta mejor el radio de curvatura del cable y es la opción por defecto. La recta resuelve el mismo giro a escuadra, para los puntos donde no hay espacio para ese radio."
+        },
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "curvas escalera portacables, derivaciones escalera, accesorios escalera portacables, te y cruzeta escalera",
+      "meta": {
+        "title": "Curvas y Derivaciones para Escalera | BGA",
+        "description": "Curvas 90° y 45°, cambios de plano, Te y cruzeta para escalera portacables, de 100 a 800 mm. BGA Paraguay. Cotizá online."
+      },
       "images": {
         "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
       },
@@ -4189,6 +4690,28 @@
       "categoryId": "escaleras",
       "type": "subfamilia",
       "name": "Reducciones para Escalera",
+      "subtitle": "Cambio de ancho central o lateral · 3 piezas",
+      "shortDescription": "Reducciones para escalera portacables BGA — cambio de ancho centrado o alineado por un lado · 3 piezas, de 100 a 800 mm.",
+      "longDescription": "Las reducciones cambian el ancho del recorrido cuando el tendido pierde cables después de una derivación y ya no necesita la sección de origen.\n\nLa reducción central mantiene alineados los ejes de los dos tramos. Las laterales, derecha e izquierda, mantienen alineado uno de los lados — la opción cuando el recorrido corre pegado a una pared o a una estructura.\n\nSe piden indicando el ancho de entrada y el de salida, dentro de la serie de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Cuándo uso la central y cuándo la lateral?",
+          "a": "La central cuando los dos tramos pueden quedar centrados entre sí. La lateral cuando un lado del recorrido tiene que seguir alineado, por una pared o una estructura."
+        },
+        {
+          "q": "¿Cómo se define derecha o izquierda?",
+          "a": "Mirando en el sentido del recorrido del cable."
+        },
+        {
+          "q": "¿Viene con la tornillería?",
+          "a": "No. La unión entre tramos y accesorios se hace con el Kit de Uniones para Escalera (KIT5262), que se cotiza aparte."
+        }
+      ],
+      "keywords": "reducciones escalera portacables, reduccion central escalera, reduccion lateral escalera, cambio de ancho",
+      "meta": {
+        "title": "Reducciones para Escalera Portacables | BGA",
+        "description": "Reducciones central, lateral derecha e izquierda para escalera portacables, de 100 a 800 mm. BGA Paraguay."
+      },
       "images": {
         "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
       },
@@ -4203,6 +4726,28 @@
       "categoryId": "escaleras",
       "type": "subfamilia",
       "name": "Uniones y Empalmes para Escalera",
+      "subtitle": "Empalme entre tramos y separación de circuitos · 3 piezas",
+      "shortDescription": "Uniones y Empalmes para escalera portacables BGA — unión simple en dos alas, kit completo con tornillería y tramo divisor · 3 piezas.",
+      "longDescription": "Las uniones y empalmes dan continuidad al recorrido y ordenan lo que corre adentro.\n\nLa unión simple empalma dos tramos consecutivos y se elige por la ala. El kit de uniones resuelve el empalme completo — dos piezas más la tornillería — y es lo que conviene pedir para obra. El tramo divisor separa el ancho de la escalera en dos sectores, para circuitos que no deben compartir espacio.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Pido la unión suelta o el kit?",
+          "a": "Para obra, el kit: trae las dos piezas del empalme más la tornillería, que es el faltante más común. La unión suelta sirve para reposición."
+        },
+        {
+          "q": "¿Cuántos empalmes lleva mi recorrido?",
+          "a": "Uno cada 3 m, que es el largo del tramo estándar. Un recorrido de 30 m lleva nueve."
+        },
+        {
+          "q": "¿Para qué sirve el tramo divisor?",
+          "a": "Para separar circuitos dentro de la misma escalera — fuerza y control, o tensiones distintas — sin montar un segundo recorrido."
+        }
+      ],
+      "keywords": "uniones escalera portacables, kit de uniones escalera, empalme escalera, tramo divisor escalera",
+      "meta": {
+        "title": "Uniones y Empalmes para Escalera | BGA",
+        "description": "Unión simple, kit de uniones y tramo divisor para escalera portacables. Empalmes y separación de circuitos. BGA."
+      },
       "images": {
         "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
       },
@@ -4217,6 +4762,28 @@
       "categoryId": "escaleras",
       "type": "subfamilia",
       "name": "Soportes y Fijación para Escalera",
+      "subtitle": "Suspensión del recorrido y llegada a tablero · 2 piezas",
+      "shortDescription": "Soportes y Fijación para escalera portacables BGA — soporte de suspensión y acoplamiento para tablero · 2 piezas.",
+      "longDescription": "Los soportes sostienen el recorrido y definen, junto con el espesor de la escalera, la distancia admisible entre apoyos.\n\nEl soporte de suspensión sostiene la escalera colgada desde la losa o la estructura y se completa con varilla roscada, tuercas y arandelas. El acoplamiento para tablero remata la llegada del recorrido al gabinete, con bulón 5/16\" con traba, arandela y tuerca.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Cada cuánto va un soporte?",
+          "a": "Depende del ancho, del espesor y de la carga de cable. Como referencia de obra se usan vanos de 1,5 a 3 m; conviene definir el vano final con la vendedora según el caso."
+        },
+        {
+          "q": "¿La tornillería viene incluida?",
+          "a": "No. La varilla roscada con tuercas y arandelas (FXS6235) y el bulón 5/16\" (FXS6221) se cotizan aparte."
+        },
+        {
+          "q": "¿En qué anchos y alas se fabrica?",
+          "a": "En los mismos anchos del tramo — 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm — y con ala de 60, 75 y 100 mm en la línea CL y 65 y 95 mm en la CLY. La pieza se pide con el mismo ancho y la misma ala del tramo al que se conecta."
+        }
+      ],
+      "keywords": "soportes escalera portacables, suspension escalera, fijacion escalera portacables, acoplamiento tablero",
+      "meta": {
+        "title": "Soportes y Fijación para Escalera | BGA",
+        "description": "Soporte de suspensión y acoplamiento para tablero de escalera portacables. Fijación del recorrido. BGA Paraguay."
+      },
       "images": {
         "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
       },
@@ -4230,6 +4797,28 @@
       "categoryId": "escaleras",
       "type": "subfamilia",
       "name": "Salidas para Escalera",
+      "subtitle": "Paso a electroducto y a perfilado · 3 piezas",
+      "shortDescription": "Salidas y Transiciones para escalera portacables BGA — paso a electroducto en horizontal y vertical (1/2\" a 4\") y derivación a perfilado · 3 piezas.",
+      "longDescription": "Las salidas resuelven el punto donde el recorrido de escalera pasa a otra canalización.\n\nLas salidas horizontal y vertical conectan con electroducto, en medidas de 1/2\" a 4\", para llegar al equipo por caño. La salida lateral para perfilado deriva hacia la línea de perfilados, que es la canalización de los ramales de menor sección — luminarias, tomas y circuitos de control.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿Qué medidas de electroducto cubren?",
+          "a": "De 1/2\" a 4\": 1/2\", 3/4\", 1\", 1.1/4\", 1.1/2\", 2\", 2.1/2\", 3\" y 4\"."
+        },
+        {
+          "q": "¿Cuándo uso la horizontal y cuándo la vertical?",
+          "a": "Por la posición del equipo: la horizontal saca el cable en el plano de la escalera, la vertical hacia arriba o hacia abajo."
+        },
+        {
+          "q": "¿Cómo se fijan?",
+          "a": "Con bulón 5/16\" con traba, arandela y tuerca (FXS6221), que se cotiza aparte."
+        }
+      ],
+      "keywords": "salidas escalera portacables, salida a electroducto escalera, salida a perfilado, transicion canalizacion",
+      "meta": {
+        "title": "Salidas para Escalera Portacables | BGA",
+        "description": "Salidas horizontal y vertical a electroducto de 1/2\" a 4\" y salida lateral a perfilado, para escalera portacables. BGA."
+      },
       "images": {
         "primary": "/images/escalera-portacables-bga-industria-paraguay.webp"
       },
