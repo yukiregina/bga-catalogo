@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { searchProducts } from '@/lib/search'
+import { track } from '@/lib/analytics'
 import styles from '@/app/landing.module.css'
 
 // TODO: once product entries carry a normalized `material` / `thickness` /
@@ -19,6 +21,26 @@ export default function ProductFinder({ categories = [] }) {
   const router = useRouter()
   const [query, setQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
+
+  // Guarda a última busca já medida — sem isso, digitar e apagar de volta pro
+  // mesmo termo dispararia o evento de novo, inflando a contagem de buscas.
+  const lastTracked = useRef('')
+
+  // 800ms depois da última tecla, com pelo menos 3 caracteres — abaixo disso
+  // é ruído (usuário ainda digitando a primeira letra). resultados vem do
+  // mesmo índice leve que a página /catalogo usa (lib/search.js), não do
+  // catalog.json inteiro.
+  useEffect(() => {
+    const q = query.trim().toLowerCase()
+    if (q.length < 3 || q === lastTracked.current) return
+
+    const timer = setTimeout(() => {
+      lastTracked.current = q
+      track('buscar_catalogo', { termino: q, resultados: searchProducts(q).length })
+    }, 800)
+
+    return () => clearTimeout(timer)
+  }, [query])
 
   function handleSearchSubmit(e) {
     e.preventDefault()
@@ -52,7 +74,17 @@ export default function ProductFinder({ categories = [] }) {
         {categories.map(cat => {
           const productCount = cat.productCount ?? 0
           return (
-            <Link key={cat.id} href={`/catalogo/${cat.id}`} className={styles.productCard}>
+            <Link
+              key={cat.id}
+              href={`/catalogo/${cat.id}`}
+              className={styles.productCard}
+              onClick={() => {
+                // Guiado pela presença do badge, não por um id de categoria fixo —
+                // assim uma linha nova com selo no futuro já sai medida sem
+                // precisar tocar neste componente de novo.
+                if (cat.badge) track('click_linea_nueva', { familia: cat.id, badge: cat.badge })
+              }}
+            >
               <div className={styles.productImage}>
                 {cat.image ? (
                   <>

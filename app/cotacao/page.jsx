@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useCart } from '@/components/CartProvider'
 import config from '@/client.config.js'
@@ -20,6 +20,20 @@ const RUBROS = [
 
 export default function CotacaoPage() {
   const { items, removeItem, updateQuantity, updateObservation } = useCart()
+
+  // Marca a primeira interação com qualquer campo do formulário — não o
+  // primeiro render, que só significa "abriu o carrinho". É o que separa
+  // "abriu" de "começou a preencher" de "enviou" (handleSend). Ref, não
+  // state, porque não deve re-renderizar nada.
+  const startedRef = useRef(false)
+  function markStarted() {
+    if (startedRef.current) return
+    startedRef.current = true
+    track('iniciar_cotizacion', {
+      items: items.length,
+      unidades: items.reduce((s, i) => s + (Number(i.quantity) || 0), 0),
+    })
+  }
 
   // Texto digitado por linha, enquanto o campo está em edição — permite ficar
   // vazio no meio da digitação sem forçar updateQuantity (que normalizaria pra
@@ -53,6 +67,7 @@ export default function CotacaoPage() {
   })
 
   function handleForm(e) {
+    markStarted()
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
@@ -250,6 +265,7 @@ export default function CotacaoPage() {
                           pattern="[0-9]*"
                           value={qtyDrafts[lineId] ?? String(quantity)}
                           onChange={e => {
+                            markStarted()
                             const digits = e.target.value.replace(/\D/g, '')
                             setQtyDrafts(prev => ({ ...prev, [lineId]: digits }))
                           }}
@@ -292,7 +308,7 @@ export default function CotacaoPage() {
                     type="text"
                     placeholder="Observación (opcional)"
                     value={observation}
-                    onChange={e => updateObservation(lineId, e.target.value)}
+                    onChange={e => { markStarted(); updateObservation(lineId, e.target.value) }}
                     className="w-full h-7 text-[11px] px-2 border border-border-subtle rounded bg-surface-elevated text-text-primary placeholder:text-text-muted focus:outline-none focus:border-brand-primary transition-colors"
                   />
                 </div>
