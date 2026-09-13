@@ -258,19 +258,20 @@
       "pdfUrl": "/docs/ficha-tecnica-cajas-metalicas-bga.pdf"
     },
     {
-      "id": "aramados",
-      "name": "Aramados",
-      "displayMode": "contact",
-      "description": "Bandejas y accesorios en malla de alambre soldado. Mayor ventilación y visibilidad del cableado para instalaciones industriales y de telecomunicaciones.",
-      "image": "/images/aramados-portacables-bga-industria-paraguay.webp"
-    },
-    {
       "id": "gabinetes",
       "name": "Gabinetes Modulares",
       "displayMode": "pdf",
       "description": "Estructura desmontable en chapa de acero de 2mm con paneles galvanizados, ojal de elevación, manija oscilante y perfil EPDM antipolvo IP.",
       "image": "/images/gabinete-modular-metalico-bga-tablero-electrico-paraguay.webp",
       "pdfUrl": "/docs/ficha-tecnica-gabinetes-modulares-bga.pdf"
+    },
+    {
+      "id": "bandejas-de-alambre",
+      "name": "Bandejas Portacables de Alambre",
+      "displayMode": "contact",
+      "description": "Bandejas portacables en malla de alambre soldado — sistema tipo malla, liviano y ventilado, para telecomunicaciones, data centers y tendidos que cambian seguido.",
+      "image": "/images/bandeja-portacable-alambre-bga-malla-soldada-paraguay.webp",
+      "badge": "Nueva línea"
     }
   ],
   "products": [

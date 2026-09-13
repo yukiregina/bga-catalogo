@@ -57,6 +57,7 @@ export default function ProductFinder({ categories = [] }) {
                 {cat.image ? (
                   <>
                     <span className={styles.productImgOverlay}>{cat.name}</span>
+                    {cat.badge && <span className={styles.productBadge}>{cat.badge}</span>}
                     <img src={cat.image} alt={cat.name} loading="lazy" />
                   </>
                 ) : (
