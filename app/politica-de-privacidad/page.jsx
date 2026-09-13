@@ -24,7 +24,7 @@ export default function PoliticaDePrivacidadPage() {
 
         <div className="max-w-3xl">
           <p className="text-sm text-text-secondary mb-8 leading-relaxed">
-            Última actualización: 3 de septiembre de 2026
+            Última actualización: 13 de septiembre de 2026
           </p>
 
           <section className="mb-10">
@@ -98,11 +98,20 @@ export default function PoliticaDePrivacidadPage() {
 
           <section className="mb-10">
             <h2 className="font-brand text-base font-bold text-brand-primary mb-3">7. Cookies y medición</h2>
+            <p className="text-sm text-text-secondary leading-relaxed mb-3">
+              Usamos Google Tag Manager para administrar las etiquetas de medición del sitio, y Google
+              Analytics 4 como herramienta de medición: cuentan visitas, páginas vistas y el recorrido por el
+              catálogo. Ambos instalan cookies propias de Google.
+            </p>
+            <p className="text-sm text-text-secondary leading-relaxed mb-3">
+              También podemos usar etiquetas de publicidad de Google Ads y de Meta (Facebook/Instagram) para
+              saber qué anuncio trajo tu visita, y así entender qué campañas funcionan. Si llegaste desde un
+              anuncio, guardamos ese dato junto con tu pedido de cotización.
+            </p>
             <p className="text-sm text-text-secondary leading-relaxed">
-              Usamos Google Analytics 4, que instala cookies para contar visitas y entender el recorrido por el
-              catálogo. No usamos cookies de publicidad ni de remarketing. Podés bloquearlas desde la
-              configuración de tu navegador o con el complemento de inhabilitación de Google Analytics: el
-              catálogo sigue funcionando igual.
+              Podés bloquear estas cookies desde la configuración de tu navegador o con el complemento de
+              inhabilitación de Google Analytics: el catálogo y el pedido de cotización siguen funcionando
+              igual, sin ninguna cookie de medición aceptada.
             </p>
           </section>
 

@@ -1,6 +1,15 @@
-// BGA Lead Tracker — Google Apps Script  ·  v4 (2026-09-01)
+// BGA Lead Tracker — Google Apps Script  ·  v5 (2026-09-13)
 // Cole em: script.google.com → seu projeto → Code.gs
 // Implantar → Gerenciar implantações → Editar (lápis) → Nova versão → Implantar
+//
+// MUDANÇA DA v5 (medição de campanha): 5 colunas novas no FIM das duas
+// planilhas — Fuente, Medio, Campaña, Click ID, Página de entrada — vindas de
+// lib/attribution.js (captura de utm_*/gclid/fbclid no navegador). Vão no
+// fim, não no meio, pelo mesmo motivo documentado na mudança da v3 abaixo:
+// Estado é a 12ª coluna e uma inserção no meio já quebrou essa contagem uma
+// vez. ATENÇÃO — passo manual fora do código: uma planilha criada ANTES desta
+// mudança mantém a linha de cabeçalho antiga. Sem adicionar as 5 colunas à
+// mão na aba existente, os valores novos gravam sob cabeçalhos em branco.
 //
 // MUDANÇA DA v4 (auditoria pré-deploy): `clampField` agora neutraliza fórmula.
 // Antes, o texto do visitante ia cru pro `appendRow` e o Sheets o avaliava —
@@ -30,7 +39,7 @@
 //   Agora doGet grava explicitamente em getSheets()[0] e "Cotizaciones" é
 //   sempre inserida no fim.
 
-var LIMITS = { nombre: 120, empresa: 120, sector: 80, mensaje: 4000 };
+var LIMITS = { nombre: 120, empresa: 120, sector: 80, mensaje: 4000, atribucion: 200 };
 
 var MAX_ITEMS = 200;
 
@@ -39,7 +48,8 @@ var TAB_COTIZACIONES = 'Cotizaciones';
 var HEADERS_COTIZACIONES = [
   'Fecha', 'Nombre', 'RUC / Empresa', 'Ciudad', 'Rubro',
   'Ítems', 'Cant. total', 'SKUs', 'Obra', 'Plazo', 'Origen',
-  'Estado', 'Contactado el', 'Propuesta el', 'Notas'
+  'Estado', 'Contactado el', 'Propuesta el', 'Notas',
+  'Fuente', 'Medio', 'Campaña', 'Click ID', 'Página de entrada'
 ];
 
 var ESTADOS = ['nuevo', 'contactado', 'propuesta', 'cerrado', 'perdido'];
@@ -55,6 +65,14 @@ function doGet(e) {
   var sector  = clampField(e.parameter.sector, LIMITS.sector);
   var mensaje = clampField(e.parameter.mensaje, LIMITS.mensaje);
 
+  // Origem da visita — opcional, mesmo motivo de Ciudad: nunca entra na
+  // guarda de bad_request. Vem de lib/attribution.js via LandingPage.jsx.
+  var fuente   = clampField(e.parameter.fuente, LIMITS.atribucion);
+  var medio    = clampField(e.parameter.medio, LIMITS.atribucion);
+  var campana  = clampField(e.parameter.campana, LIMITS.atribucion);
+  var clickId  = clampField(e.parameter.click_id, LIMITS.atribucion);
+  var entrada  = clampField(e.parameter.pagina_entrada, LIMITS.atribucion);
+
   // Ciudad é opcional: não entra na guarda. Rejeitar o que o formulário aceita
   // seria falha silenciosa — o dado que existe se perderia sem aviso.
   if (!nombre || !empresa || !sector || !mensaje) {
@@ -64,12 +82,15 @@ function doGet(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
 
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['Fecha', 'Nombre', 'Empresa', 'Ciudad', 'Rubro', 'Mensaje']);
-    sheet.getRange(1, 1, 1, 6).setFontWeight('bold');
+    var headers = ['Fecha', 'Nombre', 'Empresa', 'Ciudad', 'Rubro', 'Mensaje',
+      'Fuente', 'Medio', 'Campaña', 'Click ID', 'Página de entrada'];
+    sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
   }
 
-  sheet.appendRow([new Date(), nombre, empresa, ciudad, sector, mensaje]);
+  sheet.appendRow([new Date(), nombre, empresa, ciudad, sector, mensaje,
+    fuente, medio, campana, clickId, entrada]);
   return jsonOut({ status: 'ok' });
 }
 
@@ -120,7 +141,13 @@ function doPost(e) {
     clampField(data.plazo, LIMITS.sector),
     clampField(data.origen || 'catalogo', 40),
     'nuevo',
-    '', '', ''
+    '', '', '',
+    // Origem da visita — vem de lib/attribution.js via app/cotacao/page.jsx.
+    clampField(data.fuente, LIMITS.atribucion),
+    clampField(data.medio, LIMITS.atribucion),
+    clampField(data.campana, LIMITS.atribucion),
+    clampField(data.click_id, LIMITS.atribucion),
+    clampField(data.pagina_entrada, LIMITS.atribucion)
   ]);
 
   return jsonOut({ status: 'ok' });
