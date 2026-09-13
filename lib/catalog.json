@@ -58,7 +58,12 @@
         "id": "elec",
         "name": "Pintura Electrostática en Polvo",
         "base": "Sobre chapa pregalvanizada",
-        "colores": ["BEIGE Texturizado RAL 7032", "NEGRO Microtexturizado", "GRIS Texturizado RAL 7035", "NARANJA RAL 2009"],
+        "colores": [
+          "BEIGE Texturizado RAL 7032",
+          "NEGRO Microtexturizado",
+          "GRIS Texturizado RAL 7035",
+          "NARANJA RAL 2009"
+        ],
         "useCase": "interiores y exteriores, con color y acabado estético"
       }
     ],
@@ -69,7 +74,7 @@
       },
       {
         "gauge": "#14",
-        "mm": 2.0
+        "mm": 2
       },
       {
         "gauge": "#16",
@@ -6575,11 +6580,11 @@
     {
       "id": "gabinete-modular-puerta-simple",
       "categoryId": "gabinetes",
-      "type": "producto",
+      "type": "subfamilia",
       "name": "Gabinete Modular Puerta Simple",
       "subtitle": "1500 o 1900 mm de alto · 600 u 800 mm de ancho · IP55 · con placa de montaje",
-      "shortDescription": "Gabinete modular con puerta simple, placa de montaje y zócalo incluidos. Alto 1500 o 1900 mm, ancho 600 u 800 mm, profundidad de 400 a 800 mm.",
-      "longDescription": "El gabinete modular BGA con puerta simple es la envolvente de uso general para tableros de comando, control, distribución y automatización de mayor porte que no requieren doble puerta. Viene armado con placa de montaje (PLM), trillos verticales para fijarla, zócalo de base y puerta simple con bisagra reforzada y manija con porta candado.\n\nEl cuerpo es de chapa galvanizada en espesor #14 (cuerpo) y #16 (placa de montaje), con 4 ojales de elevación para izar el gabinete en la instalación y junta EPDM antipolvo en el marco de la puerta. Protección IP55 contra polvo y chorros de agua.\n\nEl cuerpo y la puerta van en Beige RAL 7032, con la placa de montaje interior en Naranja RAL 2009 — es el combo de acabado estándar, no hay elección de color.\n\nDisponible en 9 combinaciones: alto 1500 o 1900 mm (+100 mm de zócalo), ancho 600 u 800 mm, profundidad de 400 a 800 mm según el modelo — se elige la medida dentro de la ficha del producto. Para una medida fuera de esta lista, la vendedora puede evaluar una fabricación especial.",
+      "shortDescription": "Gabinete modular con puerta simple, placa de montaje y zócalo incluidos. Alto 1500 o 1900 mm, ancho 600 u 800 mm, profundidad de 400 a 800 mm. Nueve medidas estándar.",
+      "longDescription": "El gabinete modular BGA con puerta simple es la envolvente de uso general para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso y no requieren doble puerta. Viene armado con placa de montaje (PLM), trillos para fijarla, zócalo de base y puerta simple con bisagra reforzada y manija con porta candado.\n\nEl cuerpo es de chapa galvanizada en espesor #14, con placa de montaje en #16, 4 ojales de elevación para izar el gabinete en la instalación y junta EPDM antipolvo en el marco de la puerta. Protección IP55 contra polvo y chorros de agua.\n\nEl cuerpo y la puerta van en Beige RAL 7032, con la placa de montaje interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no hay elección de color.\n\nSon nueve medidas estándar: alto 1500 o 1900 mm (más 100 mm de zócalo), ancho 600 u 800 mm y profundidad de 400 a 800 mm. Cada medida tiene su ficha — elegí la tuya en la lista de abajo. Para una medida fuera de esta lista, la vendedora puede evaluar una fabricación especial.",
       "faq": [
         {
           "q": "¿Qué significa \"modular\" en este gabinete?",
@@ -6587,7 +6592,7 @@
         },
         {
           "q": "¿Trae placa de montaje incluida?",
-          "a": "Sí, viene \"Con PLM\" de fábrica, en chapa galvanizada #16, más los trillos verticales para fijarla en la posición que necesites."
+          "a": "Sí, viene \"Con PLM\" de fábrica, en chapa galvanizada #16, más los trillos para fijarla en la posición que necesites."
         },
         {
           "q": "¿Qué protección tiene contra polvo y agua?",
@@ -6595,11 +6600,11 @@
         },
         {
           "q": "¿Se puede pedir con puerta doble?",
-          "a": "Sí, para anchos de 1200 mm existe la versión Gabinete Modular Puerta Doble."
+          "a": "Sí, para el ancho de 1200 mm existe la versión Gabinete Modular Puerta Doble."
         },
         {
-          "q": "¿Cómo se cotiza?",
-          "a": "Elegís alto, ancho y profundidad en la ficha del producto y lo agregás a tu cotización. Si necesitás una medida distinta, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora."
+          "q": "¿Cómo elijo la medida?",
+          "a": "Cada medida tiene su propia ficha con las dimensiones a la vista. Elegí la que corresponde a tu tablero y agregala a la cotización. Si no estás seguro, marcá \"Necesito ayuda técnica\" o consultá con la vendedora."
         }
       ],
       "keywords": "gabinete modular IP55, gabinete puerta simple, tablero eléctrico modular Paraguay, gabinete con placa de montaje, envolvente metálica IP55",
@@ -6607,56 +6612,195 @@
         "title": "Gabinete Modular Puerta Simple IP55 | BGA",
         "description": "Gabinete modular de puerta simple, IP55, con placa de montaje, trillos y zócalo. De 1500 a 1900 mm de alto. Fabricado en Paraguay por BGA."
       },
-      "variants": [
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      },
+      "includedPages": [
+        "gabinete-pm1908080bc",
+        "gabinete-pm1908060bc",
+        "gabinete-pm1908040bc",
+        "gabinete-pm1906080bc",
+        "gabinete-pm1906060bc",
+        "gabinete-pm1906040bc",
+        "gabinete-pm1506060bc",
+        "gabinete-pm1508040bc",
+        "gabinete-pm1508060bc"
+      ]
+    },
+    {
+      "id": "gabinete-modular-puerta-doble",
+      "categoryId": "gabinetes",
+      "type": "subfamilia",
+      "name": "Gabinete Modular Puerta Doble",
+      "subtitle": "1900 mm de alto · 1200 mm de ancho · IP55 · con placa de montaje",
+      "shortDescription": "Gabinete modular con puerta doble para tableros de gran porte. Alto 1900 mm, ancho 1200 mm, profundidad de 400 a 800 mm. Tres medidas estándar.",
+      "longDescription": "El gabinete modular BGA con puerta doble es la versión de 1200 mm de ancho de la línea modular: el mismo sistema de placa de montaje y trillos, con dos hojas de puerta para poder abrir el frente completo en espacios donde una hoja de 1200 mm no tendría lugar para girar.\n\nViene armado con placa de montaje (PLM) de 1145 mm, trillos, zócalo de base, bisagra reforzada y manija con porta candado en cada hoja. Cuerpo en chapa galvanizada #14 con placa en #16, 4 ojales de elevación y junta EPDM antipolvo en el marco. Protección IP55.\n\nCuerpo y puertas en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — combo de acabado estándar de fábrica, sin elección de color.\n\nSon tres medidas estándar: 1900 mm de alto (más 100 mm de zócalo) por 1200 mm de ancho, con profundidad de 400, 600 u 800 mm. Cada una tiene su ficha. Para una medida fuera de esta lista, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
         {
-          "sku": "PM1908080BC",
-          "label": "1900(+100)×800×800 mm",
-          "role": "pieza"
+          "q": "¿Cuándo conviene puerta doble en vez de simple?",
+          "a": "Cuando el gabinete es de 1200 mm de ancho: dos hojas necesitan la mitad del espacio de apertura al frente que una sola hoja de ese ancho."
         },
         {
-          "sku": "PM1908060BC",
-          "label": "1900(+100)×800×600 mm",
-          "role": "pieza"
+          "q": "¿Qué placa de montaje lleva?",
+          "a": "La PML114, de 1145 mm de ancho, que es la que corresponde al gabinete de 1200 mm. Viene incluida."
         },
         {
-          "sku": "PM1908040BC",
-          "label": "1900(+100)×800×400 mm",
-          "role": "pieza"
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco y bisagra reforzada en cada hoja."
         },
         {
-          "sku": "PM1906080BC",
-          "label": "1900(+100)×600×800 mm",
-          "role": "pieza"
+          "q": "¿Hay versión de 1500 mm de alto?",
+          "a": "En puerta doble las tres medidas estándar son de 1900 mm de alto. Para otro alto, consultá con la vendedora."
         },
         {
-          "sku": "PM1906060BC",
-          "label": "1900(+100)×600×600 mm",
-          "role": "pieza"
-        },
-        {
-          "sku": "PM1906040BC",
-          "label": "1900(+100)×600×400 mm",
-          "role": "pieza"
-        },
-        {
-          "sku": "PM1506060BC",
-          "label": "1500(+100)×600×600 mm",
-          "role": "pieza"
-        },
-        {
-          "sku": "PM1508040BC",
-          "label": "1500(+100)×800×400 mm",
-          "role": "pieza"
-        },
-        {
-          "sku": "PM1508060BC",
-          "label": "1500(+100)×800×600 mm",
-          "role": "pieza"
+          "q": "¿Cómo elijo la medida?",
+          "a": "Cambia solo la profundidad: 400, 600 u 800 mm. Elegí la ficha que corresponde y agregala a la cotización."
         }
       ],
+      "keywords": "gabinete modular puerta doble, gabinete 1900x1200 IP55, tablero eléctrico gran porte Paraguay, envolvente doble puerta",
+      "meta": {
+        "title": "Gabinete Modular Puerta Doble IP55 | BGA",
+        "description": "Gabinete modular de puerta doble, 1900×1200 mm, IP55, con placa de montaje, trillos y zócalo. Fabricado en Paraguay por BGA."
+      },
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-doble.webp"
+      },
+      "includedPages": [
+        "gabinete-pm19012080bc",
+        "gabinete-pm19012060bc",
+        "gabinete-pm19012040bc"
+      ]
+    },
+    {
+      "id": "placa-de-montaje-modular",
+      "categoryId": "gabinetes",
+      "type": "subfamilia",
+      "name": "Placa de Montaje Modular",
+      "subtitle": "Anchos 545, 745 y 1145 mm · alto de 50 a 500 mm · chapa #14",
+      "shortDescription": "Placa de montaje en chapa galvanizada #14, para armar o repotenciar gabinetes modulares BGA. Tres anchos, cada uno en altos de 50 a 500 mm.",
+      "longDescription": "La placa de montaje modular es la pieza donde se atornillan los componentes del tablero dentro del gabinete BGA — riel DIN, contactores, borneras. Se vende también por separado del gabinete, como repuesto o placa adicional para un segundo montaje.\n\nCada ancho de placa corresponde a un ancho de gabinete: 545 mm (PML54) para gabinetes de 600 mm, 745 mm (PML74) para gabinetes de 800 mm y 1145 mm (PML114) para gabinetes de 1200 mm. El alto se elige dentro de la ficha, de 50 a 500 mm en pasos de 50 mm — para un alto fuera de esta lista, la vendedora puede evaluar una medida especial.\n\nFabricada en chapa galvanizada #14 con aba de 20 mm, con acabado a elección: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura — a diferencia del gabinete, acá el color sí se elige.\n\nSe recomienda agregarla junto con el gabinete modular correspondiente al armar tu pedido.",
+      "faq": [
+        {
+          "q": "¿Qué ancho de placa corresponde a mi gabinete?",
+          "a": "1145 mm (PML114) para gabinetes de 1200 mm de ancho, 745 mm (PML74) para gabinetes de 800 mm y 545 mm (PML54) para gabinetes de 600 mm."
+        },
+        {
+          "q": "¿De qué material es y en qué acabado viene?",
+          "a": "Chapa galvanizada #14 con aba de 20 mm. El acabado se elige entre pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura."
+        },
+        {
+          "q": "¿Se vende sin el gabinete?",
+          "a": "Sí, se vende por separado como repuesto o para armar un montaje adicional."
+        },
+        {
+          "q": "¿Qué altos hay disponibles?",
+          "a": "De 50 a 500 mm, en pasos de 50 mm (50, 100, 150... hasta 500 mm), para cada uno de los tres anchos."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Elegí el ancho según tu gabinete, entrá en su ficha, elegí el alto y el acabado, y agregala a tu cotización."
+        }
+      ],
+      "keywords": "placa de montaje gabinete, placa de montaje modular BGA, repuesto gabinete eléctrico, placa galvanizada para tablero",
+      "meta": {
+        "title": "Placa de Montaje Modular para Gabinete | BGA",
+        "description": "Placa de montaje modular en chapa galvanizada #14, para gabinetes BGA de 600, 800 y 1200 mm de ancho. Altos de 50 a 500 mm."
+      },
+      "images": {
+        "primary": "/images/productos/placa-de-montaje-modular.webp"
+      },
+      "includedPages": [
+        "placa-de-montaje-pml114",
+        "placa-de-montaje-pml74",
+        "placa-de-montaje-pml54"
+      ]
+    },
+    {
+      "id": "gabinete-pm1908080bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1900×800×800 mm · Puerta Simple",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×800×800 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 800 mm de ancho y 800 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nEs la profundidad mayor de la línea, pensada para tableros con mucho cableado, canalización interna o componentes de fondo profundo. El ancho de 800 mm corresponde a la placa de montaje PML74 (745 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML74, de 745 mm de ancho, que es la que corresponde a un gabinete de 800 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1900x800x800, gabinete IP55 puerta simple, tablero eléctrico 800 mm Paraguay, gabinete con placa de montaje PML74",
+      "meta": {
+        "title": "Gabinete Modular 1900×800×800 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×800×800 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 800,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 800,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM1908080BC",
       "unidadVenta": "Pieza",
       "recommended": [
-        "placa-de-montaje-modular",
+        "placa-de-montaje-pml74",
         "trillo-vertical-gabinete"
       ],
       "images": {
@@ -6664,60 +6808,551 @@
       }
     },
     {
-      "id": "gabinete-modular-puerta-doble",
+      "id": "gabinete-pm1908060bc",
       "categoryId": "gabinetes",
       "type": "producto",
-      "name": "Gabinete Modular Puerta Doble",
-      "subtitle": "1900 mm de alto · 1200 mm de ancho · IP55 · con placa de montaje",
-      "shortDescription": "Gabinete modular con puerta doble, para tableros de mayor ancho. 1900 mm de alto, 1200 mm de ancho, profundidad de 400 a 800 mm.",
-      "longDescription": "Versión de puerta doble del gabinete modular BGA, pensada para tableros de 1200 mm de ancho — demasiado ancho para abrir con una sola hoja de puerta cómodamente. Mantiene la misma base modular: placa de montaje (PLM), trillos verticales, zócalo y protección IP55.\n\nCuerpo en chapa galvanizada #14, placa de montaje en #16, con 4 ojales de elevación, junta EPDM antipolvo y bisagra reforzada en ambas hojas, más manija con porta candado.\n\nEl cuerpo y la puerta van en Beige RAL 7032, con la placa de montaje interior en Naranja RAL 2009 — es el combo de acabado estándar, no hay elección de color.\n\nDisponible en 3 profundidades — 400, 600 u 800 mm — con 1900 mm de alto (+100 mm de zócalo) y 1200 mm de ancho fijo. Para otra medida, la vendedora puede evaluar una fabricación especial.",
+      "name": "Gabinete Modular 1900×800×600 mm · Puerta Simple",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×800×600 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 800 mm de ancho y 600 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nLa profundidad intermedia de la línea deja espacio de sobra detrás de la placa de montaje para el ruteo del cableado y para componentes de fondo medio. El ancho de 800 mm corresponde a la placa de montaje PML74 (745 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
       "faq": [
         {
-          "q": "¿Por qué esta versión tiene dos puertas?",
-          "a": "Porque a 1200 mm de ancho, una sola hoja de puerta sería incómoda de abrir y manipular. La puerta doble divide el frente en dos hojas más manejables."
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML74, de 745 mm de ancho, que es la que corresponde a un gabinete de 800 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
         },
         {
-          "q": "¿Qué medidas de profundidad hay?",
-          "a": "400, 600 u 800 mm, con 1900 mm de alto y 1200 mm de ancho en las tres."
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
         },
         {
-          "q": "¿Trae placa de montaje y trillos?",
-          "a": "Sí, igual que la versión de puerta simple: placa de montaje (PLM) en chapa galvanizada #16 y trillos verticales para fijarla."
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
         },
         {
-          "q": "¿Qué protección tiene?",
-          "a": "IP55, con junta EPDM antipolvo y bisagra reforzada en ambas hojas de puerta."
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
         },
         {
           "q": "¿Cómo se cotiza?",
-          "a": "Elegís la profundidad en la ficha del producto y lo agregás a tu cotización. Si necesitás otra medida, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora."
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
         }
       ],
-      "keywords": "gabinete puerta doble, gabinete modular 1200mm, tablero eléctrico grande Paraguay, gabinete IP55 puerta doble, envolvente metálica modular",
+      "keywords": "gabinete modular 1900x800x600, gabinete IP55 puerta simple, tablero eléctrico 800 mm Paraguay, gabinete con placa de montaje PML74",
       "meta": {
-        "title": "Gabinete Modular Puerta Doble IP55 | BGA",
-        "description": "Gabinete modular de puerta doble, 1900×1200 mm, IP55, con placa de montaje, trillos y zócalo. Fabricado en Paraguay por BGA. Cotizá online."
+        "title": "Gabinete Modular 1900×800×600 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×800×600 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
       },
-      "variants": [
+      "dimensions": [
         {
-          "sku": "PM19012080BC",
-          "label": "1900(+100)×1200×800 mm",
-          "role": "pieza"
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
         },
         {
-          "sku": "PM19012060BC",
-          "label": "1900(+100)×1200×600 mm",
-          "role": "pieza"
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
         },
         {
-          "sku": "PM19012040BC",
-          "label": "1900(+100)×1200×400 mm",
-          "role": "pieza"
+          "label": "Ancho",
+          "value": 800,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
         }
       ],
+      "sku": "PM1908060BC",
       "unidadVenta": "Pieza",
       "recommended": [
-        "placa-de-montaje-modular",
+        "placa-de-montaje-pml74",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm1908040bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1900×800×400 mm · Puerta Simple",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×800×400 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 800 mm de ancho y 400 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nEs la profundidad más compacta de la línea: alcanza para tableros de comando y control donde el fondo no necesita volumen extra detrás de la placa. El ancho de 800 mm corresponde a la placa de montaje PML74 (745 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML74, de 745 mm de ancho, que es la que corresponde a un gabinete de 800 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1900x800x400, gabinete IP55 puerta simple, tablero eléctrico 800 mm Paraguay, gabinete con placa de montaje PML74",
+      "meta": {
+        "title": "Gabinete Modular 1900×800×400 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×800×400 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 800,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 400,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM1908040BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml74",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm1906080bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1900×600×800 mm · Puerta Simple",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×600×800 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 600 mm de ancho y 800 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nEs la profundidad mayor de la línea, pensada para tableros con mucho cableado, canalización interna o componentes de fondo profundo. El ancho de 600 mm corresponde a la placa de montaje PML54 (545 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML54, de 545 mm de ancho, que es la que corresponde a un gabinete de 600 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1900x600x800, gabinete IP55 puerta simple, tablero eléctrico 600 mm Paraguay, gabinete con placa de montaje PML54",
+      "meta": {
+        "title": "Gabinete Modular 1900×600×800 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×600×800 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 800,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM1906080BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml54",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm1906060bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1900×600×600 mm · Puerta Simple",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×600×600 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 600 mm de ancho y 600 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nLa profundidad intermedia de la línea deja espacio de sobra detrás de la placa de montaje para el ruteo del cableado y para componentes de fondo medio. El ancho de 600 mm corresponde a la placa de montaje PML54 (545 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML54, de 545 mm de ancho, que es la que corresponde a un gabinete de 600 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1900x600x600, gabinete IP55 puerta simple, tablero eléctrico 600 mm Paraguay, gabinete con placa de montaje PML54",
+      "meta": {
+        "title": "Gabinete Modular 1900×600×600 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×600×600 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM1906060BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml54",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm1906040bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1900×600×400 mm · Puerta Simple",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×600×400 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 600 mm de ancho y 400 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nEs la profundidad más compacta de la línea: alcanza para tableros de comando y control donde el fondo no necesita volumen extra detrás de la placa. El ancho de 600 mm corresponde a la placa de montaje PML54 (545 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML54, de 545 mm de ancho, que es la que corresponde a un gabinete de 600 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1900x600x400, gabinete IP55 puerta simple, tablero eléctrico 600 mm Paraguay, gabinete con placa de montaje PML54",
+      "meta": {
+        "title": "Gabinete Modular 1900×600×400 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×600×400 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 400,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM1906040BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml54",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm19012080bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1900×1200×800 mm · Puerta Doble",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×1200×800 mm con puerta doble, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 1200 mm de ancho y 800 mm de profundidad, con puerta doble. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nEs la profundidad mayor de la línea, pensada para tableros con mucho cableado, canalización interna o componentes de fondo profundo. El ancho de 1200 mm corresponde a la placa de montaje PML114 (1145 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML114, de 1145 mm de ancho, que es la que corresponde a un gabinete de 1200 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1900x1200x800, gabinete IP55 puerta doble, tablero eléctrico 1200 mm Paraguay, gabinete con placa de montaje PML114",
+      "meta": {
+        "title": "Gabinete Modular 1900×1200×800 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×1200×800 mm, puerta doble, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 1200,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 800,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Doble",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM19012080BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml114",
         "trillo-vertical-gabinete"
       ],
       "images": {
@@ -6725,44 +7360,521 @@
       }
     },
     {
-      "id": "placa-de-montaje-modular",
+      "id": "gabinete-pm19012060bc",
       "categoryId": "gabinetes",
       "type": "producto",
-      "name": "Placa de Montaje Modular",
-      "subtitle": "Anchos 545, 745 y 1145 mm · largo de 50 a 500 mm · chapa #14",
-      "shortDescription": "Placa de montaje en chapa galvanizada #14, para armar o repotenciar gabinetes modulares BGA. Tres anchos, cada uno en 10 largos distintos.",
-      "longDescription": "La placa de montaje modular es la pieza donde se atornillan los componentes del tablero dentro del gabinete BGA — riel DIN, contactores, borneras. Se vende también por separado del gabinete, como repuesto o placa adicional para un segundo montaje.\n\nCada ancho de placa corresponde a un ancho de gabinete: 545 mm (PML54) para gabinetes de 600 mm de ancho, 745 mm (PML74) para gabinetes de 800 mm, y 1145 mm (PML114) para gabinetes de 1200 mm. El largo se elige por separado, de 50 a 500 mm en pasos de 50 mm, según la profundidad del tablero — para un largo fuera de esta lista, la vendedora puede evaluar una medida especial.\n\nFabricada en chapa galvanizada #14, con acabado a elección: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura — a diferencia del gabinete, acá el color sí se elige por separado.\n\nSe recomienda agregarla junto con el gabinete modular correspondiente al armar tu pedido.",
+      "name": "Gabinete Modular 1900×1200×600 mm · Puerta Doble",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×1200×600 mm con puerta doble, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 1200 mm de ancho y 600 mm de profundidad, con puerta doble. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nLa profundidad intermedia de la línea deja espacio de sobra detrás de la placa de montaje para el ruteo del cableado y para componentes de fondo medio. El ancho de 1200 mm corresponde a la placa de montaje PML114 (1145 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
       "faq": [
         {
-          "q": "¿Qué ancho de placa corresponde a mi gabinete?",
-          "a": "1145 mm (PML114) para gabinetes de 1200 mm de ancho, 745 mm (PML74) para gabinetes de 800 mm, y 545 mm (PML54) para gabinetes de 600 mm."
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML114, de 1145 mm de ancho, que es la que corresponde a un gabinete de 1200 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
         },
         {
-          "q": "¿De qué material es y en qué acabado viene?",
-          "a": "Chapa galvanizada #14. El acabado se elige entre pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura."
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
         },
         {
-          "q": "¿Se vende sin el gabinete?",
-          "a": "Sí, se vende por separado como repuesto o para armar un montaje adicional."
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
         },
         {
-          "q": "¿Qué largos hay disponibles?",
-          "a": "De 50 a 500 mm, en pasos de 50 mm (50, 100, 150... hasta 500 mm), para cada uno de los tres anchos."
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
         },
         {
           "q": "¿Cómo se cotiza?",
-          "a": "Elegís el ancho (según tu gabinete) y el largo que necesitás en la ficha del producto, y lo agregás a tu cotización. Si necesitás un largo distinto, consultá con la vendedora."
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
         }
       ],
-      "keywords": "placa de montaje gabinete, placa de montaje modular BGA, repuesto gabinete eléctrico, placa galvanizada para tablero",
+      "keywords": "gabinete modular 1900x1200x600, gabinete IP55 puerta doble, tablero eléctrico 1200 mm Paraguay, gabinete con placa de montaje PML114",
       "meta": {
-        "title": "Placa de Montaje Modular para Gabinete | BGA",
-        "description": "Placa de montaje modular en chapa galvanizada #14, para gabinetes BGA de 600, 800 y 1200 mm de ancho. Largos de 50 a 500 mm. Cotizá online."
+        "title": "Gabinete Modular 1900×1200×600 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×1200×600 mm, puerta doble, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
       },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 1200,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Doble",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM19012060BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml114",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-doble.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm19012040bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1900×1200×400 mm · Puerta Doble",
+      "subtitle": "Alto 1900 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1900×1200×400 mm con puerta doble, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1900 mm de alto (más 100 mm de zócalo, 2000 mm de altura total), 1200 mm de ancho y 400 mm de profundidad, con puerta doble. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nEs la profundidad más compacta de la línea: alcanza para tableros de comando y control donde el fondo no necesita volumen extra detrás de la placa. El ancho de 1200 mm corresponde a la placa de montaje PML114 (1145 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML114, de 1145 mm de ancho, que es la que corresponde a un gabinete de 1200 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "2000 mm de altura total: 1900 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1900x1200x400, gabinete IP55 puerta doble, tablero eléctrico 1200 mm Paraguay, gabinete con placa de montaje PML114",
+      "meta": {
+        "title": "Gabinete Modular 1900×1200×400 mm | BGA Paraguay",
+        "description": "Gabinete modular 1900×1200×400 mm, puerta doble, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1900,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 1200,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 400,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Doble",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM19012040BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml114",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-doble.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm1506060bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1500×600×600 mm · Puerta Simple",
+      "subtitle": "Alto 1500 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1500×600×600 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1500 mm de alto (más 100 mm de zócalo, 1600 mm de altura total), 600 mm de ancho y 600 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nLa profundidad intermedia de la línea deja espacio de sobra detrás de la placa de montaje para el ruteo del cableado y para componentes de fondo medio. El ancho de 600 mm corresponde a la placa de montaje PML54 (545 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML54, de 545 mm de ancho, que es la que corresponde a un gabinete de 600 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "1600 mm de altura total: 1500 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1500x600x600, gabinete IP55 puerta simple, tablero eléctrico 600 mm Paraguay, gabinete con placa de montaje PML54",
+      "meta": {
+        "title": "Gabinete Modular 1500×600×600 mm | BGA Paraguay",
+        "description": "Gabinete modular 1500×600×600 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1500,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM1506060BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml54",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm1508040bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1500×800×400 mm · Puerta Simple",
+      "subtitle": "Alto 1500 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1500×800×400 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1500 mm de alto (más 100 mm de zócalo, 1600 mm de altura total), 800 mm de ancho y 400 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nEs la profundidad más compacta de la línea: alcanza para tableros de comando y control donde el fondo no necesita volumen extra detrás de la placa. El ancho de 800 mm corresponde a la placa de montaje PML74 (745 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML74, de 745 mm de ancho, que es la que corresponde a un gabinete de 800 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "1600 mm de altura total: 1500 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1500x800x400, gabinete IP55 puerta simple, tablero eléctrico 800 mm Paraguay, gabinete con placa de montaje PML74",
+      "meta": {
+        "title": "Gabinete Modular 1500×800×400 mm | BGA Paraguay",
+        "description": "Gabinete modular 1500×800×400 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1500,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 800,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 400,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM1508040BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml74",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      }
+    },
+    {
+      "id": "gabinete-pm1508060bc",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Gabinete Modular 1500×800×600 mm · Puerta Simple",
+      "subtitle": "Alto 1500 mm + 100 de zócalo · IP55 · cuerpo #14 con placa #16",
+      "shortDescription": "Gabinete modular de 1500×800×600 mm con puerta simple, IP55, placa de montaje #16 y zócalo. Cuerpo en chapa galvanizada #14.",
+      "longDescription": "Gabinete modular BGA de 1500 mm de alto (más 100 mm de zócalo, 1600 mm de altura total), 800 mm de ancho y 600 mm de profundidad, con puerta simple. Es la envolvente para tableros de comando, control, distribución y automatización que se montan de pie sobre el piso.\n\nLa profundidad intermedia de la línea deja espacio de sobra detrás de la placa de montaje para el ruteo del cableado y para componentes de fondo medio. El ancho de 800 mm corresponde a la placa de montaje PML74 (745 mm), que viene incluida junto con los trillos que la fijan y permiten reposicionarla en profundidad.\n\nCuerpo en chapa galvanizada espesor #14 y placa de montaje en #16, con 4 ojales de elevación para izar el gabinete en obra, junta EPDM antipolvo en el marco, bisagra reforzada y manija con porta candado. Protección IP55 contra polvo y chorros de agua.\n\nCuerpo y puerta en Beige RAL 7032 con la placa interior en Naranja RAL 2009 — es el combo de acabado estándar de fábrica, no es un color a elección. Fabricado en Paraguay por BGA Electric S.A. Esta es una medida estándar: si necesitás una distinta, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué placa de montaje corresponde a este gabinete?",
+          "a": "La PML74, de 745 mm de ancho, que es la que corresponde a un gabinete de 800 mm. Viene incluida — si necesitás una placa adicional o de repuesto, se vende por separado."
+        },
+        {
+          "q": "¿Cuánto mide en total con el zócalo?",
+          "a": "1600 mm de altura total: 1500 mm de gabinete más 100 mm de zócalo de base."
+        },
+        {
+          "q": "¿Qué protección tiene contra polvo y agua?",
+          "a": "IP55, con junta EPDM antipolvo en el marco de la puerta y bisagra reforzada."
+        },
+        {
+          "q": "¿Y si necesito una medida distinta a esta?",
+          "a": "Esta es una medida estándar de fábrica. Si necesitás una medida que no está en el catálogo, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora — puede evaluar una fabricación especial."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Agregalo directo a tu cotización desde esta ficha. Podés sumar en el mismo pedido la placa de montaje adicional y los trillos que necesites."
+        }
+      ],
+      "keywords": "gabinete modular 1500x800x600, gabinete IP55 puerta simple, tablero eléctrico 800 mm Paraguay, gabinete con placa de montaje PML74",
+      "meta": {
+        "title": "Gabinete Modular 1500×800×600 mm | BGA Paraguay",
+        "description": "Gabinete modular 1500×800×600 mm, puerta simple, IP55, con placa de montaje, trillos y zócalo. Medida estándar BGA. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Alto",
+          "value": 1500,
+          "unit": "mm"
+        },
+        {
+          "label": "Zócalo",
+          "value": 100,
+          "unit": "mm"
+        },
+        {
+          "label": "Ancho",
+          "value": 800,
+          "unit": "mm"
+        },
+        {
+          "label": "Profundidad",
+          "value": 600,
+          "unit": "mm"
+        },
+        {
+          "label": "Puerta",
+          "value": "Simple",
+          "unit": ""
+        },
+        {
+          "label": "Espesor cuerpo",
+          "value": "#14",
+          "unit": ""
+        },
+        {
+          "label": "Espesor PLM",
+          "value": "#16",
+          "unit": ""
+        },
+        {
+          "label": "IP",
+          "value": "IP55",
+          "unit": ""
+        },
+        {
+          "label": "Acabado",
+          "value": "Beige RAL7032 / Naranja RAL2009",
+          "unit": ""
+        }
+      ],
+      "sku": "PM1508060BC",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "placa-de-montaje-pml74",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/gabinete-modular-puerta-simple.webp"
+      }
+    },
+    {
+      "id": "placa-de-montaje-pml114",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Placa de Montaje Modular 1145 mm",
+      "subtitle": "Para gabinete de 1200 mm de ancho · alto 50 a 500 mm · chapa #14",
+      "shortDescription": "Placa de montaje modular de 1145 mm de ancho, para gabinetes BGA de 1200 mm. Chapa galvanizada #14, aba 20, en altos de 50 a 500 mm.",
+      "longDescription": "La placa de montaje modular es la pieza donde se atornillan los componentes del tablero dentro del gabinete BGA — riel DIN, contactores, borneras. Se monta sobre los trillos verticales, que permiten reposicionarla en profundidad según el tablero.\n\nEsta versión mide 1145 mm de ancho y corresponde al gabinete modular BGA de 1200 mm (puerta doble). El alto se elige aparte, de 50 a 500 mm en pasos de 50 mm, según cuánto frente de montaje necesites — se pueden combinar varias placas de distinto alto en el mismo gabinete.\n\nFabricada en chapa galvanizada #14 con aba de 20 mm. El acabado se elige: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura — a diferencia del gabinete, acá el color sí es una elección.\n\nSe vende por separado del gabinete, como placa adicional o de repuesto. Para un alto fuera de esta lista, consultá con la vendedora.",
+      "faq": [
+        {
+          "q": "¿Para qué gabinete sirve esta placa?",
+          "a": "Para el gabinete modular BGA de 1200 mm de ancho (puerta doble). Los otros anchos tienen su propia placa: 545 mm para gabinete de 600, 745 mm para 800 y 1145 mm para 1200."
+        },
+        {
+          "q": "¿Qué altos hay disponibles?",
+          "a": "De 50 a 500 mm, en pasos de 50 mm: 50, 100, 150, 200, 250, 300, 350, 400, 450 y 500 mm."
+        },
+        {
+          "q": "¿En qué acabado viene?",
+          "a": "Chapa galvanizada #14, con acabado a elección: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura."
+        },
+        {
+          "q": "¿El gabinete ya viene con placa?",
+          "a": "Sí, el gabinete modular sale \"Con PLM\" de fábrica. Esta se pide aparte cuando necesitás una placa adicional, un alto distinto o un repuesto."
+        },
+        {
+          "q": "¿Necesito los trillos también?",
+          "a": "La placa se fija sobre los trillos verticales, que se usan en pares. El gabinete ya los trae; si estás armando un montaje adicional, sumalos al pedido."
+        }
+      ],
+      "keywords": "placa de montaje 1145 mm, placa de montaje gabinete 1200, PML114 BGA, repuesto placa gabinete eléctrico Paraguay",
+      "meta": {
+        "title": "Placa de Montaje Modular 1145 mm | BGA Paraguay",
+        "description": "Placa de montaje modular 1145 mm para gabinete BGA de 1200 mm, chapa galvanizada #14, aba 20. Alto de 50 a 500 mm. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Ancho",
+          "value": 1145,
+          "unit": "mm"
+        },
+        {
+          "label": "Aba",
+          "value": 20,
+          "unit": "mm"
+        },
+        {
+          "label": "Espesor",
+          "value": "#14",
+          "unit": ""
+        }
+      ],
       "dimensionAxes": [
         {
-          "id": "largo",
-          "label": "Largo",
+          "id": "alto",
+          "label": "Alto",
           "values": [
             50,
             100,
@@ -6787,27 +7899,191 @@
           "unit": ""
         }
       ],
-      "variants": [
+      "sku": "PML114",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "gabinete-modular-puerta-doble",
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/placa-de-montaje-modular.webp"
+      }
+    },
+    {
+      "id": "placa-de-montaje-pml74",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Placa de Montaje Modular 745 mm",
+      "subtitle": "Para gabinete de 800 mm de ancho · alto 50 a 500 mm · chapa #14",
+      "shortDescription": "Placa de montaje modular de 745 mm de ancho, para gabinetes BGA de 800 mm. Chapa galvanizada #14, aba 20, en altos de 50 a 500 mm.",
+      "longDescription": "La placa de montaje modular es la pieza donde se atornillan los componentes del tablero dentro del gabinete BGA — riel DIN, contactores, borneras. Se monta sobre los trillos verticales, que permiten reposicionarla en profundidad según el tablero.\n\nEsta versión mide 745 mm de ancho y corresponde al gabinete modular BGA de 800 mm (puerta simple). El alto se elige aparte, de 50 a 500 mm en pasos de 50 mm, según cuánto frente de montaje necesites — se pueden combinar varias placas de distinto alto en el mismo gabinete.\n\nFabricada en chapa galvanizada #14 con aba de 20 mm. El acabado se elige: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura — a diferencia del gabinete, acá el color sí es una elección.\n\nSe vende por separado del gabinete, como placa adicional o de repuesto. Para un alto fuera de esta lista, consultá con la vendedora.",
+      "faq": [
         {
-          "sku": "PML114",
-          "label": "Ancho 1145 mm",
-          "role": "pieza"
+          "q": "¿Para qué gabinete sirve esta placa?",
+          "a": "Para el gabinete modular BGA de 800 mm de ancho (puerta simple). Los otros anchos tienen su propia placa: 545 mm para gabinete de 600, 745 mm para 800 y 1145 mm para 1200."
         },
         {
-          "sku": "PML74",
-          "label": "Ancho 745 mm",
-          "role": "pieza"
+          "q": "¿Qué altos hay disponibles?",
+          "a": "De 50 a 500 mm, en pasos de 50 mm: 50, 100, 150, 200, 250, 300, 350, 400, 450 y 500 mm."
         },
         {
-          "sku": "PML54",
-          "label": "Ancho 545 mm",
-          "role": "pieza"
+          "q": "¿En qué acabado viene?",
+          "a": "Chapa galvanizada #14, con acabado a elección: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura."
+        },
+        {
+          "q": "¿El gabinete ya viene con placa?",
+          "a": "Sí, el gabinete modular sale \"Con PLM\" de fábrica. Esta se pide aparte cuando necesitás una placa adicional, un alto distinto o un repuesto."
+        },
+        {
+          "q": "¿Necesito los trillos también?",
+          "a": "La placa se fija sobre los trillos verticales, que se usan en pares. El gabinete ya los trae; si estás armando un montaje adicional, sumalos al pedido."
         }
       ],
+      "keywords": "placa de montaje 745 mm, placa de montaje gabinete 800, PML74 BGA, repuesto placa gabinete eléctrico Paraguay",
+      "meta": {
+        "title": "Placa de Montaje Modular 745 mm | BGA Paraguay",
+        "description": "Placa de montaje modular 745 mm para gabinete BGA de 800 mm, chapa galvanizada #14, aba 20. Alto de 50 a 500 mm. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Ancho",
+          "value": 745,
+          "unit": "mm"
+        },
+        {
+          "label": "Aba",
+          "value": 20,
+          "unit": "mm"
+        },
+        {
+          "label": "Espesor",
+          "value": "#14",
+          "unit": ""
+        }
+      ],
+      "dimensionAxes": [
+        {
+          "id": "alto",
+          "label": "Alto",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "acabado",
+          "label": "Acabado",
+          "values": [
+            "Naranja RAL2009",
+            "Galv. Natural"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "PML74",
       "unidadVenta": "Pieza",
       "recommended": [
         "gabinete-modular-puerta-simple",
-        "gabinete-modular-puerta-doble"
+        "trillo-vertical-gabinete"
+      ],
+      "images": {
+        "primary": "/images/productos/placa-de-montaje-modular.webp"
+      }
+    },
+    {
+      "id": "placa-de-montaje-pml54",
+      "categoryId": "gabinetes",
+      "type": "producto",
+      "name": "Placa de Montaje Modular 545 mm",
+      "subtitle": "Para gabinete de 600 mm de ancho · alto 50 a 500 mm · chapa #14",
+      "shortDescription": "Placa de montaje modular de 545 mm de ancho, para gabinetes BGA de 600 mm. Chapa galvanizada #14, aba 20, en altos de 50 a 500 mm.",
+      "longDescription": "La placa de montaje modular es la pieza donde se atornillan los componentes del tablero dentro del gabinete BGA — riel DIN, contactores, borneras. Se monta sobre los trillos verticales, que permiten reposicionarla en profundidad según el tablero.\n\nEsta versión mide 545 mm de ancho y corresponde al gabinete modular BGA de 600 mm (puerta simple). El alto se elige aparte, de 50 a 500 mm en pasos de 50 mm, según cuánto frente de montaje necesites — se pueden combinar varias placas de distinto alto en el mismo gabinete.\n\nFabricada en chapa galvanizada #14 con aba de 20 mm. El acabado se elige: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura — a diferencia del gabinete, acá el color sí es una elección.\n\nSe vende por separado del gabinete, como placa adicional o de repuesto. Para un alto fuera de esta lista, consultá con la vendedora.",
+      "faq": [
+        {
+          "q": "¿Para qué gabinete sirve esta placa?",
+          "a": "Para el gabinete modular BGA de 600 mm de ancho (puerta simple). Los otros anchos tienen su propia placa: 545 mm para gabinete de 600, 745 mm para 800 y 1145 mm para 1200."
+        },
+        {
+          "q": "¿Qué altos hay disponibles?",
+          "a": "De 50 a 500 mm, en pasos de 50 mm: 50, 100, 150, 200, 250, 300, 350, 400, 450 y 500 mm."
+        },
+        {
+          "q": "¿En qué acabado viene?",
+          "a": "Chapa galvanizada #14, con acabado a elección: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura."
+        },
+        {
+          "q": "¿El gabinete ya viene con placa?",
+          "a": "Sí, el gabinete modular sale \"Con PLM\" de fábrica. Esta se pide aparte cuando necesitás una placa adicional, un alto distinto o un repuesto."
+        },
+        {
+          "q": "¿Necesito los trillos también?",
+          "a": "La placa se fija sobre los trillos verticales, que se usan en pares. El gabinete ya los trae; si estás armando un montaje adicional, sumalos al pedido."
+        }
+      ],
+      "keywords": "placa de montaje 545 mm, placa de montaje gabinete 600, PML54 BGA, repuesto placa gabinete eléctrico Paraguay",
+      "meta": {
+        "title": "Placa de Montaje Modular 545 mm | BGA Paraguay",
+        "description": "Placa de montaje modular 545 mm para gabinete BGA de 600 mm, chapa galvanizada #14, aba 20. Alto de 50 a 500 mm. Cotizá online."
+      },
+      "dimensions": [
+        {
+          "label": "Ancho",
+          "value": 545,
+          "unit": "mm"
+        },
+        {
+          "label": "Aba",
+          "value": 20,
+          "unit": "mm"
+        },
+        {
+          "label": "Espesor",
+          "value": "#14",
+          "unit": ""
+        }
+      ],
+      "dimensionAxes": [
+        {
+          "id": "alto",
+          "label": "Alto",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "acabado",
+          "label": "Acabado",
+          "values": [
+            "Naranja RAL2009",
+            "Galv. Natural"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "PML54",
+      "unidadVenta": "Pieza",
+      "recommended": [
+        "gabinete-modular-puerta-simple",
+        "trillo-vertical-gabinete"
       ],
       "images": {
         "primary": "/images/productos/placa-de-montaje-modular.webp"
@@ -6818,9 +8094,9 @@
       "categoryId": "gabinetes",
       "type": "producto",
       "name": "Trillo Vertical para Gabinete",
-      "subtitle": "Perfil 38×30 mm perforado #14 · largos 1500, 1900 y 2000 mm",
+      "subtitle": "Perfil 38×30 mm perforado #14 · altos 1500, 1900 y 2000 mm",
       "shortDescription": "Trillo vertical perforado, en chapa galvanizada #14, para fijar y posicionar la placa de montaje dentro de gabinetes modulares BGA. Se usa en pares.",
-      "longDescription": "El trillo vertical es la pieza que sostiene la placa de montaje (PLM) dentro del gabinete modular BGA: se instala en pares, uno a cada lado, y la perforación permite ajustar la posición de la placa según la profundidad del tablero.\n\nFabricado en chapa galvanizada #14, perfil de 38×30 mm, con acabado a elección: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura.\n\nDisponible en tres largos — 1500, 1900 o 2000 mm — para acompañar el alto del gabinete donde se instala. Para otro largo, la vendedora puede evaluar una medida especial.",
+      "longDescription": "El trillo vertical es la pieza que sostiene la placa de montaje (PLM) dentro del gabinete modular BGA: se instala en pares, uno a cada lado, y la perforación permite ajustar la posición de la placa según la profundidad del tablero.\n\nFabricado en chapa galvanizada #14, perfil de 38×30 mm, con acabado a elección: pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura.\n\nDisponible en tres altos — 1500, 1900 o 2000 mm — para acompañar el alto del gabinete donde se instala. Para otro alto, la vendedora puede evaluar una medida especial.",
       "faq": [
         {
           "q": "¿Cuántos trillos necesito por gabinete?",
@@ -6831,27 +8107,27 @@
           "a": "Permite ajustar la posición de la placa de montaje en profundidad, según el tablero que se va a instalar."
         },
         {
-          "q": "¿Qué largo corresponde a mi gabinete?",
-          "a": "El largo del trillo acompaña el alto del gabinete: 1500, 1900 o 2000 mm según el modelo."
+          "q": "¿Qué alto corresponde a mi gabinete?",
+          "a": "El trillo acompaña el alto del gabinete: 1500, 1900 o 2000 mm según el modelo."
         },
         {
           "q": "¿De qué material es y en qué acabado viene?",
-          "a": "Chapa galvanizada #14. El acabado se elige entre pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura."
+          "a": "Chapa galvanizada #14, perfil 38×30 mm. El acabado se elige entre pintura electrostática en polvo Naranja RAL 2009, o galvanizado natural sin pintura."
         },
         {
           "q": "¿Cómo se cotiza?",
-          "a": "Elegís el largo que necesitás en la ficha del producto y lo agregás a tu cotización. Si necesitás un largo distinto, consultá con la vendedora."
+          "a": "Elegí el alto y el acabado en esta ficha y agregalo a tu cotización. Si necesitás otra medida, consultá con la vendedora."
         }
       ],
       "keywords": "trillo vertical gabinete, repuesto gabinete modular BGA, perfil perforado gabinete eléctrico, accesorio gabinete modular",
       "meta": {
         "title": "Trillo Vertical para Gabinete Modular | BGA",
-        "description": "Trillo vertical perforado en chapa galvanizada #14, para fijar la placa de montaje en gabinetes modulares BGA. Largos de 1500 a 2000 mm."
+        "description": "Trillo vertical perforado en chapa galvanizada #14, para fijar la placa de montaje en gabinetes modulares BGA. Altos de 1500 a 2000 mm."
       },
       "dimensionAxes": [
         {
-          "id": "largo",
-          "label": "Largo",
+          "id": "alto",
+          "label": "Alto",
           "values": [
             1500,
             1900,
@@ -6872,8 +8148,9 @@
       "sku": "PLT",
       "unidadVenta": "Pieza",
       "recommended": [
-        "gabinete-modular-puerta-simple",
-        "gabinete-modular-puerta-doble"
+        "placa-de-montaje-pml114",
+        "placa-de-montaje-pml74",
+        "placa-de-montaje-pml54"
       ],
       "images": {
         "primary": "/images/productos/trillo-vertical-gabinete.webp"
