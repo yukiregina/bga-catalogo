@@ -4,8 +4,7 @@ import { CartProvider } from '@/components/CartProvider'
 import Analytics from '@/components/Analytics'
 import Header from '@/components/Header'
 import { getCategoryNav } from '@/lib/products'
-
-const SITE_URL = 'https://bga.com.py'
+import { SITE_URL } from '@/lib/site.mjs'
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
