@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect } from 'react'
+import { captureAttribution } from '@/lib/attribution'
 
 const CartContext = createContext(null)
 
@@ -14,6 +15,13 @@ function getLineId(product) {
 export function CartProvider({ children }) {
   const [items, setItems] = useState([])
   const [mounted, setMounted] = useState(false)
+
+  // Este provider embrulha todo o site (app/layout.jsx), então é o lugar mais
+  // simples pra rodar a captura de atribuição uma vez por carregamento de
+  // página, sem criar um componente só pra isso.
+  useEffect(() => {
+    captureAttribution()
+  }, [])
 
   // Carrega do localStorage após montar.
   // O `Array.isArray` não é paranoia: este provider embrulha o site inteiro, e
