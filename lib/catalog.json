@@ -252,7 +252,7 @@
     {
       "id": "tableros",
       "name": "Cajas Metálicas",
-      "displayMode": "pdf",
+      "displayMode": "catalog",
       "description": "Cajas metálicas en chapa galvanizada con pintura electrostática, bisagras y cerraduras reforzadas para protección de instalaciones eléctricas.",
       "image": "/images/caja-metalica-comando-bga-acero-galvanizado-paraguay.webp",
       "pdfUrl": "/docs/ficha-tecnica-cajas-metalicas-bga.pdf"
@@ -4836,18 +4836,296 @@
       ]
     },
     {
-      "id": "TAB-STD",
+      "id": "caja-metalica-galvanizada",
       "categoryId": "tableros",
-      "name": "Tablero Estándar",
-      "shortDescription": "Estructura, tapas, puertas y zócalo en chapa galvanizada de origen.",
-      "features": [
-        "Bisagra zinc ZAMAK reforzada con apertura de 180°",
-        "Cerradura Zinc ZAMAK reforzada IP65",
-        "Pintura electrostática en polvo",
-        "Acabado Naranja RAL 2009 o Gris texturizado RAL 7035",
-        "Capa interior Beige texturizado RAL 7032"
+      "type": "producto",
+      "name": "Caja Metálica Sobreponer",
+      "subtitle": "De 200×200 mm a 1200×800 mm · chapa galvanizada · IP55",
+      "shortDescription": "Caja metálica sobreponer en chapa galvanizada, IP55, con placa de montaje interior y cerradura ZAMAK. Más de 30 medidas, de 200×200 mm a 1200×800 mm.",
+      "longDescription": "La caja metálica sobreponer BGA es el gabinete de uso general para alojar tableros de comando, control, distribución y automatización eléctrica. Se monta directamente sobre la pared (sobreponer) y trae puerta con bisagra ZAMAK de 180° y cerradura ZAMAK, lo que permite abrirla por completo para trabajar cómodo adentro.\n\nEl cuerpo es de chapa galvanizada en espesor #16, #18 o #20 según el modelo, con la placa de montaje interior (PLM) en un espesor igual o más grueso que el cuerpo — así el tablero queda firme aunque el gabinete sea liviano. El grado de protección IP55 cubre polvo y chorros de agua, apto para intemperie cubierta o interiores húmedos.\n\nEl cuerpo y la puerta van en Beige RAL 7032, con la placa de montaje interior en Naranja RAL 2009 — es el combo de acabado estándar, no hay elección de color.\n\nDisponible en más de 30 combinaciones de alto, ancho y profundidad, de la más chica (200×200×150 mm) a la más grande (1200×800×350 mm) — se elige la medida dentro de la ficha del producto. Todas son medidas estándar de fábrica; para una medida fuera de esta lista, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Qué significa IP55 en esta caja?",
+          "a": "Es el grado de protección contra polvo y chorros de agua: IP55 protege el interior del tablero contra el ingreso de polvo (protección parcial) y contra chorros de agua de cualquier dirección, apto para uso en intemperie cubierta o ambientes húmedos."
+        },
+        {
+          "q": "¿Viene con placa de montaje?",
+          "a": "Sí. Todas las medidas incluyen placa de montaje (PLM) interior en chapa galvanizada, en un espesor igual o mayor al del cuerpo (por ejemplo #16 de cuerpo con #16 de placa, o #18 de cuerpo con #16 de placa) para que el tablero quede bien sujeto."
+        },
+        {
+          "q": "¿Qué diferencia hay entre las distintas medidas?",
+          "a": "Todas comparten el mismo diseño, material y acabado — solo cambian el alto, ancho y profundidad. Se elige la medida exacta que necesita tu tablero dentro de la ficha del producto."
+        },
+        {
+          "q": "¿En qué color viene?",
+          "a": "Cuerpo y puerta en Beige RAL 7032, con la placa de montaje interior en Naranja RAL 2009 — es el combo estándar de fábrica, no es un color a elección."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Elegís la medida en la ficha del producto y la agregás a tu cotización. Si no estás seguro de qué medida necesitás, o necesitás una medida que no está en la lista, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora."
+        }
       ],
-      "page": 10
+      "keywords": "caja metálica IP55, caja sobreponer, gabinete metálico para tablero, caja para tablero de comando Paraguay, caja galvanizada con placa de montaje, gabinete eléctrico IP55",
+      "meta": {
+        "title": "Caja Metálica Sobreponer IP55 | BGA Paraguay",
+        "description": "Cajas metálicas sobreponer en chapa galvanizada, de 200×200 a 1200×800 mm, IP55, con placa de montaje. Fabricadas en Paraguay por BGA. Cotizá online."
+      },
+      "variants": [
+        {
+          "sku": "CS1006025CC",
+          "label": "1000×600×250 mm · Cuerpo #16 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS1006025DC",
+          "label": "1000×600×250 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS1006040CC",
+          "label": "1000×600×400 mm · Cuerpo #16 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS1008030CC",
+          "label": "1000×800×300 mm · Cuerpo #16 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS1008030DC",
+          "label": "1000×800×300 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS1206025CC",
+          "label": "1200×600×250 mm · Cuerpo #16 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS1208030CC",
+          "label": "1200×800×300 mm · Cuerpo #16 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS1208035CC",
+          "label": "1200×800×350 mm · Cuerpo #16 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS806025DC",
+          "label": "800×600×250 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS705025DC",
+          "label": "700×500×250 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS705015DC",
+          "label": "700×500×150 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS605025DC",
+          "label": "600×500×250 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS605020DC",
+          "label": "600×500×200 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS604020DD",
+          "label": "600×400×200 mm · Cuerpo #18 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS604020DC",
+          "label": "600×400×200 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS504020DC",
+          "label": "500×400×200 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS504020DD",
+          "label": "500×400×200 mm · Cuerpo #18 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS504025DC",
+          "label": "500×400×250 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS404025DC",
+          "label": "400×400×250 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS404020DD",
+          "label": "400×400×200 mm · Cuerpo #18 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS404030DC",
+          "label": "400×400×300 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS403020CC",
+          "label": "400×300×200 mm · Cuerpo #16 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS403020ED",
+          "label": "400×300×200 mm · Cuerpo #20 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS403020DD",
+          "label": "400×300×200 mm · Cuerpo #18 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS403020DC",
+          "label": "400×300×200 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS352515ED",
+          "label": "350×250×150 mm · Cuerpo #20 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS302020ED",
+          "label": "300×200×200 mm · Cuerpo #20 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS302020DD",
+          "label": "300×200×200 mm · Cuerpo #18 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS302015DD",
+          "label": "300×200×150 mm · Cuerpo #18 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS302015ED",
+          "label": "300×200×150 mm · Cuerpo #20 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CS202015ED",
+          "label": "200×200×150 mm · Cuerpo #20 / PLM #18",
+          "role": "pieza"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/caja-metalica-galvanizada.webp",
+        "bySku": {
+          "CS1006025CC": "/images/productos/caja-metalica-galvanizada-grande.webp",
+          "CS1006025DC": "/images/productos/caja-metalica-galvanizada-grande.webp",
+          "CS1006040CC": "/images/productos/caja-metalica-galvanizada-grande.webp",
+          "CS1008030CC": "/images/productos/caja-metalica-galvanizada-grande.webp",
+          "CS1008030DC": "/images/productos/caja-metalica-galvanizada-grande.webp",
+          "CS1206025CC": "/images/productos/caja-metalica-galvanizada-grande.webp",
+          "CS1208030CC": "/images/productos/caja-metalica-galvanizada-grande.webp",
+          "CS1208035CC": "/images/productos/caja-metalica-galvanizada-grande.webp",
+          "CS806025DC": "/images/productos/caja-metalica-galvanizada.webp",
+          "CS705025DC": "/images/productos/caja-metalica-galvanizada.webp",
+          "CS705015DC": "/images/productos/caja-metalica-galvanizada.webp",
+          "CS605025DC": "/images/productos/caja-metalica-galvanizada.webp",
+          "CS605020DC": "/images/productos/caja-metalica-galvanizada.webp",
+          "CS604020DD": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS604020DC": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS504020DC": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS504020DD": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS504025DC": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS404025DC": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS404020DD": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS404030DC": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS403020CC": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS403020ED": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS403020DD": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS403020DC": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS352515ED": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS302020ED": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS302020DD": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS302015DD": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS302015ED": "/images/productos/caja-metalica-galvanizada-chica.webp",
+          "CS202015ED": "/images/productos/caja-metalica-galvanizada-chica.webp"
+        }
+      }
+    },
+    {
+      "id": "caja-metalica-inox-304",
+      "categoryId": "tableros",
+      "type": "producto",
+      "name": "Caja Metálica Inoxidable AISI 304",
+      "subtitle": "De 300×200 mm a 800×600 mm · acero inoxidable AISI 304 · IP55",
+      "shortDescription": "Caja metálica sobreponer en acero inoxidable AISI 304, terminación N2 (sin pintura), IP55. Pensada para ambientes corrosivos, húmedos o con exigencia de higiene.",
+      "longDescription": "Versión en acero inoxidable AISI 304 de la caja metálica sobreponer BGA, para instalaciones donde la chapa galvanizada con pintura no alcanza: ambientes húmedos o corrosivos, plantas de alimentos y bebidas, o cualquier lugar donde se necesite una superficie fácil de limpiar y sin pintura que se descascare.\n\nTerminación N2 (acabado de fábrica, sin pintura), el mismo estándar de bisagra ZAMAK de 180° y cerradura ZAMAK, y protección IP55 contra polvo y chorros de agua. La placa de montaje interior se mantiene en chapa galvanizada, igual que en la línea estándar.\n\nDisponible en 4 medidas, de 300×200×200 mm a 800×600×300 mm. Todas son medidas estándar de fábrica; para otra medida, la vendedora puede evaluar una fabricación especial.",
+      "faq": [
+        {
+          "q": "¿Cuándo conviene esta caja en vez de la línea galvanizada?",
+          "a": "Cuando el ambiente es corrosivo, húmedo, salino o marino, o cuando la instalación exige una superficie de fácil higienización — plantas de alimentos, bebidas o farmacéutica, por ejemplo."
+        },
+        {
+          "q": "¿Qué es la terminación N2?",
+          "a": "Es el acabado estándar del acero inoxidable de fábrica, sin pintura — superficie lisa, resistente a la corrosión por sí misma, sin necesidad de recubrimiento."
+        },
+        {
+          "q": "¿La placa de montaje también es de acero inoxidable?",
+          "a": "No, la placa de montaje interior es de chapa galvanizada, igual que en la línea estándar — es una pieza que no queda expuesta al ambiente externo."
+        },
+        {
+          "q": "¿Qué medidas hay disponibles?",
+          "a": "Cuatro medidas, de 300×200×200 mm a 800×600×300 mm. Se elige dentro de la ficha del producto."
+        },
+        {
+          "q": "¿Cómo se cotiza?",
+          "a": "Elegís la medida en la ficha del producto y la agregás a tu cotización. Si necesitás una medida que no está en la lista, marcá \"Necesito ayuda técnica\" o consultá directo con la vendedora."
+        }
+      ],
+      "keywords": "caja inoxidable AISI 304, caja sobreponer acero inoxidable, gabinete inoxidable IP55, caja inox para tablero, gabinete inoxidable Paraguay",
+      "meta": {
+        "title": "Caja Metálica Inoxidable AISI 304 | BGA Paraguay",
+        "description": "Caja metálica sobreponer en acero inoxidable AISI 304, terminación N2, IP55. Para ambientes corrosivos, húmedos o con exigencia de higiene. BGA Paraguay."
+      },
+      "variants": [
+        {
+          "sku": "CSX806030ED",
+          "label": "800×600×300 mm · Cuerpo #16 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CSX604020ED",
+          "label": "600×400×200 mm · Cuerpo #18 / PLM #16",
+          "role": "pieza"
+        },
+        {
+          "sku": "CSX403020ED",
+          "label": "400×300×200 mm · Cuerpo #18 / PLM #18",
+          "role": "pieza"
+        },
+        {
+          "sku": "CSX302020ED",
+          "label": "300×200×200 mm · Cuerpo #18 / PLM #18",
+          "role": "pieza"
+        }
+      ],
+      "unidadVenta": "Pieza",
+      "images": {
+        "primary": "/images/productos/caja-metalica-inox-304.webp"
+      }
     },
     {
       "id": "GAB-MOD",
