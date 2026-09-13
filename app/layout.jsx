@@ -38,6 +38,12 @@ export default function RootLayout({ children }) {
         <Analytics />
       </head>
       <body>
+        {/* O <noscript> padrão do GTM (iframe do gtm.js) fica de fora de propósito:
+            este layout é Server Component e o site sai como export estático — o
+            HTML é fixo no build, sem hostname disponível pra repetir a guarda de
+            Analytics.jsx. Um iframe sem essa guarda carregaria também no preview
+            do Amplify, furando a régua "GTM só no domínio publicado". Medição de
+            visitante sem JavaScript não vale esse risco. */}
         <CartProvider>
           <div className="max-w-[1920px] mx-auto">
             <Header categories={getCategoryNav()} />
