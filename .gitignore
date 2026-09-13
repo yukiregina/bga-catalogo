@@ -6,3 +6,4 @@ out/
 reference-lp:/
 .claude/
 lib/search-index.json
+Claude outputs/
