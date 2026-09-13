@@ -57,6 +57,10 @@ module.exports = {
     // Se começar a entrar lixo, troque aqui e na propriedade LEAD_FORM_SECRET
     // do script.
     leadWebhookSecret: 'c1e7ac2ebfb800939f8224d87f275ec9727b33fb3551f85b',
+    // Container do Google Tag Manager. O GA4 passa a ser configurado DENTRO do
+    // GTM — o gaMeasurementId abaixo fica como registro de qual propriedade é,
+    // mas não é mais lido pelo código.
+    gtmContainerId: 'GTM-M9CWZQV8',
     // GA4 do cliente. Null = catálogo sobe sem medição.
     gaMeasurementId: 'G-3PF2RG7WNG',
   },
