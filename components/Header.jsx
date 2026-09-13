@@ -83,7 +83,7 @@ export default function Header({ categories = [] }) {
                     onClick={closeNav}
                     className={cat.id === activeCategoria ? styles.navLinkActive : undefined}
                   >
-                    {cat.name.split(' ')[0]}
+                    {cat.navLabel ?? cat.name.split(' ')[0]}
                   </Link>
                 ))}
           </div>

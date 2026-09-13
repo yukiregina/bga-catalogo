@@ -268,6 +268,7 @@
     {
       "id": "bandejas-de-alambre",
       "name": "Bandejas Portacables de Alambre",
+      "navLabel": "Alambre",
       "displayMode": "contact",
       "description": "Bandejas portacables en malla de alambre soldado — sistema tipo malla, liviano y ventilado, para telecomunicaciones, data centers y tendidos que cambian seguido.",
       "image": "/images/bandeja-portacable-alambre-bga-malla-soldada-paraguay.webp",
