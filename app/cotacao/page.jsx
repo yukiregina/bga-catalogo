@@ -379,7 +379,7 @@ export default function CotacaoPage() {
                     className="w-full h-10 px-3 text-sm bg-surface-elevated border border-border-subtle rounded text-text-primary placeholder:text-text-muted focus:outline-none focus:border-brand-primary transition-colors"
                   />
                   <p className="text-[10px] text-text-muted mt-1">
-                    Opcional. Por si se corta la conversación, para poder responderte igual.
+                    Opcional. Si el WhatsApp no abre, te atendemos igual.
                   </p>
                 </div>
 
