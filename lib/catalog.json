@@ -14076,7 +14076,9 @@
         "bandeja-portacable-de-alambre",
         "soporte-acople-vertical-alambre"
       ],
-      "images": {}
+      "images": {
+        "primary": "/images/productos/soporte-travesano-omega-alambre.webp"
+      }
     },
     {
       "id": "soporte-acople-vertical-alambre",
