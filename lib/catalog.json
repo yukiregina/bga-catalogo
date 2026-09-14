@@ -2631,8 +2631,8 @@
       "type": "producto",
       "name": "Escalera Portacables CL",
       "subtitle": "Tramo de 3000 mm · con perforación · tipo leve",
-      "shortDescription": "Escalera portacables BGA línea CL — tramo de 3000 mm con travesaños perforados, en anchos de 100 a 800 mm, ala 60 o 75 mm. Se especifica por ancho, ala, acabado y espesor.",
-      "longDescription": "La escalera portacables es la canalización para los tramos largos y las cargas altas: sostiene cables de fuerza de sección grande, permite mayor distancia entre soportes que una bandeja y deja el cable ventilado en toda su extensión.\n\nLa línea CL lleva los travesaños perforados, lo que permite fijar abrazaderas y precintos en cualquier punto del recorrido — la alternativa sin perforación es la línea CLY, con acabado más cerrado. Para cargas más exigentes o vanos mayores, existe además el tipo pesado (CL5114), con ala de 100 mm.\n\nEl tramo estándar es de 3000 mm, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm, con ala de 60 o 75 mm. El espesor se elige por ancho, siguiendo la regla de espesor mínimo de BGA, entre #12 y #20.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "shortDescription": "Escalera portacables BGA línea CL — tramo de 3000 mm con travesaños perforados, en anchos de 100 a 800 mm, ala 60, 75 o 100 mm. Se especifica por ancho, ala, acabado y espesor.",
+      "longDescription": "La escalera portacables es la canalización para los tramos largos y las cargas altas: sostiene cables de fuerza de sección grande, permite mayor distancia entre soportes que una bandeja y deja el cable ventilado en toda su extensión.\n\nLa línea CL lleva los travesaños perforados, lo que permite fijar abrazaderas y precintos en cualquier punto del recorrido — la alternativa sin perforación es la línea CLY, con acabado más cerrado. Para cargas más exigentes o vanos mayores, existe además el tipo pesado (CL5114), con espesores más gruesos en toda la línea de anchos.\n\nEl tramo estándar es de 3000 mm, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm, con ala de 60, 75 o 100 mm. El espesor se elige por ancho, siguiendo la regla de espesor mínimo de BGA, entre #12 y #20.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
       "faq": [
         {
           "q": "¿Cuál es la diferencia entre la CL y la CLY?",
@@ -2640,7 +2640,7 @@
         },
         {
           "q": "¿Cuándo conviene el tipo pesado en vez de esta línea leve?",
-          "a": "Cuando el vano entre soportes es mayor o la carga de cable es alta. El tipo pesado (CL5114) tiene ala de 100 mm y admite espesores desde #16 en los anchos chicos y #12 en 800 mm."
+          "a": "Cuando el vano entre soportes es mayor o la carga de cable es alta. El tipo pesado (CL5114) admite espesores más gruesos en toda la línea de anchos — desde #16 en los anchos chicos y #12 en 800 mm — aunque comparta el ala 100 mm con esta línea leve."
         },
         {
           "q": "¿Cuándo uso escalera y cuándo bandeja portacables?",
@@ -2658,7 +2658,7 @@
       "keywords": "escalera portacables CL, escalerilla con perforación, escalera perforada tipo leve, cable ladder perforado, escalera porta cables Paraguay",
       "meta": {
         "title": "Escalera Portacables CL | BGA Paraguay",
-        "description": "Escalera portacables línea CL, con perforación, de 100 a 800 mm, ala 60/75 mm. Tramo de 3 m, tipo leve. Fabricada en Paraguay por BGA. Cotizá online."
+        "description": "Escalera portacables línea CL, con perforación, de 100 a 800 mm, ala 60/75/100 mm. Tramo de 3 m, tipo leve. Fabricada en Paraguay por BGA. Cotizá online."
       },
       "dimensionAxes": [
         {
@@ -2683,7 +2683,8 @@
           "label": "Ala [B]",
           "values": [
             60,
-            75
+            75,
+            100
           ],
           "unit": "mm"
         },
@@ -2830,11 +2831,11 @@
       "name": "Escalera Portacables Tipo Pesado",
       "subtitle": "Tramo de 3000 mm · con perforación · tipo pesado · ala 100 mm",
       "shortDescription": "Escalera portacables BGA tipo pesado (CL5114) — tramo de 3000 mm con perforación, ala fija de 100 mm, para vanos mayores y cargas más exigentes. Anchos de 100 a 800 mm.",
-      "longDescription": "La escalera portacables es la canalización para los tramos largos y las cargas altas: sostiene cables de fuerza de sección grande, permite mayor distancia entre soportes que una bandeja y deja el cable ventilado en toda su extensión.\n\nEl tipo pesado (CL5114) lleva los travesaños perforados, igual que la línea CL leve, pero con ala de 100 mm — pensada para vanos mayores entre soportes y cargas de cable más exigentes que las líneas CL y CLY estándar.\n\nEl tramo estándar es de 3000 mm, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm, con ala fija de 100 mm. Admite espesores desde #16 en los anchos chicos y #12 en 800 mm — un rango más angosto que la línea leve, siguiendo la regla de espesor mínimo de BGA.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "longDescription": "La escalera portacables es la canalización para los tramos largos y las cargas altas: sostiene cables de fuerza de sección grande, permite mayor distancia entre soportes que una bandeja y deja el cable ventilado en toda su extensión.\n\nEl tipo pesado (CL5114) lleva los travesaños perforados, igual que la línea CL leve — que también está disponible en ala 100 mm — pero con espesores más gruesos en toda la línea de anchos, pensado para vanos mayores entre soportes y cargas de cable más exigentes.\n\nEl tramo estándar es de 3000 mm, en anchos de 100, 150, 200, 250, 300, 400, 450, 500, 600 y 800 mm, con ala fija de 100 mm. Admite espesores desde #16 en los anchos chicos y #12 en 800 mm — un rango más angosto que la línea leve, siguiendo la regla de espesor mínimo de BGA.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316. Fabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
       "faq": [
         {
           "q": "¿Cuándo conviene el tipo pesado en vez de la línea leve (CL/CLY)?",
-          "a": "Cuando el vano entre soportes es mayor o la carga de cable es alta. El tipo pesado tiene ala de 100 mm y admite espesores desde #16 en los anchos chicos y #12 en 800 mm."
+          "a": "Cuando el vano entre soportes es mayor o la carga de cable es alta. El tipo pesado admite espesores más gruesos en toda la línea de anchos — desde #16 en los anchos chicos y #12 en 800 mm — aunque comparta el ala 100 mm con la línea CL leve."
         },
         {
           "q": "¿Qué espesor corresponde?",
