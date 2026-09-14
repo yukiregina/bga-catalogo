@@ -61,6 +61,7 @@ export default function CotacaoPage() {
     nombre: '',
     empresa: '',
     ciudad: '',
+    whatsapp: '',
     proyecto: '',
     plazo: '',
     rubro: '',
@@ -98,6 +99,7 @@ export default function CotacaoPage() {
       nombre: form.nombre,
       empresa: form.empresa,
       ciudad: form.ciudad,
+      whatsapp: form.whatsapp,
       rubro: form.rubro && form.rubro !== RUBROS[0] ? form.rubro : '',
       proyecto: form.proyecto,
       plazo: form.plazo,
@@ -360,6 +362,26 @@ export default function CotacaoPage() {
                     />
                   </div>
                 ))}
+
+                {/* O site grava a cotización antes de abrir o WhatsApp (persist-first) —
+                    então pode existir uma linha sem conversa nenhuma anexada, se a pessoa
+                    fechar a aba antes de mandar. Sem este campo, essas linhas não têm
+                    como voltar pra quem pediu. */}
+                <div>
+                  <label className="text-[11px] font-semibold text-text-secondary block mb-1">WhatsApp</label>
+                  <input
+                    type="tel"
+                    inputMode="tel"
+                    name="whatsapp"
+                    value={form.whatsapp}
+                    onChange={handleForm}
+                    placeholder="0981 123 456"
+                    className="w-full h-10 px-3 text-sm bg-surface-elevated border border-border-subtle rounded text-text-primary placeholder:text-text-muted focus:outline-none focus:border-brand-primary transition-colors"
+                  />
+                  <p className="text-[10px] text-text-muted mt-1">
+                    Opcional. Por si se corta la conversación, para poder responderte igual.
+                  </p>
+                </div>
 
                 <div>
                   <label className="text-[11px] font-semibold text-text-secondary block mb-1">Rubro</label>

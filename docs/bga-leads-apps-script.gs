@@ -1,6 +1,11 @@
-// BGA Lead Tracker — Google Apps Script  ·  v5 (2026-09-13)
+// BGA Lead Tracker — Google Apps Script  ·  v6 (2026-09-14)
 // Cole em: script.google.com → seu projeto → Code.gs
 // Implantar → Gerenciar implantações → Editar (lápis) → Nova versão → Implantar
+//
+// MUDANÇA DA v6: coluna "WhatsApp" nova no FIM de Cotizaciones (21ª, U) — campo
+// opcional do carrinho de cotação, só nesse formulário (doGet/aba de contato
+// não mudam). Pelo mesmo motivo das v3/v5: vai no fim, não no meio, porque
+// Estado é a 12ª coluna e uma inserção no meio já quebrou essa contagem antes.
 //
 // MUDANÇA DA v5 (medição de campanha): 5 colunas novas no FIM das duas
 // planilhas — Fuente, Medio, Campaña, Click ID, Página de entrada — vindas de
@@ -49,7 +54,8 @@ var HEADERS_COTIZACIONES = [
   'Fecha', 'Nombre', 'RUC / Empresa', 'Ciudad', 'Rubro',
   'Ítems', 'Cant. total', 'SKUs', 'Obra', 'Plazo', 'Origen',
   'Estado', 'Contactado el', 'Propuesta el', 'Notas',
-  'Fuente', 'Medio', 'Campaña', 'Click ID', 'Página de entrada'
+  'Fuente', 'Medio', 'Campaña', 'Click ID', 'Página de entrada',
+  'WhatsApp'
 ];
 
 var ESTADOS = ['nuevo', 'contactado', 'propuesta', 'cerrado', 'perdido'];
@@ -147,7 +153,8 @@ function doPost(e) {
     clampField(data.medio, LIMITS.atribucion),
     clampField(data.campana, LIMITS.atribucion),
     clampField(data.click_id, LIMITS.atribucion),
-    clampField(data.pagina_entrada, LIMITS.atribucion)
+    clampField(data.pagina_entrada, LIMITS.atribucion),
+    clampField(data.whatsapp, LIMITS.atribucion)
   ]);
 
   return jsonOut({ status: 'ok' });
