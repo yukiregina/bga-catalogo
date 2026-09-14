@@ -87,7 +87,12 @@ export default function CatalogPageClient({ categories = [] }) {
               className="bg-white border border-black/8 rounded-card overflow-hidden hover:shadow-md transition group flex flex-col"
             >
               {/* Imagen */}
-              <Link href={`/catalogo/${cat.id}`} className="block">
+              <Link href={`/catalogo/${cat.id}`} className="block relative">
+                {cat.badge && (
+                  <span className="absolute top-2.5 right-2.5 z-[3] px-2.5 py-1 rounded-[6px] bg-[var(--bolt)] text-[var(--ocean)] text-[11px] font-bold tracking-wide uppercase">
+                    {cat.badge}
+                  </span>
+                )}
                 {cat.image ? (
                   <img
                     src={cat.image}
