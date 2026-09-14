@@ -42,8 +42,9 @@ export default function PoliticaDePrivacidadPage() {
               Este sitio no pide registro ni crea cuentas de usuario. Recogemos datos en tres momentos:
             </p>
             <p className="text-sm text-text-secondary leading-relaxed mb-3">
-              Cuando pedís una cotización: lo que escribís en el formulario — nombre o empresa, RUC y rubro —
-              junto con la lista de productos, las cantidades y las observaciones que hayas cargado.
+              Cuando pedís una cotización: lo que escribís en el formulario — nombre o empresa, RUC, ciudad,
+              rubro, obra, plazo y, si lo dejás, tu WhatsApp — junto con la lista de productos, las cantidades
+              y las observaciones que hayas cargado.
             </p>
             <p className="text-sm text-text-secondary leading-relaxed mb-3">
               Cuando seguís por WhatsApp: al abrirse la conversación vemos tu número de teléfono y el nombre de
