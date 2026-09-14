@@ -2914,6 +2914,104 @@
       }
     },
     {
+      "id": "tapa-escalera-portacables",
+      "categoryId": "escaleras",
+      "type": "producto",
+      "name": "Tapa Lisa para Escalera",
+      "subtitle": "Cierre superior · líneas CL y CLY · tipo leve y pesado",
+      "shortDescription": "Tapa lisa para escalera portacables BGA — cierre superior por ancho y ala, para las líneas CL y CLY. Se cotiza aparte de la escalera, especificando ancho y ala.",
+      "longDescription": "La tapa cierra la escalera portacables por arriba: protege los cables contra caída de polvo, agua y objetos, en recorridos expuestos o bajo estructura.\n\nSe especifica por el mismo ancho y la misma ala de la escalera que va a cubrir — CL (ala 60, 75 o 100 mm) o CLY (ala 65 o 95 mm) — para que el cierre quede alineado. Usa el mismo código que la tapa de bandeja portacables y la tapa de perfilado 38: BGA reutiliza el código CT3211 para las tres piezas, cada una con su propia medida.\n\nDisponible en chapa pregalvanizada (PZ), galvanizado por inmersión en caliente (GF), pintura electrostática en polvo en los colores estándar de BGA, y en acero inoxidable AISI 304 y AISI 316.\n\nFabricado en Paraguay por BGA Electric S.A. Cumple NBR IEC 61537 (Sistemas de Eletrocalhas e Leitos para Cabos).",
+      "faq": [
+        {
+          "q": "¿CT3211 no es el código de la tapa de bandeja o de perfilado?",
+          "a": "Es el mismo código, reutilizado por BGA para tres productos distintos: la tapa de bandeja portacables, la tapa de perfilado 38 y esta tapa de escalera. Cada una tiene su propia medida — al cotizar, especificá que es para escalera."
+        },
+        {
+          "q": "¿Qué ancho y ala pido?",
+          "a": "Los mismos de la escalera que vas a cubrir. Elegí ambos en esta ficha antes de agregar a tu cotización."
+        },
+        {
+          "q": "¿La tapa viene incluida con la escalera?",
+          "a": "No. Se cotiza aparte, por pieza, especificando ancho y ala."
+        },
+        {
+          "q": "¿Necesito tornillería para fijarla?",
+          "a": "No. Es una tapa lisa de encaje, sin tornillería adicional."
+        }
+      ],
+      "keywords": "tapa de escalera, tampa escalera portacables, cierre escalera CL CLY, tapa lisa escalera Paraguay",
+      "meta": {
+        "title": "Tapa Lisa para Escalera Portacables | BGA Paraguay",
+        "description": "Tapa lisa para escalera portacables, líneas CL y CLY. Se especifica por ancho y ala. Fabricada en Paraguay por BGA Electric. Cotizá online."
+      },
+      "dimensionAxes": [
+        {
+          "id": "ancho",
+          "label": "Ancho [A]",
+          "values": [
+            50,
+            100,
+            150,
+            200,
+            250,
+            300,
+            350,
+            400,
+            450,
+            500,
+            550,
+            600,
+            650,
+            700,
+            750,
+            800
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "ala",
+          "label": "Ala [B]",
+          "values": [
+            60,
+            65,
+            75,
+            95,
+            100
+          ],
+          "unit": "mm"
+        },
+        {
+          "id": "espesor",
+          "label": "Espesor",
+          "values": [
+            "#12",
+            "#14",
+            "#16",
+            "#18",
+            "#20",
+            "#22"
+          ],
+          "unit": ""
+        }
+      ],
+      "sku": "CT3211",
+      "unidadVenta": "Pieza",
+      "finishes": [
+        "pz",
+        "aisi304",
+        "aisi316",
+        "gf",
+        "elec"
+      ],
+      "recommended": [
+        "escalera-portacables-cl",
+        "escalera-portacables-cly",
+        "escalera-portacables-tipo-pesado"
+      ],
+      "_todo": "Sin foto propia — la planilla (aba 02_Escaleras, fila CT3211) no trae imagen específica para esta tapa. Placeholder vacío hasta que llegue una foto.",
+      "images": {}
+    },
+    {
       "id": "curva-horizontal-90-escalera",
       "categoryId": "escaleras",
       "type": "producto",
