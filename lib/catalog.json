@@ -8828,7 +8828,9 @@
         "trillo-vertical-gabinete"
       ],
       "images": {
-        "primary": "/images/productos/placa-de-montaje-modular.webp"
+        "primary": "/images/productos/placa-de-montaje-modular.webp",
+        "secondary": "/images/productos/gabinete-modular-estructura-1200.webp",
+        "secondaryLabel": "Instalada"
       }
     },
     {
@@ -8918,7 +8920,9 @@
         "trillo-vertical-gabinete"
       ],
       "images": {
-        "primary": "/images/productos/placa-de-montaje-modular.webp"
+        "primary": "/images/productos/placa-de-montaje-modular.webp",
+        "secondary": "/images/productos/gabinete-modular-estructura-800.webp",
+        "secondaryLabel": "Instalada"
       }
     },
     {
@@ -9008,7 +9012,9 @@
         "trillo-vertical-gabinete"
       ],
       "images": {
-        "primary": "/images/productos/placa-de-montaje-modular.webp"
+        "primary": "/images/productos/placa-de-montaje-modular.webp",
+        "secondary": "/images/productos/gabinete-modular-estructura-800.webp",
+        "secondaryLabel": "Instalada"
       }
     },
     {
@@ -9075,7 +9081,9 @@
         "placa-de-montaje-pml54"
       ],
       "images": {
-        "primary": "/images/productos/trillo-vertical-gabinete.webp"
+        "primary": "/images/productos/trillo-vertical-gabinete.webp",
+        "secondary": "/images/productos/gabinete-modular-estructura-1200.webp",
+        "secondaryLabel": "Instalada"
       }
     },
     {

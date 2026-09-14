@@ -54,7 +54,7 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   const [selectedMaterial,  setSelectedMaterial]  = useState(gs.materials?.[0]?.id ?? null)
   const [selectedGauge,     setSelectedGauge]     = useState(gs.thicknesses?.[1]?.gauge ?? gs.thicknesses?.[0]?.gauge ?? null)
   const [qty,      setQty]      = useState(1)
-  const [galleryTab, setGalleryTab] = useState('primary') // 'primary' | 'tapa'
+  const [galleryTab, setGalleryTab] = useState('primary') // 'primary' | 'tapa' | 'secondary'
 
   // Material y terminación como eixo único (seção 6) — só entra quando o
   // produto lista `finishes` (array de ids pra globalSpecs.finishes, mesmo
@@ -87,18 +87,27 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   // toggle peça/tapa fixo. Produto sem images.bySku não entra por aqui —
   // os outros 71 continuam no galleryTab de sempre, sem mudar.
   const hasBySku = !!product.images?.bySku
+  // Placa/trillo de gabinete: segunda foto do mesmo SKU (montado no gabinete),
+  // não uma variante nova — sem bySku nem tapa, senão os dois toggles colidiriam.
+  const hasSecondary = !hasBySku && !product.images?.tapa && !!product.images?.secondary
   const mainImageSrc = kitAla
     ? (product.images.byAla[kitAla] ?? product.images.primary)
     : tapaImageMissing
       ? null // tapa sem render: vazio, nunca a foto da peça — é a troca que comunica a variante
       : hasBySku
         ? (product.images.bySku[selectedVariant?.sku] ?? product.images.primary)
-        : (galleryTab === 'tapa' && product.images?.tapa ? product.images.tapa : product.images?.primary)
+        : hasSecondary
+          ? (galleryTab === 'secondary' ? product.images.secondary : product.images.primary)
+          : (galleryTab === 'tapa' && product.images?.tapa ? product.images.tapa : product.images?.primary)
   const mainImageAlt = kitAla
     ? getProductImageAlt(product, { ala: kitAla })
     : hasBySku
       ? getProductImageAlt(product, selectedVariant ? { variantLabel: selectedVariant.label } : 'primary')
-      : getProductImageAlt(product, galleryTab === 'tapa' && product.images?.tapa ? 'tapa' : 'primary')
+      : hasSecondary
+        ? (galleryTab === 'secondary'
+            ? `${product.name} BGA${product.subtitle ? ` — ${product.subtitle}` : ''} — ${product.images.secondaryLabel ?? 'Instalada'}`
+            : getProductImageAlt(product, 'primary'))
+        : getProductImageAlt(product, galleryTab === 'tapa' && product.images?.tapa ? 'tapa' : 'primary')
 
   const { addItem, replaceItem, items } = useCart()
   const router = useRouter()
@@ -418,6 +427,36 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                     </button>
                   )
                 })}
+              </div>
+            ) : hasSecondary ? (
+              /* Placa/trillo de gabinete — mesma SKU, segunda foto (montado no
+                 gabinete). Puro troca de imagem: sem setSelectedVariant, porque
+                 não há uma segunda SKU por trás — ao contrário do toggle Pieza/Tapa. */
+              <div className="flex gap-2">
+                {[
+                  { id: 'primary',   label: 'Pieza', src: product.images.primary },
+                  { id: 'secondary', label: product.images.secondaryLabel ?? 'Instalada', src: product.images.secondary },
+                ].map(thumb => (
+                  <button
+                    key={thumb.id}
+                    onClick={() => setGalleryTab(thumb.id)}
+                    className={`flex-1 rounded-lg border overflow-hidden ${
+                      galleryTab === thumb.id ? 'border-text-primary/40' : 'border-border-subtle'
+                    }`}
+                  >
+                    <div className="bg-surface-elevated aspect-square flex items-center justify-center">
+                      <img
+                        src={thumb.src}
+                        alt={`${product.name} BGA — ${thumb.label}`}
+                        width={80}
+                        height={80}
+                        loading="lazy"
+                        className="w-full h-full object-contain p-1"
+                      />
+                    </div>
+                    <div className="text-[10px] text-text-muted py-0.5">{thumb.label}</div>
+                  </button>
+                ))}
               </div>
             ) : (
               /* Galería peza/tapa — a tapa se cotiza aparte, dos piezas distintas.
