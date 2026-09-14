@@ -3008,8 +3008,9 @@
         "escalera-portacables-cly",
         "escalera-portacables-tipo-pesado"
       ],
-      "_todo": "Sin foto propia — la planilla (aba 02_Escaleras, fila CT3211) no trae imagen específica para esta tapa. Placeholder vacío hasta que llegue una foto.",
-      "images": {}
+      "images": {
+        "primary": "/images/productos/bandeja-portacables-tapa.webp"
+      }
     },
     {
       "id": "curva-horizontal-90-escalera",
