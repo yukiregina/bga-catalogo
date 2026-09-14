@@ -27,6 +27,15 @@ function clampQty(n) {
   return Math.min(num, 9999)
 }
 
+// Ala CL/CLY (escaleras) — os ~27 acessórios (curvas, tés, cruzetas,
+// reducciones, uniones, soportes, salidas) compartilham um único eixo "ala"
+// entre as duas linhas de escalera, o que intercalava os valores (60, 65,
+// 75, 95, 100) numa fileira só. As páginas próprias de CL/CLY/tipo pesado
+// (seção 3) já nascem com só os valores da própria linha, então não caem
+// aqui — só agrupa quando o eixo mistura valores dos dois conjuntos.
+const ALA_CL_VALUES = [60, 75, 100]
+const ALA_CLY_VALUES = [65, 95]
+
 export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [], recommended = [] }) {
   const gs = globalSpecs ?? {}
   const variants = (product.variants ?? []).map(normalizeVariant)
@@ -604,6 +613,55 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
                   const n = ax.values.length
                   const rows = Math.ceil(n / 8)
                   const cols = Math.ceil(n / rows)
+
+                  const alaClValues  = ax.id === 'ala' ? ax.values.filter(v => ALA_CL_VALUES.includes(v))  : []
+                  const alaClyValues = ax.id === 'ala' ? ax.values.filter(v => ALA_CLY_VALUES.includes(v)) : []
+                  const isGroupedAla = category?.id === 'escaleras' && alaClValues.length > 0 && alaClyValues.length > 0
+
+                  if (isGroupedAla) {
+                    return (
+                      <div key={ax.id}>
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-xs text-text-muted">
+                            {ax.label ?? ax.id} · {ax.unit ?? 'mm'}
+                          </span>
+                          <span className="text-[11px] text-text-muted/60">
+                            Seleccionado: {selectedAxes[ax.id]}
+                          </span>
+                        </div>
+                        <div className="space-y-1.5">
+                          {[
+                            { label: 'Ala CL',  values: alaClValues },
+                            { label: 'Ala CLY', values: alaClyValues },
+                          ].map(group => (
+                            <div key={group.label} className="flex items-center gap-2">
+                              <span className="text-[10px] text-text-muted/70 w-14 shrink-0">{group.label}</span>
+                              <div role="radiogroup" aria-label={group.label} className="no-print flex flex-wrap gap-1">
+                                {group.values.map(v => {
+                                  const sel = selectedAxes[ax.id] === v
+                                  return (
+                                    <button key={v}
+                                      role="radio"
+                                      aria-checked={sel}
+                                      onClick={() => setSelectedAxes(prev => ({ ...prev, [ax.id]: v }))}
+                                      className={`text-center py-1.5 px-3 text-[11px] rounded font-mono transition ${
+                                        sel
+                                          ? 'bg-text-primary text-white border border-text-primary font-medium'
+                                          : 'border border-border-subtle text-text-secondary hover:border-text-primary/30'
+                                      }`}
+                                    >
+                                      {v}
+                                    </button>
+                                  )
+                                })}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  }
+
                   return (
                     <div key={ax.id}>
                       <div className="flex items-center justify-between mb-1.5">
