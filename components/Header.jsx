@@ -76,16 +76,19 @@ export default function Header({ categories = [] }) {
                     <Link key={link.href} href={link.href} onClick={closeNav}>{link.label}</Link>
                   )
                 )
-              : categories.map(cat => (
-                  <Link
-                    key={cat.id}
-                    href={`/catalogo/${cat.id}`}
-                    onClick={closeNav}
-                    className={cat.id === activeCategoria ? styles.navLinkActive : undefined}
-                  >
-                    {cat.navLabel ?? cat.name.split(' ')[0]}
-                  </Link>
-                ))}
+              : [
+                  <Link key="/" href="/" onClick={closeNav}>Inicio</Link>,
+                  ...categories.map(cat => (
+                    <Link
+                      key={cat.id}
+                      href={`/catalogo/${cat.id}`}
+                      onClick={closeNav}
+                      className={cat.id === activeCategoria ? styles.navLinkActive : undefined}
+                    >
+                      {cat.navLabel ?? cat.name.split(' ')[0]}
+                    </Link>
+                  )),
+                ]}
           </div>
 
           <div className={styles.headerActions}>
