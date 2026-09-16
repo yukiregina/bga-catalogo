@@ -39,8 +39,27 @@ const ALA_CLY_VALUES = [65, 95]
 export default function ProductSheet({ product, category, globalSpecs, thicknessRules = [], recommended = [] }) {
   const gs = globalSpecs ?? {}
   const variants = (product.variants ?? []).map(normalizeVariant)
+  // Ordem fixa pras variantes de bandeja — Perforada U, Perforada C, Lisa U,
+  // Lisa C, Tapa por último — igual à ordem que os acessórios já seguem,
+  // independente da ordem que a planilha trouxe. Rótulo fora dessa lista
+  // (ala de escalera, bitola de alambre, a peça por diâmetro) mantém a
+  // ordem relativa original.
+  const VARIANT_ORDER = ['Perforada Tipo U', 'Perforada Tipo C', 'Lisa Tipo U', 'Lisa Tipo C', 'Tapa']
+  variants.sort((a, b) => {
+    const ia = VARIANT_ORDER.indexOf(a.label)
+    const ib = VARIANT_ORDER.indexOf(b.label)
+    if (ia === -1 && ib === -1) return 0
+    if (ia === -1) return 1
+    if (ib === -1) return -1
+    return ia - ib
+  })
   const hasVariants  = variants.length > 0
-  const [selectedVariant, setSelectedVariant] = useState(null)
+  // Default "Perforada Tipo U" quando existir — mesma peça que mais gente
+  // pede; sem ela (escaleras, alambre, a peça de bandeja por diâmetro),
+  // nada vem pré-selecionado.
+  const [selectedVariant, setSelectedVariant] = useState(() =>
+    variants.find(v => v.label === 'Perforada Tipo U') ?? null
+  )
   const isTapa = selectedVariant?.role === 'tapa'
   const tapaImageMissing = isTapa && !product.images?.tapa
 
@@ -576,30 +595,30 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
             {/* Variante (modelo/tipo ou diámetro) — seleção dentro da ficha, não rota */}
             {hasVariants && (
               <div className="no-print mb-4">
-                <label htmlFor="variante" className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center justify-between mb-1.5">
                   <span className="text-xs text-text-muted">Modelo / variante</span>
-                </label>
-                <div className="relative">
-                  <select
-                    id="variante"
-                    value={selectedVariant?.sku ?? ''}
-                    onChange={e => {
-                      const v = variants.find(v => v.sku === e.target.value)
-                      setSelectedVariant(v ?? null)
-                      setGalleryTab(v?.role === 'tapa' ? 'tapa' : 'primary')
-                    }}
-                    className="w-full text-sm border border-border-subtle rounded-lg px-3 py-2 bg-white text-text-primary appearance-none pr-9 focus:outline-none focus:border-brand-primary transition-colors cursor-pointer"
-                  >
-                    <option value="">Seleccioná modelo y tipo…</option>
-                    {variants.map(v => (
-                      <option key={v.sku} value={v.sku}>{v.label}</option>
-                    ))}
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-2.5 flex items-center">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-text-muted">
-                      <polyline points="6 9 12 15 18 9"/>
-                    </svg>
-                  </div>
+                </div>
+                <div role="radiogroup" aria-label="Modelo / variante" className="flex flex-wrap gap-2">
+                  {variants.map(v => {
+                    const sel = selectedVariant?.sku === v.sku
+                    return (
+                      <button key={v.sku}
+                        role="radio"
+                        aria-checked={sel}
+                        onClick={() => {
+                          setSelectedVariant(v)
+                          setGalleryTab(v.role === 'tapa' ? 'tapa' : 'primary')
+                        }}
+                        className={`px-3 py-1.5 text-xs rounded transition ${
+                          sel
+                            ? 'bg-text-primary text-white border border-text-primary font-medium'
+                            : 'border border-border-subtle text-text-secondary hover:border-text-primary/30'
+                        }`}
+                      >
+                        {v.label.replace('Tipo ', '')}
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
             )}
