@@ -12,7 +12,7 @@ export default function RecommendedProducts({ products, configQuery }) {
 
   return (
     <div className="mt-3 space-y-1.5">
-      <div className="text-[11px] text-text-muted">Productos Relacionados</div>
+      <div className="text-xs font-semibold text-brand-primary">Productos Relacionados</div>
       {products.map(product => (
         <Link
           key={product.id}
@@ -33,7 +33,7 @@ export default function RecommendedProducts({ products, configQuery }) {
               <span className="text-[8px] text-text-muted">s/i</span>
             </div>
           )}
-          <span className="text-xs font-medium text-brand-primary flex-1 truncate">
+          <span className="text-sm font-semibold text-brand-primary flex-1 truncate">
             {product.name}
           </span>
           <span className="text-text-muted text-xs shrink-0">→</span>
