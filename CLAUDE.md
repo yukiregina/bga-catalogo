@@ -34,8 +34,9 @@ Enchem quando o `bga-catalogo` assumir o domínio.
 **Build:** `npm run build` passa (199 páginas estáticas, 26/09). A seção 4
 dizia que nunca tinha rodado — superado.
 
-**Branch `fix/cotizacion-volver-y-ruc` — 11 commits, NÃO mergeada nem
-pushada** (Amplify publica o que vai pro git, então nada disto está no ar):
+**Branch `fix/cotizacion-volver-y-ruc` — mergeada em `main` e pushada em
+26/09.** Está no app `bga-catalogo` do Amplify (URL `.amplifyapp.com`), **não
+em `bga.com.py`** até a troca de domínio:
 
 | Commit | O quê |
 | --- | --- |
