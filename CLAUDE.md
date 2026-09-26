@@ -8,8 +8,58 @@ Next.js 14 (App Router) · Tailwind · React Context + localStorage · interface
 espanhol. Arquitetura multi-tenant: catálogo novo = copiar projeto + trocar
 `client.config.js`.
 
-> Estado deste documento: **2026-08-25**. Escrito como handoff — quem abre este
-> projeto sem contexto anterior deve conseguir continuar só com o que está aqui.
+> Estado deste documento: **2026-09-26** (seção 0 e as notas datadas). O resto
+> foi escrito em 2026-08-25 e ficou como registro — onde envelheceu, há nota
+> dizendo. Escrito como handoff — quem abre este projeto sem contexto anterior
+> deve conseguir continuar só com o que está aqui.
+>
+> Pro deploy e a medição (GTM, GA4, Search Console, troca de app no Amplify), a
+> fonte mais nova é `docs/ESTADO-2026-09-15-deploy.md`.
+
+---
+
+## 0. Estado em 2026-09-26 — ler primeiro
+
+**O que está no ar em `www.bga.com.py`:** ainda a landing antiga (repo
+`bga-site`, app Amplify de Ohio), `last-modified: 25 Aug 2026`. **O catálogo
+não está no domínio** — só na URL `.amplifyapp.com` do app `bga-catalogo`. A
+troca de domínio é o passo 3.2 do `docs/ESTADO-2026-09-15-deploy.md`.
+
+Consequência que engana: o formulário da LP antiga manda **só** `nombre`,
+`empresa`, `sector`, `mensaje` e `key` — nem `ciudad`, nem atribuição. Então as
+colunas de origem da primeira aba (Fuente…Referrer) ficam vazias pros leads de
+hoje **porque o site publicado não manda**, não porque o script descarta.
+Enchem quando o `bga-catalogo` assumir o domínio.
+
+**Build:** `npm run build` passa (199 páginas estáticas, 26/09). A seção 4
+dizia que nunca tinha rodado — superado.
+
+**Branch `fix/cotizacion-volver-y-ruc` — 11 commits, NÃO mergeada nem
+pushada** (Amplify publica o que vai pro git, então nada disto está no ar):
+
+| Commit | O quê |
+| --- | --- |
+| `fb264b2` | "← Volver a…" da /cotacao não carrega mais `?editar=` (o próximo "Agregar" substituía uma linha do carrinho em silêncio) |
+| `1de3a98` | RUC sai como `RUC:` na mensagem de WhatsApp da /cotacao, não como empresa |
+| `1d736c4` | duplo clique em "Enviar" não grava o pedido duas vezes |
+| `7310a79` | /cotacao abre o WhatsApp na própria aba se a nova for bloqueada |
+| `087db64` | home: "Empresa / RUC" em linha própria na mensagem |
+| `77e86a0` | home: placeholder "In." → "Ing." |
+| `1e15de4` | Apps Script v7 (ver abaixo) |
+| `2a4aa16` | busca: "200 mm", "200x50", plural/gênero, terminações (ver seção 8) |
+| `cc5d4e6` | home abre o WhatsApp na própria aba se a nova for bloqueada |
+| `9b660b9` | sitemap sem `<lastmod>` |
+| `3128641` | GA4 não registra "Seleccioná un rubro" como rubro |
+
+**Apps Script v7 — implantado pela Yuki em 26/09** (nova versão da mesma
+implantação, URL inalterada). Três colunas novas no fim: `Contenido`,
+`Término`, `Referrer` — L–N na primeira aba, V–X em `Cotizaciones`. Cabeçalhos
+adicionados à mão; o `garantirCabecalho_` da v7 só preenche célula vazia.
+✅ **Testada em 26/09:** um lead do carrinho e um do formulário da home, vindos
+do dev local com `?utm_source=teste-faro&…&utm_content=contenido-v7&utm_term=termino-v7`,
+gravaram com V–X / L–N preenchidos (`contenido-v7 · termino-v7 · localhost`).
+⬜ Apagar as duas linhas `TESTE FARO v7 (apagar)` — uma em cada aba — se ainda
+estiverem lá, junto da `TESTE FARO` de 24/08 na primeira aba.
 
 ---
 
@@ -45,6 +95,11 @@ contradisser qualquer uma, aponte o conflito antes de implementar.
 É coerente: Bandejas é a única família com `richDescription`, intent cards,
 tabela de material e 4 FAQ com Schema JSON-LD. As outras usam fallback.
 
+> **Medido em 26/09:** as cinco famílias estão com `displayMode: "catalog"` e
+> geram páginas; a sexta, `bandejas-tipo-rejilla`, está em `"contact"` (badge
+> Próximamente). Se a decisão acima mudou, o registro não está aqui — conferir
+> com a Yuki antes de tratar a frase acima como vigente.
+
 ---
 
 ## 3. Estado real dos dados (medido em 2026-08-24)
@@ -79,6 +134,24 @@ Dentro de Bandejas (os 26 que vão subir):
 > **36 para 51 produtos** (15 tapas novas: a da bandeja e mais 14 de
 > acessórios de curva/derivação). Faltam 7 tapas — sem dado na planilha
 > ainda — listadas no brief.
+>
+> **Medição de 26/09** (`lib/catalog.json`, 191 entradas = 172 `producto` +
+> 19 `subfamilia`):
+>
+> | Família | Modo | Produtos | Subfamílias | Produtos com imagem |
+> | --- | --- | --- | --- | --- |
+> | bandejas | catalog | 51 | 5 | 45 |
+> | perfilados | catalog | 35 | 4 | 35 |
+> | escaleras | catalog | 29 | 5 | 29 |
+> | tableros (Cajas) | catalog | 35 | 2 | 35 |
+> | gabinetes | catalog | 16 | 3 | 16 |
+> | bandejas-tipo-rejilla | contact | 6 | 0 | 6 |
+>
+> Os 6 sem imagem são tapas sem render: `tapa-curva-horizontal-recta-90 ·
+> tapa-curva-vertical-externa-45 · tapa-curva-vertical-interna-45 ·
+> tapa-curva-horizontal-45 · tapa-te-horizontal-recto ·
+> tapa-te-vertical-ascendente` (a /cotacao mostra "sin imagen" — nunca cai na
+> foto da peça, de propósito).
 
 ---
 
@@ -111,15 +184,22 @@ esperar quebraria o vínculo com o clique do usuário e o navegador bloquearia o
 `window.open` como popup. O que garante o envio é `keepalive: true`. **Não
 "conserte" isso adicionando await.**
 
+> **Atualização (13/09):** o gtag saiu. `components/Analytics.jsx` agora
+> carrega o **GTM** (`GTM-M9CWZQV8`), e o GA4 é configurado dentro do
+> container. Só carrega em `bga.com.py`/`www.bga.com.py` (ou com `gtm_debug`
+> na URL) — no `.amplifyapp.com` e no dev, não carregar é o esperado.
+> `lib/analytics.js` empurra pro `dataLayer`. Detalhe em `docs/MEDICION-ga4-gtm.md`.
+
 ### Eventos GA4 instrumentados
 
 `ver_familia` · `ver_producto` · `agregar_cotizacion` (com `origen: grilla|ficha`) ·
-`cotizacion_enviada` · `click_whatsapp`
+`cotizacion_enviada` · `click_whatsapp` · `buscar_catalogo` ·
+`iniciar_cotizacion` · `click_linea_nueva` *(os três últimos desde 13/09)*
 
-### ⚠️ Não verificado
+### ~~Não verificado~~ — verificado em 26/09
 
-**O `npm run build` não foi rodado.** A sintaxe dos 11 arquivos passou em
-checagem, mas o build completo não. **Rodar antes de qualquer deploy.**
+~~O `npm run build` não foi rodado.~~ Roda e passa: 199 páginas estáticas.
+Continua valendo rodar antes de qualquer deploy.
 
 ---
 
@@ -181,7 +261,14 @@ Duas cópias antigas da LP existem no disco e **não** são a fonte editável:
 Se o catálogo unificado substituir a LP (ver 5.1c), o `bga-site` se aposenta e a
 edição passa a ser só no `client.config.js` deste projeto.
 
-### 5.1b Publicar o catálogo no Amplify — não dá como está 🔴
+### 5.1b Publicar o catálogo no Amplify ✅ RESOLVIDO
+
+> **Estado em 26/09:** feito. `next.config.js` (não `.mjs`) tem
+> `output: 'export'` e `trailingSlash: true`, as rotas dinâmicas têm
+> `generateStaticParams`, e o build sai em `out/` como arquivos estáticos.
+> `amplify.yml` aponta pra `out/` de propósito — sem ele o Amplify
+> autodetecta SSR ("Web Compute"). O texto abaixo é o diagnóstico de 24/08,
+> mantido como registro.
 
 Decisão da Yuki (24/08): o catálogo vai pro Amplify, junto com a LP. Correto
 pela regra 4 — é a nuvem que o cliente já usa. Mas **hoje este projeto não
@@ -248,6 +335,11 @@ que ser desfeito com redirect.
 
 ### 5.2 Testar a gravação de ponta a ponta 🟡 quase lá
 
+> **26/09:** o "lead real pelo site publicado" abaixo testa só a LP antiga,
+> que não manda atribuição (ver seção 0). A v7, vinda do código deste repo,
+> foi testada nas duas abas em 26/09. O que ainda vale conferir: o primeiro
+> lead real depois que o `bga-catalogo` assumir o domínio.
+
 Com `mode: 'no-cors'` o navegador **não vê erro nenhum**. Tudo parece funcionar
 mesmo quando nada grava. O único teste válido é olhar a planilha.
 
@@ -263,9 +355,13 @@ código (editar o `Code.gs` não publica — ver runbook, Parte 5)? o
 barra lateral do editor do Apps Script, diz se o pedido chegou: sem linha ali, o
 problema é URL ou permissão, não código.
 
-### 5.3 Imagens dos produtos 🟡
+### 5.3 Imagens dos produtos 🟡 quase feito
 
-Todos os 72 produtos estão com `image: null`.
+> **26/09:** 166 de 172 produtos têm `images.primary` (em
+> `public/images/productos/`). Faltam só 6 tapas de Bandejas — lista na
+> seção 3. O texto abaixo é de 24/08.
+
+Todos os 72 produtos estavam com `image: null`.
 
 **As imagens já existem.** No Drive da BGA:
 `Compartilhados comigo › BGA - YUKISAN › 36. Catálogo`
@@ -393,7 +489,43 @@ não competição. Confirmar com a Yuki antes de mandar o Code executar.
 
 ---
 
-## 8. Referências
+## 8. Armadilhas conhecidas (aprendidas em 26/09)
+
+Coisas que parecem erradas, ou parecem inofensivas, e não são:
+
+- **A chave `empresa` do payload carrega o RUC.** Na /cotacao o campo se chama
+  `ruc` no estado, mas vai pro Apps Script como `empresa` (coluna
+  "RUC / Empresa"). Renomear a chave exige nova versão do script na conta da
+  BGA — senão o RUC para de gravar, e o `no-cors` esconde.
+- **Não pôr `'noopener'` no `window.open` dos dois formulários.** Com ele o
+  retorno é `null` sempre, e o fallback "bloqueou → abre na própria aba" para
+  de funcionar. O `win.opener = null` depois do open faz o mesmo papel.
+- **Duplo envio na /cotacao é filtrado pelo conteúdo**, não por tempo
+  (`lastSentRef`): mesmo payload não grava de novo, mas o WhatsApp abre igual.
+  O formulário da home **não** tem esse filtro.
+- **Colunas do Apps Script só no fim.** O script escreve por posição, não por
+  nome de cabeçalho. `Estado` é a 12ª de `Cotizaciones` e tem validação.
+- **`npm run build` com o `next dev` rodando quebra o dev** — os dois escrevem
+  em `.next/`. Sintoma: 404 em `/_next/static/…` ou 500 com
+  `JSON.parse`/`ENOENT … .pack.gz`. Parar o dev, buildar, subir de novo.
+- **Busca: `normalize()` existe em duas cópias** — `lib/search.js` (bundle) e
+  `scripts/build-search-index.mjs` (Node puro, gera `lib/search-index.json` no
+  prebuild). Mudou uma, muda a outra. O índice resolve os ids de
+  `finishes` pro rótulo + material via `globalSpecs`; a query tira
+  -a/-o/-as/-os/-es/-s (radical ≥ 4 letras); número casa só como número
+  inteiro ("200" não acha "2000"). Pra medir mudança na busca, rodar as
+  mesmas queries antes e depois — "tapas", "galvanizada", "bandeja 200 mm",
+  "200x50", "ct-3012" são bons casos.
+- **Sitemap sem `<lastmod>` de propósito** (`scripts/build-sitemap.mjs`). Data
+  do build em toda URL faz o Google ignorar o campo. Volta só se o catálogo
+  tiver data real por produto.
+- **`referrer` na planilha é só o hostname** (`lib/attribution.js`), e só da
+  visita que originou a atribuição (último toque pago; senão a primeira
+  visita, TTL 90 dias).
+
+---
+
+## 9. Referências
 
 - Skill `faro-catalogo-cotizacion` — a spec completa do artefato (modelo de
   dados, carrinho, formulário, persist-first, medição, Fase 2)
