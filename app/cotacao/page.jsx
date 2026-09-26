@@ -88,12 +88,19 @@ export default function CotacaoPage() {
     return lines.join('\n')
   }
 
+  // Último pedido gravado, serializado. Duplo clique — ou um segundo clique
+  // porque o WhatsApp demorou a abrir — mandaria o mesmo pedido de novo, e
+  // cada envio é uma linha nova na planilha da Aida. Mesmo conteúdo = não
+  // grava de novo, mas o WhatsApp abre igual (quem clicou de novo quer a
+  // conversa). Qualquer mudança no carrinho ou no formulário = pedido novo.
+  const lastSentRef = useRef(null)
+
   function handleSend() {
     // ── 1. Grava primeiro ───────────────────────────────────────────────────
     // Sem await de propósito: `keepalive` garante o envio da requisição, e
     // esperar aqui faria o navegador tratar o window.open abaixo como popup
     // não solicitado e bloquear.
-    registrarCotizacion({
+    const payload = {
       origen: 'catalogo',
       ...getAttribution(),
       nombre: form.nombre,
@@ -113,13 +120,19 @@ export default function CotacaoPage() {
         cantidad: quantity,
         observacion: observation || '',
       })),
-    })
+    }
 
-    track('cotizacion_enviada', {
-      items: items.length,
-      unidades: items.reduce((s, i) => s + (Number(i.quantity) || 0), 0),
-      rubro: form.rubro || '(sin rubro)',
-    })
+    const serialized = JSON.stringify(payload)
+    if (serialized !== lastSentRef.current) {
+      registrarCotizacion(payload)
+      lastSentRef.current = serialized
+
+      track('cotizacion_enviada', {
+        items: items.length,
+        unidades: items.reduce((s, i) => s + (Number(i.quantity) || 0), 0),
+        rubro: form.rubro || '(sin rubro)',
+      })
+    }
 
     // ── 2. Só depois abre a conversa ────────────────────────────────────────
     const msg = encodeURIComponent(buildMessage())
