@@ -27,7 +27,6 @@ const catalogPath = path.join(__dirname, '..', 'lib', 'catalog.json')
 const outputPath = path.join(__dirname, '..', 'public', 'sitemap.xml')
 
 const catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'))
-const today = new Date().toISOString().slice(0, 10)
 
 const urls = []
 
@@ -67,10 +66,14 @@ catalog.categories.forEach(category => {
     })
 })
 
+// Sem <lastmod> de propósito. Antes ia a data do build em TODA URL: cada
+// deploy dizia ao Google que as 195 páginas tinham mudado hoje, e o Google
+// passa a ignorar lastmod de site que sempre mente. Também sujava o git — o
+// sitemap é versionado, então todo build num dia novo alterava o arquivo.
+// Sem data real por página (catalog.json não tem), melhor não ter nenhuma.
 const body = urls
   .map(({ loc, changefreq, priority }) => `  <url>
     <loc>${loc}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`)
