@@ -62,12 +62,13 @@ qualquer campanha aparece.
 | **google / cpc** | **3** |
 | chatgpt.com / ai-assistant | 1 |
 
-Duas coisas pra perguntar ao Akira:
+Duas observações:
 
-- **`google / cpc` com 3 sessões** — isso é clique pago. Ou existe (ou existiu)
-  uma conta de Google Ads da BGA rodando alguma coisa, ou é resquício de teste.
-  Vale descobrir antes de criar conta nova: se já existe histórico, ele tem
-  valor.
+- **`google / cpc` com 3 sessões — resolvido (14/09/2026).** A Yuki confirmou
+  que o Akira nunca rodou anúncio e que quem instalou o GA4 foi ela mesma. É
+  falso positivo de classificação ou tráfego dela testando. **Não existe conta
+  de Google Ads da BGA** — quando for criar, é do zero, sem histórico a
+  recuperar.
 - **`l.wl.co`** é encurtador de link do WhatsApp Business. 9 sessões vindas de
   conversa — ou seja, a vendedora já manda o site no WhatsApp hoje. Isso é o
   caminho que o catálogo vai alimentar.

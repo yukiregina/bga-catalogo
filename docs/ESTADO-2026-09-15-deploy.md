@@ -155,10 +155,8 @@ de certificado, então não é instantâneo, mas é o que existe.
    primeiros termos aparecerem no Search Console
 4. Só então a primeira campanha, pequena, tratada como teste do circuito
 
-**Três perguntas pendentes pro Akira:**
+**Duas perguntas pendentes pro Akira:**
 
-- `google / cpc` com 3 sessões na linha de base — existe conta de Google Ads
-  da BGA? Se existir, tem histórico com valor.
 - Capacidade: a Aida atende ~3 leads/mês hoje com folga. Se o catálogo
   multiplicar isso, o gargalo sai do site e vai pra ela.
 - Se for criar a coluna `Tamaño` (chico/mediano/grande) na planilha: a partir
