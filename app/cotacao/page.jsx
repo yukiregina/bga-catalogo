@@ -135,9 +135,15 @@ export default function CotacaoPage() {
     }
 
     // ── 2. Só depois abre a conversa ────────────────────────────────────────
+    // window.open devolve null quando o navegador bloqueia a aba nova (alguns
+    // navegadores embutidos em app fazem isso) — sem fallback, o clique não
+    // faz nada visível. Aí abre na própria aba: o pedido já foi (keepalive
+    // sobrevive à saída da página) e o carrinho fica no localStorage.
     const msg = encodeURIComponent(buildMessage())
     const number = config.contact.whatsapp.replace(/\D/g, '')
-    window.open(`https://wa.me/${number}?text=${msg}`, '_blank')
+    const waUrl = `https://wa.me/${number}?text=${msg}`
+    const win = window.open(waUrl, '_blank')
+    if (!win) window.location.href = waUrl
   }
 
   const preview = buildMessage()
