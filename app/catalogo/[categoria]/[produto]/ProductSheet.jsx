@@ -315,13 +315,16 @@ export default function ProductSheet({ product, category, globalSpecs, thickness
   }, [configQuery])
 
   // Última ficha visitada — a /cotacao usa isso pro breadcrumb "← Volver a…".
+  // Monta a partir do configQuery, nunca de window.location.search: no mount a
+  // URL ainda traz `editar=`, e um breadcrumb com ele faria o próximo
+  // "Agregar" dessa ficha substituir a linha em vez de criar outra.
   useEffect(() => {
     try {
-      const href = `/catalogo/${product.categoryId}/${product.id}/${window.location.search}`
+      const base = `/catalogo/${product.categoryId}/${product.id}/`
+      const href = configQuery ? `${base}?${configQuery}` : base
       sessionStorage.setItem('bga-last-product', JSON.stringify({ href, name: product.name }))
     } catch {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [configQuery, product.categoryId, product.id, product.name])
 
   function handleAddToCart() {
     const meta = {
