@@ -27,12 +27,28 @@ function normalize(s) {
     .toLowerCase()
     .normalize('NFD')
     .replace(/[̀-ͯ]/g, '')
-    .replace(/(\d+)mm\b/gi, '$1')
+    .replace(/(\d+)\s*mm\b/g, '$1')
+    .replace(/(\d)\s*[x×]\s*(?=\d)/g, '$1 ')
 }
 
+// Terminações e materiais moram uma vez só em globalSpecs; o produto guarda
+// só os ids (finishes: ["pz", "gf", …]). Sem resolver pro texto, a busca por
+// "galvanizado", "inoxidable" ou "pintura" não acha nenhuma bandeja. Cada
+// terminação carrega o nome do material dela (aisi304 → "Acero inoxidable
+// AISI 304"), então "inox" e "inoxidable" acham os mesmos produtos.
+const materialNameById = Object.fromEntries(
+  (catalog.globalSpecs?.materials ?? []).map(m => [m.id, m.name])
+)
+const finishTextById = Object.fromEntries(
+  (catalog.globalSpecs?.finishes ?? []).map(f => [
+    f.id,
+    [f.label, materialNameById[f.material]].filter(Boolean).join(' '),
+  ])
+)
+
 // Junta tudo que a busca deveria achar num produto — nome, subtítulo, id,
-// keywords, SKUs (do produto e de cada variante) e os valores dos eixos de
-// dimensão — depois limpa pontuação/espaço e deduplica token por token
+// keywords, SKUs (do produto e de cada variante), os valores dos eixos de
+// dimensão e as terminações (com o material de cada uma) — depois limpa pontuação/espaço e deduplica token por token
 // preservando a ordem (corta ~20% do peso do índice).
 function buildHaystack(product) {
   const parts = []
@@ -52,6 +68,10 @@ function buildHaystack(product) {
 
   ;(product.dimensionAxes ?? []).forEach(axis => {
     (axis.values ?? []).forEach(value => parts.push(String(value)))
+  })
+
+  ;(product.finishes ?? []).forEach(id => {
+    if (finishTextById[id]) parts.push(finishTextById[id])
   })
 
   const cleaned = normalize(parts.join(' '))
