@@ -70,7 +70,9 @@ export default function LandingPage({ categories = [] }) {
     }
 
     const ciudadLinea = ciudad ? `\nCiudad: ${ciudad}.` : ''
-    const texto = `Hola, soy ${nombre} de ${empresa}.\nSector: ${sector}.${ciudadLinea}\n\n${mensaje}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
+    // Empresa e RUC dividem o mesmo campo — "soy X de ${empresa}" virava
+    // "soy Mariana de 80012345-6" quando vinha o RUC. Linha própria serve pros dois.
+    const texto = `Hola, soy ${nombre}.\nEmpresa / RUC: ${empresa}.\nSector: ${sector}.${ciudadLinea}\n\n${mensaje}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
 
     setSubmitting(true)
     window.open(waLink(texto), '_blank', 'noopener,noreferrer')
@@ -329,7 +331,7 @@ export default function LandingPage({ categories = [] }) {
                     <input id="nombre" name="nombre" type="text" required placeholder="Ej. In. Carlos Martínez" />
                   </div>
                   <div className={styles.formField}>
-                    <label htmlFor="empresa">Empresa o RUC</label>
+                    <label htmlFor="empresa">Empresa / RUC</label>
                     <input id="empresa" name="empresa" type="text" required placeholder="Ej. Construlógica · 80000000-0" />
                   </div>
                   <div className={styles.formField}>
