@@ -328,7 +328,7 @@ export default function LandingPage({ categories = [] }) {
                 <form onSubmit={handleContactSubmit}>
                   <div className={styles.formField}>
                     <label htmlFor="nombre">Nombre completo</label>
-                    <input id="nombre" name="nombre" type="text" required placeholder="Ej. In. Carlos Martínez" />
+                    <input id="nombre" name="nombre" type="text" required placeholder="Ej. Ing. Carlos Martínez" />
                   </div>
                   <div className={styles.formField}>
                     <label htmlFor="empresa">Empresa / RUC</label>
