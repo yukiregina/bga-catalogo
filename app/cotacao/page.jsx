@@ -82,7 +82,7 @@ export default function CotacaoPage() {
     if (form.nombre) lines.push(`Cliente: ${form.nombre}`)
     if (form.ruc)    lines.push(`RUC: ${form.ruc}`)
     if (form.ciudad) lines.push(`Ciudad: ${form.ciudad}`)
-    if (form.rubro && form.rubro !== 'Seleccioná un rubro') lines.push(`Rubro: ${form.rubro}`)
+    if (form.rubro && form.rubro !== RUBROS[0]) lines.push(`Rubro: ${form.rubro}`)
     if (form.proyecto) lines.push(`Obra: ${form.proyecto}`)
     if (form.plazo)   lines.push(`Plazo: ${form.plazo}`)
     return lines.join('\n')
@@ -96,6 +96,10 @@ export default function CotacaoPage() {
   const lastSentRef = useRef(null)
 
   function handleSend() {
+    // Voltar pra "Seleccioná un rubro" depois de escolher um deixa o texto do
+    // placeholder em form.rubro — limpa uma vez aqui, pra planilha e GA4.
+    const rubro = form.rubro && form.rubro !== RUBROS[0] ? form.rubro : ''
+
     // ── 1. Grava primeiro ───────────────────────────────────────────────────
     // Sem await de propósito: `keepalive` garante o envio da requisição, e
     // esperar aqui faria o navegador tratar o window.open abaixo como popup
@@ -110,7 +114,7 @@ export default function CotacaoPage() {
       empresa: form.ruc,
       ciudad: form.ciudad,
       whatsapp: form.whatsapp,
-      rubro: form.rubro && form.rubro !== RUBROS[0] ? form.rubro : '',
+      rubro,
       proyecto: form.proyecto,
       plazo: form.plazo,
       items: items.map(({ product, quantity, observation, title }) => ({
@@ -130,7 +134,7 @@ export default function CotacaoPage() {
       track('cotizacion_enviada', {
         items: items.length,
         unidades: items.reduce((s, i) => s + (Number(i.quantity) || 0), 0),
-        rubro: form.rubro || '(sin rubro)',
+        rubro: rubro || '(sin rubro)',
       })
     }
 
