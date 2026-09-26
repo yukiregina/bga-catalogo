@@ -75,7 +75,14 @@ export default function LandingPage({ categories = [] }) {
     const texto = `Hola, soy ${nombre}.\nEmpresa / RUC: ${empresa}.\nSector: ${sector}.${ciudadLinea}\n\n${mensaje}\n\n(Mensaje enviado desde la web de ${config.brand.name})`
 
     setSubmitting(true)
-    window.open(waLink(texto), '_blank', 'noopener,noreferrer')
+    // Sem 'noopener' na lista de features: com ele o window.open devolve null
+    // SEMPRE, e não dá pra saber se o navegador bloqueou a aba nova. O
+    // `opener = null` logo depois faz o mesmo papel (wa.me não alcança esta
+    // página). Bloqueado → abre na própria aba; o lead já foi (keepalive acima).
+    const url = waLink(texto)
+    const win = window.open(url, '_blank')
+    if (win) win.opener = null
+    else window.location.href = url
     setTimeout(() => setSubmitting(false), 3000)
   }
 
