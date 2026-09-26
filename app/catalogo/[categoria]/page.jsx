@@ -152,7 +152,7 @@ export default function CategoriaPage({ params }) {
             )}
             <div className="bg-white border border-border-subtle rounded-card p-6">
               <p className="text-sm font-semibold text-brand-primary mb-1">
-                Consúltanos para más información sobre esta línea.
+                Consultanos para más información sobre esta línea.
               </p>
               <p className="text-xs text-text-secondary mb-4">
                 Te asesoramos sobre disponibilidad, medidas y especificación según tu proyecto.
