@@ -1,6 +1,25 @@
-// BGA Lead Tracker — Google Apps Script  ·  v6 (2026-09-14)
+// BGA Lead Tracker — Google Apps Script  ·  v7 (2026-09-26)
 // Cole em: script.google.com → seu projeto → Code.gs
 // Implantar → Gerenciar implantações → Editar (lápis) → Nova versão → Implantar
+//
+// MUDANÇA DA v7: 3 colunas novas no FIM das duas abas — Contenido, Término,
+// Referrer. Os dois formulários já mandavam esses campos desde a v5
+// (lib/attribution.js → getAttribution), mas o script os descartava. O
+// Referrer é o que mais faz falta: em visita orgânica/direta os utm_* vêm
+// vazios e o hostname de origem (google.com, instagram.com…) é a única pista
+// de onde o lead veio. Término é onde cai a palavra-chave do Google Ads.
+//   Aba de contato (doGet): colunas 12–14 (L–N)
+//   Cotizaciones (doPost):  colunas 22–24 (V–X)
+// Mesma regra das v3/v5/v6: no fim, nunca no meio (Estado continua na 12ª).
+//
+// Também da v7: `garantirCabecalho_` preenche sozinho as células de cabeçalho
+// que estiverem EM BRANCO na linha 1. Acaba com o passo manual da v5/v6
+// ("adicionar as colunas à mão na aba existente") — esquecer esse passo
+// gravava os valores sob cabeçalho vazio, sem aviso. Só escreve em célula
+// vazia: um cabeçalho que alguém renomeou à mão fica como está. E nunca
+// derruba a gravação: se a aba tiver menos colunas que o cabeçalho (alguém
+// apagou as vazias da direita), getRange estoura — o erro é engolido e o
+// appendRow, que cria as colunas que faltam, grava o lead igual.
 //
 // MUDANÇA DA v6: coluna "WhatsApp" nova no FIM de Cotizaciones (21ª, U) — campo
 // opcional do carrinho de cotação, só nesse formulário (doGet/aba de contato
@@ -55,12 +74,19 @@ var HEADERS_COTIZACIONES = [
   'Ítems', 'Cant. total', 'SKUs', 'Obra', 'Plazo', 'Origen',
   'Estado', 'Contactado el', 'Propuesta el', 'Notas',
   'Fuente', 'Medio', 'Campaña', 'Click ID', 'Página de entrada',
-  'WhatsApp'
+  'WhatsApp',
+  'Contenido', 'Término', 'Referrer'
+];
+
+var HEADERS_CONTACTO = [
+  'Fecha', 'Nombre', 'Empresa', 'Ciudad', 'Rubro', 'Mensaje',
+  'Fuente', 'Medio', 'Campaña', 'Click ID', 'Página de entrada',
+  'Contenido', 'Término', 'Referrer'
 ];
 
 var ESTADOS = ['nuevo', 'contactado', 'propuesta', 'cerrado', 'perdido'];
 
-// ── Landing page (inalterado, exceto a aba explícita) ────────────────────────
+// ── Landing page: formulário de contato ──────────────────────────────────────
 
 function doGet(e) {
   if (!autorizado_(e.parameter.key)) return jsonOut({ status: 'forbidden' });
@@ -78,6 +104,9 @@ function doGet(e) {
   var campana  = clampField(e.parameter.campana, LIMITS.atribucion);
   var clickId  = clampField(e.parameter.click_id, LIMITS.atribucion);
   var entrada  = clampField(e.parameter.pagina_entrada, LIMITS.atribucion);
+  var contenido = clampField(e.parameter.contenido, LIMITS.atribucion);
+  var termino   = clampField(e.parameter.termino, LIMITS.atribucion);
+  var referrer  = clampField(e.parameter.referrer, LIMITS.atribucion);
 
   // Ciudad é opcional: não entra na guarda. Rejeitar o que o formulário aceita
   // seria falha silenciosa — o dado que existe se perderia sem aviso.
@@ -88,15 +117,16 @@ function doGet(e) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
 
   if (sheet.getLastRow() === 0) {
-    var headers = ['Fecha', 'Nombre', 'Empresa', 'Ciudad', 'Rubro', 'Mensaje',
-      'Fuente', 'Medio', 'Campaña', 'Click ID', 'Página de entrada'];
-    sheet.appendRow(headers);
-    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
+    sheet.appendRow(HEADERS_CONTACTO);
+    sheet.getRange(1, 1, 1, HEADERS_CONTACTO.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
+  } else {
+    garantirCabecalho_(sheet, HEADERS_CONTACTO);
   }
 
   sheet.appendRow([new Date(), nombre, empresa, ciudad, sector, mensaje,
-    fuente, medio, campana, clickId, entrada]);
+    fuente, medio, campana, clickId, entrada,
+    contenido, termino, referrer]);
   return jsonOut({ status: 'ok' });
 }
 
@@ -154,7 +184,10 @@ function doPost(e) {
     clampField(data.campana, LIMITS.atribucion),
     clampField(data.click_id, LIMITS.atribucion),
     clampField(data.pagina_entrada, LIMITS.atribucion),
-    clampField(data.whatsapp, LIMITS.atribucion)
+    clampField(data.whatsapp, LIMITS.atribucion),
+    clampField(data.contenido, LIMITS.atribucion),
+    clampField(data.termino, LIMITS.atribucion),
+    clampField(data.referrer, LIMITS.atribucion)
   ]);
 
   return jsonOut({ status: 'ok' });
@@ -186,9 +219,43 @@ function abaCotizaciones_() {
 
     sheet.setColumnWidth(6, 320);  // Ítems
     sheet.setColumnWidth(8, 200);  // SKUs
+  } else {
+    garantirCabecalho_(sheet, HEADERS_COTIZACIONES);
   }
 
   return sheet;
+}
+
+// Preenche só as células EM BRANCO da linha 1 com o cabeçalho esperado. É o
+// que faz uma aba criada numa versão anterior ganhar os títulos das colunas
+// novas sem passo manual. Nunca sobrescreve texto que já esteja lá — se
+// alguém renomeou um cabeçalho à mão, fica o nome dela.
+//
+// try/catch obrigatório: isto roda ANTES do appendRow do lead. Se a aba tiver
+// menos colunas que headers.length, getRange lança erro — sem o catch, o
+// doGet/doPost morre ali e o lead não grava, em silêncio (no-cors). Cabeçalho
+// é conveniência; lead é o produto. Nunca trocar um pelo outro.
+function garantirCabecalho_(sheet, headers) {
+  try {
+    var range = sheet.getRange(1, 1, 1, headers.length);
+    var atual = range.getValues()[0];
+    var mudou = false;
+
+    for (var i = 0; i < headers.length; i++) {
+      if (atual[i] === '' || atual[i] == null) {
+        atual[i] = headers[i];
+        mudou = true;
+      }
+    }
+
+    if (mudou) {
+      range.setValues([atual]);
+      range.setFontWeight('bold');
+    }
+  } catch (err) {
+    // aba estreita demais: o appendRow logo depois cria as colunas e grava;
+    // na próxima requisição o cabeçalho é preenchido normalmente.
+  }
 }
 
 function autorizado_(chave) {
