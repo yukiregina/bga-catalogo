@@ -59,7 +59,7 @@ export default function CotacaoPage() {
 
   const [form, setForm] = useState({
     nombre: '',
-    empresa: '',
+    ruc: '',
     ciudad: '',
     whatsapp: '',
     proyecto: '',
@@ -79,8 +79,8 @@ export default function CotacaoPage() {
       lines.push(`• ${product.composedSKU ?? product.id} — ${title ?? product.name} · ${quantity} un${obs}`)
     })
     lines.push('')
-    if (form.nombre)  lines.push(`Cliente: ${form.nombre}${form.empresa ? ` — ${form.empresa}` : ''}`)
-    if (form.empresa && !form.nombre) lines.push(`Empresa: ${form.empresa}`)
+    if (form.nombre) lines.push(`Cliente: ${form.nombre}`)
+    if (form.ruc)    lines.push(`RUC: ${form.ruc}`)
     if (form.ciudad) lines.push(`Ciudad: ${form.ciudad}`)
     if (form.rubro && form.rubro !== 'Seleccioná un rubro') lines.push(`Rubro: ${form.rubro}`)
     if (form.proyecto) lines.push(`Obra: ${form.proyecto}`)
@@ -97,7 +97,10 @@ export default function CotacaoPage() {
       origen: 'catalogo',
       ...getAttribution(),
       nombre: form.nombre,
-      empresa: form.empresa,
+      // A chave continua `empresa`: é o nome que o Apps Script lê (coluna
+      // "RUC / Empresa"). Renomear aqui exige nova versão do script na conta
+      // da BGA — senão o RUC para de gravar, em silêncio (no-cors).
+      empresa: form.ruc,
       ciudad: form.ciudad,
       whatsapp: form.whatsapp,
       rubro: form.rubro && form.rubro !== RUBROS[0] ? form.rubro : '',
@@ -153,10 +156,10 @@ export default function CotacaoPage() {
           <img src="/logo-bga-bandejas-portacables-paraguay.png" alt={config.brand.name} className="h-9 mb-4" />
           <h1 className="text-xl font-bold mb-1">Lista de especificación</h1>
           <p className="text-xs mb-2">{printDate}</p>
-          {(form.nombre || form.empresa || form.ciudad || (form.rubro && form.rubro !== RUBROS[0])) && (
+          {(form.nombre || form.ruc || form.ciudad || (form.rubro && form.rubro !== RUBROS[0])) && (
             <div className="text-xs space-y-0.5">
               {form.nombre && <div>Nombre / empresa: {form.nombre}</div>}
-              {form.empresa && <div>RUC: {form.empresa}</div>}
+              {form.ruc && <div>RUC: {form.ruc}</div>}
               {form.ciudad && <div>Ciudad: {form.ciudad}</div>}
               {form.rubro && form.rubro !== RUBROS[0] && <div>Rubro: {form.rubro}</div>}
             </div>
@@ -347,7 +350,7 @@ export default function CotacaoPage() {
 
                 {[
                   { label: 'Nombre / empresa', name: 'nombre', placeholder: 'Mariana Acosta · Acosta Eléctrica' },
-                  { label: 'RUC / CNPJ', name: 'empresa', placeholder: '80012345-6', mono: true },
+                  { label: 'RUC / CNPJ', name: 'ruc', placeholder: '80012345-6', mono: true },
                   { label: 'Ciudad', name: 'ciudad', placeholder: 'Asunción · Ciudad del Este · …' },
                 ].map(field => (
                   <div key={field.name}>
