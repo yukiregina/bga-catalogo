@@ -199,7 +199,7 @@ export default function LandingPage({ categories = [] }) {
               <span aria-hidden="true">✓</span>
               <span style={{ color: 'var(--ocean)' }}>Por qué BGA</span>
             </div>
-            <h2 id="nosotros-title" className={styles.sectionTitle}>Excelencia, responsabilidad y parceria</h2>
+            <h2 id="nosotros-title" className={styles.sectionTitle}>Excelencia, responsabilidad y confianza</h2>
             <p className={styles.sectionLead}>Tres compromisos que guían cómo fabricamos y cómo atendemos.</p>
             <div className={styles.featuresGrid}>
               <div className={styles.feature}>
@@ -213,7 +213,7 @@ export default function LandingPage({ categories = [] }) {
                 <p>Fabricamos localmente con cadena productiva paraguaya. Cuidamos el plazo de obra, la seguridad de la instalación y el impacto de producir en el país.</p>
               </div>
               <div className={styles.feature}>
-                <div className={styles.featureNum}>03 · Parceria</div>
+                <div className={styles.featureNum}>03 · Confianza</div>
                 <h3>Atención de quien entiende de obra</h3>
                 <p>Sin formularios largos, sin scripts. Hablás directo con quien especifica y cotiza. WhatsApp como canal real, no como línea automática.</p>
               </div>
